@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove neon/glow effects from orange - keep original orange-600 (#ea580c) */
+/* Override shadow effects to be more subtle */
+.shadow-orange-600\/40 {
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.15) !important;
+}
+
+.shadow-orange-600\/20 {
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.1) !important;
+}
+
+.shadow-orange-600\/30 {
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.12) !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-bottom-4 {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-top-4 {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fade-in;
+}
+
+.slide-in-from-bottom-4 {
+  animation-name: slide-in-from-bottom-4;
+}
+
+.slide-in-from-top-4 {
+  animation-name: slide-in-from-top-4;
+}
+
+/* Utility for better font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.border-blue-900 {
+    border-color: #1e3a8a;
+}
+
+.logo {
+  object-fit: contain;
+  object-position: center;
+}

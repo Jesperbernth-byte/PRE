@@ -16,7 +16,7 @@ const SITE_CONTENT = {
   GLN_NUMBER: "5790002657955",
   PRIMARY_COLOR: "#1e3a8a", // blue-900
   SECONDARY_COLOR: "#ea580c", // orange-600
-  SERVICES_COUNT: 9,
+  SERVICES_COUNT: 14,
   TEAM_COUNT: 3,
   CERTIFICATIONS_COUNT: 5
 };
@@ -144,7 +144,7 @@ Sitet er optimeret til følgende søgeord og målgrupper:
 - USP: Akut respons under 2 timer, fast pris, 5 års garanti, autoriseret
 
 ## CONTEXT OM SERVICES
-Sitet har disse 9 services:
+Sitet har disse 14 services:
 1. Omfangsdræn & Fugtsikring
 2. Kloakseparering & Renovering
 3. Rottespærre - Effektiv Sikring
@@ -154,6 +154,11 @@ Sitet har disse 9 services:
 7. Asbestsanering (Kloak-relateret) - BEGRÆNSET, kun ved kloak/dræn arbejde!
 8. Entreprenørarbejde & Jordflytning
 9. Naturpleje & Genopretning
+10. Miniransanlæg & Renseanlæg
+11. Brøndrenovering & Brøndbygning
+12. Olietanke - Nedtagning & Sanering
+13. Fundamentarbejde & Støbning
+14. Vandledninger - Reparation & Fornyelse
 
 **VIGTIGT:** Hvis bruger vil fjerne "asbest" eller "asbestsanering":
 - Det er OK! Vi laver det kun i begrænset omfang alligevel

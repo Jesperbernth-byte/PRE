@@ -144,6 +144,77 @@ export const SERVICES: Service[] = [
       { question: 'Kan I håndtere store arealer?', answer: 'Ja, vi har maskinerne til både små private haver og store erhvervsarealer eller naturområder.' },
       { question: 'Kombinerer I naturpleje med kloakarbejde?', answer: 'Ja, det er en af vores styrker. Vi kan f.eks. etablere dræn og derefter genoprette området naturligt – en samlet løsning der sparer dig for flere entreprenører.' }
     ]
+  },
+  {
+    id: '10',
+    slug: 'miniransanlaeg',
+    title: 'Miniransanlæg & Renseanlæg',
+    description: 'Installation og service af private renseanlæg. Professionel løsning til ejendomme uden offentlig kloak.',
+    longDescription: 'Bor du uden for kloakerede områder? Vi installerer og servicerer miniransanlæg der sikrer lovlig rensning af spildevand. Vi håndterer alt fra ansøgninger til kommunen, udgravning, installation og efterfølgende service. Alle anlæg lever op til gældende miljøkrav.',
+    icon: 'Droplets',
+    priceRange: 'Fra 65.000 kr.',
+    faqs: [
+      { question: 'Hvad er et miniransanlæg?', answer: 'Et privat renseanlæg til ejendomme uden adgang til offentlig kloak. Det renser spildevand mekanisk og biologisk før udledning.' },
+      { question: 'Skal anlægget serviceres?', answer: 'Ja, mindst én gang årligt skal slam tømmes og anlægget efterses. Vi tilbyder serviceaftaler.' },
+      { question: 'Hvad koster installation?', answer: 'Typisk 65.000-120.000 kr. afhængig af antal personer i husstanden, jordbundsforhold og valg af anlæg.' },
+      { question: 'Skal jeg have tilladelse?', answer: 'Ja, kommunen skal godkende installation. Vi håndterer ansøgningen for dig.' }
+    ]
+  },
+  {
+    id: '11',
+    slug: 'broend-renovering',
+    title: 'Brøndrenovering & Brøndbygning',
+    description: 'Renovering af gamle brønde og byggeri af nye inspektionsbrønde. Professionel udførelse efter gældende regler.',
+    longDescription: 'Gamle brønde kan være utætte og kræve renovering. Vi renoverer eksisterende brønde med tætningsprodukter eller bygger nye inspektionsbrønde i beton eller plast. Alle brønde bygges efter DS/EN-standarder og med korrekt belægning og dæksel.',
+    icon: 'ShieldCheck',
+    priceRange: 'Fra 12.000 kr.',
+    faqs: [
+      { question: 'Hvornår skal en brønd renoveres?', answer: 'Ved revner, utætheder, manglende trin eller hvis dæksel er beskadiget. Ofte opdages det ved TV-inspektion.' },
+      { question: 'Hvad koster en ny brønd?', answer: 'En standard inspektionsbrønd koster 12.000-25.000 kr. afhængig af dybde og type.' },
+      { question: 'Kan I renovere uden at grave op?', answer: 'I nogle tilfælde ja - med indvendig tætning. Men ved større skader kræves opgravning.' }
+    ]
+  },
+  {
+    id: '12',
+    slug: 'olietanke',
+    title: 'Olietanke - Nedtagning & Sanering',
+    description: 'Sikker nedtagning af gamle olietanke. Lovpligtig håndtering og miljøgodkendelse.',
+    longDescription: 'Gamle nedgravede olietanke udgør en miljørisiko og skal håndteres korrekt. Vi er specialister i nedtagning af både over- og nedgravede tanke. Vi sørger for korrekt bortskaffelse, jordprøver og miljørapportering til kommunen.',
+    icon: 'ShieldCheck',
+    priceRange: 'Fra 18.000 kr.',
+    faqs: [
+      { question: 'Skal gamle olietanke fjernes?', answer: 'Ja, nedgravede tanke skal fjernes ved ejerskifte eller når de ikke længere bruges. Det er lovkrav.' },
+      { question: 'Hvad hvis der er forurening?', answer: 'Vi tager jordprøver og dokumenterer eventuel forurening. Hvis nødvendigt saneres jorden efter miljøkrav.' },
+      { question: 'Hvad koster nedtagning?', answer: 'En standard nedgravet tank koster 18.000-35.000 kr. inkl. bortskaffelse og rapportering.' }
+    ]
+  },
+  {
+    id: '13',
+    slug: 'fundament',
+    title: 'Fundamentarbejde & Støbning',
+    description: 'Professionel udgravning og klargøring til fundamenter. Præcist arbejde der sikrer et stabilt grundlag.',
+    longDescription: 'Et godt fundament starter med korrekt jordarbejde. Vi graver ud, komprimerer underlag og sikrer korrekt dræning omkring fundamenter. Perfekt forberedelse til støbning af garage, carport, tilbygning eller helt nye byggerier.',
+    icon: 'Hammer',
+    priceRange: 'Fra 15.000 kr.',
+    faqs: [
+      { question: 'Hvad indgår i fundamentarbejde?', answer: 'Udgravning til korrekt dybde, komprimering af underlag, etablering af dræn og sandfyld. Alt klar til støbning.' },
+      { question: 'Laver I også selve støbningen?', answer: 'Vi klargør til støbning. Selve betonstøbning foregår ofte i samarbejde med andre entreprenører.' },
+      { question: 'Hvor dybt skal fundamentet være?', answer: 'Minimum 60 cm under terræn i frostfri dybde. Vi rådgiver baseret på jordbund og byggeri.' }
+    ]
+  },
+  {
+    id: '14',
+    slug: 'vandledning',
+    title: 'Vandledninger - Reparation & Fornyelse',
+    description: 'Reparation af vandledninger og udskiftning af gamle rør. Hurtig service ved brud og lækager.',
+    longDescription: 'Gamle vandledninger kan få brud eller korrodere. Vi reparerer eller udskifter både hoved- og stikledninger. Ved akutte brud rykker vi hurtigt ud for at minimere vandskader. Vi arbejder med både kobbер, plast og bly-udskiftning.',
+    icon: 'Droplets',
+    priceRange: 'Fra 8.000 kr.',
+    faqs: [
+      { question: 'Hvad koster det at skifte en vandledning?', answer: 'En standard udskiftning koster 8.000-25.000 kr. afhængig af længde og dybde.' },
+      { question: 'Hvor hurtigt kan I komme ved brud?', answer: 'Ved akutte vandledningsbrud kommer vi inden for 2 timer - også aften og weekend.' },
+      { question: 'Skal gamle blyrør udskiftes?', answer: 'Ja, blyrør bør udskiftes af hensyn til drikkevandskvaliteten. Vi hjælper med udskiftning.' }
+    ]
   }
 ];
 

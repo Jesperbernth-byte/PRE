@@ -281,7 +281,7 @@ export const CASES = [
     result: "100% tør kælder - ingen problemer siden 2022",
     price: "68.500 kr.",
     duration: "2 uger",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&fit=crop"
+    image: "/pictures/Dræn/20210628_065610.jpg"
   },
   {
     id: 2,
@@ -291,17 +291,27 @@ export const CASES = [
     result: "Godkendt af kommune første gang - ingen efterarbejde",
     price: "42.000 kr.",
     duration: "1 uge",
-    image: "https://images.unsplash.com/photo-1541976590-71394168159b?w=800&fit=crop"
+    image: "/pictures/Separering/20220829_153238.jpg"
   },
   {
     id: 3,
-    title: "Akut rottespærre i Middelfart",
-    problem: "Rotter set i toilet og bad om natten",
-    solution: "Akut udrykning, TV-inspektion af system, montering af certificeret rottespærre",
-    result: "Ingen rotter siden - kunde sover trygt igen",
-    price: "8.500 kr.",
-    duration: "4 timer",
-    image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&fit=crop"
+    title: "TV-inspektion med brud lokaliseret",
+    problem: "Tilbagevendende stop i kloak og mistanke om brud",
+    solution: "Professionel TV-inspektion af 45 meter ledning, præcis lokalisering af rodindtrængning",
+    result: "Målrettet reparation - ingen unødvendig opgravning",
+    price: "4.500 kr.",
+    duration: "2 timer",
+    image: "/pictures/Tv-inspektion/20211206_114913.jpg"
+  },
+  {
+    id: 4,
+    title: "Miniransanlæg installation på Sydfyn",
+    problem: "Ingen mulighed for tilslutning til offentlig kloak",
+    solution: "Komplet installation af 5 PE miniransanlæg inkl. ansøgning og godkendelse",
+    result: "Godkendt første gang - fuldt funktionelt renseanlæg",
+    price: "89.000 kr.",
+    duration: "1 uge",
+    image: "/pictures/Miniransanlæg/20210616_080635.jpg"
   }
 ];
 

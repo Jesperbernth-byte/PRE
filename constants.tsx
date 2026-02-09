@@ -312,7 +312,8 @@ I 2025 blev det klart at fremtiden lå i specialisering. PR Entreprenøren ApS b
 Jacob blev ansat som autoriseret kloakmester og overtog den daglige ledelse og alt fagligt ansvar. Med sin certificering inden for både kloak og asbest sikrer han at hvert projekt lever op til lovkrav og branchestandarder.
 
 I dag består teamet af Preben (overordnet ledelse), Jacob (daglig drift og fagligt ansvar) og lærling Jesper, der lærer faget fra grunden. Målet er klart: at vokse til 8-12 medarbejdere uden at gå på kompromis med kvalitet.`,
-  mission: "At levere kloakløsninger der holder i generationer – udført med respekt for kunde, miljø og lovgivning."
+  mission: "At levere kvalitetsarbejde med fokus på sikkerhed, faglighed og ordentlighed.",
+  values: ["Ansvar", "Sikkerhed", "Kvalitet", "Samarbejde"]
 };
 
 // Service areas with focus

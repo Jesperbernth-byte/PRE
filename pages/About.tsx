@@ -39,6 +39,20 @@ const About: React.FC = () => {
                 "{COMPANY_HISTORY.mission}"
               </p>
             </div>
+
+            <div className="bg-blue-50 border-l-8 border-blue-900 p-8 rounded-r-3xl my-12">
+              <div className="flex items-center gap-3 mb-4">
+                <CheckCircle2 size={32} className="text-blue-900" />
+                <h3 className="text-2xl font-black text-blue-900 uppercase italic">Vores Værdier</h3>
+              </div>
+              <div className="flex flex-wrap gap-4 mt-6">
+                {COMPANY_HISTORY.values.map((value, i) => (
+                  <div key={i} className="bg-white px-6 py-3 rounded-full border-2 border-blue-900 font-black text-blue-900 text-lg">
+                    {value}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

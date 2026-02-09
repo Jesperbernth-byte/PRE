@@ -4,7 +4,7 @@ import type {
   AnalysisResult
 } from '../types/siteEditor';
 
-const API_BASE = '/api/pre/site-editor';
+const API_BASE = '/api/site-editor';
 
 export class SiteEditorService {
   /**

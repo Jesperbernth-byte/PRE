@@ -27,11 +27,11 @@ const HomeUpdated: React.FC = () => {
               <ShieldCheck size={16} fill="currentColor" /> Se autorisation hos Sikkerhedsstyrelsen
             </a>
             <h1 className="text-5xl sm:text-7xl font-black mb-8 leading-[1]">
-              ROTTESPÆRRE - <br/>
-              SIKRING MOD <span className="text-orange-500">ROTTER.</span>
+              AUTORISERET <br/>
+              <span className="text-orange-500">KLOAKMESTER</span> PÅ FYN
             </h1>
             <p className="text-xl sm:text-2xl text-slate-300 mb-12 leading-relaxed font-medium">
-              Vi sikrer din ejendom med autoriseret kloakarbejde, omfangsdræn og asbestsanering på hele Fyn og i Trekantsområdet.
+              Omfangsdræn, kloakseparering, rottespærrer, TV-inspektion og højvandslukkere. Hurtig udrykning ved akutte problemer på hele Fyn og i Trekantsområdet.
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <a

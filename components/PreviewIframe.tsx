@@ -588,7 +588,7 @@ const PreviewIframe: React.FC<PreviewIframeProps> = ({
                         </h4>
                         <p className="text-sm text-blue-800 mb-4">
                           Når du er tilfreds med ændringerne, klik på <strong>"Godkend & Publicer"</strong> knappen ovenfor.
-                          Ændringerne vil være live på <a href="/pre/" target="_blank" rel="noopener noreferrer" className="underline font-bold">https://aibernth.dk/pre/</a> efter 1-2 minutter.
+                          Ændringerne vil være live på <a href="https://prentreprenoer.dk" target="_blank" rel="noopener noreferrer" className="underline font-bold">https://prentreprenoer.dk</a> efter 1-2 minutter.
                         </p>
                         <p className="text-xs text-blue-700">
                           💡 Tip: Du kan altid rulle tilbage fra "Historik" menuen hvis du fortryder.

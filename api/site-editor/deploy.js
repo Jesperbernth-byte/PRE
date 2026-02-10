@@ -66,7 +66,7 @@ export default async function handler(req, res) {
       try {
         // Get current file SHA from GitHub
         const getFileResponse = await fetch(
-          `https://api.github.com/repos/Jesperbernth-byte/aibernth/contents/${filePath}`,
+          `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${filePath}`,
           {
             headers: {
               'Authorization': `token ${process.env.GITHUB_TOKEN}`,
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
 
         // Update file via GitHub API
         const updateFileResponse = await fetch(
-          `https://api.github.com/repos/Jesperbernth-byte/aibernth/contents/${filePath}`,
+          `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${filePath}`,
           {
             method: 'PUT',
             headers: {
@@ -117,7 +117,7 @@ export default async function handler(req, res) {
 
     // Get latest commit SHA
     const branchResponse = await fetch(
-      'https://api.github.com/repos/Jesperbernth-byte/aibernth/branches/main',
+      'https://api.github.com/repos/Jesperbernth-byte/PRE/branches/main',
       {
         headers: {
           'Authorization': `token ${process.env.GITHUB_TOKEN}`,
@@ -136,7 +136,7 @@ export default async function handler(req, res) {
         status: 'deployed',
         deployed_at: new Date().toISOString(),
         commit_sha: commitSha,
-        deployment_url: process.env.PRE_SITE_URL || 'https://aibernth.dk/pre/'
+        deployment_url: process.env.PRE_SITE_URL || 'https://prentreprenoer.dk'
       })
       .eq('id', versionId);
 
@@ -149,7 +149,7 @@ export default async function handler(req, res) {
       message: 'Ændringerne er nu deployet! Vercel bygger sitet - det er live om 1-2 minutter.',
       updatedFiles,
       commitSha,
-      deploymentUrl: process.env.PRE_SITE_URL || 'https://aibernth.dk/pre/',
+      deploymentUrl: process.env.PRE_SITE_URL || 'https://prentreprenoer.dk',
       version: {
         ...version,
         status: 'deployed',

@@ -38,7 +38,7 @@ async function uploadUserImageToGitHub(imageBase64Data, imageLocation) {
 
     // Upload to GitHub
     const uploadResponse = await fetch(
-      `https://api.github.com/repos/Jesperbernth-byte/aibernth/contents/${githubPath}`,
+      `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${githubPath}`,
       {
         method: 'PUT',
         headers: {
@@ -158,7 +158,7 @@ export default async function handler(req, res) {
       try {
         // Fetch current file content from GitHub
         const githubResponse = await fetch(
-          `https://api.github.com/repos/Jesperbernth-byte/aibernth/contents/${filePath}`,
+          `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${filePath}`,
           {
             headers: {
               'Authorization': `token ${process.env.GITHUB_TOKEN}`,

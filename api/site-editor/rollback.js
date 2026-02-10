@@ -130,14 +130,14 @@ export default async function handler(req, res) {
           status: 'deployed',
           deployed_at: new Date().toISOString(),
           commit_sha: commitSha.trim(),
-          deployment_url: process.env.PRE_SITE_URL || 'https://aibernth.dk/pre/'
+          deployment_url: process.env.PRE_SITE_URL || 'https://prentreprenoer.dk'
         });
 
       return res.status(200).json({
         success: true,
         message: `Rollback til version ${targetVersion.version_number} fuldført`,
         commitSha: commitSha.trim(),
-        deploymentUrl: process.env.PRE_SITE_URL || 'https://aibernth.dk/pre/'
+        deploymentUrl: process.env.PRE_SITE_URL || 'https://prentreprenoer.dk'
       });
 
     } catch (gitError) {

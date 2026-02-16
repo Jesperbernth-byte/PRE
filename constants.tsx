@@ -252,7 +252,7 @@ export const TEAM = [
     phone: "22 96 66 61",
     email: "pr@prentreprenoer.dk",
     description: "Virksomhedens grundlægger med årtiers erfaring inden for entreprenørarbejde og maskinstationsopgaver. Ansvarlig for overordnet strategi og sikrer høj kvalitet i alle projekter.",
-    image: "/team/preben.jpg"
+    image: "/team/preben1.jpg"
   },
   {
     name: "Jacob",
@@ -260,7 +260,7 @@ export const TEAM = [
     phone: "24 94 66 61",
     email: "jeh@prentreprenoer.dk",
     description: "Fagligt ansvarlig for både kloak- og asbestarbejde. Står for daglig drift, tekniske vurderinger og er din primære kontakt ved alle kloakrelaterede spørgsmål.",
-    image: "/team/jacob.jpg"
+    image: "/team/jacob1.jpg"
   },
   {
     name: "Jesper",

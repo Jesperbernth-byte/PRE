@@ -11,7 +11,7 @@ const HomeUpdated: React.FC = () => {
       <section className="relative bg-slate-900 text-white py-20 lg:py-32 overflow-hidden hero-section">
         <div className="absolute inset-0 opacity-30">
           <img
-            src="/pre/Hero/hero.jpg"
+            src="/Hero/hero.jpg"
             alt="Kloakarbejde og drænsystemer - PR Entreprenøren"
             className="w-full h-full object-cover"
           />

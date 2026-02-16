@@ -183,48 +183,6 @@ const HomeUpdated: React.FC = () => {
         </div>
       </section>
 
-      {/* Cases Section */}
-      <section className="py-24 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-6xl font-black mb-4 uppercase italic tracking-tighter">Tidligere Projekter</h2>
-            <p className="text-slate-400 font-medium text-lg">Se konkrete eksempler på vores arbejde</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {CASES.map((caseItem) => (
-              <div key={caseItem.id} className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all group">
-                <div className="h-48 overflow-hidden">
-                  <img src={caseItem.image} alt={caseItem.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-black uppercase italic tracking-tight">{caseItem.title}</h3>
-                    <div className="bg-orange-600 px-3 py-1 rounded-full text-xs font-black">{caseItem.price}</div>
-                  </div>
-                  <div className="space-y-3 text-sm mb-6">
-                    <div>
-                      <span className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Problem:</span>
-                      <p className="text-slate-300">{caseItem.problem}</p>
-                    </div>
-                    <div>
-                      <span className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Løsning:</span>
-                      <p className="text-slate-300">{caseItem.solution}</p>
-                    </div>
-                    <div>
-                      <span className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Resultat:</span>
-                      <p className="text-green-400 font-bold">{caseItem.result}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
-                    <Clock size={14} />
-                    <span className="font-bold">Varighed: {caseItem.duration}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Services Overview with Prices */}
       <section className="py-24 bg-white">
@@ -247,11 +205,6 @@ const HomeUpdated: React.FC = () => {
                 <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                   {service.description}
                 </p>
-                {service.priceRange && (
-                  <div className="bg-orange-600 text-white px-4 py-2 rounded-xl font-black text-sm inline-block mb-4">
-                    {service.priceRange}
-                  </div>
-                )}
                 <div className="flex items-center gap-2 text-sm font-black text-orange-600 group-hover:gap-3 transition-all uppercase tracking-widest">
                   Læs mere <ArrowRight size={18} />
                 </div>

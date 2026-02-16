@@ -400,10 +400,10 @@ export const SERVICE_AREAS = {
 // Memberships and partnerships
 export const MEMBERSHIPS = [
   {
-    name: "Dansk Maler- og Entreprenørforbund (DM&E)",
+    name: "Danske Maskinstationer og Entreprenører (DM&E)",
     type: "Brancheorganisation",
     logo: "/partners/dme-logo.png",
-    description: "Medlem af DM&E Fyn – din garanti for professionel håndværksvirksomhed",
+    description: "Medlem af DM&E – din garanti for professionel håndværksvirksomhed",
     link: "https://medlem.dmoge.dk/unions/dme-fyn/"
   },
   {

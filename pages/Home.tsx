@@ -100,9 +100,9 @@ const HomeUpdated: React.FC = () => {
           <h2 className="text-3xl font-black text-blue-900 mb-10 uppercase italic text-center tracking-tight">
             Autorisationer & Garantier
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {CERTIFICATIONS.map((cert, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group">
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[200px] max-w-[250px]">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center text-blue-900 font-black text-xs group-hover:ring-2 group-hover:ring-orange-600 transition-all">
                     <img

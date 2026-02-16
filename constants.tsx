@@ -261,14 +261,6 @@ export const TEAM = [
     email: "jeh@prentreprenoer.dk",
     description: "Fagligt ansvarlig for både kloak- og asbestarbejde. Står for daglig drift, tekniske vurderinger og er din primære kontakt ved alle kloakrelaterede spørgsmål.",
     image: "/team/jacob1.jpg"
-  },
-  {
-    name: "Jesper",
-    role: "Lærling",
-    phone: "",
-    email: "",
-    description: "Vores dygtige lærling der lærer faget fra grunden. Assisterer på alle opgaver og sikrer at næste generation håndværkere får solid uddannelse.",
-    image: "/team/jesper.jpg"
   }
 ];
 

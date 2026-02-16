@@ -105,20 +105,6 @@ export const SERVICES: Service[] = [
     ]
   },
   {
-    id: '7',
-    slug: 'asbestsanering',
-    title: 'Asbestsanering (Kloak-relateret)',
-    description: 'Autoriseret håndtering af asbest i kloakledninger og fundamenter. Sikker fjernelse efter Arbejdstilsynets regler.',
-    longDescription: 'Mange ældre kloaksystemer indeholder asbestrør der skal håndteres korrekt ved renovering. Vi er autoriserede til sikker nedtagning, indpakning og bortskaffelse af asbest. Vores autorisation dækker primært asbest i forbindelse med kloak- og fundamentsarbejde – så du kan være sikker på at projektet udføres lovligt og sikkert.',
-    icon: 'ShieldCheck',
-    note: 'Kun i forbindelse med kloak- og fundamentsarbejde',
-    faqs: [
-      { question: 'Hvordan ved jeg om jeg har asbest i kloakken?', answer: 'Huse bygget før 1980 har ofte asbestrør. Vi kan tage prøver og verificere materialet før arbejdet påbegyndes.' },
-      { question: 'Er det farligt at have asbestrør?', answer: 'Asbest er kun farligt når fibrene frigives ved brud, skæring eller slibning. Så længe røret er intakt er der ingen risiko. Men ved renovering skal det håndteres korrekt.' },
-      { question: 'Må jeg selv fjerne asbestrør?', answer: 'Nej, det kræver autorisation. Privat håndtering er både ulovligt og sundhedsfarligt.' }
-    ]
-  },
-  {
     id: '8',
     slug: 'entreprenoer-arbejde',
     title: 'Entreprenørarbejde & Jordflytning',

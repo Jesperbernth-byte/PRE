@@ -33,13 +33,7 @@ const Footer: React.FC = () => (
       </div>
       <div>
         <h4 className="font-bold text-lg mb-6 uppercase tracking-widest text-slate-500">Serviceområde</h4>
-        <p className="text-slate-300 leading-relaxed">Vi dækker hele Fyn samt Trekantsområdet (Vejle, Kolding, Fredericia, Middelfart).</p>
-        <div className="mt-6 flex gap-3 flex-wrap">
-          <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">Odense</span>
-          <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">Svendborg</span>
-          <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">Middelfart</span>
-          <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs">Fredericia</span>
-        </div>
+        <p className="text-slate-300 leading-relaxed">Vi dækker hele fyn samt trekantsområdet</p>
       </div>
     </div>
     <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/10 text-center text-slate-500 text-xs">

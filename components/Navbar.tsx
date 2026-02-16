@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Phone, ShieldCheck, HardHat } from 'lucide-react';
-import { COMPANY_NAME, PHONE_JACOB } from '../constants';
+import { COMPANY_NAME, PHONE_PREBEN } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,13 +23,15 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-24">
           <div className="flex items-center">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-orange-600 transition-colors">
-                <HardHat size={28} />
-              </div>
+              <img
+                src="/logo.png"
+                alt="PR Entreprenøren ApS"
+                className="w-12 h-12 object-contain"
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-blue-900 tracking-tighter leading-none uppercase">PR ENTREPRENØREN</span>
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">
-                  Specialister i kloak, omfangsdræn & asbest
+                  Specialister i kloak & omfangsdræn
                 </span>
                 <div className="flex items-center gap-1 mt-1">
                   <span className="h-0.5 w-full bg-orange-600"></span>
@@ -51,11 +53,11 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <a 
-              href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+            <a
+              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
               className="bg-blue-900 text-white px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-orange-600 transition-all shadow-xl shadow-blue-900/10 active:scale-95"
             >
-              <Phone size={16} fill="currentColor" /> {PHONE_JACOB}
+              <Phone size={16} fill="currentColor" /> {PHONE_PREBEN}
             </a>
           </div>
 
@@ -87,10 +89,10 @@ const Navbar: React.FC = () => {
             ))}
             <div className="pt-4">
               <a
-                href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
                 className="flex items-center justify-center gap-3 w-full bg-blue-900 text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-blue-900/20"
               >
-                <Phone size={24} fill="currentColor" /> {PHONE_JACOB}
+                <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
               </a>
               <p className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-4">Døgnvagt ved akutte problemer</p>
             </div>

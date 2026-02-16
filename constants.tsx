@@ -361,7 +361,7 @@ export const CERTIFICATIONS = [
   },
   {
     name: "DM&E Kloakmestergaranti",
-    issuer: "Dansk Maler- og Entreprenørforbund",
+    issuer: "Danske Maskinstationer og Entreprenører",
     badge: "/badges/dme.png",
     customerBenefit: "Medlem af DM&E med kloakmestergaranti – økonomisk beskyttelse ved eventuelle problemer",
     verificationLink: "https://dmoge.dk/brancher/entreprenoer-og-kloakmester/dme_kloakmestergaranti/"

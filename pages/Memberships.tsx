@@ -241,7 +241,7 @@ const Memberships: React.FC = () => {
             DM&E Kloakmestergaranti
           </h2>
           <p className="text-xl text-slate-600 leading-relaxed mb-8">
-            Som medlem af Dansk Maler- og Entreprenørforbund er vi omfattet af deres kloakmestergarantiordning.
+            Som medlem af Danske Maskinstationer og Entreprenører er vi omfattet af deres kloakmestergarantiordning.
             Det betyder ekstra sikkerhed for dig som kunde – skulle der mod forventning opstå problemer, er du
             økonomisk beskyttet.
           </p>

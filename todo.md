@@ -1,55 +1,42 @@
 # PR Entreprenøren — To-Do Liste
 
-## ✅ Netop løst
-- [x] Logo i header udskiftet fra blå hjelm til logo.png
-- [x] Telefonnummer i header skiftet til Prebens (22 96 66 61)
-- [x] "& asbest" fjernet fra header tagline
-- [x] Asbestsanering fjernet som selvstændig service
+## ✅ Færdigt
+- [x] Logo i header: helmet → logo.png
+- [x] Telefon i header → Prebens nummer
+- [x] Fjern "& asbest" fra header tagline
+- [x] Asbestsanering fjernet som service
 - [x] Footer serviceområde forenklet
-- [x] Admin login API oprettet (manglede helt)
+- [x] Admin login API oprettet
+- [x] Fjern "PR ENTREPRENØREN" tekst fra header, logo forstørret
+- [x] PHONE_JACOB → PHONE_PREBEN i alle hero/CTA knapper
+- [x] Fjern "5.0 Stjerner (32 anmeldelser)" fra hero
+- [x] Fjern hele "Hvad Kunderne Siger" sektion (fake anmeldelser)
+- [x] Fjern "Gennemsigtige priser" fra services undertitel
+- [x] Fjern ALLE priceRange fra services i constants
+- [x] Fjern prisangivelser fra alle FAQ-svar
+- [x] Fjern priser fra CASES data
+- [x] Fjern "Mød Teamet" fra Home.tsx
+- [x] Fjern "Mød Teamet" fra About.tsx
+- [x] Footer: 2 professionelle kontaktkort (Jacob + Preben) med tlf, email, titel
+- [x] Home: Autorisationsbokse redesignet (billede dominerer)
+- [x] About: Certifikationsbokse redesignet (billede dominerer)
+- [x] Fjern asbest fra AI-assistent tekst
+- [x] USP tekst: fjern asbest reference
+- [x] Company story: opdateret (fjernet Jesper og asbest fokus)
+- [x] Fix routing: #/contact → /contact
+- [x] Fix routing: #/services → /services
+- [x] Vis ALLE services på forsiden (ikke kun 6)
+- [x] Asbest-certifikat omformuleret til "vi ER autoriserede"
 
----
+## 🔴 IGANGVÆRENDE
+- [ ] **Service undersider** — individuelle sider for hver service med SEO-indhold
+  - Routing i App.tsx
+  - ServiceDetail.tsx komponent
+  - Ruter for alle services fra SERVICES array
+  - SEO: title, description, structured data per service
 
-## 🔴 HEADER / NAVBAR
-- [ ] 1. Fjern "PR ENTREPRENØREN" teksten i header og forstør logo
-
-## 🔴 TELEFONNUMRE
-- [ ] 2. Home.tsx – Hero ring-knap bruger PHONE_JACOB
-- [ ] 3. Home.tsx linje 288 – Bund-CTA bruger PHONE_JACOB
-- [ ] 4. Audit alle sider for resterende PHONE_JACOB referencer
-
-## 🔴 ANMELDELSER – FJERN ALT FAKE
-- [ ] 5. Home.tsx – Fjern hele "Hvad Kunderne Siger" sektionen
-- [ ] 6. Home.tsx – Fjern "5.0 Stjerner (32 anmeldelser)" fra hero
-- [ ] 7. constants.tsx – Fjern REVIEWS data
-
-## 🔴 PRISER – FJERN ALT
-- [ ] 8. Home.tsx – Fjern "Gennemsigtige priser og professionelt håndværk" undertitel
-- [ ] 9. constants.tsx – Fjern alle priceRange felter fra services
-- [ ] 10. constants.tsx – Fjern priser fra CASES data
-
-## 🔴 "MØD TEAMET" FJERNES + FOOTER KONTAKTKORT
-- [ ] 11. Home.tsx – Fjern "Mød Teamet" sektionen
-- [ ] 12. About.tsx – Fjern "Mød Teamet" sektionen
-- [ ] 13. App.tsx (Footer) – Erstat kontaktliste med 2 professionelle kontaktkort for Jacob og Preben
-
-## 🔴 AUTORISATIONSBOKSE – REDESIGN
-- [ ] 14. Home.tsx – Redesign: billede fylder mest, ultra-kort tekst
-- [ ] 15. Memberships.tsx – Samme redesign
-- [ ] 16. About.tsx – Certifikationsbokse redesign
-
-## 🔴 ASBEST NÆVNES STADIG
-- [ ] 17. Home.tsx – Fjern "mistænkelig asbest eller" fra AI-assistent tekst
-- [ ] 18. About.tsx – USP beskrivelse ændres fra "kloak- og asbestarbejde" til "kloakarbejde"
-- [ ] 19. constants.tsx CERTIFICATIONS – Asbest-certifikat beholdes men omformuleres (vi ER autoriserede, ikke en service)
-
-## 🟡 LINKS/ROUTING
-- [ ] 20. Home.tsx – Fix #/contact → /contact (linje 39 + 283)
-- [ ] 21. Home.tsx – Fix #/services/... → /services/... (service links)
-
-## 🟡 BILLEDER
-- [ ] 22. Verificer /team/jacob1.jpg og /team/preben1.jpg eksisterer
-- [ ] 23. Verificer korrekt hero billede bruges
-
-## 🟡 MISSION / VISION
-- [ ] 24. About.tsx – Gennemgå og opdater mission/vision tekst
+## 🟡 TILBAGEVÆRENDE
+- [ ] Memberships.tsx – autorisationsbokse redesign (billede dominerer)
+- [ ] Verificer korrekt hero billede bruges
+- [ ] Mission/Vision tekst på Om Os (specificer ønske)
+- [ ] Gennemgå Services-oversigt siden for resterende priser

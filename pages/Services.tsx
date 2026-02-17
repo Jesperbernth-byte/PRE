@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
-import { SERVICES, PHONE_JACOB } from '../constants';
+import { SERVICES, PHONE_PREBEN } from '../constants';
 
 const Services: React.FC = () => {
   return (
@@ -22,9 +23,9 @@ const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SERVICES.map((service) => (
-              <a
+              <Link
                 key={service.id}
-                href={`#/services/${service.slug}`}
+                to={`/services/${service.slug}`}
                 className="group bg-slate-50 border-2 border-slate-100 rounded-3xl p-8 hover:border-orange-600 transition-all hover:shadow-2xl"
               >
                 <div className="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center text-white shadow-sm mb-6 group-hover:bg-orange-600 transition-colors">
@@ -38,15 +39,10 @@ const Services: React.FC = () => {
                 <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                   {service.description}
                 </p>
-                {service.priceRange && (
-                  <div className="bg-orange-600 text-white px-4 py-2 rounded-xl font-black text-sm inline-block mb-4">
-                    {service.priceRange}
-                  </div>
-                )}
                 <div className="flex items-center gap-2 text-sm font-black text-orange-600 group-hover:gap-3 transition-all uppercase tracking-widest mt-4">
                   Læs mere <ArrowRight size={18} />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -63,17 +59,17 @@ const Services: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <a
-              href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
               className="bg-orange-600 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-xl"
             >
-              <Phone size={24} fill="currentColor" /> Ring til Jacob
+              <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
             </a>
-            <a
-              href="#/contact"
+            <Link
+              to="/contact"
               className="bg-blue-900 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-800 transition-all"
             >
               Send Besked
-            </a>
+            </Link>
           </div>
         </div>
       </section>

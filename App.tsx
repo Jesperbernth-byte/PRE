@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Memberships from './pages/Memberships';
+import ServiceDetail from './pages/ServiceDetail';
 import AdminDashboard from './pages/AdminDashboard';
 import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR } from './constants';
 
@@ -75,6 +76,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/karriere" element={<Careers />} />
             <Route path="/medlemskaber" element={<Memberships />} />

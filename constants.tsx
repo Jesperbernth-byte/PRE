@@ -22,12 +22,11 @@ export const SERVICES: Service[] = [
     description: 'Permanent løsning mod fugt i kælder. Professionelt installeret drænsystem der beskytter dit fundament i årtier.',
     longDescription: 'Fugt i kælderen er ikke bare ubehageligt – det truer hele byggeriets levetid. Vi installerer omfangsdræn efter DTU-anvisninger med kvalitetsmaterialer der holder i generationer. Fra udgravning og membran til drænrør og retablering håndterer vi hele processen, så du kan være sikker på et tørt resultat.',
     icon: 'Droplets',
-    priceRange: 'Fra 35.000 kr.',
     faqs: [
       { question: 'Hvordan ved jeg om jeg har brug for omfangsdræn?', answer: 'Tegn på behov: Fugtige vægge i kælder, mosgr på sokkel, revner i fundament, musefår lugt, eller synlige vandskader. Vi kommer gerne ud til gratis besigtigelse og vurderer dit behov.' },
       { question: 'Hvor længe holder et omfangsdræn?', answer: 'Et professionelt udført omfangsdræn med kvalitetsmaterialer holder 50+ år. Vi bruger kun anerkendte produkter og følger DTU-retningslinjer nøje.' },
       { question: 'Skal jeg have tilladelse fra kommunen?', answer: 'Normalt ikke til omfangsdræn på egen grund. Vi håndterer dog alle nødvendige anmeldelser hvis projektet kræver det.' },
-      { question: 'Hvad er prisen for et parcelhus?', answer: 'Et standard parcelhus (100-150 m²) koster typisk 45.000-75.000 kr. afhængig af jordbund, dybde og adgangsforhold. Vi giver altid fast pris efter besigtigelse.' }
+      { question: 'Hvad koster et omfangsdræn for et parcelhus?', answer: 'Prisen afhænger af husets størrelse, jordbundsforhold og adgangsforhold. Vi tilbyder altid gratis besigtigelse og fast pris herefter.' }
     ]
   },
   {
@@ -37,7 +36,6 @@ export const SERVICES: Service[] = [
     description: 'Lovpligtig opdeling af regn- og spildevand. Vi klarer alt fra ansøgning til færdigmelding – første gang.',
     longDescription: 'Mange fynske kommuner kræver nu opdeling af regn- og spildevand. Som autoriseret kloakmester håndterer vi hele processen: myndighedsansøgninger, opgravning, installation af nye ledninger, og professionel færdigmelding. Du skal ikke gøre andet end at godkende tilbuddet – resten klarer vi.',
     icon: 'Hammer',
-    priceRange: 'Fra 25.000 kr.',
     faqs: [
       { question: 'Er jeg forpligtet til at separere kloak?', answer: 'Det afhænger af din kommune. Mange steder på Fyn er det nu lovkrav. Vi tjekker gerne din adresse og fortæller hvad der gælder for dig.' },
       { question: 'Hvad sker der hvis jeg ikke separerer?', answer: 'Du risikerer dagbøder fra kommunen og kan blive nægtet byggettilladelse til fremtidige projekter. Desuden stiger risikoen for oversvømmelse ved kraftig regn.' },
@@ -52,7 +50,6 @@ export const SERVICES: Service[] = [
     description: 'Certificeret beskyttelse mod rotter i kloaksystemet. Vi monterer kun godkendte spærrer fra Nordisk Innovation.',
     longDescription: 'Rotter i toilettet er et mareridt ingen bør opleve. Vi installerer certificerede rottespærrer der dokumenteret holder rotter ude uden at påvirke kloakkens funktion. Som autoriseret partner for Nordisk Innovation garanterer vi kvalitet og sikkerhed. Velegnet til både private boliger og erhvervsejendomme.',
     icon: 'ShieldCheck',
-    priceRange: 'Fra 8.500 kr.',
     faqs: [
       { question: 'Hvordan virker en rottespærre?', answer: 'Rottespærren er et mekanisk spjæld monteret i kloakledningen. Den åbner kun én vej – ud fra dit hus – så rotter ikke kan svømme op gennem systemet.' },
       { question: 'Kan rottespærren stoppe til?', answer: 'Nej, moderne rottespærrer er designet til at håndtere alt normalt kloakaffald uden at tilstoppe. Vi anbefaler dog et årligt eftersyn for optimal funktion.' },
@@ -67,7 +64,6 @@ export const SERVICES: Service[] = [
     description: 'Beskyt kælderen mod opstigende kloakvand. Installation og service af Kessel og UWS højvandslukkere.',
     longDescription: 'Ved ekstrem regn kan kommunens kloaksystem blive overbelastet – og kloakvandet løber tilbage gennem din afløb og ud i kælderen. En højvandslukker stopper dette automatisk. Vi er certificerede montører for både Kessel og UWS systemer og servicerer alle mærker.',
     icon: 'ShieldCheck',
-    priceRange: 'Fra 12.000 kr.',
     faqs: [
       { question: 'Hvad er forskellen på højvandslukker og rottespærre?', answer: 'Rottespærren forhindrer rotter i at komme ind. Højvandslukkeren forhindrer kloakvand i at løbe tilbage ved overbelastning. Begge er vigtige sikkerhedsforanstaltninger.' },
       { question: 'Skal en højvandslukker serviceres?', answer: 'Ja, mindst én gang årligt. Vi tilbyder serviceaftaler så du altid er sikret optimal beskyttelse.' },
@@ -82,7 +78,6 @@ export const SERVICES: Service[] = [
     description: 'HD-kamera inspektion af kloakledninger. Præcis lokalisering af brud, rodindtrængning og blokering.',
     longDescription: 'Hvorfor grave hele haven op når problemet kan lokaliseres præcist? Med professionelt HD-kameraudstyr inspicerer vi dine kloakledninger og dokumenterer skader millimeterpræcist. Du får en detaljeret rapport med billeder – perfekt til forsikringen eller som grundlag for målrettet reparation.',
     icon: 'Camera',
-    priceRange: 'Fra 3.500 kr.',
     faqs: [
       { question: 'Hvornår skal jeg have lavet TV-inspektion?', answer: 'Ved gentagne stop i kloakken, mistanke om brud eller rodindtrængning, ved køb/salg af hus, eller hvis du ønsker at vide tilstanden før større renoveringer.' },
       { question: 'Hvor langt kan kameraet køre?', answer: 'Vores udstyr kan inspicere op til 100 meter ledning i ét stræk. Ved behov kombinerer vi med inspektion fra flere brønde.' },
@@ -96,7 +91,6 @@ export const SERVICES: Service[] = [
     description: 'Miljøvenlig håndtering af regnvand på egen grund. Kan give kommunalt tilskud og reduceret kloakafgift.',
     longDescription: 'LAR-anlæg (Lokal Afledning af Regnvand) er fremtidens måde at håndtere regnvand på. I stedet for at lede alt vand til kommunens overbelastede system, nedsiver eller forsinker vi det lokalt på din grund. Dette reducerer både miljøbelastning og din kloakafgift – og nogle kommuner giver endda tilskud til etablering.',
     icon: 'Droplets',
-    priceRange: 'Fra 45.000 kr.',
     faqs: [
       { question: 'Hvad er fordelene ved LAR-anlæg?', answer: 'Reduceret kloakafgift, mulig for kommunalt tilskud, mindre belastning på kloak-systemet, og ofte et lovkrav ved nybyggeri eller større renoveringer.' },
       { question: 'Hvor meget plads kræver det?', answer: 'Det afhænger af grundens størrelse og jordbundsforhold. Et typisk parcelhus kræver 15-30 m² til regnbed eller nedsivningsanlæg.' },
@@ -111,7 +105,6 @@ export const SERVICES: Service[] = [
     description: 'Fra udgravning til terrænregulering – vi har maskinerne og erfaringen til effektiv løsning af din opgave.',
     longDescription: 'Med egen maskinpark og årtiers erfaring løser vi alle typer jordarbejde hurtigt og professionelt. Gravemaskiner til store projekter, rendegravere til præcisionsarbejde, dumpers til transport og komprimeringsudstyr til fast underlag. Vi kender den fynske jordbund og ved hvad der kræves for et holdbart resultat.',
     icon: 'Hammer',
-    priceRange: 'Fra 8.000 kr.',
     faqs: [
       { question: 'Hvilke entreprenøropgaver løser I?', answer: 'Udgravning til fundamenter, indkørsler, terrænregulering, jordflytning, nedrivning af belægning, komprimering af underlag, rydning af byggegrunde – og meget mere.' },
       { question: 'Hvor hurtigt kan I rykke ud?', answer: 'Akutte opgaver ofte samme eller næste dag. Planlagte projekter koordineres efter din tidsplan.' },
@@ -138,11 +131,10 @@ export const SERVICES: Service[] = [
     description: 'Installation og service af private renseanlæg. Professionel løsning til ejendomme uden offentlig kloak.',
     longDescription: 'Bor du uden for kloakerede områder? Vi installerer og servicerer miniransanlæg der sikrer lovlig rensning af spildevand. Vi håndterer alt fra ansøgninger til kommunen, udgravning, installation og efterfølgende service. Alle anlæg lever op til gældende miljøkrav.',
     icon: 'Droplets',
-    priceRange: 'Fra 65.000 kr.',
     faqs: [
       { question: 'Hvad er et miniransanlæg?', answer: 'Et privat renseanlæg til ejendomme uden adgang til offentlig kloak. Det renser spildevand mekanisk og biologisk før udledning.' },
       { question: 'Skal anlægget serviceres?', answer: 'Ja, mindst én gang årligt skal slam tømmes og anlægget efterses. Vi tilbyder serviceaftaler.' },
-      { question: 'Hvad koster installation?', answer: 'Typisk 65.000-120.000 kr. afhængig af antal personer i husstanden, jordbundsforhold og valg af anlæg.' },
+      { question: 'Hvad koster installation?', answer: 'Prisen afhænger af antal personer i husstanden, jordbundsforhold og valg af anlæg. Kontakt os for et uforpligtende tilbud.' },
       { question: 'Skal jeg have tilladelse?', answer: 'Ja, kommunen skal godkende installation. Vi håndterer ansøgningen for dig.' }
     ]
   },
@@ -153,10 +145,9 @@ export const SERVICES: Service[] = [
     description: 'Renovering af gamle brønde og byggeri af nye inspektionsbrønde. Professionel udførelse efter gældende regler.',
     longDescription: 'Gamle brønde kan være utætte og kræve renovering. Vi renoverer eksisterende brønde med tætningsprodukter eller bygger nye inspektionsbrønde i beton eller plast. Alle brønde bygges efter DS/EN-standarder og med korrekt belægning og dæksel.',
     icon: 'ShieldCheck',
-    priceRange: 'Fra 12.000 kr.',
     faqs: [
       { question: 'Hvornår skal en brønd renoveres?', answer: 'Ved revner, utætheder, manglende trin eller hvis dæksel er beskadiget. Ofte opdages det ved TV-inspektion.' },
-      { question: 'Hvad koster en ny brønd?', answer: 'En standard inspektionsbrønd koster 12.000-25.000 kr. afhængig af dybde og type.' },
+      { question: 'Hvad koster en ny brønd?', answer: 'Prisen afhænger af dybde og type. Kontakt os for et uforpligtende tilbud.' },
       { question: 'Kan I renovere uden at grave op?', answer: 'I nogle tilfælde ja - med indvendig tætning. Men ved større skader kræves opgravning.' }
     ]
   },
@@ -167,11 +158,10 @@ export const SERVICES: Service[] = [
     description: 'Sikker nedtagning af gamle olietanke. Lovpligtig håndtering og miljøgodkendelse.',
     longDescription: 'Gamle nedgravede olietanke udgør en miljørisiko og skal håndteres korrekt. Vi er specialister i nedtagning af både over- og nedgravede tanke. Vi sørger for korrekt bortskaffelse, jordprøver og miljørapportering til kommunen.',
     icon: 'ShieldCheck',
-    priceRange: 'Fra 18.000 kr.',
     faqs: [
       { question: 'Skal gamle olietanke fjernes?', answer: 'Ja, nedgravede tanke skal fjernes ved ejerskifte eller når de ikke længere bruges. Det er lovkrav.' },
       { question: 'Hvad hvis der er forurening?', answer: 'Vi tager jordprøver og dokumenterer eventuel forurening. Hvis nødvendigt saneres jorden efter miljøkrav.' },
-      { question: 'Hvad koster nedtagning?', answer: 'En standard nedgravet tank koster 18.000-35.000 kr. inkl. bortskaffelse og rapportering.' }
+      { question: 'Hvad koster nedtagning?', answer: 'Prisen afhænger af tankens størrelse og placering. Vi giver altid fast pris efter besigtigelse.' }
     ]
   },
   {
@@ -181,7 +171,6 @@ export const SERVICES: Service[] = [
     description: 'Professionel udgravning og klargøring til fundamenter. Præcist arbejde der sikrer et stabilt grundlag.',
     longDescription: 'Et godt fundament starter med korrekt jordarbejde. Vi graver ud, komprimerer underlag og sikrer korrekt dræning omkring fundamenter. Perfekt forberedelse til støbning af garage, carport, tilbygning eller helt nye byggerier.',
     icon: 'Hammer',
-    priceRange: 'Fra 15.000 kr.',
     faqs: [
       { question: 'Hvad indgår i fundamentarbejde?', answer: 'Udgravning til korrekt dybde, komprimering af underlag, etablering af dræn og sandfyld. Alt klar til støbning.' },
       { question: 'Laver I også selve støbningen?', answer: 'Vi klargør til støbning. Selve betonstøbning foregår ofte i samarbejde med andre entreprenører.' },
@@ -195,9 +184,8 @@ export const SERVICES: Service[] = [
     description: 'Reparation af vandledninger og udskiftning af gamle rør. Hurtig service ved brud og lækager.',
     longDescription: 'Gamle vandledninger kan få brud eller korrodere. Vi reparerer eller udskifter både hoved- og stikledninger. Ved akutte brud rykker vi hurtigt ud for at minimere vandskader. Vi arbejder med både kobbер, plast og bly-udskiftning.',
     icon: 'Droplets',
-    priceRange: 'Fra 8.000 kr.',
     faqs: [
-      { question: 'Hvad koster det at skifte en vandledning?', answer: 'En standard udskiftning koster 8.000-25.000 kr. afhængig af længde og dybde.' },
+      { question: 'Hvad koster det at skifte en vandledning?', answer: 'Prisen afhænger af længde, dybde og materialetype. Kontakt os for et uforpligtende tilbud.' },
       { question: 'Hvor hurtigt kan I komme ved brud?', answer: 'Ved akutte vandledningsbrud kommer vi inden for 2 timer - også aften og weekend.' },
       { question: 'Skal gamle blyrør udskiftes?', answer: 'Ja, blyrør bør udskiftes af hensyn til drikkevandskvaliteten. Vi hjælper med udskiftning.' }
     ]
@@ -207,7 +195,7 @@ export const SERVICES: Service[] = [
 export const USPs = [
   {
     title: "Autoriseret Kloakmester",
-    desc: "Jacob er certificeret af Sikkerhedsstyrelsen og fagligt ansvarlig for både kloak- og asbestarbejde. Du er garanteret lovligt udført arbejde."
+    desc: "Jacob er certificeret af Sikkerhedsstyrelsen og fagligt ansvarlig for kloakarbejde. Du er garanteret lovligt udført arbejde."
   },
   {
     title: "Dokumenteret Kvalitet",
@@ -257,7 +245,6 @@ export const CASES = [
     problem: "Fugtig kælder og synlige revner i fundament",
     solution: "Komplet omfangsdræn 3 sider, 42 løbende meter med membran og drænrør",
     result: "100% tør kælder - ingen problemer siden 2022",
-    price: "68.500 kr.",
     duration: "2 uger",
     image: "/pictures/Dræn/20210628_065610.jpg"
   },
@@ -267,7 +254,6 @@ export const CASES = [
     problem: "Kommunens krav om separering af regn- og spildevand",
     solution: "Ny regnvandsbrønd, opdeling af ledninger, tilslutning til offentlig kloak",
     result: "Godkendt af kommune første gang - ingen efterarbejde",
-    price: "42.000 kr.",
     duration: "1 uge",
     image: "/pictures/Separering/20220829_153238.jpg"
   },
@@ -277,7 +263,6 @@ export const CASES = [
     problem: "Tilbagevendende stop i kloak og mistanke om brud",
     solution: "Professionel TV-inspektion af 45 meter ledning, præcis lokalisering af rodindtrængning",
     result: "Målrettet reparation - ingen unødvendig opgravning",
-    price: "4.500 kr.",
     duration: "2 timer",
     image: "/pictures/Tv-inspektion/20211206_114913.jpg"
   },
@@ -287,7 +272,6 @@ export const CASES = [
     problem: "Ingen mulighed for tilslutning til offentlig kloak",
     solution: "Komplet installation af 5 PE miniransanlæg inkl. ansøgning og godkendelse",
     result: "Godkendt første gang - fuldt funktionelt renseanlæg",
-    price: "89.000 kr.",
     duration: "1 uge",
     image: "/pictures/Miniransanlæg/20210616_080635.jpg"
   }
@@ -333,10 +317,10 @@ export const CERTIFICATIONS = [
     verificationLink: "https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
   },
   {
-    name: "Asbestsanering",
+    name: "Asbest Autorisation",
     issuer: "Sikkerhedsstyrelsen",
     badge: "/badges/sikkerhedsstyrelsen-asbest.png",
-    customerBenefit: "Autoriseret til sikker håndtering af asbest i kloak- og fundamentsarbejde"
+    customerBenefit: "Vi er autoriserede til asbesthåndtering"
   },
   {
     name: "Kvalitetsledelsessystem",
@@ -366,11 +350,11 @@ export const COMPANY_HISTORY = {
   intro: "PR Entreprenøren ApS er resultatet af årtiers praktisk erfaring kombineret med moderne faglighed og certificeringer.",
   story: `Preben har siden midten af 2000'erne drevet entreprenørvirksomhed på Fyn med fokus på naturpleje, maskinstationsarbejde og genopretningsprojekter. Den erfaring og det lokale kendskab gav et solidt fundament.
 
-I 2025 blev det klart at fremtiden lå i specialisering. PR Entreprenøren ApS blev etableret med fuld fokus på kloak, dræn og asbest – arbejde der kræver autorisation, præcision og ansvarlighed. Samtidig fortsætter den oprindelige enkeltmandsvirksomhed som Ølsted Maskinstation.
+I 2025 blev det klart at fremtiden lå i specialisering. PR Entreprenøren ApS blev etableret med fuld fokus på kloak og dræn – arbejde der kræver autorisation, præcision og ansvarlighed. Samtidig fortsætter den oprindelige enkeltmandsvirksomhed som Ølsted Maskinstation.
 
-Jacob blev ansat som autoriseret kloakmester og overtog den daglige ledelse og alt fagligt ansvar. Med sin certificering inden for både kloak og asbest sikrer han at hvert projekt lever op til lovkrav og branchestandarder.
+Jacob blev ansat som autoriseret kloakmester og overtog den daglige ledelse og alt fagligt ansvar. Med sin autorisation fra Sikkerhedsstyrelsen sikrer han at hvert projekt lever op til lovkrav og branchestandarder.
 
-I dag består teamet af Preben (overordnet ledelse), Jacob (daglig drift og fagligt ansvar) og lærling Jesper, der lærer faget fra grunden. Målet er klart: at vokse til 8-12 medarbejdere uden at gå på kompromis med kvalitet.`,
+I dag er Preben og Jacob virksomhedens drivkraft. Målet er klart: at vokse til 8-12 medarbejdere uden at gå på kompromis med kvalitet.`,
   mission: "At levere kvalitetsarbejde med fokus på sikkerhed, faglighed og ordentlighed.",
   values: ["Ansvar", "Sikkerhed", "Kvalitet", "Samarbejde"]
 };

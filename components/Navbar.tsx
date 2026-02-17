@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone, ShieldCheck, HardHat } from 'lucide-react';
-import { COMPANY_NAME, PHONE_PREBEN } from '../constants';
+import { Menu, X, Phone } from 'lucide-react';
+import { PHONE_PREBEN } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,23 +22,12 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-24">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center group">
               <img
                 src="/logo.png"
                 alt="PR Entreprenøren ApS"
-                className="w-12 h-12 object-contain"
+                className="h-16 w-auto object-contain"
               />
-              <div className="flex flex-col">
-                <span className="text-2xl font-black text-blue-900 tracking-tighter leading-none uppercase">PR ENTREPRENØREN</span>
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">
-                  Specialister i kloak & omfangsdræn
-                </span>
-                <div className="flex items-center gap-1 mt-1">
-                  <span className="h-0.5 w-full bg-orange-600"></span>
-                  <span className="text-[8px] font-black text-orange-600 whitespace-nowrap px-1">AUTORISERET</span>
-                  <span className="h-0.5 w-full bg-orange-600"></span>
-                </div>
-              </div>
             </Link>
           </div>
 

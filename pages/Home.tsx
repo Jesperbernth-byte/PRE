@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowRight, Phone, ShieldCheck, CheckCircle2, Star, Camera, Zap, Award, Quote, MapPin, Clock } from 'lucide-react';
-import { COMPANY_NAME, TAGLINE, USPs, SERVICES, PHONE_JACOB, TEAM, CASES, REVIEWS, CERTIFICATIONS, FAQ_GENERAL } from '../constants';
+import { ArrowRight, Phone, ShieldCheck, CheckCircle2, Camera, Zap } from 'lucide-react';
+import { COMPANY_NAME, TAGLINE, USPs, SERVICES, PHONE_PREBEN, CERTIFICATIONS, FAQ_GENERAL } from '../constants';
 import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
 
@@ -35,27 +35,20 @@ const HomeUpdated: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <a
-                href="#/contact"
+                href="/contact"
                 className="bg-orange-600 text-white px-10 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl shadow-orange-600/40 active:scale-95"
               >
                 Bestil besigtigelse <ArrowRight size={24} />
               </a>
               <a
-                href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
                 className="bg-white/10 backdrop-blur-xl text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-white/20 transition-all active:scale-95"
               >
-                <Phone size={24} fill="currentColor" /> {PHONE_JACOB}
+                <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
               </a>
             </div>
 
             <div className="mt-16 flex flex-wrap items-center gap-8">
-              <div className="flex items-center gap-4">
-                <div className="flex text-orange-400">
-                  {[1, 2, 3, 4, 5].map(i => <Star key={i} size={18} fill="currentColor" />)}
-                </div>
-                <span className="text-sm font-bold text-slate-300 uppercase tracking-widest">5.0 Stjerner (32 anmeldelser)</span>
-              </div>
-              <div className="h-10 w-px bg-white/10 hidden sm:block"></div>
               <div className="flex items-center gap-3 text-slate-400 font-bold uppercase text-[11px] tracking-widest">
                 <CheckCircle2 size={16} className="text-green-500" /> 500+ Tilfredse Kunder
               </div>
@@ -96,29 +89,25 @@ const HomeUpdated: React.FC = () => {
 
       {/* Certifications Section */}
       <div className="bg-slate-50 border-b py-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-black text-blue-900 mb-10 uppercase italic text-center tracking-tight">
             Autorisationer & Garantier
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             {CERTIFICATIONS.map((cert, i) => (
-              <div key={i} className="bg-white p-4 rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[160px] max-w-[200px]">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center text-blue-900 font-black text-xs group-hover:ring-2 group-hover:ring-orange-600 transition-all">
-                    <img
-                      src={cert.badge}
-                      alt={cert.name}
-                      className="w-full h-full object-cover logo"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-sm font-black text-blue-900 uppercase tracking-wide mb-1">{cert.name}</div>
-                    <div className="text-xs text-slate-500 font-bold">{cert.issuer}</div>
-                  </div>
+              <div key={i} className="bg-white rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[180px] max-w-[220px] overflow-hidden">
+                <div className="bg-slate-50 p-6 flex items-center justify-center h-40 group-hover:bg-orange-50 transition-colors">
+                  <img
+                    src={cert.badge}
+                    alt={cert.name}
+                    className="max-h-28 max-w-full object-contain"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                  {cert.customerBenefit}
-                </p>
+                <div className="p-4 border-t border-slate-100">
+                  <div className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1">{cert.name}</div>
+                  <div className="text-xs text-slate-500">{cert.issuer}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -137,7 +126,7 @@ const HomeUpdated: React.FC = () => {
             </div>
             <h2 className="text-4xl sm:text-5xl font-black text-blue-900 mb-6 leading-tight uppercase italic tracking-tighter">Vis os problemet</h2>
             <p className="text-slate-600 font-medium text-lg leading-relaxed">
-              Upload et billede af dit kloakproblem, mistænkelig asbest eller fugt i kælderen. Vores AI-assistent giver dig en lynhurtig vurdering døgnet rundt.
+              Upload et billede af dit kloakproblem eller fugt i kælderen. Vores AI-assistent giver dig en lynhurtig vurdering døgnet rundt.
             </p>
           </div>
           <ImageAnalyzer />
@@ -155,47 +144,20 @@ const HomeUpdated: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-blue-900 mb-4 uppercase italic tracking-tighter">Mød Teamet</h2>
-            <p className="text-slate-600 font-medium text-lg">Vi er klar til at hjælpe dig</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            {TEAM.map((member, i) => (
-              <div key={i} className="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 hover:border-orange-600 transition-all group">
-                <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto mb-6 ring-4 ring-white shadow-xl group-hover:ring-orange-600 transition-all">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="text-2xl font-black text-blue-900 text-center mb-2 uppercase italic">{member.name}</h3>
-                <p className="text-sm font-bold text-orange-600 text-center mb-4 uppercase tracking-widest">{member.role}</p>
-                <p className="text-slate-600 text-center mb-6 leading-relaxed">{member.description}</p>
-                <a
-                  href={`tel:${member.phone.replace(/\s/g, '')}`}
-                  className="w-full bg-blue-900 text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-orange-600 transition-all"
-                >
-                  <Phone size={18} fill="currentColor" /> {member.phone}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
-      {/* Services Overview with Prices */}
+      {/* Services Overview */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-6xl font-black mb-4 uppercase italic tracking-tighter text-blue-900">Vores Ydelser</h2>
-            <p className="text-slate-600 font-medium text-lg">Gennemsigtige priser og professionelt håndværk</p>
+            <p className="text-slate-600 font-medium text-lg">Professionelt og autoriseret håndværk</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.slice(0, 6).map((service) => (
+            {SERVICES.map((service) => (
               <a
                 key={service.id}
-                href={`#/services/${service.slug}`}
+                href={`/services/${service.slug}`}
                 className="group relative bg-slate-50 border-2 border-slate-100 rounded-3xl p-8 hover:border-orange-600 transition-all hover:shadow-2xl"
               >
                 <div className="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center text-white shadow-sm mb-6 group-hover:bg-orange-600 transition-colors">
@@ -214,38 +176,6 @@ const HomeUpdated: React.FC = () => {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-blue-900 mb-4 uppercase italic tracking-tighter">Hvad Kunderne Siger</h2>
-            <div className="flex items-center justify-center gap-2 text-orange-600">
-              {[1, 2, 3, 4, 5].map(i => <Star key={i} size={24} fill="currentColor" />)}
-              <span className="ml-2 text-2xl font-black text-blue-900">5.0</span>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {REVIEWS.map((review, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-orange-600 transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex text-orange-600">
-                    {[...Array(review.rating)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
-                  </div>
-                  <Quote size={24} className="text-slate-200" />
-                </div>
-                <p className="text-slate-700 text-sm leading-relaxed mb-4">{review.text}</p>
-                <div className="border-t pt-4">
-                  <div className="font-black text-blue-900 text-sm">{review.name}</div>
-                  <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-                    <MapPin size={12} />
-                    <span>{review.location} · {review.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-24 bg-white">
@@ -279,13 +209,13 @@ const HomeUpdated: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <a
-              href="#/contact"
+              href="/contact"
               className="bg-orange-600 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl shadow-orange-600/40"
             >
               Bestil besigtigelse <ArrowRight size={24} />
             </a>
             <a
-              href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
               className="bg-white text-blue-900 px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-100 transition-all"
             >
               <Phone size={24} fill="currentColor" /> Ring Nu

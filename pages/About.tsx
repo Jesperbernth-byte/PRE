@@ -1,6 +1,6 @@
 import React from 'react';
-import { Phone, Award, Target, Users, CheckCircle2 } from 'lucide-react';
-import { TEAM, USPs, CERTIFICATIONS, COMPANY_HISTORY } from '../constants';
+import { Award, Target, CheckCircle2, ExternalLink } from 'lucide-react';
+import { USPs, CERTIFICATIONS, COMPANY_HISTORY } from '../constants';
 
 const About: React.FC = () => {
   return (
@@ -57,33 +57,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-blue-900 mb-4 uppercase italic tracking-tighter">Mød Teamet</h2>
-            <p className="text-slate-600 font-medium text-lg">De mennesker bag PR Entreprenøren</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            {TEAM.map((member, i) => (
-              <div key={i} className="bg-white rounded-3xl p-8 border-2 border-slate-100 hover:border-orange-600 transition-all group shadow-lg">
-                <div className="w-32 h-32 rounded-2xl overflow-hidden mx-auto mb-6 ring-4 ring-white shadow-xl group-hover:ring-orange-600 transition-all">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="text-2xl font-black text-blue-900 text-center mb-2 uppercase italic">{member.name}</h3>
-                <p className="text-sm font-bold text-orange-600 text-center mb-4 uppercase tracking-widest">{member.role}</p>
-                <p className="text-slate-600 text-center mb-6 leading-relaxed">{member.description}</p>
-                <a
-                  href={`tel:${member.phone.replace(/\s/g, '')}`}
-                  className="w-full bg-blue-900 text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-orange-600 transition-all"
-                >
-                  <Phone size={18} fill="currentColor" /> {member.phone}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* USPs */}
       <section className="py-24 bg-white">
@@ -111,48 +84,40 @@ const About: React.FC = () => {
 
       {/* Certifications */}
       <section className="py-24 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black mb-4 uppercase italic tracking-tighter">
               Certificeringer & Godkendelser
             </h2>
             <p className="text-slate-400 font-medium text-lg">Vi er fuldt autoriserede og forsikrede</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {CERTIFICATIONS.map((cert, i) => {
-              const Component = (cert as any).verificationLink ? 'a' : 'div';
-              const linkProps = (cert as any).verificationLink ? {
-                href: (cert as any).verificationLink,
-                target: "_blank",
-                rel: "noopener noreferrer"
-              } : {};
-
-              return (
-                <Component key={i} {...linkProps} className="bg-white/5 border-2 border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-orange-600 transition-all group block">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0 group-hover:ring-2 group-hover:ring-orange-600 transition-all">
-                      <img
-                        src={cert.badge}
-                        alt={cert.name}
-                        className="w-full h-full object-contain p-1"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="font-black text-sm uppercase tracking-tight mb-1">{cert.name}</h3>
-                      <p className="text-xs text-slate-400 font-bold">{cert.issuer}</p>
-                      {(cert as any).verificationLink && (
-                        <p className="text-[10px] text-orange-400 font-bold mt-1 uppercase tracking-widest">
-                          ↗ Bekræft hos Sikkerhedsstyrelsen
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    {cert.customerBenefit}
-                  </p>
-                </Component>
-              );
-            })}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {CERTIFICATIONS.map((cert, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden group hover:ring-2 hover:ring-orange-600 transition-all">
+                <div className="bg-white p-6 flex items-center justify-center h-44">
+                  <img
+                    src={cert.badge}
+                    alt={cert.name}
+                    className="max-h-32 max-w-full object-contain"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
+                <div className="bg-slate-800 p-4 border-t border-white/10">
+                  <div className="font-black text-white text-xs uppercase tracking-wide mb-1">{cert.name}</div>
+                  <div className="text-slate-400 text-xs">{cert.issuer}</div>
+                  {(cert as any).verificationLink && (
+                    <a
+                      href={(cert as any).verificationLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-orange-400 text-xs font-bold mt-2 hover:text-orange-300"
+                    >
+                      Verificer <ExternalLink size={10} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

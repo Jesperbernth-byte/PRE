@@ -94,45 +94,33 @@ const Memberships: React.FC = () => {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {CERTIFICATIONS.map((cert, i) => (
               <div
                 key={i}
-                className="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 hover:border-blue-900 transition-all"
+                className="bg-white rounded-2xl overflow-hidden border-2 border-slate-100 hover:border-orange-600 transition-all shadow-sm group"
               >
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
-                    <img
-                      src={cert.badge}
-                      alt={cert.name}
-                      className="max-w-full max-h-full object-contain p-4"
-                      onError={(e) => {
-                        // Fallback if image doesn't exist
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl font-black text-blue-900 mb-2">{cert.name}</h3>
-                        <p className="text-sm font-bold text-orange-600 uppercase tracking-widest">{cert.issuer}</p>
-                      </div>
-                      {(cert as any).verificationLink && (
-                        <a
-                          href={(cert as any).verificationLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-blue-900 hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-all shrink-0"
-                        >
-                          Verificer <ExternalLink size={14} />
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-lg text-slate-700 leading-relaxed">
-                      {cert.customerBenefit}
-                    </p>
-                  </div>
+                <div className="bg-slate-50 p-8 flex items-center justify-center h-48 group-hover:bg-orange-50 transition-colors">
+                  <img
+                    src={cert.badge}
+                    alt={cert.name}
+                    className="max-h-32 max-w-full object-contain"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
+                <div className="p-5 border-t border-slate-100">
+                  <h3 className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1">{cert.name}</h3>
+                  <p className="text-xs text-slate-500 mb-3">{cert.issuer}</p>
+                  {(cert as any).verificationLink && (
+                    <a
+                      href={(cert as any).verificationLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-orange-600 text-xs font-bold hover:text-orange-700"
+                    >
+                      Verificer <ExternalLink size={12} />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

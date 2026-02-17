@@ -10,16 +10,16 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
     images: ['20210628_065610.jpg', '20210628_065624.jpg', '20210628_100202.jpg', '20210629_124507.jpg']
   },
   'kloakarbejde': {
-    folder: 'Kloak arbejde',
-    images: ['20220202_092520.jpg', '20220202_093331.jpg', '20220711_103441.jpg', '20220829_153238.jpg']
+    folder: 'Separering',
+    images: ['20210713_123952.jpg', '20211020_154233.jpg', '20211026_100818.jpg']
   },
   'rottespaerre': {
     folder: 'Rottespærre',
-    images: ['20220112_100342.jpg', '20220112_100358.jpg']
+    images: ['20220806_122601.jpg', '20220806_122607.jpg', '20220806_122611.jpg']
   },
   'hoejvandslukker': {
     folder: 'Højvandslukke',
-    images: ['20210805_135906.jpg', '20210805_140226.jpg']
+    images: ['20211123_122121.jpg', '20211123_132416.jpg', '20211123_142101.jpg']
   },
   'tv-inspektion': {
     folder: 'Tv-inspektion',
@@ -27,35 +27,35 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   },
   'lar-anlaeg': {
     folder: 'Dræn',
-    images: ['20210628_100206.jpg', '20210629_124507.jpg']
+    images: ['20210628_100206.jpg', '20210629_124507.jpg', '20210628_100202.jpg']
   },
   'entreprenoer-arbejde': {
     folder: 'Anlægsarbejde',
-    images: ['20210628_065610.jpg']
+    images: ['20211007_173659.jpg', '20211007_191124.jpg', '20211124_105724.jpg']
   },
   'naturpleje': {
     folder: 'Oprensning af sø',
-    images: ['20210628_065610.jpg']
+    images: ['20260119_112241.jpg', '20260119_112256.jpg', '20260119_112456.jpg']
   },
   'miniransanlaeg': {
     folder: 'Miniransanlæg',
-    images: ['20210616_080635.jpg', '20210616_080700.jpg']
+    images: ['20210615_122917.jpg', '20210615_145201.jpg', '20210615_171721.jpg']
   },
   'broend-renovering': {
     folder: 'Brønd renovering',
-    images: ['20210628_065610.jpg']
+    images: ['20211027_142831.jpg', '20220225_113752.jpg', '20220225_114338.jpg']
   },
   'olietanke': {
     folder: 'Olie tanke',
-    images: ['20210628_065610.jpg']
+    images: ['20220905_090641.jpg', '20220905_094007.jpg', '20220905_122009.jpg']
   },
   'fundament': {
     folder: 'Fundament',
-    images: ['20210628_065610.jpg']
+    images: ['20220304_093935.jpg', '20220315_171624.jpg', '20220315_172943.jpg']
   },
   'vandledning': {
     folder: 'Vandledning',
-    images: ['20210628_065610.jpg']
+    images: ['20210908_100009.jpg', '20220101_135349.jpg', '20220101_135352.jpg']
   }
 };
 

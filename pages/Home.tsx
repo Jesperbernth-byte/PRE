@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Phone, CheckCircle2, Camera, Zap } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle2, Camera, Zap, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPANY_NAME, TAGLINE, USPs, SERVICES, PHONE_PREBEN, CERTIFICATIONS, FAQ_GENERAL } from '../constants';
 import ProblemGuide from '../components/ProblemGuide';

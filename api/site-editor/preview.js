@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 
 // Initialize Supabase
 const supabase = createClient(
@@ -8,7 +8,7 @@ const supabase = createClient(
 );
 
 // Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 /**
  * Upload user's uploaded image to GitHub
@@ -174,9 +174,6 @@ export default async function handler(req, res) {
         const githubData = await githubResponse.json();
         const currentContent = Buffer.from(githubData.content, 'base64').toString('utf-8');
 
-        // Use Gemini to generate new file content
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
-
         const codeGenPrompt = `
 # DU ER KODE-GENERATOR FOR PR ENTREPRENØREN ApS WEBSITE
 
@@ -227,9 +224,11 @@ INGEN markdown code blocks i output.
 
 START OUTPUT:`;
 
-        const result = await model.generateContent(codeGenPrompt);
-        const response = await result.response;
-        let newContent = response.text().trim();
+        const result = await genAI.models.generateContent({
+          model: 'gemini-2.0-flash',
+          contents: codeGenPrompt
+        });
+        let newContent = result.text.trim();
 
         // Remove markdown code blocks if present
         newContent = newContent.replace(/```typescript\n?/g, '').replace(/```tsx\n?/g, '').replace(/```javascript\n?/g, '').replace(/```jsx\n?/g, '').replace(/```css\n?/g, '').replace(/```\n?/g, '').trim();

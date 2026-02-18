@@ -26,21 +26,27 @@ const Services: React.FC = () => {
               <Link
                 key={service.id}
                 to={`/services/${service.slug}`}
-                className="group bg-slate-50 border-2 border-slate-100 rounded-3xl p-8 hover:border-orange-600 transition-all hover:shadow-2xl"
+                className="group bg-white border-2 border-slate-100 rounded-3xl overflow-hidden hover:border-orange-600 transition-all hover:shadow-2xl"
               >
-                <div className="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center text-white shadow-sm mb-6 group-hover:bg-orange-600 transition-colors">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-black mb-3 uppercase tracking-tight italic text-blue-900 group-hover:text-orange-600 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed mb-6 font-medium">
-                  {service.description}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-black text-orange-600 group-hover:gap-3 transition-all uppercase tracking-widest mt-4">
-                  Læs mere <ArrowRight size={18} />
+                {service.image && (
+                  <div className="h-52 overflow-hidden bg-slate-100">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div className="p-8">
+                  <h3 className="text-xl font-black mb-3 uppercase tracking-tight italic text-blue-900 group-hover:text-orange-600 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed mb-5 font-medium text-sm">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-black text-orange-600 group-hover:gap-3 transition-all uppercase tracking-widest">
+                    Læs mere <ArrowRight size={18} />
+                  </div>
                 </div>
               </Link>
             ))}

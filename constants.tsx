@@ -18,6 +18,7 @@ export const SERVICES: Service[] = [
   {
     id: '1',
     slug: 'omfangsdraen',
+    image: '/pictures/Dræn/20210628_065610.jpg',
     title: 'Omfangsdræn & Fugtsikring',
     description: 'Permanent løsning mod fugt i kælder. Professionelt installeret drænsystem der beskytter dit fundament i årtier.',
     longDescription: 'Fugt i kælderen er ikke bare ubehageligt – det truer hele byggeriets levetid. Vi installerer omfangsdræn efter DTU-anvisninger med kvalitetsmaterialer der holder i generationer. Fra udgravning og membran til drænrør og retablering håndterer vi hele processen, så du kan være sikker på et tørt resultat.',
@@ -32,6 +33,7 @@ export const SERVICES: Service[] = [
   {
     id: '2',
     slug: 'kloakarbejde',
+    image: '/pictures/Separering/20210713_123952.jpg',
     title: 'Kloakseparering & Renovering',
     description: 'Lovpligtig opdeling af regn- og spildevand. Vi klarer alt fra ansøgning til færdigmelding – første gang.',
     longDescription: 'Mange fynske kommuner kræver nu opdeling af regn- og spildevand. Som autoriseret kloakmester håndterer vi hele processen: myndighedsansøgninger, opgravning, installation af nye ledninger, og professionel færdigmelding. Du skal ikke gøre andet end at godkende tilbuddet – resten klarer vi.',
@@ -46,6 +48,7 @@ export const SERVICES: Service[] = [
   {
     id: '3',
     slug: 'rottespaerre',
+    image: '/pictures/Rottespærre/20220806_122601.jpg',
     title: 'Rottespærre - Effektiv Sikring',
     description: 'Certificeret beskyttelse mod rotter i kloaksystemet. Vi monterer kun godkendte spærrer fra Nordisk Innovation.',
     longDescription: 'Rotter i toilettet er et mareridt ingen bør opleve. Vi installerer certificerede rottespærrer der dokumenteret holder rotter ude uden at påvirke kloakkens funktion. Som autoriseret partner for Nordisk Innovation garanterer vi kvalitet og sikkerhed. Velegnet til både private boliger og erhvervsejendomme.',
@@ -60,6 +63,7 @@ export const SERVICES: Service[] = [
   {
     id: '4',
     slug: 'hoejvandslukker',
+    image: '/pictures/Højvandslukke/20211123_122121.jpg',
     title: 'Højvandslukker & Backflow Sikring',
     description: 'Beskyt kælderen mod opstigende kloakvand. Installation og service af Kessel og UWS højvandslukkere.',
     longDescription: 'Ved ekstrem regn kan kommunens kloaksystem blive overbelastet – og kloakvandet løber tilbage gennem din afløb og ud i kælderen. En højvandslukker stopper dette automatisk. Vi er certificerede montører for både Kessel og UWS systemer og servicerer alle mærker.',
@@ -74,6 +78,7 @@ export const SERVICES: Service[] = [
   {
     id: '5',
     slug: 'tv-inspektion',
+    image: '/pictures/Tv-inspektion/20210904_112241.jpg',
     title: 'TV-Inspektion & Fejlsøgning',
     description: 'HD-kamera inspektion af kloakledninger. Præcis lokalisering af brud, rodindtrængning og blokering.',
     longDescription: 'Hvorfor grave hele haven op når problemet kan lokaliseres præcist? Med professionelt HD-kameraudstyr inspicerer vi dine kloakledninger og dokumenterer skader millimeterpræcist. Du får en detaljeret rapport med billeder – perfekt til forsikringen eller som grundlag for målrettet reparation.',
@@ -87,6 +92,7 @@ export const SERVICES: Service[] = [
   {
     id: '6',
     slug: 'lar-anlaeg',
+    image: '/pictures/Dræn/20210628_065624.jpg',
     title: 'LAR-Anlæg (Lokal Afledning af Regnvand)',
     description: 'Miljøvenlig håndtering af regnvand på egen grund. Kan give kommunalt tilskud og reduceret kloakafgift.',
     longDescription: 'LAR-anlæg (Lokal Afledning af Regnvand) er fremtidens måde at håndtere regnvand på. I stedet for at lede alt vand til kommunens overbelastede system, nedsiver eller forsinker vi det lokalt på din grund. Dette reducerer både miljøbelastning og din kloakafgift – og nogle kommuner giver endda tilskud til etablering.',
@@ -101,6 +107,7 @@ export const SERVICES: Service[] = [
   {
     id: '8',
     slug: 'entreprenoer-arbejde',
+    image: '/pictures/Anlægsarbejde/20211007_173659.jpg',
     title: 'Entreprenørarbejde & Jordflytning',
     description: 'Fra udgravning til terrænregulering – vi har maskinerne og erfaringen til effektiv løsning af din opgave.',
     longDescription: 'Med egen maskinpark og årtiers erfaring løser vi alle typer jordarbejde hurtigt og professionelt. Gravemaskiner til store projekter, rendegravere til præcisionsarbejde, dumpers til transport og komprimeringsudstyr til fast underlag. Vi kender den fynske jordbund og ved hvad der kræves for et holdbart resultat.',
@@ -114,6 +121,7 @@ export const SERVICES: Service[] = [
   {
     id: '9',
     slug: 'naturpleje',
+    image: '/pictures/Oprensning af sø/20260119_112241.jpg',
     title: 'Naturpleje & Genopretning',
     description: 'Rydning, pleje og genopretning af grunde og naturområder. Perfekt kombination med dræn- og kloakprojekter.',
     longDescription: 'Med Prebens mangeårige baggrund inden for naturpleje tilbyder vi professionel rydning og genopretning af grunde, våde arealer og naturområder. Især relevant ved projekter hvor fugtige områder skal drænes og efterfølgende plejes – en helhedsløsning der sikrer både funktionalitet og æstetik.',
@@ -127,6 +135,7 @@ export const SERVICES: Service[] = [
   {
     id: '10',
     slug: 'miniransanlaeg',
+    image: '/pictures/Miniransanlæg/20210615_122917.jpg',
     title: 'Miniransanlæg & Renseanlæg',
     description: 'Installation og service af private renseanlæg. Professionel løsning til ejendomme uden offentlig kloak.',
     longDescription: 'Bor du uden for kloakerede områder? Vi installerer og servicerer miniransanlæg der sikrer lovlig rensning af spildevand. Vi håndterer alt fra ansøgninger til kommunen, udgravning, installation og efterfølgende service. Alle anlæg lever op til gældende miljøkrav.',
@@ -141,6 +150,7 @@ export const SERVICES: Service[] = [
   {
     id: '11',
     slug: 'broend-renovering',
+    image: '/pictures/Brønd renovering/20211027_142831.jpg',
     title: 'Brøndrenovering & Brøndbygning',
     description: 'Renovering af gamle brønde og byggeri af nye inspektionsbrønde. Professionel udførelse efter gældende regler.',
     longDescription: 'Gamle brønde kan være utætte og kræve renovering. Vi renoverer eksisterende brønde med tætningsprodukter eller bygger nye inspektionsbrønde i beton eller plast. Alle brønde bygges efter DS/EN-standarder og med korrekt belægning og dæksel.',
@@ -154,6 +164,7 @@ export const SERVICES: Service[] = [
   {
     id: '12',
     slug: 'olietanke',
+    image: '/pictures/Olie tanke/20220905_090641.jpg',
     title: 'Olietanke - Nedtagning & Sanering',
     description: 'Sikker nedtagning af gamle olietanke. Lovpligtig håndtering og miljøgodkendelse.',
     longDescription: 'Gamle nedgravede olietanke udgør en miljørisiko og skal håndteres korrekt. Vi er specialister i nedtagning af både over- og nedgravede tanke. Vi sørger for korrekt bortskaffelse, jordprøver og miljørapportering til kommunen.',
@@ -167,6 +178,7 @@ export const SERVICES: Service[] = [
   {
     id: '13',
     slug: 'fundament',
+    image: '/pictures/Fundament/20220304_093935.jpg',
     title: 'Fundamentarbejde & Støbning',
     description: 'Professionel udgravning og klargøring til fundamenter. Præcist arbejde der sikrer et stabilt grundlag.',
     longDescription: 'Et godt fundament starter med korrekt jordarbejde. Vi graver ud, komprimerer underlag og sikrer korrekt dræning omkring fundamenter. Perfekt forberedelse til støbning af garage, carport, tilbygning eller helt nye byggerier.',
@@ -180,6 +192,7 @@ export const SERVICES: Service[] = [
   {
     id: '14',
     slug: 'vandledning',
+    image: '/pictures/Vandledning/20210908_100009.jpg',
     title: 'Vandledninger - Reparation & Fornyelse',
     description: 'Reparation af vandledninger og udskiftning af gamle rør. Hurtig service ved brud og lækager.',
     longDescription: 'Gamle vandledninger kan få brud eller korrodere. Vi reparerer eller udskifter både hoved- og stikledninger. Ved akutte brud rykker vi hurtigt ud for at minimere vandskader. Vi arbejder med både kobbер, plast og bly-udskiftning.',

@@ -35,4 +35,5 @@ export interface Service {
   longDescription: string;
   faqs: { question: string; answer: string }[];
   icon: string;
+  image?: string;
 }

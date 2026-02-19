@@ -1,8 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize Gemini AI
-const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
 // Current site content snapshot for analysis
 const SITE_CONTENT = {
   COMPANY_NAME: "PR Entreprenøren ApS",
@@ -71,6 +68,9 @@ export default async function handler(req, res) {
       message: 'GEMINI_API_KEY environment variable er ikke sat'
     });
   }
+
+  // Initialize inside handler to avoid module-level crash on missing env var
+  const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   try {
     // Create analysis prompt

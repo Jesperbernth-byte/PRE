@@ -1,15 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize Supabase
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
-
-// Initialize Gemini AI
-const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
 /**
  * Upload user's uploaded image to GitHub
  */
@@ -81,12 +72,23 @@ export default async function handler(req, res) {
   }
 
   // Check environment variables
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+  if (!process.env.VITE_SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
     return res.status(500).json({
       success: false,
-      message: 'Supabase credentials mangler'
+      message: 'Supabase credentials mangler (VITE_SUPABASE_URL + SUPABASE_SERVICE_KEY skal sættes i Vercel env vars)'
     });
   }
+
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(500).json({
+      success: false,
+      message: 'GEMINI_API_KEY mangler i Vercel env vars'
+    });
+  }
+
+  // Initialize clients inside handler to avoid module-level crashes on missing env vars
+  const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+  const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   const { analysis, username = 'admin', uploadedImageData } = req.body;
 

@@ -74,7 +74,7 @@ ${currentContent}
 OUTPUT: Returner KUN kildekoden. INGEN forklaring. INGEN markdown code blocks.`;
 
       const result = await genAI.models.generateContent({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3-flash-preview',
         contents: prompt
       });
 

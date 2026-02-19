@@ -227,7 +227,7 @@ INGEN markdown code blocks i output.
 START OUTPUT:`;
 
         const result = await genAI.models.generateContent({
-          model: 'gemini-2.0-flash',
+          model: 'gemini-3-flash-preview',
           contents: codeGenPrompt
         });
         let newContent = result.text.trim();

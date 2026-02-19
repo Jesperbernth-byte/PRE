@@ -21,7 +21,6 @@ const SiteEditorChat: React.FC = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [imageFileName, setImageFileName] = useState<string>('');
-  const [lastUploadedImage, setLastUploadedImage] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,11 +63,6 @@ const SiteEditorChat: React.FC = () => {
     setCurrentPrompt(input.trim() || 'Skift billede');
     const currentInput = input.trim();
     const currentImage = uploadedImage;
-
-    // Save uploaded image for later use in preview
-    if (uploadedImage) {
-      setLastUploadedImage(uploadedImage);
-    }
 
     setInput('');
     setUploadedImage(null);
@@ -430,14 +424,6 @@ const SiteEditorChat: React.FC = () => {
         </div>
       )}
 
-      {/* Preview Modal */}
-      {previewData && (
-        <PreviewIframe
-          version={previewData.version}
-          fileChanges={previewData.fileChanges}
-          onClose={() => setPreviewData(null)}
-        />
-      )}
     </div>
   );
 };

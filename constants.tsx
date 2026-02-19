@@ -2,17 +2,31 @@ import React from 'react';
 import { Droplets, ShieldCheck, Bug, Camera, Trash2, Home, Hammer, Users } from 'lucide-react';
 import { Service } from './types';
 
-export const COMPANY_NAME = "PR Entreprenøren ApS";
-export const TAGLINE = "Professionelt kloakarbejde på Fyn – Vi løser dit problem, så det holder";
-export const CVR = "46075536";
-export const PHONE_JACOB = "24 94 66 61";
-export const PHONE_PREBEN = "22 96 66 61";
-export const EMAIL_JACOB = "jeh@prentreprenoer.dk";
-export const EMAIL_PREBEN = "pr@prentreprenoer.dk";
-export const EMAIL_FAKTURA = "faktura@prentreprenoer.dk";
-export const EMAIL = "jeh@prentreprenoer.dk"; // Default til Jacob
-export const ADDRESS = "Nørregårdsvej 17, 5672 Broby";
-export const GLN_NUMBER = "5790002657955";
+import siteContent from './site-content.json';
+
+// Editable content from site-content.json (sync via admin ContentEditor)
+export const COMPANY_NAME = siteContent.company.name;
+export const TAGLINE = siteContent.company.tagline;
+export const CVR = siteContent.company.cvr;
+export const ADDRESS = siteContent.company.address;
+export const GLN_NUMBER = siteContent.company.gln;
+
+export const PHONE_PREBEN = siteContent.contacts.preben.phone;
+export const PHONE_JACOB = siteContent.contacts.jacob.phone;
+export const EMAIL_PREBEN = siteContent.contacts.preben.email;
+export const EMAIL_JACOB = siteContent.contacts.jacob.email;
+export const EMAIL_FAKTURA = siteContent.contacts.faktura.email;
+export const EMAIL = siteContent.contacts.jacob.email;
+
+export const LOGO_PATH = siteContent.header.logoPath;
+export const LOGO_ALT = siteContent.header.logoAlt;
+
+export const HERO_TITLE = siteContent.hero.title;
+export const HERO_SUBTITLE = siteContent.hero.subtitle;
+export const HERO_IMAGE = siteContent.hero.imagePath;
+
+export const FOOTER_TAGLINE = siteContent.footer.tagline;
+export const SERVICE_AREA = siteContent.footer.serviceArea;
 
 export const SERVICES: Service[] = [
   {
@@ -321,41 +335,7 @@ export const REVIEWS = [
   }
 ];
 
-export const CERTIFICATIONS = [
-  {
-    name: "Autoriseret Kloakmester",
-    issuer: "Sikkerhedsstyrelsen",
-    badge: "/badges/sikkerhedsstyrelsen-kloakmester.png",
-    customerBenefit: "Jacob er certificeret kloakmester – din garanti for lovligt og professionelt udført arbejde",
-    verificationLink: "https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
-  },
-  {
-    name: "Asbest Autorisation",
-    issuer: "Sikkerhedsstyrelsen",
-    badge: "/badges/sikkerhedsstyrelsen-asbest.png",
-    customerBenefit: "Vi er autoriserede til asbesthåndtering"
-  },
-  {
-    name: "Kvalitetsledelsessystem",
-    issuer: "Kloakmestrenes Kontrolinstans",
-    badge: "/badges/kvalitet.png",
-    customerBenefit: "Godkendt kvalitetsstyring sikrer sporbarhed og korrekt dokumentation til myndighederne",
-    verificationLink: "https://kloakmestreneskontrolinstans.dk/"
-  },
-  {
-    name: "DM&E Kloakmestergaranti",
-    issuer: "Danske Maskinstationer og Entreprenører",
-    badge: "/badges/dme.png",
-    customerBenefit: "Medlem af DM&E med kloakmestergaranti – økonomisk beskyttelse ved eventuelle problemer",
-    verificationLink: "https://dmoge.dk/brancher/entreprenoer-og-kloakmester/dme_kloakmestergaranti/"
-  },
-  {
-    name: "Forsikringsgodkendt",
-    issuer: "Alle større forsikringsselskaber",
-    badge: "/badges/forsikringsskader.png",
-    customerBenefit: "Vi kender forsikringskrav og leverer dokumentation der sikrer dækning"
-  }
-];
+export const CERTIFICATIONS = siteContent.certifications as any[];
 
 // Company history for About page
 export const COMPANY_HISTORY = {
@@ -427,45 +407,4 @@ export const PARTNERS = [
   }
 ];
 
-export const FAQ_GENERAL = [
-  {
-    question: "Hvor hurtigt kan I komme ud?",
-    answer: "Ved akutte problemer (vand i kælder, rotter) rykker vi ud inden for 2 timer - også uden for normal åbningstid. Ved planlagte opgaver aftaler vi en tid der passer dig."
-  },
-  {
-    question: "Hvad koster det at få et tilbud?",
-    answer: "Besigtigelse og tilbud er 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
-  },
-  {
-    question: "Dækker I hele Fyn?",
-    answer: "Ja, vi dækker hele Fyn samt Trekantsområdet (Vejle, Kolding, Fredericia, Middelfart)."
-  },
-  {
-    question: "Kan jeg få hjælp til forsikringssager?",
-    answer: "Ja, vi hjælper ofte med dokumentation til forsikringsselskaber og ved, hvad der skal til for at få godkendt en skade."
-  },
-  {
-    question: "Giver I garantier på jeres arbejde?",
-    answer: "Ja, vi giver 5 års garanti på arbejdsudførelse. Vi er medlem af Byggegaranti Danmark, så du er sikret hvis noget skulle gå galt."
-  },
-  {
-    question: "Hvad er forskellen på omfangsdræn og drænledning?",
-    answer: "Omfangsdræn ligger omkring fundamentet og leder vand væk fra kælderen. Drænledning henviser til selve røret der fører vandet bort. Vi laver begge dele."
-  },
-  {
-    question: "Skal jeg selv søge om tilladelse?",
-    answer: "Nej, vi tager os af alle nødvendige tilladelser og godkendelser fra kommunen. Du skal ikke gøre noget."
-  },
-  {
-    question: "Hvad sker der hvis I finder ekstra problemer undervejs?",
-    answer: "Vi kontakter dig altid først og laver et tillægstilbud. Intet ekstraarbejde udføres uden din godkendelse."
-  },
-  {
-    question: "Kan I arbejde i vinterperioden?",
-    answer: "Ja, vi arbejder året rundt. Kun ved ekstrem frost eller kraftig regn udsætter vi opgravningsarbejde."
-  },
-  {
-    question: "Hvor lang tid holder et omfangsdræn?",
-    answer: "Et korrekt udført omfangsdræn holder 50+ år hvis det vedligeholdes. Vi bruger kun kvalitetsmaterialer fra anerkendte leverandører som GTI."
-  }
-];
+export const FAQ_GENERAL = siteContent.faq as any[];

@@ -11,7 +11,7 @@ import Careers from './pages/Careers';
 import Memberships from './pages/Memberships';
 import ServiceDetail from './pages/ServiceDetail';
 import AdminDashboard from './pages/AdminDashboard';
-import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR } from './constants';
+import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA } from './constants';
 
 const Footer: React.FC = () => (
   <footer className="bg-slate-900 text-white py-16">
@@ -19,7 +19,7 @@ const Footer: React.FC = () => (
       {/* Logo + Om os */}
       <div className="md:col-span-2">
         <img src="/logo.png" alt="PR Entreprenøren ApS" className="h-16 w-auto object-contain mb-6" />
-        <p className="text-slate-400 leading-relaxed mb-4">Autoriseret kloakmester og entreprenør på Fyn og i Trekantsområdet. Vi bygger løsninger der holder for fremtiden.</p>
+        <p className="text-slate-400 leading-relaxed mb-4">{FOOTER_TAGLINE}</p>
         <p className="text-slate-500 text-sm">{ADDRESS}</p>
         <div className="mt-4 text-orange-500 font-bold flex items-center gap-2">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div> Svarer døgnet rundt
@@ -59,7 +59,7 @@ const Footer: React.FC = () => (
 
     {/* Serviceområde */}
     <div className="max-w-7xl mx-auto px-4 mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p className="text-slate-500 text-sm">Vi dækker hele fyn samt trekantsområdet</p>
+      <p className="text-slate-500 text-sm">{SERVICE_AREA}</p>
       <p className="text-slate-500 text-xs text-center">
         &copy; {new Date().getFullYear()} PR Entreprenøren ApS. Alle rettigheder forbeholdes. CVR: {CVR}.
       </p>

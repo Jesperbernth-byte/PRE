@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Phone, CheckCircle2, Camera, Zap, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { COMPANY_NAME, TAGLINE, USPs, SERVICES, PHONE_PREBEN, CERTIFICATIONS, FAQ_GENERAL } from '../constants';
+import { SERVICES, PHONE_PREBEN, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_IMAGE } from '../constants';
 import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
 
@@ -12,7 +12,7 @@ const HomeUpdated: React.FC = () => {
       <section className="relative bg-slate-900 text-white py-20 lg:py-32 overflow-hidden hero-section">
         <div className="absolute inset-0 opacity-30">
           <img
-            src="/Hero/hero.jpg"
+            src={HERO_IMAGE}
             alt="Kloakarbejde og drænsystemer - PR Entreprenøren"
             className="w-full h-full object-cover"
           />
@@ -32,7 +32,7 @@ const HomeUpdated: React.FC = () => {
               <span className="text-orange-500">KLOAKMESTER</span> PÅ FYN
             </h1>
             <p className="text-xl sm:text-2xl text-slate-300 mb-12 leading-relaxed font-medium">
-              Omfangsdræn, kloakseparering, rottespærrer, TV-inspektion og højvandslukkere. Hurtig udrykning ved akutte problemer på hele Fyn og i Trekantsområdet.
+              {HERO_SUBTITLE}
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <a

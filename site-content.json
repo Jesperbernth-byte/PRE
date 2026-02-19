@@ -1,0 +1,135 @@
+{
+  "company": {
+    "name": "PR Entreprenøren ApS",
+    "tagline": "Professionelt kloakarbejde på Fyn – Vi løser dit problem, så det holder",
+    "cvr": "46075536",
+    "address": "Nørregårdsvej 17, 5672 Broby",
+    "gln": "5790002657955"
+  },
+  "contacts": {
+    "preben": {
+      "phone": "22 96 66 61",
+      "email": "pr@prentreprenoer.dk",
+      "title": "Direktør",
+      "bio": "Grundlægger & overordnet ansvarlig"
+    },
+    "jacob": {
+      "phone": "24 94 66 61",
+      "email": "jeh@prentreprenoer.dk",
+      "title": "Daglig Leder",
+      "bio": "Autoriseret kloakmester"
+    },
+    "faktura": {
+      "email": "faktura@prentreprenoer.dk"
+    }
+  },
+  "header": {
+    "logoPath": "/logo.png",
+    "logoAlt": "PR Entreprenøren ApS"
+  },
+  "hero": {
+    "title": "AUTORISERET KLOAKMESTER PÅ FYN",
+    "subtitle": "Omfangsdræn, kloakseparering, rottespærrer, TV-inspektion og højvandslukkere. Hurtig udrykning ved akutte problemer på hele Fyn og i Trekantsområdet.",
+    "imagePath": "/Hero/hero.jpg",
+    "badgeText": "Se autorisation hos Sikkerhedsstyrelsen",
+    "badgeLink": "https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed",
+    "ctaPrimary": "Bestil besigtigelse",
+    "ctaSecondary": "Ring Nu",
+    "statCustomers": "500+ Tilfredse Kunder"
+  },
+  "stats": {
+    "responseTime": "<2h",
+    "responseLabel": "Responstid ved akutte sager",
+    "projectsCount": "500+",
+    "projectsLabel": "Gennemførte projekter",
+    "yearsCount": "15+",
+    "yearsLabel": "Års erfaring på Fyn",
+    "warrantyYears": "5 år",
+    "warrantyLabel": "Garanti på arbejde"
+  },
+  "footer": {
+    "tagline": "Autoriseret kloakmester og entreprenør på Fyn og i Trekantsområdet. Vi bygger løsninger der holder for fremtiden.",
+    "serviceArea": "Vi dækker hele fyn samt trekantsområdet",
+    "prebenTitle": "Direktør",
+    "jacobTitle": "Daglig Leder"
+  },
+  "faq": [
+    {
+      "question": "Hvor hurtigt kan I komme ud?",
+      "answer": "Ved akutte problemer (vand i kælder, rotter) rykker vi ud inden for 2 timer - også uden for normal åbningstid. Ved planlagte opgaver aftaler vi en tid der passer dig."
+    },
+    {
+      "question": "Hvad koster det at få et tilbud?",
+      "answer": "Besigtigelse og tilbud er 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
+    },
+    {
+      "question": "Dækker I hele Fyn?",
+      "answer": "Ja, vi dækker hele Fyn samt Trekantsområdet (Vejle, Kolding, Fredericia, Middelfart)."
+    },
+    {
+      "question": "Kan jeg få hjælp til forsikringssager?",
+      "answer": "Ja, vi hjælper ofte med dokumentation til forsikringsselskaber og ved, hvad der skal til for at få godkendt en skade."
+    },
+    {
+      "question": "Giver I garantier på jeres arbejde?",
+      "answer": "Ja, vi giver 5 års garanti på arbejdsudførelse. Vi er medlem af Byggegaranti Danmark, så du er sikret hvis noget skulle gå galt."
+    },
+    {
+      "question": "Hvad er forskellen på omfangsdræn og drænledning?",
+      "answer": "Omfangsdræn ligger omkring fundamentet og leder vand væk fra kælderen. Drænledning henviser til selve røret der fører vandet bort. Vi laver begge dele."
+    },
+    {
+      "question": "Skal jeg selv søge om tilladelse?",
+      "answer": "Nej, vi tager os af alle nødvendige tilladelser og godkendelser fra kommunen. Du skal ikke gøre noget."
+    },
+    {
+      "question": "Hvad sker der hvis I finder ekstra problemer undervejs?",
+      "answer": "Vi kontakter dig altid først og laver et tillægstilbud. Intet ekstraarbejde udføres uden din godkendelse."
+    },
+    {
+      "question": "Kan I arbejde i vinterperioden?",
+      "answer": "Ja, vi arbejder året rundt. Kun ved ekstrem frost eller kraftig regn udsætter vi opgravningsarbejde."
+    },
+    {
+      "question": "Hvor lang tid holder et omfangsdræn?",
+      "answer": "Et korrekt udført omfangsdræn holder 50+ år hvis det vedligeholdes. Vi bruger kun kvalitetsmaterialer fra anerkendte leverandører som GTI."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Autoriseret Kloakmester",
+      "issuer": "Sikkerhedsstyrelsen",
+      "badge": "/badges/sikkerhedsstyrelsen-kloakmester.png",
+      "customerBenefit": "Jacob er certificeret kloakmester – din garanti for lovligt og professionelt udført arbejde",
+      "verificationLink": "https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
+    },
+    {
+      "name": "Asbest Autorisation",
+      "issuer": "Sikkerhedsstyrelsen",
+      "badge": "/badges/sikkerhedsstyrelsen-asbest.png",
+      "customerBenefit": "Vi er autoriserede til asbesthåndtering",
+      "verificationLink": null
+    },
+    {
+      "name": "Kvalitetsledelsessystem",
+      "issuer": "Kloakmestrenes Kontrolinstans",
+      "badge": "/badges/kvalitet.png",
+      "customerBenefit": "Godkendt kvalitetsstyring sikrer sporbarhed og korrekt dokumentation til myndighederne",
+      "verificationLink": "https://kloakmestreneskontrolinstans.dk/"
+    },
+    {
+      "name": "DM&E Kloakmestergaranti",
+      "issuer": "Danske Maskinstationer og Entreprenører",
+      "badge": "/badges/dme.png",
+      "customerBenefit": "Medlem af DM&E med kloakmestergaranti – økonomisk beskyttelse ved eventuelle problemer",
+      "verificationLink": "https://dmoge.dk/brancher/entreprenoer-og-kloakmester/dme_kloakmestergaranti/"
+    },
+    {
+      "name": "Forsikringsgodkendt",
+      "issuer": "Alle større forsikringsselskaber",
+      "badge": "/badges/forsikringsskader.png",
+      "customerBenefit": "Vi kender forsikringskrav og leverer dokumentation der sikrer dækning",
+      "verificationLink": null
+    }
+  ]
+}

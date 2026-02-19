@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import { PHONE_PREBEN } from '../constants';
+import { PHONE_PREBEN, LOGO_PATH, LOGO_ALT } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +24,8 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <img
-                src="/logo.png"
-                alt="PR Entreprenøren ApS"
+                src={LOGO_PATH}
+                alt={LOGO_ALT}
                 className="h-16 w-auto object-contain"
               />
             </Link>

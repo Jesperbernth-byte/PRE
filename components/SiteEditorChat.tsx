@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Loader2, AlertCircle, CheckCircle, AlertTriangle, Sparkles, History as HistoryIcon, Image as ImageIcon, X } from 'lucide-react';
 import { SiteEditorService } from '../services/siteEditorService';
-import PreviewIframe from './PreviewIframe';
 import VersionHistory from './VersionHistory';
 import type { ChatMessage, AnalysisResult } from '../types/siteEditor';
 
@@ -17,8 +16,7 @@ const SiteEditorChat: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isGeneratingPreview, setIsGeneratingPreview] = useState(false);
-  const [previewData, setPreviewData] = useState<any>(null);
+  const [isApplying, setIsApplying] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState<string>('');
   const [showHistory, setShowHistory] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -114,41 +112,31 @@ const SiteEditorChat: React.FC = () => {
     }
   };
 
-  const handleGeneratePreview = async (analysis: AnalysisResult) => {
-    setIsGeneratingPreview(true);
-
+  const handleApplyChange = async (analysis: AnalysisResult) => {
+    setIsApplying(true);
     try {
-      const result = await SiteEditorService.createPreview(
-        analysis,
-        currentPrompt,
-        'admin',
-        lastUploadedImage || undefined
-      );
-
-      setPreviewData(result);
-
-      // Build success message with optional warning
-      let content = `✅ Preview er klar! Jeg har genereret ændringerne og gemt dem i version ${result.version.version_number}. Klik på knappen ovenfor for at se preview.`;
-
-      if (result.warning) {
-        content += `\n\n⚠️ ${result.warning}`;
-      }
-
-      const successMessage: ChatMessage = {
+      const res = await fetch('/api/site-editor/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ analysis, originalPrompt: currentPrompt })
+      });
+      const data = await res.json();
+      const msg: ChatMessage = {
         role: 'assistant',
-        content,
+        content: data.success
+          ? `✅ ${data.message}\n\nOpdaterede filer: ${data.updatedFiles?.join(', ') || '-'}\n\nSitet er live om 1-2 minutter: https://prentreprenoer.dk`
+          : `❌ Fejl: ${data.message}`,
         timestamp: new Date().toISOString()
       };
-      setMessages(prev => [...prev, successMessage]);
+      setMessages(prev => [...prev, msg]);
     } catch (error: any) {
-      const errorMessage: ChatMessage = {
+      setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `❌ Preview fejl: ${error.message || 'Kunne ikke generere preview'}`,
+        content: `❌ Netværksfejl: ${error.message}`,
         timestamp: new Date().toISOString()
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      }]);
     } finally {
-      setIsGeneratingPreview(false);
+      setIsApplying(false);
     }
   };
 
@@ -335,17 +323,17 @@ const SiteEditorChat: React.FC = () => {
                       {message.analysis.safetyLevel !== 'DANGEROUS' && (
                         <div className="mt-4 pt-3 border-t border-slate-200 flex gap-2">
                           <button
-                            onClick={() => handleGeneratePreview(message.analysis!)}
-                            disabled={isGeneratingPreview}
-                            className="flex-1 bg-blue-900 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-blue-800 transition-all disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            onClick={() => handleApplyChange(message.analysis!)}
+                            disabled={isApplying}
+                            className="flex-1 bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-orange-700 transition-all disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                           >
-                            {isGeneratingPreview ? (
+                            {isApplying ? (
                               <>
                                 <Loader2 className="animate-spin" size={14} />
-                                Genererer Preview...
+                                Anvender ændring...
                               </>
                             ) : (
-                              'Lav Preview'
+                              '⚡ Anvend Ændring Nu'
                             )}
                           </button>
                         </div>

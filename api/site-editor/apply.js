@@ -18,8 +18,11 @@ export default async function handler(req, res) {
 
   const { analysis, originalPrompt = '' } = req.body;
 
-  if (!analysis || !analysis.specificChanges || analysis.specificChanges.length === 0) {
-    return res.status(400).json({ success: false, message: 'analysis.specificChanges er påkrævet' });
+  if (!analysis) {
+    return res.status(400).json({ success: false, message: 'Ingen analyse modtaget. Prøv igen.' });
+  }
+  if (!analysis.specificChanges || analysis.specificChanges.length === 0) {
+    return res.status(400).json({ success: false, message: 'AI\'en fandt ingen specifikke ændringer. Prøv at beskriv mere konkret – fx "Skift Prebens telefon til 12 34 56 78".' });
   }
 
   // Map from analyze.js file paths (which may have PRE/ prefix) to actual repo paths

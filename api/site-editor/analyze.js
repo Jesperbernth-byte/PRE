@@ -293,6 +293,33 @@ Returner KUN valid JSON, ingen ekstra tekst.
       });
     }
 
+    // For non-question responses, validate that specificChanges exists and is non-empty
+    if (!analysis.isQuestion) {
+      if (!analysis.specificChanges || analysis.specificChanges.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'AI\'en kunne ikke finde ud af præcis hvad der skal ændres. Prøv at beskriv ændringen mere specifikt – fx "Skift Prebens telefonnummer til 12 34 56 78" eller "Ændre hero-titlen til X".',
+          analysis
+        });
+      }
+      if (!analysis.filesAffected || analysis.filesAffected.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'AI\'en angav ingen filer at redigere. Prøv at beskriv ændringen mere specifikt.',
+          analysis
+        });
+      }
+    }
+
+    // For question responses, return directly
+    if (analysis.isQuestion) {
+      return res.status(200).json({
+        success: true,
+        analysis,
+        message: 'Analyse fuldført'
+      });
+    }
+
     // Check if files are allowed
     const unauthorizedFiles = analysis.filesAffected.filter(
       file => !ALLOWED_FILES.some(allowed => {

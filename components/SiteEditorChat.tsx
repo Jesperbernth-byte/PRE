@@ -21,6 +21,7 @@ const SiteEditorChat: React.FC = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [imageFileName, setImageFileName] = useState<string>('');
+  const [lastUploadedImage, setLastUploadedImage] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -63,6 +64,11 @@ const SiteEditorChat: React.FC = () => {
     setCurrentPrompt(input.trim() || 'Skift billede');
     const currentInput = input.trim();
     const currentImage = uploadedImage;
+
+    // Save uploaded image for later use in apply
+    if (uploadedImage) {
+      setLastUploadedImage(uploadedImage);
+    }
 
     setInput('');
     setUploadedImage(null);
@@ -112,7 +118,11 @@ const SiteEditorChat: React.FC = () => {
       const res = await fetch('/api/site-editor/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ analysis, originalPrompt: currentPrompt })
+        body: JSON.stringify({
+          analysis,
+          originalPrompt: currentPrompt,
+          uploadedImageData: lastUploadedImage
+        })
       });
       const data = await res.json();
       const msg: ChatMessage = {

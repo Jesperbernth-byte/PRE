@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
-  const { prompt, siteName = 'PRE', username = 'admin' } = req.body;
+  const { prompt, imageData, siteName = 'PRE', username = 'admin' } = req.body;
 
   if (!prompt || typeof prompt !== 'string') {
     return res.status(400).json({ success: false, message: 'Prompt is required' });
@@ -105,7 +105,7 @@ PR Entreprenøren ApS er en kloakmester-virksomhed på Fyn drevet af Jacob & Pre
 
 ## BRUGERENS ØNSKE
 "${prompt}"
-
+${imageData ? `\n🖼️ **VIGTIGT: Brugeren har uploadet et billede** (se billedet ovenfor i denne besked)\n- Dette billede skal bruges som det nye logo/hero/baggrund brugeren refererer til\n- Du skal angive changeType: "image" og imageLocation: "logo" (eller "hero" etc.)\n- Billedet bliver automatisk uploadet til GitHub - du skal bare angive hvad det skal erstatte\n` : ''}
 ## NUVÆRENDE SITE INDHOLD
 **Firmainformation:**
 - Firmanavn: ${SITE_CONTENT.COMPANY_NAME}
@@ -266,10 +266,32 @@ SAFETY LEVEL REGLER:
 Returner KUN valid JSON, ingen ekstra tekst.
 `;
 
-    // Get AI analysis
+    // Get AI analysis (with optional image support)
+    let geminiContents;
+    if (imageData) {
+      // Multimodal: text + image
+      // Extract base64 data and mime type from data URL
+      const base64Match = imageData.match(/^data:([^;]+);base64,(.+)$/);
+      if (!base64Match) {
+        throw new Error('Ugyldigt billede format');
+      }
+      const mimeType = base64Match[1];
+      const base64Data = base64Match[2];
+
+      geminiContents = {
+        parts: [
+          { text: analysisPrompt },
+          { inlineData: { mimeType, data: base64Data } }
+        ]
+      };
+    } else {
+      // Text only
+      geminiContents = analysisPrompt;
+    }
+
     const result = await genAI.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: analysisPrompt
+      contents: geminiContents
     });
     const text = result.text;
 

@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
                 Vi sidder klar ved telefonen, men du kan også fange os døgnet rundt via vores AI-chat eller formularen til højre.
               </p>
 
-              {/* Phone Numbers */}
+              {/* Contact Cards */}
               <div className="space-y-6 mb-12">
                 <div className="flex gap-4 items-start bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 hover:border-orange-600 transition-all">
                   <img
@@ -70,11 +70,15 @@ const Contact: React.FC = () => {
                     alt="Jacob - Autoriseret Kloakmester"
                     className="w-20 h-20 rounded-xl object-cover shrink-0 border-2 border-blue-900"
                   />
-                  <div>
+                  <div className="flex-1">
                     <p className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Jacob (Kloakmester)</p>
-                    <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-2xl font-black text-blue-900 hover:text-orange-600 transition-colors flex items-center gap-2">
+                    <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-2xl font-black text-blue-900 hover:text-orange-600 transition-colors flex items-center gap-2 mb-2">
                       <Phone size={20} />
                       {PHONE_JACOB}
+                    </a>
+                    <a href={`mailto:${EMAIL_JACOB}`} className="text-sm font-bold text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 mb-2">
+                      <Mail size={16} />
+                      {EMAIL_JACOB}
                     </a>
                     <p className="text-sm text-slate-600 mt-2">Alle tekniske spørgsmål og akutte problemer</p>
                   </div>
@@ -86,11 +90,15 @@ const Contact: React.FC = () => {
                     alt="Preben - Direktør"
                     className="w-20 h-20 rounded-xl object-cover shrink-0 border-2 border-slate-200"
                   />
-                  <div>
+                  <div className="flex-1">
                     <p className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Preben (Direktør)</p>
-                    <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors flex items-center gap-2">
+                    <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors flex items-center gap-2 mb-2">
                       <Phone size={20} />
                       {PHONE_PREBEN}
+                    </a>
+                    <a href={`mailto:${EMAIL_PREBEN}`} className="text-sm font-bold text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 mb-2">
+                      <Mail size={16} />
+                      {EMAIL_PREBEN}
                     </a>
                     <p className="text-sm text-slate-600 mt-2">Økonomi og planlægning af større projekter</p>
                   </div>
@@ -99,29 +107,6 @@ const Contact: React.FC = () => {
 
               {/* Other Contact Info */}
               <div className="space-y-4">
-                <div className="flex gap-4 items-center">
-                  <div className="bg-orange-50 text-orange-600 p-3 rounded-xl">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Email Jacob</p>
-                    <a href={`mailto:${EMAIL_JACOB}`} className="text-lg font-black text-blue-900 hover:text-orange-600 transition-colors">
-                      {EMAIL_JACOB}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-center">
-                  <div className="bg-blue-50 text-blue-900 p-3 rounded-xl">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 uppercase font-bold tracking-widest">Email Preben</p>
-                    <a href={`mailto:${EMAIL_PREBEN}`} className="text-lg font-black text-blue-900 hover:text-orange-600 transition-colors">
-                      {EMAIL_PREBEN}
-                    </a>
-                  </div>
-                </div>
 
                 <div className="flex gap-4 items-center">
                   <div className="bg-blue-50 text-blue-900 p-3 rounded-xl">

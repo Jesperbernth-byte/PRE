@@ -34,6 +34,11 @@ const Footer: React.FC = () => (
 
       {/* Kontaktkort Preben */}
       <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <img
+          src="/team/preben-cropped.png"
+          alt="Preben - Direktør"
+          className="w-16 h-16 rounded-xl object-cover mb-4 border-2 border-white/20"
+        />
         <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">Direktør</div>
         <h4 className="text-xl font-black text-white mb-1">Preben</h4>
         <p className="text-slate-400 text-xs mb-4">Grundlægger & overordnet ansvarlig</p>
@@ -49,6 +54,11 @@ const Footer: React.FC = () => (
 
       {/* Kontaktkort Jacob */}
       <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+        <img
+          src="/team/jacob-cropped.png"
+          alt="Jacob - Autoriseret Kloakmester"
+          className="w-16 h-16 rounded-xl object-cover mb-4 border-2 border-blue-500/50"
+        />
         <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">Daglig Leder</div>
         <h4 className="text-xl font-black text-white mb-1">Jacob</h4>
         <p className="text-slate-400 text-xs mb-4">Autoriseret kloakmester</p>

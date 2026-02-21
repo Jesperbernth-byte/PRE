@@ -65,12 +65,15 @@ const Contact: React.FC = () => {
               {/* Phone Numbers */}
               <div className="space-y-6 mb-12">
                 <div className="flex gap-4 items-start bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 hover:border-orange-600 transition-all">
-                  <div className="bg-blue-900 text-white p-3 rounded-xl shrink-0">
-                    <Phone size={24} />
-                  </div>
+                  <img
+                    src="/team/jacob-cropped.png"
+                    alt="Jacob - Autoriseret Kloakmester"
+                    className="w-20 h-20 rounded-xl object-cover shrink-0 border-2 border-blue-900"
+                  />
                   <div>
                     <p className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Jacob (Kloakmester)</p>
-                    <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-2xl font-black text-blue-900 hover:text-orange-600 transition-colors">
+                    <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-2xl font-black text-blue-900 hover:text-orange-600 transition-colors flex items-center gap-2">
+                      <Phone size={20} />
                       {PHONE_JACOB}
                     </a>
                     <p className="text-sm text-slate-600 mt-2">Alle tekniske spørgsmål og akutte problemer</p>
@@ -78,12 +81,15 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex gap-4 items-start bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 hover:border-orange-600 transition-all">
-                  <div className="bg-slate-100 text-blue-900 p-3 rounded-xl shrink-0">
-                    <Phone size={24} />
-                  </div>
+                  <img
+                    src="/team/preben-cropped.png"
+                    alt="Preben - Direktør"
+                    className="w-20 h-20 rounded-xl object-cover shrink-0 border-2 border-slate-200"
+                  />
                   <div>
                     <p className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">Preben (Direktør)</p>
-                    <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors">
+                    <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="text-2xl font-black text-slate-900 hover:text-orange-600 transition-colors flex items-center gap-2">
+                      <Phone size={20} />
                       {PHONE_PREBEN}
                     </a>
                     <p className="text-sm text-slate-600 mt-2">Økonomi og planlægning af større projekter</p>

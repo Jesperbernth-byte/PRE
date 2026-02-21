@@ -99,35 +99,35 @@
     {
       "name": "Autoriseret Kloakmester",
       "issuer": "Sikkerhedsstyrelsen",
-      "badge": "/badges/sikkerhedsstyrelsen-kloakmester.png",
+      "badge": "/autorisationer/autoriseret-kloakmester.png",
       "customerBenefit": "Jacob er certificeret kloakmester – din garanti for lovligt og professionelt udført arbejde",
       "verificationLink": "https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
     },
     {
       "name": "Asbest Autorisation",
       "issuer": "Må nedrive og håndtere asbest",
-      "badge": "/certification-asbest-1771661877390.png",
+      "badge": "/autorisationer/asbest.png",
       "customerBenefit": "Vi er autoriserede til asbesthåndtering",
       "verificationLink": null
     },
     {
       "name": "Kvalitetsledelsessystem",
       "issuer": "Kloakmestrenes Kontrolinstans",
-      "badge": "/certifications-badge-1771665622592.png",
+      "badge": "/autorisationer/kloakmestrenes-kontrolinstans.png",
       "customerBenefit": "Vores godkendte kvalitetsledelsessystem sikrer uvildig kontrol, fuld sporbarhed og korrekt dokumentation over for myndighederne",
       "verificationLink": "https://kloakmestreneskontrolinstans.dk/"
     },
     {
       "name": "DM&E Kloakmestergaranti",
       "issuer": "Danske Maskinstationer og Entreprenører",
-      "badge": "/badges/dme.png",
+      "badge": "/autorisationer/DME.png",
       "customerBenefit": "Medlem af DM&E med kloakmestergaranti – økonomisk beskyttelse ved eventuelle problemer",
       "verificationLink": "https://dmoge.dk/brancher/entreprenoer-og-kloakmester/dme_kloakmestergaranti/"
     },
     {
       "name": "Forsikringsgodkendt",
       "issuer": "Alle større forsikringsselskaber",
-      "badge": "/badges/forsikringsskader.png",
+      "badge": "/autorisationer/forsikringsgodkendt.png",
       "customerBenefit": "Vi kender forsikringskrav og leverer dokumentation der sikrer dækning",
       "verificationLink": null
     }

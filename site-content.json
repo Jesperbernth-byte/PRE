@@ -60,7 +60,7 @@
     },
     {
       "question": "Hvad koster det at få et tilbud?",
-      "answer": "Besigtigelse og tilbud er 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
+      "answer": "Besigtigelse og tilbud og 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
     },
     {
       "question": "Dækker I hele Fyn?",
@@ -113,8 +113,8 @@
     {
       "name": "Kvalitetsledelsessystem",
       "issuer": "Kloakmestrenes Kontrolinstans",
-      "badge": "/badges/kvalitet.png",
-      "customerBenefit": "Godkendt kvalitetsstyring sikrer sporbarhed og korrekt dokumentation til myndighederne",
+      "badge": "/certifications-badge-1771665622592.png",
+      "customerBenefit": "Vores godkendte kvalitetsledelsessystem sikrer uvildig kontrol, fuld sporbarhed og korrekt dokumentation over for myndighederne",
       "verificationLink": "https://kloakmestreneskontrolinstans.dk/"
     },
     {

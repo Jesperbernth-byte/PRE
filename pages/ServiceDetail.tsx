@@ -76,7 +76,7 @@ const ServiceDetail: React.FC = () => {
   }, [service]);
 
   if (!service) {
-    return <Navigate to="/services" replace />;
+    return <Navigate to="/ydelser" replace />;
   }
 
   const imageData = SERVICE_IMAGES[service.slug] || null;
@@ -133,7 +133,7 @@ const ServiceDetail: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 flex items-center gap-2 text-sm text-slate-500">
           <Link to="/" className="hover:text-blue-900 transition-colors">Forside</Link>
           <span>/</span>
-          <Link to="/services" className="hover:text-blue-900 transition-colors">Services</Link>
+          <Link to="/ydelser" className="hover:text-blue-900 transition-colors">Ydelser</Link>
           <span>/</span>
           <span className="text-blue-900 font-bold">{service.title}</span>
         </div>
@@ -153,7 +153,7 @@ const ServiceDetail: React.FC = () => {
         )}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-28">
           <Link
-            to="/services"
+            to="/ydelser"
             className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-bold"
           >
             <ArrowLeft size={16} /> Alle services
@@ -176,7 +176,7 @@ const ServiceDetail: React.FC = () => {
                 <Phone size={20} fill="currentColor" /> Ring {PHONE_PREBEN}
               </a>
               <Link
-                to="/contact"
+                to="/kontakt"
                 className="bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
               >
                 Gratis besigtigelse <ArrowRight size={20} />
@@ -249,7 +249,7 @@ const ServiceDetail: React.FC = () => {
                   <Phone size={18} fill="currentColor" /> {PHONE_PREBEN}
                 </a>
                 <Link
-                  to="/contact"
+                  to="/kontakt"
                   className="w-full bg-white/10 border border-white/20 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
                 >
                   Send besked online
@@ -372,7 +372,7 @@ const ServiceDetail: React.FC = () => {
               <Phone size={24} fill="currentColor" /> Ring {PHONE_PREBEN}
             </a>
             <Link
-              to="/contact"
+              to="/kontakt"
               className="bg-white text-blue-900 px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-100 transition-all"
             >
               Bestil besigtigelse <ArrowRight size={24} />

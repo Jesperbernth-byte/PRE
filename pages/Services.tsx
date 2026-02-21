@@ -71,7 +71,7 @@ const Services: React.FC = () => {
               <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
             </a>
             <Link
-              to="/contact"
+              to="/kontakt"
               className="bg-blue-900 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-800 transition-all"
             >
               Send Besked

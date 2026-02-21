@@ -24,10 +24,14 @@ const SiteEditorChat: React.FC = () => {
   const [lastUploadedImage, setLastUploadedImage] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const prevMessageCountRef = useRef(messages.length);
 
-  // Auto-scroll to bottom when messages change
+  // Auto-scroll to bottom ONLY when NEW messages are added (not on every re-render)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messages.length > prevMessageCountRef.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      prevMessageCountRef.current = messages.length;
+    }
   }, [messages]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

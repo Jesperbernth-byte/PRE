@@ -9,11 +9,11 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Forside', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Om os', href: '/about' },
+    { name: 'Ydelser', href: '/ydelser' },
+    { name: 'Om os', href: '/om-os' },
     { name: 'Medlemskaber', href: '/medlemskaber' },
     { name: 'Karriere', href: '/karriere' },
-    { name: 'Kontakt', href: '/contact' },
+    { name: 'Kontakt', href: '/kontakt' },
     { name: 'Admin', href: '/admin', className: 'text-xs text-slate-400' },
   ];
 

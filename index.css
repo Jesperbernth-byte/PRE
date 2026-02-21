@@ -16,10 +16,10 @@
   box-shadow: 0 3px 10px rgba(234, 88, 12, 0.12) !important;
 }
 
-/* Smooth scrolling */
-html {
+/* Smooth scrolling REMOVED - caused autoscroll issues across the site */
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 /* Custom animations */
 @keyframes fade-in {

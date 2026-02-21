@@ -1,7 +1,13 @@
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar';
+
+// Redirect component for /services/:slug → /ydelser/:slug
+const RedirectToYdelser: React.FC = () => {
+  const { slug } = useParams();
+  return <Navigate to={`/ydelser/${slug}`} replace />;
+};
 import LeadChat from './components/LeadChat';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -75,13 +81,21 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/:slug" element={<ServiceDetail />} />
-            <Route path="/contact" element={<Contact />} />
+
+            {/* Danish URLs */}
+            <Route path="/om-os" element={<About />} />
+            <Route path="/ydelser" element={<Services />} />
+            <Route path="/ydelser/:slug" element={<ServiceDetail />} />
+            <Route path="/kontakt" element={<Contact />} />
             <Route path="/karriere" element={<Careers />} />
             <Route path="/medlemskaber" element={<Memberships />} />
             <Route path="/admin/*" element={<AdminDashboard />} />
+
+            {/* Redirects from old English URLs to Danish */}
+            <Route path="/about" element={<Navigate to="/om-os" replace />} />
+            <Route path="/services" element={<Navigate to="/ydelser" replace />} />
+            <Route path="/services/:slug" element={<RedirectToYdelser />} />
+            <Route path="/contact" element={<Navigate to="/kontakt" replace />} />
           </Routes>
         </main>
         <Footer />

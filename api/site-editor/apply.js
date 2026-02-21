@@ -146,13 +146,18 @@ ${uploadedImagePath ? `\n🎯 VIGTIGT: NØJAGTIG BILLEDSTI: ${uploadedImagePath}
 ${currentContent}
 \`\`\`
 
-## REGLER
-1. Returner HELE filen med KUN den specificerede ændring
-2. Bevar ALLE imports, exports, og filstruktur
-3. Ændr KUN det specificerede - intet mere
-4. Brug danske tekster der passer til en kloakmester
-5. Hold eksisterende Tailwind klasser og styling
-${uploadedImagePath ? `6. 🎯 KRITISK: Brug billedstien PRÆCIS som den er: "${uploadedImagePath}" - tilføj IKKE /pre/ eller andet prefix!` : ''}
+## KRITISKE REGLER - FØLG DISSE 100%
+1. ⛔ ÆNDR KUN DET SPECIFICEREDE - INTET ANDET!
+2. ⛔ LAV IKKE TILFÆLDIGE STAVEFEJL ("Many" → "Mange", "No" → "Nej", "we" → "vi")
+3. ⛔ ÆNDR IKKE ANDRE LINJER - selvom du ser "fejl" eller "forbedringsmuligheder"
+4. ⛔ KOPIER RESTEN AF FILEN PRÆCIS SOM DEN ER - ord for ord, tegn for tegn
+5. ⛔ BEVAR AL FORMATTERING, INDRYKNING, MELLEMRUM NØJAGTIGT
+6. ⛔ OVERSÆT IKKE eksisterende dansk tekst til engelsk
+7. ⛔ TILFØJ IKKE ekstra kode eller kommentarer
+8. ✅ Returner HELE filen med KUN den ene specificerede ændring
+${uploadedImagePath ? `9. 🎯 KRITISK: Brug billedstien PRÆCIS som den er: "${uploadedImagePath}" - tilføj IKKE /pre/ eller andet prefix!` : ''}
+
+HVIS DU LAVER BARE ÉN ÆNDRING UDOVER DET SPECIFICEREDE, HAR DU FEJLET!
 
 OUTPUT: Returner KUN kildekoden. INGEN forklaring. INGEN markdown code blocks.`;
 

@@ -20,6 +20,7 @@ const SITE_CONTENT = {
 
 // File whitelist - only these files can be edited
 const ALLOWED_FILES = [
+  'PRE/site-content.json',
   'PRE/constants.tsx',
   'PRE/index.css',
   'PRE/pages/Home.tsx',
@@ -163,7 +164,8 @@ Sitet har disse 14 services:
 - Fjern tekst om asbest fra hele sitet
 
 TILLADTE FILER (kun disse må redigeres):
-- PRE/constants.tsx (tekst, services, team, kontaktinfo, certificeringer, medlemskaber, partnere)
+- PRE/site-content.json ⭐ VIGTIGT: Alle redigerbare data ligger HER (certificeringer, kontakter, hero-tekst, footer-tekst, FAQ, firma-info, logo-stier)
+- PRE/constants.tsx (services array, medlemskaber, partnere - alt andet importeres fra site-content.json)
 - PRE/index.css (farver og styling)
 - PRE/pages/Home.tsx (hero sektion CSS classes og styling)
 - PRE/pages/About.tsx (om os tekst og historie)
@@ -173,6 +175,18 @@ TILLADTE FILER (kun disse må redigeres):
 - PRE/pages/Memberships.tsx (medlemskaber side)
 - PRE/components/Navbar.tsx (navigation links)
 - PRE/public/* (billeder og assets)
+
+VIGTIGT - HVAD ER HVOR:
+- ✅ Certificeringer (navn, issuer, badge, customerBenefit): PRE/site-content.json → "certifications" array
+- ✅ Kontaktinfo (telefon, email): PRE/site-content.json → "contacts"
+- ✅ Hero-tekst (titel, undertitel, billede): PRE/site-content.json → "hero"
+- ✅ Footer-tekst (tagline, serviceArea): PRE/site-content.json → "footer"
+- ✅ FAQ: PRE/site-content.json → "faq" array
+- ✅ Firma-info (navn, CVR, adresse): PRE/site-content.json → "company"
+- ✅ Logo-sti: PRE/site-content.json → "header.logoPath"
+- ❌ Services (IKKE i site-content.json): PRE/constants.tsx → SERVICES array
+- ❌ Medlemskaber: PRE/constants.tsx → MEMBERSHIPS array
+- ❌ Partnere: PRE/constants.tsx → PARTNERS array
 
 VIGTIGT OM BILLEDER:
 - CSS styling af EKSISTERENDE billeder er OK (object-position, object-fit, filter, etc.)

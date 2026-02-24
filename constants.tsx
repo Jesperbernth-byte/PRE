@@ -62,16 +62,40 @@ export const SERVICES: Service[] = [
   {
     id: '3',
     slug: 'rottespaerre',
-    image: '/pictures/Rottespærre/20220806_122601.jpg',
-    title: 'Rottespærre - Effektiv Sikring',
-    description: 'Certificeret beskyttelse mod rotter i kloaksystemet. Vi monterer kun godkendte spærrer fra Nordisk Innovation.',
-    longDescription: 'Rotter i toilettet er et mareridt ingen bør opleve. Vi installerer certificerede rottespærrer der dokumenteret holder rotter ude uden at påvirke kloakkens funktion. Som autoriseret partner for Nordisk Innovation garanterer vi kvalitet og sikkerhed. Velegnet til både private boliger og erhvervsejendomme.',
+    image: '/pictures/Rottespærre/1.png',
+    title: 'Rottespærre',
+    description: 'Giftfri rottesikring med dokumenteret effekt. Vi monterer kun certificerede rottespærrer fra Nordisk Innovation – patenteret dansk kvalitet.',
+    longDescription: `Rotter i kloaksystemet er et stigende problem i danske byer. En enkelt rotte kan svømme op gennem afløbssystemet og ende i dit toilet – et mareridt ingen skal opleve.
+
+**Nordisk Innovation rottespærrer – Patenteret beskyttelse**
+
+Vi installerer udelukkende rottespærrer fra Nordisk Innovation, som er markedsleder inden for giftfri rottesikring. Deres patenterede design sikrer effektiv beskyttelse uden brug af kemiske bekæmpelsesmidler.
+
+**Sådan fungerer det**
+
+Rottespærren er en mekanisk enhed der monteres i din kloakledning. Den fungerer som et envejsspjæld: Affald kan frit løbe ud fra dit hus, men rotter kan ikke komme ind. Systemet er konstrueret så det ikke påvirker kloakkens normale funktion eller øger risikoen for tilstopning.
+
+**Nordisk Innovation tilbyder 40 forskellige varianter** tilpasset de mest almindelige rørtyper, så vi altid kan finde den rette løsning til netop dit hjem.
+
+**Installation på få timer**
+
+Installationen foregår professionelt og hurtigt. Vi bruger Nordisk Innovations specialudviklede værktøj, som sikrer korrekt montering første gang. I de fleste tilfælde er arbejdet færdigt på under en dag.
+
+**Årlig service anbefales**
+
+For at sikre optimal funktion gennem årene anbefaler vi et årligt eftersyn. Vi tilbyder serviceaftaler så du aldrig skal tænke på det – vi kontakter dig når det er tid til tjek.
+
+**Lovkrav og forsikring**
+
+Flere og flere kommuner indfører krav om rottespærrer i nybyggeri og ved større renoveringer. Derudover kan nogle forsikringsselskaber kræve rottespærre for at dække skader relateret til rotter. Vi rådgiver gerne om reglerne i din kommune.`,
     icon: 'ShieldCheck',
     faqs: [
-      { question: 'Hvordan virker en rottespærre?', answer: 'Rottespærren er et mekanisk spjæld monteret i kloakledningen. Den åbner kun én vej – ud fra dit hus – så rotter ikke kan svømme op gennem systemet.' },
-      { question: 'Kan rottespærren stoppe til?', answer: 'Nej, moderne rottespærrer er designet til at håndtere alt normalt kloakaffald uden at tilstoppe. Vi anbefaler dog et årligt eftersyn for optimal funktion.' },
-      { question: 'Er det lovpligtigt at have rottespærre?', answer: 'Ikke alle steder, men flere kommuner indfører krav om rottespærrer i nybyggeri og ved større renoveringer. Vi rådgiver gerne om reglerne i din kommune.' },
-      { question: 'Virker det virkelig?', answer: 'Ja! Nordisk Innovation rottespærrer er testet og godkendt. Vi har monteret hundredvis uden en eneste sag med rotteinvasion bagefter.' }
+      { question: 'Hvordan virker en rottespærre?', answer: 'Rottespærren er et mekanisk envejsspjæld monteret i kloakledningen. Affald kan frit løbe ud fra dit hus, men rotter kan ikke svømme ind. Det patenterede design fra Nordisk Innovation sikrer at spjældet åbner og lukker korrekt uden at påvirke kloakkens funktion.' },
+      { question: 'Kan rottespærren tilstoppe mit afløb?', answer: 'Nej. Nordisk Innovations rottespærrer er designet til at håndtere alt normalt kloakaffald uden at tilstoppe. De findes i 40 forskellige varianter tilpasset forskellige rørtyper, så vi vælger altid den korrekte størrelse til dit system. Vi anbefaler dog et årligt eftersyn for at sikre optimal drift.' },
+      { question: 'Er det lovpligtigt at have rottespærre?', answer: 'Det afhænger af din kommune og byggeriet. Flere kommuner indfører nu krav om rottespærrer i nybyggeri og ved større renoveringer. Kontakt os, så tjekker vi reglerne for netop din adresse og rådgiver dig om dine muligheder.' },
+      { question: 'Virker det virkelig – eller kommer rotterne bare en anden vej?', answer: 'Ja, det virker! Nordisk Innovation rottespærrer er testet, patenteret og dokumenteret effektive. Når rottespærren er monteret i din kloakledning, er den vej fysisk blokeret. Rotter kan selvfølgelig stadig komme ind via andre veje (f.eks. huller i fundamentet), men vejen gennem kloakken er spærret permanent.' },
+      { question: 'Hvor lang tid holder en rottespærre?', answer: 'Ved korrekt installation og årlig service holder en Nordisk Innovation rottespærre i mange år. Materialet er robust og designet til at modstå de hårde forhold i kloaksystemet. Serviceaftaler sikrer at spjældet altid fungerer optimalt.' },
+      { question: 'Hvad koster det at få monteret en rottespærre?', answer: 'Prisen afhænger af dit specifikke kloaksystem, tilgængelighed og hvilken variant der passer til dine rør. Kontakt os for en konkret pris – vi kommer gerne ud og vurderer din situation uden beregning.' }
     ]
   },
   {

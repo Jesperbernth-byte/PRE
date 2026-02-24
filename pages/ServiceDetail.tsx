@@ -175,12 +175,14 @@ const ServiceDetail: React.FC = () => {
               >
                 <Phone size={20} fill="currentColor" /> Ring {PHONE_PREBEN}
               </a>
-              <Link
-                to="/kontakt"
-                className="bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
-              >
-                Gratis besigtigelse <ArrowRight size={20} />
-              </Link>
+              {service.slug !== 'rottespaerre' && (
+                <Link
+                  to="/kontakt"
+                  className="bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
+                >
+                  Gratis besigtigelse <ArrowRight size={20} />
+                </Link>
+              )}
             </div>
           </div>
         </div>

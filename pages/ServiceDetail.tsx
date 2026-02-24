@@ -211,9 +211,26 @@ const ServiceDetail: React.FC = () => {
               <h2 className="text-3xl sm:text-4xl font-black text-blue-900 mb-8 uppercase italic tracking-tighter">
                 Hvad er {service.title.toLowerCase()}?
               </h2>
-              <p className="text-lg text-slate-700 leading-relaxed mb-8">
-                {service.longDescription || service.description}
-              </p>
+              <div className="text-lg text-slate-700 leading-relaxed mb-8 space-y-6">
+                {(service.longDescription || service.description).split('\n\n').map((paragraph, i) => {
+                  // Check if this looks like a heading (short line, no period at end, not first paragraph)
+                  const isHeading = i > 0 && paragraph.length < 80 && !paragraph.endsWith('.') && !paragraph.endsWith(',');
+
+                  if (isHeading) {
+                    return (
+                      <h3 key={i} className="text-xl font-black text-blue-900 mt-8 mb-2">
+                        {paragraph}
+                      </h3>
+                    );
+                  }
+
+                  return (
+                    <p key={i} className="leading-relaxed">
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </div>
 
               {/* Image gallery */}
               {galleryImages.length > 0 && (

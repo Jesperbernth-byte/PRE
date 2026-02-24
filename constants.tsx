@@ -67,25 +67,23 @@ export const SERVICES: Service[] = [
     description: 'Giftfri rottesikring med dokumenteret effekt. Vi monterer kun certificerede rottespærrer fra Nordisk Innovation – patenteret dansk kvalitet.',
     longDescription: `Rotter i kloaksystemet er et stigende problem i danske byer. En enkelt rotte kan svømme op gennem afløbssystemet og ende i dit toilet – et mareridt ingen skal opleve.
 
-**Nordisk Innovation rottespærrer – Patenteret beskyttelse**
+Nordisk Innovation rottespærrer – Patenteret beskyttelse
 
 Vi installerer udelukkende rottespærrer fra Nordisk Innovation, som er markedsleder inden for giftfri rottesikring. Deres patenterede design sikrer effektiv beskyttelse uden brug af kemiske bekæmpelsesmidler.
 
-**Sådan fungerer det**
+Sådan fungerer det
 
-Rottespærren er en mekanisk enhed der monteres i din kloakledning. Den fungerer som et envejsspjæld: Affald kan frit løbe ud fra dit hus, men rotter kan ikke komme ind. Systemet er konstrueret så det ikke påvirker kloakkens normale funktion eller øger risikoen for tilstopning.
+Rottespærren er en mekanisk enhed der monteres i din kloakledning. Den fungerer som et envejsspjæld: Affald kan frit løbe ud fra dit hus, men rotter kan ikke komme ind. Systemet er konstrueret så det ikke påvirker kloakkens normale funktion eller øger risikoen for tilstopning. Nordisk Innovation tilbyder 40 forskellige varianter tilpasset de mest almindelige rørtyper, så vi altid kan finde den rette løsning til netop dit hjem.
 
-**Nordisk Innovation tilbyder 40 forskellige varianter** tilpasset de mest almindelige rørtyper, så vi altid kan finde den rette løsning til netop dit hjem.
-
-**Installation på få timer**
+Installation på få timer
 
 Installationen foregår professionelt og hurtigt. Vi bruger Nordisk Innovations specialudviklede værktøj, som sikrer korrekt montering første gang. I de fleste tilfælde er arbejdet færdigt på under en dag.
 
-**Årlig service anbefales**
+Årlig service anbefales
 
 For at sikre optimal funktion gennem årene anbefaler vi et årligt eftersyn. Vi tilbyder serviceaftaler så du aldrig skal tænke på det – vi kontakter dig når det er tid til tjek.
 
-**Lovkrav og forsikring**
+Lovkrav og forsikring
 
 Flere og flere kommuner indfører krav om rottespærrer i nybyggeri og ved større renoveringer. Derudover kan nogle forsikringsselskaber kræve rottespærre for at dække skader relateret til rotter. Vi rådgiver gerne om reglerne i din kommune.`,
     icon: 'ShieldCheck',

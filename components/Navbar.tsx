@@ -21,12 +21,12 @@ const Navbar: React.FC = () => {
     <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-24">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center group">
+          <div className="flex items-stretch h-full">
+            <Link to="/" className="flex items-center h-full py-0">
               <img
                 src={LOGO_PATH}
                 alt={LOGO_ALT}
-                className="h-16 w-auto object-contain"
+                className="h-full w-auto object-contain"
               />
             </Link>
           </div>

@@ -19,14 +19,6 @@ const HomeUpdated: React.FC = () => {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <a
-              href="https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-orange-600 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest mb-8 shadow-xl shadow-orange-600/20 hover:bg-orange-700 transition-colors"
-            >
-              <ShieldCheck size={16} fill="currentColor" /> Se autorisation hos Sikkerhedsstyrelsen
-            </a>
             <h1 className="text-5xl sm:text-7xl font-black mb-8 leading-[1]">
               AUTORISERET <br/>
               <span className="text-orange-500">KLOAKMESTER</span> PÅ FYN
@@ -91,9 +83,19 @@ const HomeUpdated: React.FC = () => {
       {/* Certifications Section */}
       <div className="bg-slate-50 border-b py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-black text-blue-900 mb-10 uppercase italic text-center tracking-tight">
+          <h2 className="text-3xl font-black text-blue-900 mb-6 uppercase italic text-center tracking-tight">
             Autorisationer & Garantier
           </h2>
+          <div className="flex justify-center mb-8">
+            <a
+              href="https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-black uppercase tracking-wider shadow-xl shadow-orange-600/20 hover:bg-orange-700 transition-all"
+            >
+              <ShieldCheck size={18} fill="currentColor" /> Se autorisation hos Sikkerhedsstyrelsen
+            </a>
+          </div>
           <div className="flex flex-wrap justify-center gap-6">
             {CERTIFICATIONS.map((cert, i) => (
               <div key={i} className="bg-white rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[180px] max-w-[220px] overflow-hidden">

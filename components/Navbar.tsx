@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import { PHONE_PREBEN, LOGO_PATH, LOGO_ALT } from '../constants';
+import { PHONE_JACOB, LOGO_PATH, LOGO_ALT } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,10 +43,10 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <a
-              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+              href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
               className="bg-blue-900 text-white px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 hover:bg-orange-600 transition-all shadow-xl shadow-blue-900/10 active:scale-95"
             >
-              <Phone size={16} fill="currentColor" /> {PHONE_PREBEN}
+              <Phone size={16} fill="currentColor" /> {PHONE_JACOB}
             </a>
           </div>
 
@@ -78,10 +78,10 @@ const Navbar: React.FC = () => {
             ))}
             <div className="pt-4">
               <a
-                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+                href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
                 className="flex items-center justify-center gap-3 w-full bg-blue-900 text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-blue-900/20"
               >
-                <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
+                <Phone size={24} fill="currentColor" /> {PHONE_JACOB}
               </a>
               <p className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-4">Døgnvagt ved akutte problemer</p>
             </div>

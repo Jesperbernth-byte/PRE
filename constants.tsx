@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     id: '1',
     slug: 'omfangsdraen',
     image: '/pictures/Dræn/20210628_065610.jpg',
-    title: 'Omfangsdræn & Fugtsikring',
+    title: 'Omfangsdræn',
     description: 'Permanent løsning mod fugt i kælder. Professionelt installeret drænsystem der beskytter dit fundament i årtier.',
     longDescription: 'Fugt i kælderen er ikke bare ubehageligt – det truer hele byggeriets levetid. Vi installerer omfangsdræn efter DTU-anvisninger med kvalitetsmaterialer der holder i generationer. Fra udgravning og membran til drænrør og retablering håndterer vi hele processen, så du kan være sikker på et tørt resultat.',
     icon: 'Droplets',

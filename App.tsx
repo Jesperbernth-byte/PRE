@@ -17,7 +17,42 @@ import Careers from './pages/Careers';
 import Memberships from './pages/Memberships';
 import ServiceDetail from './pages/ServiceDetail';
 import AdminDashboard from './pages/AdminDashboard';
-import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA } from './constants';
+import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY } from './constants';
+import { Target, CheckCircle2 } from 'lucide-react';
+
+const MissionValues: React.FC = () => (
+  <section className="py-12 bg-gradient-to-r from-orange-50 to-orange-100/50 border-y-2 border-orange-200">
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Mission */}
+        <div className="bg-white border-l-8 border-orange-600 p-6 rounded-r-2xl shadow-sm">
+          <div className="flex items-center gap-3 mb-3">
+            <Target size={28} className="text-orange-600" />
+            <h3 className="text-xl font-black text-blue-900 uppercase italic">Vores Mission</h3>
+          </div>
+          <p className="text-base text-slate-700 italic font-medium">
+            "{COMPANY_HISTORY.mission}"
+          </p>
+        </div>
+
+        {/* Values */}
+        <div className="bg-white border-l-8 border-blue-900 p-6 rounded-r-2xl shadow-sm">
+          <div className="flex items-center gap-3 mb-3">
+            <CheckCircle2 size={28} className="text-blue-900" />
+            <h3 className="text-xl font-black text-blue-900 uppercase italic">Vores Værdier</h3>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-4">
+            {COMPANY_HISTORY.values.map((value, i) => (
+              <div key={i} className="bg-blue-50 px-4 py-2 rounded-full border-2 border-blue-900 font-black text-blue-900 text-sm">
+                {value}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 const Footer: React.FC = () => (
   <footer className="bg-slate-900 text-white py-16">
@@ -108,6 +143,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Navigate to="/kontakt" replace />} />
           </Routes>
         </main>
+        <MissionValues />
         <Footer />
         <LeadChat />
         <Analytics />

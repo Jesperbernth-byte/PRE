@@ -24,7 +24,7 @@
     }
   },
   "header": {
-    "logoPath": "/logo.png",
+    "logoPath": "/headerimage.png",
     "logoAlt": "PR Entreprenøren ApS"
   },
   "hero": {
@@ -125,10 +125,10 @@
       "verificationLink": "https://dmoge.dk/brancher/entreprenoer-og-kloakmester/dme_kloakmestergaranti/"
     },
     {
-      "name": "Forsikringsgodkendt",
-      "issuer": "Alle større forsikringsselskaber",
+      "name": "Lever op til forsikringskrav",
+      "issuer": "Dokumentation til forsikringsskader",
       "badge": "/autorisationer/forsikringsgodkendt.png",
-      "customerBenefit": "Vi kender forsikringskrav og leverer dokumentation der sikrer dækning",
+      "customerBenefit": "Vi lever op til alle krav fra forsikringsselskaber og leverer den nødvendige dokumentation til udbedring af forsikringsskader",
       "verificationLink": null
     }
   ]

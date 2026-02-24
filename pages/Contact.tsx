@@ -238,26 +238,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Invoicing Information */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-blue-50 border-l-8 border-blue-900 p-8 rounded-r-3xl">
-            <h2 className="text-3xl font-black text-blue-900 mb-6 uppercase italic">
-              Elektronisk Fakturering
-            </h2>
-            <div className="space-y-4">
-              <p className="text-lg text-slate-700">
-                Vi modtager gerne elektroniske fakturaer via GLN:
-              </p>
-              <div className="bg-white px-6 py-4 rounded-xl border-2 border-blue-200 inline-block">
-                <div className="text-xs text-slate-500 uppercase font-bold tracking-widest mb-1">GLN Nummer</div>
-                <code className="text-3xl font-black text-blue-900">{GLN_NUMBER}</code>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Map/Area Coverage */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 text-center">

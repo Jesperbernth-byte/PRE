@@ -40,45 +40,9 @@ const HomeUpdated: React.FC = () => {
                 <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
               </a>
             </div>
-
-            <div className="mt-16 flex flex-wrap items-center gap-8">
-              <div className="flex items-center gap-3 text-slate-400 font-bold uppercase text-[11px] tracking-widest">
-                <CheckCircle2 size={16} className="text-green-500" /> 500+ Tilfredse Kunder
-              </div>
-            </div>
           </div>
         </div>
       </section>
-
-      {/* Stats Bar - Updated with concrete numbers */}
-      <div className="bg-white border-b py-10 relative">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center lg:justify-between gap-10 lg:gap-0 items-center">
-          <div className="flex items-center gap-4 group">
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 font-black text-xs group-hover:bg-blue-900 group-hover:text-white transition-colors">
-              &lt;2h
-            </div>
-            <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">Responstid <br/> Ved Akutte Sager</span>
-          </div>
-          <div className="flex items-center gap-4 group">
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 font-black text-xs group-hover:bg-blue-900 group-hover:text-white transition-colors">
-              500+
-            </div>
-            <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">Gennemførte <br/> Projekter</span>
-          </div>
-          <div className="flex items-center gap-4 group">
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 font-black text-xs group-hover:bg-blue-900 group-hover:text-white transition-colors">
-              15+
-            </div>
-            <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">Års Erfaring <br/> På Fyn</span>
-          </div>
-          <div className="flex items-center gap-4 group">
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 font-black text-xs group-hover:bg-blue-900 group-hover:text-white transition-colors">
-              5 år
-            </div>
-            <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">Garanti På <br/> Arbejde</span>
-          </div>
-        </div>
-      </div>
 
       {/* Certifications Section */}
       <div className="bg-slate-50 border-b py-16">

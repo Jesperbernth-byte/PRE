@@ -1,9 +1,10 @@
 import React from 'react';
-import { ArrowRight, Phone, CheckCircle2, Camera, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Camera, Zap, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SERVICES, PHONE_PREBEN, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_IMAGE } from '../constants';
+import { SERVICES, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_IMAGE } from '../constants';
 import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
+import CallButton from '../components/CallButton';
 
 const HomeUpdated: React.FC = () => {
   return (
@@ -33,12 +34,7 @@ const HomeUpdated: React.FC = () => {
               >
                 Bestil besigtigelse <ArrowRight size={24} />
               </a>
-              <a
-                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
-                className="bg-white/10 backdrop-blur-xl text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-white/20 transition-all active:scale-95"
-              >
-                <Phone size={24} fill="currentColor" /> {PHONE_PREBEN}
-              </a>
+              <CallButton variant="hero" />
             </div>
           </div>
         </div>
@@ -226,12 +222,7 @@ const HomeUpdated: React.FC = () => {
             >
               Bestil besigtigelse <ArrowRight size={24} />
             </a>
-            <a
-              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
-              className="bg-white text-blue-900 px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-100 transition-all"
-            >
-              <Phone size={24} fill="currentColor" /> Ring Nu
-            </a>
+            <CallButton variant="secondary" className="px-12 py-6" />
           </div>
         </div>
       </section>

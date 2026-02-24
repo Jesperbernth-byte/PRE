@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowRight, Phone, CheckCircle, ArrowLeft, MapPin, Clock, Shield } from 'lucide-react';
+import { ArrowRight, CheckCircle, ArrowLeft, MapPin, Clock, Shield } from 'lucide-react';
 import { SERVICES, PHONE_PREBEN, PHONE_JACOB, ADDRESS, CVR } from '../constants';
+import CallButton from '../components/CallButton';
 
 // Map service slugs to their picture folder names
 const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
@@ -169,12 +170,7 @@ const ServiceDetail: React.FC = () => {
               {service.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
-                className="bg-orange-600 text-white px-8 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl shadow-orange-600/30"
-              >
-                <Phone size={20} fill="currentColor" /> Ring {PHONE_PREBEN}
-              </a>
+              <CallButton className="px-8 py-4 text-lg" />
               {service.slug !== 'rottespaerre' && (
                 <Link
                   to="/kontakt"
@@ -244,12 +240,7 @@ const ServiceDetail: React.FC = () => {
                 <p className="text-slate-300 mb-6 leading-relaxed">
                   Gratis og uforpligtende besigtigelse. Vi vurderer dit behov og giver et fast tilbud.
                 </p>
-                <a
-                  href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
-                  className="w-full bg-orange-600 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-orange-700 transition-all mb-3"
-                >
-                  <Phone size={18} fill="currentColor" /> {PHONE_PREBEN}
-                </a>
+                <CallButton className="w-full py-4 mb-3" />
                 <Link
                   to="/kontakt"
                   className="w-full bg-white/10 border border-white/20 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
@@ -367,12 +358,7 @@ const ServiceDetail: React.FC = () => {
             Vi tilbyder gratis besigtigelse og fast pris. Ring nu eller send en besked.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a
-              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
-              className="bg-orange-600 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl"
-            >
-              <Phone size={24} fill="currentColor" /> Ring {PHONE_PREBEN}
-            </a>
+            <CallButton className="px-12 py-6 text-xl shadow-2xl" />
             <Link
               to="/kontakt"
               className="bg-white text-blue-900 px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-slate-100 transition-all"

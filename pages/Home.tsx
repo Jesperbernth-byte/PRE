@@ -44,6 +44,43 @@ const HomeUpdated: React.FC = () => {
         </div>
       </section>
 
+      {/* Trust Bar - TRUE facts only */}
+      <div className="bg-white border-b py-10 relative">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center text-white mb-3 group-hover:bg-orange-600 transition-colors shadow-lg">
+              <ShieldCheck size={28} fill="currentColor" />
+            </div>
+            <span className="text-xs font-black text-blue-900 uppercase tracking-wider">Autoriseret</span>
+            <span className="text-xs text-slate-500 mt-1">Kloakmester</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center text-white mb-3 group-hover:bg-orange-600 transition-colors shadow-lg">
+              <CheckCircle2 size={28} />
+            </div>
+            <span className="text-xs font-black text-blue-900 uppercase tracking-wider">Gratis</span>
+            <span className="text-xs text-slate-500 mt-1">Besigtigelse</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center text-white mb-3 group-hover:bg-orange-600 transition-colors shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span className="text-xs font-black text-blue-900 uppercase tracking-wider">Garanti</span>
+            <span className="text-xs text-slate-500 mt-1">På Arbejdet</span>
+          </div>
+
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center text-white mb-3 group-hover:bg-orange-600 transition-colors shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span className="text-xs font-black text-blue-900 uppercase tracking-wider">Lokal</span>
+            <span className="text-xs text-slate-500 mt-1">Virksomhed</span>
+          </div>
+        </div>
+      </div>
+
       {/* Certifications Section */}
       <div className="bg-slate-50 border-b py-16">
         <div className="max-w-6xl mx-auto px-4">

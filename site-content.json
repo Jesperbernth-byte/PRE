@@ -126,7 +126,7 @@
     },
     {
       "name": "Lever op til forsikringskrav",
-      "issuer": "Dokumentation til forsikringsskader",
+      "issuer": "Godkendt til udbedring af forsikringsskader",
       "badge": "/autorisationer/forsikringsgodkendt.png",
       "customerBenefit": "Vi lever op til alle krav fra forsikringsselskaber og leverer den nødvendige dokumentation til udbedring af forsikringsskader",
       "verificationLink": null

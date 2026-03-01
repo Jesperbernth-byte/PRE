@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -21,7 +20,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-24">
+        <div className="flex justify-between h-20">
           <div className="flex items-stretch h-full">
             <Link to="/" className="flex items-center h-full py-0">
               <img

@@ -59,7 +59,7 @@ const Footer: React.FC = () => (
     <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
       {/* Logo + Om os */}
       <div className="md:col-span-2">
-        <img src="/logo.png" alt="PR Entreprenøren ApS" className="h-16 w-auto object-contain mb-6" />
+        <img src="/logo-hvid-tekst.png" alt="PR Entreprenøren ApS" className="h-16 w-auto object-contain mb-6" />
         <p className="text-slate-400 leading-relaxed mb-4">{FOOTER_TAGLINE}</p>
         <p className="text-slate-500 text-sm">{ADDRESS}</p>
         <div className="mt-4 text-orange-500 font-bold flex items-center gap-2">

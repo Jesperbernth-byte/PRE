@@ -24,7 +24,7 @@
     }
   },
   "header": {
-    "logoPath": "/headerimage.png",
+    "logoPath": "/headerimagenobackground.png",
     "logoAlt": "PR Entreprenøren ApS"
   },
   "hero": {

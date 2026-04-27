@@ -32,16 +32,43 @@ export const SERVICES: Service[] = [
   {
     id: '1',
     slug: 'omfangsdraen',
-    image: '/pictures/Dræn/20210628_065610.jpg',
+    image: '/pictures/omfangsdræn/omfangs-forside.jpg',
     title: 'Omfangsdræn',
-    description: 'Permanent løsning mod fugt i kælder. Professionelt installeret drænsystem der beskytter dit fundament i årtier.',
-    longDescription: 'Fugt i kælderen er ikke bare ubehageligt – det truer hele byggeriets levetid. Vi installerer omfangsdræn efter DTU-anvisninger med kvalitetsmaterialer der holder i generationer. Fra udgravning og membran til drænrør og retablering håndterer vi hele processen, så du kan være sikker på et tørt resultat.',
+    description: 'Permanent løsning mod fugt i kælder og fundament. Autoriseret installation af drænsystem efter SBi-anvisning 224 – vi beskytter dit hus i generationer.',
+    longDescription: `Fugt i kælderen er ikke bare ubehageligt – det truer hele byggeriets levetid og kan over tid føre til skimmelsvamp, råd i bjælker og alvorlige strukturelle skader på fundamentet. Et omfangsdræn er den mest effektive og langsigtede løsning mod vandindtrængning, og det er en investering der typisk betaler sig mange gange igen.
+
+Hvad er et omfangsdræn?
+
+Et omfangsdræn er et drænsystem der graves ned langs husets fundament og leder overskydende grundvand og regnvand væk fra bygningen. Systemet består af et perforeret drænrør (typisk 100 mm PVC), omgivet af drænende singels eller grus, og en kapillarbrydende membran der beskytter fundamentet mod direkte vandkontakt. Vandet ledes via drænrøret til en brønd eller videre til kommunal kloak, grøft eller faskine.
+
+Hvornår har du brug for omfangsdræn?
+
+Mange fynske boliger fra 1950'erne, 60'erne og 70'erne er aldrig blevet forsynet med korrekt dræning – og det kan mærkes med årene. Tegn på at du bør overveje omfangsdræn: Fugtpletter eller hvidt kalkudslag (udblomstring) på kælderens indvendige vægge. Mosgroede eller fugtige sokkelsten. Synlige revner i fundamentet. Muglugt eller muskelduft i kælder eller krybekælder. Kondensproblemer på gulve og vægge i den kolde årstid. Vandpyller i haven nær huset der ikke forsvinder hurtigt efter regn. Uisolerede kælderrum der er kolde og fugtige hele året.
+
+Processen – hvad sker der trin for trin
+
+Vi starter altid med en gratis besigtigelse, hvor vi vurderer dit hus' drænbehov, jordbundsforhold og det eksisterende afledningssystem. Herefter modtager du et fast tilbud uden overraskelser. Selve installationen foregår i disse trin: Udgravning langs fundament med minigraver – skånsomt og præcist selv på trange grunde. Rensning og inspektion af fundamentets yderside. Montering af kapillarbrydende drænmembran direkte mod fundamentsvæggen. Udlægning af drænrør i sandbund med korrekt fald mod udløbet (minimum 5 ‰). Omfyldning med drænende singels eller grus. Retablering af belægninger, græs og beplantning.
+
+Kvalitetsmaterialer og faglig standard
+
+Vi installerer efter SBi-anvisning 224 (Fugt i bygninger) og de gældende faglige standarder for dræning ved fundament. Det betyder korrekt dimensionering af rørdiameter, sikring af minimumsfald på alle strækninger og valg af materialer der er godkendt til formålet. Vi bruger membran og drænrør fra anerkendte leverandører og sikrer korrekt tilslutning til afledningssystemet – uanset om det er regnvandskloak, grøft eller faskine.
+
+Omfangsdræn på Fyn – vores arbejdsområde
+
+Som lokal virksomhed med base i Broby arbejder vi primært på Fyn og i Trekantsområdet. Vi kender de lokale jordbundsforhold og de typiske udfordringer i fynske boliger. Vi har etableret omfangsdræn i Odense, Svendborg, Nyborg, Faaborg, Ringe, Assens, Middelfart, Kerteminde, Langeland og mange andre fynske kommuner – og vi rykker hurtigt ud når behovet er akut.
+
+Dokumentation, garanti og forsikring
+
+Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for arbejdet i overensstemmelse med gældende lovkrav. Vi giver 5 års garanti på vores arbejde og benytter DM&E Kloakmestergarantien, der giver dig ekstra tryghed som forbruger. Et korrekt udført omfangsdræn holder typisk 50+ år uden vedligeholdelse. Mange forsikringsselskaber stiller desuden krav om dokumenteret drænløsning ved fugtskadesager – vi udsteder den nødvendige dokumentation og vejleder dig om hvad der gælder for din situation.`,
     icon: 'Droplets',
     faqs: [
-      { question: 'Hvordan ved jeg om jeg har brug for omfangsdræn?', answer: 'Tegn på behov: Fugtige vægge i kælder, mosgr på sokkel, revner i fundament, musefår lugt, eller synlige vandskader. Vi kommer gerne ud til gratis besigtigelse og vurderer dit behov.' },
-      { question: 'Hvor længe holder et omfangsdræn?', answer: 'Et professionelt udført omfangsdræn med kvalitetsmaterialer holder 50+ år. Vi bruger kun anerkendte produkter og følger DTU-retningslinjer nøje.' },
-      { question: 'Skal jeg have tilladelse fra kommunen?', answer: 'Normalt ikke til omfangsdræn på egen grund. Vi håndterer dog alle nødvendige anmeldelser hvis projektet kræver det.' },
-      { question: 'Hvad koster et omfangsdræn for et parcelhus?', answer: 'Prisen afhænger af husets størrelse, jordbundsforhold og adgangsforhold. Vi tilbyder altid gratis besigtigelse og fast pris herefter.' }
+      { question: 'Hvad er forskellen på omfangsdræn og indvendigt dræn?', answer: 'Et omfangsdræn graves ned udvendigt langs fundamentet og leder vandet væk fra huset, inden det trænger ind. Det er den foretrukne og mest effektive løsning. Indvendigt dræn (f.eks. i kælderen) opsamler derimod vand der allerede er kommet ind – det løser ikke den underliggende årsag. Vi anbefaler altid udvendigt omfangsdræn som første valg.' },
+      { question: 'Hvordan ved jeg om jeg har brug for omfangsdræn?', answer: 'De tydeligste tegn er fugtpletter eller kalkudslag på kælderens vægge, muglugt i kælder eller krybekælder, mosgroede sokkelsten, revner i fundamentet, eller vandpyller ved huset efter regn. Vi kommer gerne ud til gratis besigtigelse og giver en faglig vurdering af dit behov.' },
+      { question: 'Hvor meget af huset skal have omfangsdræn?', answer: 'Det afhænger af problemets omfang og terrænets hældning. Ofte er det nok at dræne på de sider af huset der vender mod terrænet eller er mest udsat for vand. I andre tilfælde anbefaler vi at dræne alle fire sider. Vi vurderer det konkret ved besigtigelse og anbefaler kun det der er nødvendigt.' },
+      { question: 'Skal jeg have tilladelse fra kommunen?', answer: 'Normalt kræves ingen tilladelse til omfangsdræn på egen grund. Hvis drænvandet ledes til kommunal kloak eller ud over skel, kan der kræves en tilladelse. Vi undersøger reglerne for din adresse og håndterer alle nødvendige anmeldelser.' },
+      { question: 'Hvor lang tid tager installationen?', answer: 'Et typisk omfangsdræn på et parcelhus tager 2-4 dage inkl. retablering. Større projekter eller komplekse jordbundsforhold kan tage længere tid. Vi oplyser altid den forventede tid i tilbuddet.' },
+      { question: 'Hvor længe holder et omfangsdræn?', answer: 'Et professionelt udført omfangsdræn med kvalitetsmaterialer holder 50+ år. Den eneste vedligeholdelse der kan være relevant, er jævnlig rensning af inspektionsbrønden for at sikre frit gennemløb. Vi rådgiver om dette ved aflevering af arbejdet.' },
+      { question: 'Hvad koster et omfangsdræn?', answer: 'Prisen afhænger af husets størrelse, jordbundsforhold, adgangsforhold og hvor stor en del af huset der skal drænes. Vi tilbyder altid gratis besigtigelse og et fast tilbud herefter – ingen timeafregning og ingen skjulte omkostninger.' }
     ]
   },
   {

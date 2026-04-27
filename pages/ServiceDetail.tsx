@@ -7,8 +7,8 @@ import CallButton from '../components/CallButton';
 // Map service slugs to their picture folder names
 const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   'omfangsdraen': {
-    folder: 'Dræn',
-    images: ['20210628_065610.jpg', '20210628_065624.jpg', '20210628_100202.jpg', '20210629_124507.jpg']
+    folder: 'omfangsdræn',
+    images: ['omfangs-forside.jpg', '20210628_065610.jpg', '20210628_065624.jpg', '20210628_100202.jpg', '20210629_124507.jpg']
   },
   'kloakarbejde': {
     folder: 'Separering',
@@ -27,7 +27,7 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
     images: ['20210904_112241.jpg', '20210904_132016.jpg', '20211126_151126.jpg']
   },
   'lar-anlaeg': {
-    folder: 'Dræn',
+    folder: 'omfangsdræn',
     images: ['20210628_100206.jpg', '20210629_124507.jpg', '20210628_100202.jpg']
   },
   'entreprenoer-arbejde': {

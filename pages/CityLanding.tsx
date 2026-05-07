@@ -1,13 +1,13 @@
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useLocation, Link, Navigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, MapPin, Clock, Shield, Phone, Mail } from 'lucide-react';
 import { CITIES, SERVICES, PHONE_PREBEN, PHONE_JACOB, EMAIL_INFO, ADDRESS, CVR } from '../constants';
 import CallButton from '../components/CallButton';
 import { usePageMeta } from '../lib/usePageMeta';
 
 const CityLanding: React.FC = () => {
-  const { cityPath } = useParams<{ cityPath: string }>();
-  const slug = cityPath ? `kloakmester-${cityPath}` : '';
+  const location = useLocation();
+  const slug = location.pathname.replace(/^\//, '').replace(/\/$/, '');
   const cityConfig = CITIES.find(c => c.slug === slug);
 
   usePageMeta({

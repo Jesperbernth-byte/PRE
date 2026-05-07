@@ -146,8 +146,10 @@ const App: React.FC = () => {
             <Route path="/karriere" element={<Careers />} />
             <Route path="/medlemskaber" element={<Memberships />} />
 
-            {/* City landing pages: /kloakmester-odense, /kloakmester-faaborg-midtfyn, /kloakmester-assens */}
-            <Route path="/kloakmester-:cityPath" element={<CityLanding />} />
+            {/* City landing pages */}
+            <Route path="/kloakmester-odense" element={<CityLanding />} />
+            <Route path="/kloakmester-faaborg-midtfyn" element={<CityLanding />} />
+            <Route path="/kloakmester-assens" element={<CityLanding />} />
 
             <Route path="/admin/*" element={<AdminDashboard />} />
 

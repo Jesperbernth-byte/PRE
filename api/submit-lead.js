@@ -99,18 +99,26 @@ export default async function handler(req, res) {
 
   const leadSource = source === 'chat' ? 'chat' : 'form';
 
-  const { error } = await supabase.from('leads').insert([{
+  // Match the existing leads-table schema. email/source/conversation_log are
+  // optional — if a column doesn't exist in your Supabase, the insert will
+  // fail and the lead won't be saved. See database/migration-leads.sql for
+  // the canonical schema; run the ALTER TABLE in database/migration-add-form-fields.sql
+  // if you want email + form-source tracking persisted.
+  const insertRow = {
     name: String(name).trim(),
     phone: String(phone).trim(),
     problem: String(problem).trim(),
     zip_code: zipCode ? String(zipCode).trim() : null,
-    email: email ? String(email).trim() : null,
     priority: priority || 'PLANLAGT',
     insurance_claim: !!insuranceClaim,
     status: 'NY',
     source: leadSource,
     created_at: new Date().toISOString()
-  }]);
+  };
+  if (email) insertRow.email = String(email).trim();
+  if (conversation) insertRow.conversation_log = String(conversation);
+
+  const { error } = await supabase.from('leads').insert([insertRow]);
 
   if (error) {
     console.error('Lead insert error:', error);

@@ -784,6 +784,125 @@ export const SERVICE_AREAS = {
   description: "Vi dækker hele Fyn og Trekantområdet, med særligt fokus på Faaborg-Midtfyn, Assens og Odense hvor vi har dyb lokal forankring og kender kommunernes specifikke krav."
 };
 
+export interface CityLanding {
+  slug: string;
+  city: string;
+  title: string;
+  heroSubtitle: string;
+  metaDescription: string;
+  intro: string;
+  localAngle: string;
+  topServices: string[];
+  coverage: string[];
+  travelTime: string;
+  localFAQ: { question: string; answer: string }[];
+}
+
+export const CITIES: CityLanding[] = [
+  {
+    slug: 'kloakmester-odense',
+    city: 'Odense',
+    title: 'Kloakmester i Odense',
+    heroSubtitle: 'Autoriseret kloakmester der dækker hele Odense og oplandet. Hurtig udrykning ved akutte sager – og fast pris på planlagte projekter.',
+    metaDescription: 'Søger du en autoriseret kloakmester i Odense? PR Entreprenøren ApS udfører omfangsdræn, kloakseparering, TV-inspektion, rottespærre og højvandslukker i hele Odense og opland.',
+    intro: `Odense er Fyns største by – og samtidig den by hvor kloak- og drænproblemer rammer flest boligejere. Mange ældre kvarterer i Odense har stadig fælleskloak fra 1950'erne og 60'erne, hvor regn- og spildevand løber i samme rør. Det betyder oversvømmelse i kælderen ved skybrud og overløb af spildevand til Odense Å og fjorden. Som autoriseret kloakmester med base i Broby er vi sjældent mere end 30 minutters kørsel fra Odense, og vi har stor erfaring med både private parcelhuse, andelsboligforeninger og erhvervsejendomme i hele kommunen.
+
+Vi udfører hele paletten af kloakarbejde i Odense: omfangsdræn der stopper fugt i kælderen, kloakseparering når kommunen sender påbud, rottespærre der lukker rotterne ude permanent, TV-inspektion ved hussalg eller kloakproblemer, højvandslukker der beskytter mod opstuvning ved skybrud, og minirensningsanlæg på de få ejendomme uden offentlig kloak.`,
+    localAngle: `Odense Kommune og VandCenter Syd er i fuld gang med at separere fælleskloak i mange bydele. Når et område kommer på listen, har boligejere typisk 1-2 år til at få separeret regn- og spildevand på egen grund. Vi kender ansøgningsproceduren hos Odense Kommune og hjælper med både projektmateriale, anmeldelse, udførelse og færdigmelding. Lavtliggende kvarterer som dele af Hjallese, Bolbro og områder omkring Odense Å er særligt udsatte for opstuvning – her anbefaler vi næsten altid en højvandslukker som ekstra sikring.
+
+Mange Odense-boligejere oplever også fugtige kældre i parcelhuse fra 60'erne og 70'erne, hvor det oprindelige fundamentdræn enten aldrig blev etableret eller for længst er gået i stykker. Et nyt omfangsdræn løser problemet permanent og er en investering der typisk holder 50+ år. Vi kommer gerne ud til en gratis besigtigelse og giver fast pris uden timeafregning.`,
+    topServices: ['omfangsdraen', 'kloakarbejde', 'tv-inspektion', 'hoejvandslukker', 'rottespaerre'],
+    coverage: ['Odense C', 'Hjallese', 'Bolbro', 'Bellinge', 'Tornbjerg', 'Korup', 'Sanderum', 'Tarup', 'Dalum', 'Næsby', 'Stige'],
+    travelTime: '20-30 minutter fra vores base i Broby',
+    localFAQ: [
+      {
+        question: 'Hvor hurtigt kan I komme til Odense ved en akut sag?',
+        answer: 'Som regel inden for 1-2 timer i dagtimerne, og vi rykker også ud aften og weekend ved akutte sager som vand i kælder eller oversvømmelse fra kloakken.'
+      },
+      {
+        question: 'Skal jeg separere kloak i Odense?',
+        answer: 'Det afhænger af om du har modtaget et påbud. Odense Kommune separerer i etaper, og når dit område kommer på listen, har du typisk 1-2 år til at få det udført. Vi tjekker gerne for din adresse.'
+      },
+      {
+        question: 'Hjælper I med ansøgning hos Odense Kommune?',
+        answer: 'Ja. Vi udarbejder projektmateriale, indsender anmeldelser, kommunikerer med kommunen og færdigmelder arbejdet. Du skal ikke gøre noget selv ud over at godkende tilbuddet.'
+      },
+      {
+        question: 'Tilbyder I TV-inspektion ved hussalg i Odense?',
+        answer: 'Ja, det er en af vores mest efterspurgte ydelser i Odense. Vi udfører TV-inspektion på 1-3 timer og leverer en rapport med video og afstandsmåling der lever op til de krav som forsikring og bank typisk stiller.'
+      }
+    ]
+  },
+  {
+    slug: 'kloakmester-faaborg-midtfyn',
+    city: 'Faaborg-Midtfyn',
+    title: 'Kloakmester i Faaborg-Midtfyn',
+    heroSubtitle: 'Vi har base midt i kommunen – i Broby. Når du ringer, er vi sjældent længere væk end et par minutter. Lokal kloakmester med dybt kendskab til Faaborg-Midtfyn.',
+    metaDescription: 'Lokal autoriseret kloakmester i Faaborg-Midtfyn med base i Broby. Vi udfører omfangsdræn, kloakseparering, minirensningsanlæg, TV-inspektion og rottespærre i hele kommunen.',
+    intro: `Faaborg-Midtfyn er vores hjemkommune. Vores adresse er Nørregårdsvej 17 i Broby, og vi har boet og arbejdet i kommunen i årtier. Vi kender vejene, jordbunden, de lokale kloakforhold og de fleste lodsejere i området. Når en kunde i Brobyværk, Espe, Korinth eller Krarup ringer om vand i kælderen eller en sammensunken kloak, er vi sjældent mere end 10 minutter væk.
+
+Faaborg-Midtfyn er en kommune med stor geografisk spredning og en blanding af byområder (Faaborg, Ringe, Broby) og udprægede landområder med spredt bebyggelse. Det betyder at vi løser meget forskellige opgaver: fra moderne kloakseparering i bymidten af Ringe og Faaborg, til etablering af minirensningsanlæg i landområderne hvor der ikke er offentlig kloak.`,
+    localAngle: `I Faaborg-Midtfyn er forbedret spildevandsrensning et af de største områder. Mange ejendomme i det åbne land har modtaget påbud om at etablere minirensningsanlæg, fordi de gamle bundfældningstanke og sivebrønde ikke lever op til kommunens renseklasse-krav (O, OP, SO, SOP). Vi har installeret og servicerer typegodkendte minirensningsanlæg over hele kommunen og kender kommunens sagsbehandling og renseklasser i detaljer.
+
+Samtidig er der mange ældre parcelhuse og landejendomme med fugtige kældre, sammensunkne brønde, gamle olietanke og slidte vandledninger. Det er hverdagsopgaver for os, og vi løser dem med egen maskinpark og kort responstid. Vi laver også vandløbspleje, oprensning af søer og grødeskæring for både kommunen, lodsejere og naturplejeforeninger – ofte i samme område hvor vi løser kloakopgaver, så du kun har én entreprenør på sagen.`,
+    topServices: ['miniransanlaeg', 'omfangsdraen', 'kloakarbejde', 'broend-renovering', 'olietanke', 'naturpleje'],
+    coverage: ['Broby', 'Brobyværk', 'Faaborg', 'Ringe', 'Espe', 'Krarup', 'Korinth', 'Årslev', 'Vester Aaby', 'Horne', 'Allested-Vejle'],
+    travelTime: '0-25 minutter fra vores base i Broby',
+    localFAQ: [
+      {
+        question: 'Bor I lokalt i Faaborg-Midtfyn?',
+        answer: 'Ja. Vores kontor og maskinplads ligger på Nørregårdsvej 17 i Broby, midt i kommunen. Det betyder kort responstid og lokalt kendskab du ikke får fra en kloakmester der kører fra Odense eller længere væk.'
+      },
+      {
+        question: 'Hjælper I med påbud om minirensningsanlæg?',
+        answer: 'Ja, det er en af vores største opgaver i kommunen. Vi vurderer renseklassen, anbefaler typegodkendt anlæg, søger om udledningstilladelse hos kommunen, installerer og færdigmelder. Vi tilbyder også serviceaftale på det færdige anlæg.'
+      },
+      {
+        question: 'Kan I komme samme dag ved akutte sager?',
+        answer: 'I de fleste tilfælde ja – særligt i Broby, Faaborg og Ringe-området hvor vi er meget tæt på. Ring til os, så finder vi en løsning også uden for normal arbejdstid.'
+      },
+      {
+        question: 'Tager I også vandløbsarbejde og naturpleje?',
+        answer: 'Ja. Vi udfører grødeskæring, genslyngning, oprensning af søer og overfladebassiner med langarmet gravemaskine. Vi har samarbejder med Faaborg-Midtfyn Kommune og lokale lodsejere.'
+      }
+    ]
+  },
+  {
+    slug: 'kloakmester-assens',
+    city: 'Assens',
+    title: 'Kloakmester i Assens',
+    heroSubtitle: 'Lokal kloakmester i Assens Kommune – kort responstid, fast pris, og dyb forståelse af de lokale kloakforhold på Vestfyn.',
+    metaDescription: 'Autoriseret kloakmester der dækker hele Assens Kommune. PR Entreprenøren ApS udfører omfangsdræn, kloakseparering, minirensningsanlæg, rottespærre og TV-inspektion på Vestfyn.',
+    intro: `Assens Kommune er nabokommune til Faaborg-Midtfyn, og vi har korte køreafstande til hele området – fra Glamsbjerg og Aarup til Tommerup, Vissenbjerg og Haarby. Som lokal autoriseret kloakmester har vi løst opgaver i hele kommunen, fra mindre rottespærre-monteringer i Aarup, til store kloakseparerings-projekter i Glamsbjerg og minirensningsanlæg på landejendomme rundt om Assens by.
+
+Kommunen har en blandet bebyggelsesstruktur med både byområder under separationspåbud og store landområder hvor private renseanlæg er den lovlige løsning. Det betyder at vi typisk løser meget forskellige opgaver, og at vi kender både Assens Kommunes sagsbehandling og de lokale forhold med jordbund, terræn og nedsivning.`,
+    localAngle: `På Vestfyn ser vi en stigende efterspørgsel på flere niche-ydelser: rottespærre i nybyggeri og ved kloakrenoveringer, højvandslukker i lavtliggende kælderboliger, TV-inspektion ved hussalg af ældre ejendomme, og olietanksopgravning når oliefyret er udskiftet til varmepumpe eller fjernvarme. Vi tager hele opgaven – inkl. anmeldelse til kommunen, jordprøver og bortskaffelse på godkendt modtageanlæg.
+
+For boligejere i Assens Kommune giver det god mening at vælge en lokal kloakmester der kan rykke hurtigt ud. Vi er sjældent mere end 30 minutter væk fra alle dele af kommunen, og vi har egen maskinpark, så vi ikke skal vente på underleverandører. Vi giver fast pris efter en gratis besigtigelse og dokumenterer hver opgave med før- og efterbilleder, KS-rapport og færdigmelding.`,
+    topServices: ['kloakarbejde', 'omfangsdraen', 'miniransanlaeg', 'rottespaerre', 'tv-inspektion', 'olietanke'],
+    coverage: ['Assens', 'Glamsbjerg', 'Aarup', 'Tommerup', 'Tommerup Stationsby', 'Vissenbjerg', 'Haarby', 'Ebberup', 'Brylle', 'Verninge'],
+    travelTime: '15-35 minutter fra vores base i Broby',
+    localFAQ: [
+      {
+        question: 'Dækker I hele Assens Kommune?',
+        answer: 'Ja. Vi har korte køreafstande til alle dele af kommunen, og vi tager både små og store opgaver i Assens by, Glamsbjerg, Aarup, Tommerup, Vissenbjerg, Haarby og resten.'
+      },
+      {
+        question: 'Skal jeg separere kloak i Assens?',
+        answer: 'Det afhænger af, om du har modtaget et påbud. Assens Kommune separerer i etaper, og du har typisk 1-2 år til at få det udført når påbuddet kommer. Vi tjekker reglerne for din adresse og hjælper med ansøgning, udførelse og færdigmelding.'
+      },
+      {
+        question: 'Tager I små opgaver som rottespærre eller TV-inspektion?',
+        answer: 'Selvfølgelig. Mange af vores opgaver i Assens er netop niche-arbejde som rottespærre, højvandslukker og TV-inspektion. Vi giver fast pris også på de mindre opgaver.'
+      },
+      {
+        question: 'Hvor lang tid tager en typisk opgave i Assens Kommune?',
+        answer: 'En typisk omfangsdræn-opgave på et parcelhus tager 2-4 dage. Kloakseparering 3-7 dage. Minirensningsanlæg 2-4 dage plus kommunal sagsbehandling. Vi melder altid en klar tidsplan i tilbuddet.'
+      }
+    ]
+  }
+];
+
 // Memberships and partnerships
 export const MEMBERSHIPS = [
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 // Redirect component for /services/:slug → /ydelser/:slug
@@ -17,6 +17,7 @@ import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Memberships from './pages/Memberships';
 import ServiceDetail from './pages/ServiceDetail';
+import CityLanding from './pages/CityLanding';
 import AdminDashboard from './pages/AdminDashboard';
 import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY } from './constants';
 import { Target, CheckCircle2 } from 'lucide-react';
@@ -108,8 +109,18 @@ const Footer: React.FC = () => (
       </div>
     </div>
 
+    {/* Lokal forankring */}
+    <div className="max-w-7xl mx-auto px-4 mt-10 pt-8 border-t border-white/10">
+      <div className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-3">Kloakmester i</div>
+      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <Link to="/kloakmester-faaborg-midtfyn" className="text-slate-400 hover:text-orange-400 transition-colors">Faaborg-Midtfyn</Link>
+        <Link to="/kloakmester-assens" className="text-slate-400 hover:text-orange-400 transition-colors">Assens</Link>
+        <Link to="/kloakmester-odense" className="text-slate-400 hover:text-orange-400 transition-colors">Odense</Link>
+      </div>
+    </div>
+
     {/* Serviceområde */}
-    <div className="max-w-7xl mx-auto px-4 mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="max-w-7xl mx-auto px-4 mt-6 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="text-slate-500 text-sm">{SERVICE_AREA}</p>
       <p className="text-slate-500 text-xs text-center">
         &copy; {new Date().getFullYear()} PR Entreprenøren ApS. Alle rettigheder forbeholdes. CVR: {CVR}.
@@ -134,6 +145,10 @@ const App: React.FC = () => {
             <Route path="/kontakt" element={<Contact />} />
             <Route path="/karriere" element={<Careers />} />
             <Route path="/medlemskaber" element={<Memberships />} />
+
+            {/* City landing pages: /kloakmester-odense, /kloakmester-faaborg-midtfyn, /kloakmester-assens */}
+            <Route path="/kloakmester-:cityPath" element={<CityLanding />} />
+
             <Route path="/admin/*" element={<AdminDashboard />} />
 
             {/* Redirects from old English URLs to Danish */}

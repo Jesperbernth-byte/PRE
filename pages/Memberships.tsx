@@ -1,8 +1,15 @@
 import React from 'react';
 import { Shield, Award, ExternalLink, CheckCircle } from 'lucide-react';
 import { MEMBERSHIPS, PARTNERS, CERTIFICATIONS } from '../constants';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const Memberships: React.FC = () => {
+  usePageMeta({
+    title: 'Medlemskaber & Autorisationer | PR Entreprenøren ApS',
+    description: 'Vi er medlem af DM&E, godkendt under Kloakmestrenes Kontrolinstans og autoriseret af Sikkerhedsstyrelsen. Se alle vores medlemskaber, autorisationer og samarbejdspartnere.',
+    canonicalPath: '/medlemskaber'
+  });
+
   return (
     <div className="pb-20">
       {/* Hero Section */}

@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, ArrowLeft, MapPin, Clock, Shield } from 'lucide-react';
 import { SERVICES, PHONE_PREBEN, PHONE_JACOB, ADDRESS, CVR } from '../constants';
 import CallButton from '../components/CallButton';
+import { usePageMeta } from '../lib/usePageMeta';
 
 // Map service slugs to their picture folder names
 const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
@@ -64,15 +65,13 @@ const ServiceDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = SERVICES.find(s => s.slug === slug);
 
+  usePageMeta({
+    title: service ? `${service.title} på Fyn | PR Entreprenøren ApS` : 'Ydelse | PR Entreprenøren ApS',
+    description: service ? `${service.description} Autoriseret kloakmester på Fyn og Trekantsområdet. Ring ${PHONE_PREBEN} for gratis besigtigelse.` : '',
+    canonicalPath: service ? `/ydelser/${service.slug}` : undefined
+  });
+
   useEffect(() => {
-    if (service) {
-      document.title = `${service.title} på Fyn | PR Entreprenøren ApS`;
-      // Update meta description
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) {
-        meta.setAttribute('content', `${service.description} Autoriseret kloakmester på Fyn og Trekantsområdet. Ring ${PHONE_PREBEN} for gratis besigtigelse.`);
-      }
-    }
     window.scrollTo(0, 0);
   }, [service]);
 
@@ -349,7 +348,7 @@ const ServiceDetail: React.FC = () => {
             {relatedServices.map((s) => (
               <Link
                 key={s.id}
-                to={`/services/${s.slug}`}
+                to={`/ydelser/${s.slug}`}
                 className="group bg-slate-50 border-2 border-slate-100 rounded-3xl p-6 hover:border-orange-600 transition-all hover:shadow-xl"
               >
                 <h3 className="text-lg font-black text-blue-900 mb-2 uppercase italic group-hover:text-orange-600 transition-colors">

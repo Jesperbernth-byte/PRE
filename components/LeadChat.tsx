@@ -42,12 +42,13 @@ const LeadChat: React.FC = () => {
         const leadData = await qualifyLeadWithAI(fullConversation);
 
         if (leadData && leadData.name && leadData.phone) {
-          // Submit lead to backend (saves to DB + sends SMS to Jacob)
-          const submitResponse = await fetch('/api/pre/leads/submit', {
+          // Submit lead to backend (saves to Supabase + emails Jacob)
+          const submitResponse = await fetch('/api/submit-lead', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               ...leadData,
+              source: 'chat',
               conversation: fullConversation
             })
           });
@@ -67,7 +68,7 @@ const LeadChat: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+    <div className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-[100] flex flex-col items-end">
       {isOpen && (
         <div className="bg-white w-[350px] sm:w-[400px] h-[500px] rounded-2xl shadow-2xl border flex flex-col mb-4 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           <div className="bg-blue-900 p-4 flex justify-between items-center text-white">

@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle, Loader2, Clock, Shield, Building2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle, Loader2, Clock, Shield, Building2, AlertTriangle } from 'lucide-react';
 import { PHONE_JACOB, PHONE_PREBEN, EMAIL_JACOB, EMAIL_PREBEN, EMAIL_INFO, ADDRESS, GLN_NUMBER, CVR, COMPANY_NAME } from '../constants';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const Contact: React.FC = () => {
+  usePageMeta({
+    title: 'Kontakt – Ring eller skriv | PR Entreprenøren ApS',
+    description: 'Få en uforpligtende snak med Preben eller Jacob. Vi sidder klar ved telefonen og svarer mails dagligt. Akut udrykning under 2 timer på hele Fyn.',
+    canonicalPath: '/kontakt'
+  });
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -12,20 +18,47 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          zipCode: formData.zipCode,
+          email: formData.email || null,
+          problem: formData.message,
+          source: 'form'
+        })
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      const result = await response.json().catch(() => ({ success: false, message: 'Uventet svar fra serveren' }));
 
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', phone: '', zipCode: '', email: '', message: '' });
-    }, 3000);
+      if (!response.ok || !result.success) {
+        setErrorMessage(result.message || 'Der opstod en fejl. Prøv igen eller ring til os.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      setIsSubmitting(false);
+      setSubmitted(true);
+
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', phone: '', zipCode: '', email: '', message: '' });
+      }, 4000);
+    } catch (err) {
+      console.error('Form submit failed:', err);
+      setErrorMessage('Kunne ikke sende beskeden. Tjek din internetforbindelse eller ring til os direkte.');
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -239,6 +272,16 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {errorMessage && (
+                    <div className="flex gap-3 items-start bg-red-50 border-2 border-red-200 text-red-800 rounded-xl p-4">
+                      <AlertTriangle size={20} className="shrink-0 mt-0.5 text-red-600" />
+                      <div className="text-sm">
+                        <p className="font-bold mb-1">Kunne ikke sende beskeden</p>
+                        <p>{errorMessage}</p>
+                        <p className="mt-2">Du er velkommen til at ringe direkte: <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="font-black underline">{PHONE_PREBEN}</a></p>
+                      </div>
+                    </div>
+                  )}
                   <div>
                     <label className="block text-xs font-black text-slate-700 uppercase tracking-widest mb-2">
                       Dit Navn *
@@ -249,6 +292,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      autoComplete="name"
                       className="w-full border-2 border-slate-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all font-bold"
                       placeholder="Fx. Lars Hansen"
                     />
@@ -265,6 +309,8 @@ const Contact: React.FC = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
+                        autoComplete="tel"
+                        inputMode="tel"
                         className="w-full border-2 border-slate-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all font-bold"
                         placeholder="Fx. 12 34 56 78"
                       />
@@ -282,6 +328,8 @@ const Contact: React.FC = () => {
                         required
                         pattern="[0-9]{4}"
                         maxLength={4}
+                        autoComplete="postal-code"
+                        inputMode="numeric"
                         className="w-full border-2 border-slate-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all font-bold"
                         placeholder="Fx. 5000"
                       />
@@ -297,6 +345,8 @@ const Contact: React.FC = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      autoComplete="email"
+                      inputMode="email"
                       className="w-full border-2 border-slate-200 rounded-xl px-4 py-4 focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all font-bold"
                       placeholder="din@email.dk"
                     />

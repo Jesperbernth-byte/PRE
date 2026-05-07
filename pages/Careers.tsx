@@ -1,8 +1,15 @@
 import React from 'react';
 import { Users, Briefcase, TrendingUp, Phone, Mail, ArrowRight, CheckCircle } from 'lucide-react';
 import { PHONE_JACOB, EMAIL_JACOB } from '../constants';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const Careers: React.FC = () => {
+  usePageMeta({
+    title: 'Karriere & Job hos PR Entreprenøren ApS | Kloakmester på Fyn',
+    description: 'Vi søger dygtige håndværkere til vores team på Fyn. Se aktuelle jobopslag og hvordan det er at arbejde hos PR Entreprenøren ApS.',
+    canonicalPath: '/karriere'
+  });
+
   return (
     <div className="pb-20">
       {/* Hero Section */}

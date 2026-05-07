@@ -5,8 +5,15 @@ import { SERVICES, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_
 import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
 import CallButton from '../components/CallButton';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const HomeUpdated: React.FC = () => {
+  usePageMeta({
+    title: 'Autoriseret Kloakmester på Fyn | PR Entreprenøren ApS',
+    description: 'Autoriseret kloakmester på Fyn og i Trekantsområdet. Omfangsdræn, kloakseparering, rottespærrer, TV-inspektion og højvandslukkere. Akut udrykning under 2 timer.',
+    canonicalPath: '/'
+  });
+
   return (
     <div className="pb-20">
       {/* Hero Section */}
@@ -157,7 +164,7 @@ const HomeUpdated: React.FC = () => {
             {SERVICES.map((service) => (
               <Link
                 key={service.id}
-                to={`/services/${service.slug}`}
+                to={`/ydelser/${service.slug}`}
                 className="group relative bg-white border-2 border-slate-100 rounded-3xl overflow-hidden hover:border-orange-600 transition-all hover:shadow-2xl"
               >
                 {service.image && (

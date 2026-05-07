@@ -9,6 +9,7 @@ const RedirectToYdelser: React.FC = () => {
   return <Navigate to={`/ydelser/${slug}`} replace />;
 };
 import LeadChat from './components/LeadChat';
+import MobileCTABar from './components/MobileCTABar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -120,7 +121,7 @@ const Footer: React.FC = () => (
 const App: React.FC = () => {
   return (
     <Router basename="/">
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-[88px] lg:pb-0">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -145,6 +146,7 @@ const App: React.FC = () => {
         <MissionValues />
         <Footer />
         <LeadChat />
+        <MobileCTABar />
         <Analytics />
       </div>
     </Router>

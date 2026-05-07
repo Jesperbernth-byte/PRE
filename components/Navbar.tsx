@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { LOGO_PATH, LOGO_ALT } from '../constants';
+import { Menu, X, Phone } from 'lucide-react';
+import { LOGO_PATH, LOGO_ALT, PHONE_PREBEN } from '../constants';
 import CallButton from './CallButton';
 
 const Navbar: React.FC = () => {
@@ -42,6 +42,14 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+              className="hidden xl:flex items-center gap-2 text-sm font-black text-blue-900 hover:text-orange-600 transition-colors"
+              aria-label={`Ring til PR Entreprenøren – ${PHONE_PREBEN}`}
+            >
+              <Phone size={18} className="text-orange-600" />
+              {PHONE_PREBEN}
+            </a>
             <CallButton className="px-6 py-3 text-sm" />
           </div>
 

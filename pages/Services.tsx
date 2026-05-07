@@ -2,8 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 import { SERVICES, PHONE_PREBEN } from '../constants';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const Services: React.FC = () => {
+  usePageMeta({
+    title: 'Ydelser – Kloak, Dræn & Entreprenør på Fyn | PR Entreprenøren',
+    description: 'Se alle ydelser fra PR Entreprenøren ApS: omfangsdræn, kloakseparering, rottespærre, TV-inspektion, højvandslukker, minirensningsanlæg, brøndrenovering og mere på Fyn.',
+    canonicalPath: '/ydelser'
+  });
+
   return (
     <div className="pb-20">
       {/* Hero Section */}
@@ -25,7 +32,7 @@ const Services: React.FC = () => {
             {SERVICES.map((service) => (
               <Link
                 key={service.id}
-                to={`/services/${service.slug}`}
+                to={`/ydelser/${service.slug}`}
                 className="group bg-white border-2 border-slate-100 rounded-3xl overflow-hidden hover:border-orange-600 transition-all hover:shadow-2xl"
               >
                 {service.image && (

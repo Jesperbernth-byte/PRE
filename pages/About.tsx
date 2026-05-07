@@ -1,8 +1,15 @@
 import React from 'react';
 import { Award, Target, CheckCircle2, ExternalLink } from 'lucide-react';
 import { USPs, CERTIFICATIONS, COMPANY_HISTORY } from '../constants';
+import { usePageMeta } from '../lib/usePageMeta';
 
 const About: React.FC = () => {
+  usePageMeta({
+    title: 'Om Os – Autoriseret Kloakmester på Fyn | PR Entreprenøren ApS',
+    description: 'Mød PR Entreprenøren ApS – autoriseret kloakmester med base i Broby. Læs om vores historie, autorisationer, værdier og mød Preben og Jacob.',
+    canonicalPath: '/om-os'
+  });
+
   return (
     <div className="pb-20">
       {/* Hero Section */}

@@ -159,8 +159,13 @@ const ServiceDetail: React.FC = () => {
             <ArrowLeft size={16} /> Alle services
           </Link>
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-orange-600 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest mb-6">
-              <Shield size={14} /> Autoriseret kloakmester
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-flex items-center gap-2 bg-orange-600 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest">
+                <Shield size={14} /> Autoriseret kloakmester
+              </span>
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest">
+                <CheckCircle size={14} /> 5 års garanti
+              </span>
             </div>
             <h1 className="text-4xl sm:text-6xl font-black mb-6 leading-tight uppercase italic tracking-tighter">
               {service.title}
@@ -211,24 +216,47 @@ const ServiceDetail: React.FC = () => {
                 Hvad er {service.title.toLowerCase()}?
               </h2>
               <div className="text-lg text-slate-700 leading-relaxed mb-8 space-y-6">
-                {(service.longDescription || service.description).split('\n\n').map((paragraph, i) => {
-                  // Check if this looks like a heading (short line, no period at end, not first paragraph)
-                  const isHeading = i > 0 && paragraph.length < 80 && !paragraph.endsWith('.') && !paragraph.endsWith(',');
-
-                  if (isHeading) {
-                    return (
+                {(() => {
+                  const paragraphs = (service.longDescription || service.description).split('\n\n');
+                  const ctaIndex = Math.floor(paragraphs.length / 2);
+                  return paragraphs.map((paragraph, i) => {
+                    const isHeading = i > 0 && paragraph.length < 80 && !paragraph.endsWith('.') && !paragraph.endsWith(',');
+                    const node = isHeading ? (
                       <h3 key={i} className="text-xl font-black text-blue-900 mt-8 mb-2">
                         {paragraph}
                       </h3>
+                    ) : (
+                      <p key={i} className="leading-relaxed">
+                        {paragraph}
+                      </p>
                     );
-                  }
 
-                  return (
-                    <p key={i} className="leading-relaxed">
-                      {paragraph}
-                    </p>
-                  );
-                })}
+                    if (i === ctaIndex && paragraphs.length > 4) {
+                      return (
+                        <React.Fragment key={`frag-${i}`}>
+                          {node}
+                          <div className="bg-gradient-to-r from-orange-50 to-orange-100/50 border-l-8 border-orange-600 rounded-r-2xl p-6 my-8 not-prose">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+                              <div>
+                                <p className="text-sm font-black text-orange-600 uppercase tracking-widest mb-1">Spørgsmål til {service.title.toLowerCase()}?</p>
+                                <p className="text-base font-bold text-blue-900">Få en gratis besigtigelse og fast pris uden forpligtelser.</p>
+                              </div>
+                              <div className="flex gap-3 shrink-0">
+                                <a
+                                  href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+                                  className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-black px-5 py-3 rounded-xl whitespace-nowrap transition-colors"
+                                >
+                                  <Shield size={18} className="hidden sm:inline" /> Ring {PHONE_PREBEN}
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </React.Fragment>
+                      );
+                    }
+                    return node;
+                  });
+                })()}
               </div>
 
               {/* Image gallery */}
@@ -238,7 +266,8 @@ const ServiceDetail: React.FC = () => {
                     <div key={i} className="rounded-2xl overflow-hidden aspect-square bg-slate-100">
                       <img
                         src={img}
-                        alt={`${service.title} - billede ${i + 2}`}
+                        alt={`${service.title} udført af PR Entreprenøren ApS, autoriseret kloakmester på Fyn`}
+                        loading="lazy"
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
                       />
@@ -289,6 +318,30 @@ const ServiceDetail: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              {/* Verificerbar autorisation */}
+              <div className="bg-white rounded-3xl p-8 border-2 border-blue-900">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-blue-900 text-white p-2 rounded-xl">
+                    <Shield size={20} />
+                  </div>
+                  <h3 className="font-black text-blue-900 uppercase tracking-wide text-sm">Verificerbar autorisation</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Tjek selv at vi er registreret som autoriseret kloakmester hos Sikkerhedsstyrelsen.
+                </p>
+                <a
+                  href="https://www.sik.dk/registre/autorisationsregister?search_index=46075536&forretningsomr=Kloakmestervirksomhed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-black text-orange-600 hover:text-orange-700 transition-colors"
+                >
+                  Se autorisation hos SIK <ArrowRight size={14} />
+                </a>
+                <div className="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500">
+                  CVR <span className="font-bold text-slate-700">{CVR}</span> · Autorisation reg. nr. <span className="font-bold text-slate-700">46075536</span>
+                </div>
               </div>
             </div>
           </div>

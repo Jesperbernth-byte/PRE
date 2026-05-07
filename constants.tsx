@@ -386,15 +386,78 @@ Vi udfører naturpleje for kommuner (vandløbsforvaltning, vej og park), vandlø
     id: '10',
     slug: 'miniransanlaeg',
     image: '/pictures/Miniransanlæg/20210615_122917.jpg',
-    title: 'Miniransanlæg & Renseanlæg',
-    description: 'Installation og service af private renseanlæg. Professionel løsning til ejendomme uden offentlig kloak.',
-    longDescription: 'Bor du uden for kloakerede områder? Vi installerer og servicerer miniransanlæg der sikrer lovlig rensning af spildevand. Vi håndterer alt fra ansøgninger til kommunen, udgravning, installation og efterfølgende service. Alle anlæg lever op til gældende miljøkrav.',
+    title: 'Minirensningsanlæg & Renseanlæg',
+    description: 'Privat spildevandsrensning til ejendomme uden offentlig kloak. Vi projekterer, installerer og servicerer minirensningsanlæg efter kommunens renseklasse-krav.',
+    longDescription: `Et minirensningsanlæg – også kaldet privat renseanlæg – er løsningen for ejendomme i det åbne land, hvor der ikke er adgang til offentlig kloak. I stedet for at lede spildevandet direkte ud i en sivebrønd eller en gammel septiktank, renser anlægget vandet mekanisk, biologisk og evt. kemisk inden det udledes til vandløb, dræn eller nedsivningsanlæg. Et korrekt udført minirensningsanlæg lever op til miljøstyrelsens krav, beskytter grundvandet og fjorde, og giver dig som lodsejer ro i maven over for kommunens spildevandsplan.
+
+Hvorfor er minirensningsanlæg blevet et krav?
+
+Mange ældre ejendomme i det åbne land har historisk afledt spildevand til en bundfældningstank med efterfølgende sivedræn eller direkte udledning til en grøft. Det fungerede måske dengang, men i dag ved vi at de gamle løsninger forurener vandløb, søer og kystvande med næringsstoffer, organisk stof og bakterier. Som led i de statslige vandområdeplaner har samtlige danske kommuner i en årrække udsendt påbud om forbedret spildevandsrensning til ejendomme i særligt sårbare områder. Når du modtager et sådant påbud, har du typisk 1-2 år til at få en lovlig løsning på plads – og hvis du ikke gør det, kan kommunen pålægge dagbøder eller udføre arbejdet på din regning.
+
+Renseklasser – hvad kræver kommunen?
+
+Kommunen fastsætter en renseklasse for din ejendom ud fra vandområdets sårbarhed. De fire renseklasser er:
+
+O – Reduktion af organisk stof. Den mindst krævende klasse, brugt i mindre sårbare områder.
+
+OP – Organisk stof + fosfor. Anvendes hvor vandområdet er fosforfølsomt – fx ved søer.
+
+SO – Skærpet organisk stof + nitrifikation. Bruges hvor iltforbrugende stoffer skal reduceres yderligere.
+
+SOP – Den strengeste klasse: skærpet organisk stof, nitrifikation og fosforfjernelse. Kræves i de mest sårbare områder.
+
+Vi vurderer dit konkrete krav sammen med kommunen og vælger et anlæg der er typegodkendt til den foreskrevne renseklasse. Du skal ikke selv læse miljølovgivning – det er vores job.
+
+Sådan er et minirensningsanlæg opbygget
+
+Et typisk minirensningsanlæg består af tre faser i ét nedgravet beton- eller plastanlæg:
+
+1. Bundfældning (forrensning): Fast affald og fedt bundfældes i den første kammer. Slammet samles og tømmes af slamsuger med jævne mellemrum.
+
+2. Biologisk rensning: I næste trin ledes spildevandet til en biozone, hvor mikroorganismer nedbryder de organiske stoffer. Dette er hjertet i anlægget – det er her hovedparten af rensningen sker.
+
+3. Efterklaring og evt. fosforfjernelse: I tredje fase klarnes det rensede vand, og hvis renseklassen kræver det, tilsættes fældningsmiddel der binder fosforen.
+
+Det rensede vand udledes til vandløb, dræn, sivebrønd eller nedsivningsanlæg afhængigt af de lokale forhold og kommunens tilladelse.
+
+Vi installerer typegodkendte anlæg fra anerkendte producenter
+
+Markedet for minirensningsanlæg har flere typegodkendte producenter. Vi installerer anlæg fra anerkendte leverandører hvor reservedele, service og dokumentation er sikret mange år frem. Vi rådgiver om typevalg ud fra ejendommens størrelse (PE-belastning), renseklasse, jordbundsforhold og dine præferencer for service og drift.
+
+Sådan foregår en installation trin for trin
+
+Vi tager hånd om hele processen, så du som lodsejer slipper for koordinering med flere parter:
+
+Besigtigelse og rådgivning: Vi gennemgår grunden, eksisterende afløb, udledningsforhold og kommunens krav til renseklasse.
+
+Projektering og myndighedsansøgning: Vi udarbejder en samlet projektløsning med tegninger, dimensionering og udledningsplan, og indsender ansøgning til kommunen om udledningstilladelse.
+
+Udgravning og installation: Når tilladelsen er på plads, udgraver vi til det nye anlæg, sløjfer eventuel gammel septiktank, installerer det nye minirensningsanlæg og tilkobler både indløb (huset), strøm (mange anlæg er strømforbrugende) og udløb (vandløb, dræn eller nedsivning).
+
+Idriftsættelse og oplæring: Vi sætter anlægget i drift, indstiller styring og alarm, og gennemgår med dig hvordan du selv kan se status, og hvornår der skal kaldes service.
+
+Færdigmelding og dokumentation: Vi færdigmelder til kommunen med komplet dokumentation, og du modtager installationspapirer, brugsanvisning og en plan for service.
+
+Service, slamtømning og garanti
+
+Et minirensningsanlæg er en mekanisk og biologisk maskine – og som al anden teknik kræver det service for at fungere optimalt. De fleste typegodkendte anlæg kræver et lovpligtigt årligt servicebesøg, hvor vi kontrollerer styring, pumper, alarm, biologi og udledning. Slammet skal typisk tømmes 1-2 gange årligt af kommunens kontraherede slamsuger – det sørger kommunen typisk selv for via den obligatoriske tømningsordning.
+
+Vi tilbyder serviceaftaler hvor vi automatisk kontakter dig når det er tid til service – så slipper du for at huske det selv. Hvis alarmen lyser, eller noget driller, rykker vi hurtigt ud. Som autoriseret kloakmestervirksomhed under DM&E Kloakmestergarantien giver vi 5 års garanti på vores arbejde, og du har fuld dokumentation til både kommune, forsikring og en kommende køber.
+
+Tilskud og finansiering
+
+I særlige tilfælde kan kommunen eller staten yde tilskud eller låneordninger til etablering af forbedret spildevandsrensning, særligt for pensionister med lav indkomst. Du kan også vælge at lade kommunens spildevandsforsyning forestå driften (kontraktligt medlemskab), så du kun betaler en årlig afgift og slipper for selv at vedligeholde anlægget. Vi rådgiver gerne om de økonomiske muligheder og hjælper med ansøgninger.`,
     icon: 'Droplets',
     faqs: [
-      { question: 'Hvad er et miniransanlæg?', answer: 'Et privat renseanlæg til ejendomme uden adgang til offentlig kloak. Det renser spildevand mekanisk og biologisk før udledning.' },
-      { question: 'Skal anlægget serviceres?', answer: 'Ja, mindst én gang årligt skal slam tømmes og anlægget efterses. Vi tilbyder serviceaftaler.' },
-      { question: 'Hvad koster installation?', answer: 'Prisen afhænger af antal personer i husstanden, jordbundsforhold og valg af anlæg. Kontakt os for et uforpligtende tilbud.' },
-      { question: 'Skal jeg have tilladelse?', answer: 'Ja, kommunen skal godkende installation. Vi håndterer ansøgningen for dig.' }
+      { question: 'Hvad er et minirensningsanlæg?', answer: 'Et minirensningsanlæg er et privat renseanlæg til ejendomme uden adgang til offentlig kloak. Det renser spildevand mekanisk, biologisk og evt. kemisk, så det kan udledes lovligt til vandløb, dræn eller nedsivning. Anlægget er typegodkendt til en bestemt renseklasse fastsat af kommunen.' },
+      { question: 'Skal anlægget serviceres?', answer: 'Ja. De fleste typegodkendte minirensningsanlæg kræver et lovpligtigt årligt servicebesøg, hvor vi kontrollerer styring, pumper, alarm og biologi. Slammet tømmes typisk 1-2 gange årligt via kommunens slamtømningsordning. Vi tilbyder serviceaftaler og kontakter dig automatisk.' },
+      { question: 'Hvad koster installation af et minirensningsanlæg?', answer: 'Prisen afhænger af antal personer i husstanden (PE-belastning), renseklasse, jordbundsforhold, adgangsforhold og valg af anlæg. Vi giver altid fast pris efter besigtigelse og myndighedsansøgning – ingen overraskelser.' },
+      { question: 'Skal jeg have tilladelse fra kommunen?', answer: 'Ja. Kommunen skal godkende både selve anlægget og udledningen til vandløb, dræn eller nedsivning. Vi håndterer hele ansøgningsprocessen og udarbejder den nødvendige projektdokumentation.' },
+      { question: 'Hvilken renseklasse har min ejendom brug for?', answer: 'Det fastsætter kommunen ud fra vandområdets sårbarhed. Renseklasserne er O, OP, SO og SOP, hvor SOP er den strengeste. Vi tjekker kravene for din adresse og vælger et anlæg der er typegodkendt til netop den klasse.' },
+      { question: 'Kan jeg blive påbudt at få minirensningsanlæg?', answer: 'Ja. Hvis din ejendom ligger i et område med påbud om forbedret spildevandsrensning, har du typisk 1-2 år til at etablere en lovlig løsning. Hvis du ikke gør det, kan kommunen pålægge dagbøder eller udføre arbejdet på din regning. Vi hjælper gerne med at få sagen i mål inden fristen.' },
+      { question: 'Kan jeg vælge kontraktligt medlemskab i stedet?', answer: 'I mange kommuner kan du vælge at lade kommunens spildevandsforsyning stå for driften mod en årlig afgift, i stedet for selv at eje og vedligeholde anlægget. Vi rådgiver om for- og ulemper ved de to modeller, så du kan træffe det rigtige valg for din situation.' },
+      { question: 'Hvor lang tid tager installationen?', answer: 'Selve installationen tager typisk 2-4 dage afhængigt af jordbund, dybde og udledningsforhold. Hertil kommer sagsbehandlingstid hos kommunen, der varierer fra 1 til 3 måneder. Vi sætter ansøgningsprocessen i gang så hurtigt som muligt.' },
+      { question: 'Hvor længe holder et minirensningsanlæg?', answer: 'Selve tanken og hovedkomponenterne har typisk en levetid på 25-30+ år ved korrekt service. Mekaniske dele som pumper, blæsere og styring kan i levetiden udskiftes løbende efter behov. Med en serviceaftale sikrer du optimal drift hele vejen.' }
     ]
   },
   {
@@ -655,7 +718,7 @@ export const CASES = [
   },
   {
     id: 4,
-    title: "Miniransanlæg installation på Sydfyn",
+    title: "Minirensningsanlæg installation på Sydfyn",
     problem: "Ingen mulighed for tilslutning til offentlig kloak",
     solution: "Komplet installation af 5 PE miniransanlæg inkl. ansøgning og godkendelse",
     result: "Godkendt første gang - fuldt funktionelt renseanlæg",

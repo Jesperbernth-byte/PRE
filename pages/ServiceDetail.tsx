@@ -40,7 +40,7 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   },
   'miniransanlaeg': {
     folder: 'Miniransanlæg',
-    images: ['20210615_122917.jpg', '20210615_145201.jpg', '20210615_171721.jpg']
+    images: ['20210615_122917.jpg', '20210615_145201.jpg', '20210616_080635.jpg', '20210618_071812.jpg', '20210618_104709.jpg', '20210619_164538.jpg']
   },
   'broend-renovering': {
     folder: 'Brønd renovering',

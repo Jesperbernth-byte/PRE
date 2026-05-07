@@ -11,12 +11,12 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
     images: ['omfangs-forside.jpg', '20210628_065610.jpg', '20210628_065624.jpg', '20210628_100202.jpg', '20210629_124507.jpg']
   },
   'kloakarbejde': {
-    folder: 'Separering',
-    images: ['20210713_123952.jpg', '20211020_154233.jpg', '20211026_100818.jpg']
+    folder: 'Kloak arbejde',
+    images: ['20220202_092520.jpg', '20220202_093331.jpg', '20220202_093421.jpg', '20220906_085834.jpg']
   },
   'rottespaerre': {
     folder: 'Rottespærre',
-    images: ['20220806_122601.jpg', '20220806_122607.jpg', '20220806_122611.jpg']
+    images: ['Messenger_creation_059DEB20-52BD-4B5C-94F2-4EF3D65CD87B.jpeg', 'Messenger_creation_3B80A06E-8D25-4815-A81A-74B73D66A74F.jpeg', '2.png']
   },
   'hoejvandslukker': {
     folder: 'Højvandslukke',
@@ -24,11 +24,11 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   },
   'tv-inspektion': {
     folder: 'Tv-inspektion',
-    images: ['20210904_112241.jpg', '20210904_132016.jpg', '20211126_151126.jpg']
+    images: ['20260126_101025.jpg', '20260126_101038.jpg', '20260126_101055.jpg', '20260126_101101.jpg']
   },
   'lar-anlaeg': {
-    folder: 'omfangsdræn',
-    images: ['20210628_100206.jpg', '20210629_124507.jpg', '20210628_100202.jpg']
+    folder: 'Separering',
+    images: ['20220520_085810.jpg', '20220520_091921.jpg', '20220906_113455.jpg', '20220907_134530.jpg']
   },
   'entreprenoer-arbejde': {
     folder: 'Anlægsarbejde',
@@ -44,7 +44,7 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   },
   'broend-renovering': {
     folder: 'Brønd renovering',
-    images: ['20211027_142831.jpg', '20220225_113752.jpg', '20220225_114338.jpg']
+    images: ['20211027_142831.jpg', '20220225_113752.jpg', '20220225_124055.jpg', '20220411_113141.jpg', '20220411_140654.jpg', '20230314_094407.jpg']
   },
   'olietanke': {
     folder: 'Olie tanke',
@@ -56,7 +56,7 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   },
   'vandledning': {
     folder: 'Vandledning',
-    images: ['20210908_100009.jpg', '20220101_135349.jpg', '20220101_135352.jpg']
+    images: ['20220625_130357.jpg', '20220625_132304.jpg', '20220625_134026.jpg']
   }
 };
 

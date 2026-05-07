@@ -75,8 +75,7 @@ const Footer: React.FC = () => (
           className="w-16 h-16 rounded-xl object-cover mb-4 border-2 border-white/20"
         />
         <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">Direktør</div>
-        <h4 className="text-xl font-black text-white mb-1">Preben</h4>
-        <p className="text-slate-400 text-xs mb-4">Grundlægger & overordnet ansvarlig</p>
+        <h4 className="text-xl font-black text-white mb-4">Preben</h4>
         <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors mb-2 text-sm font-bold">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
           {PHONE_PREBEN}

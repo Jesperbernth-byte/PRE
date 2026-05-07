@@ -52,7 +52,7 @@ const CallButton: React.FC<CallButtonProps> = ({ className = '', variant = 'prim
                     className="w-16 h-16 rounded-xl object-cover border-2 border-white/20"
                   />
                   <div className="flex-1">
-                    <div className="text-xs text-orange-400 font-black uppercase tracking-wider mb-1">Kloakmester</div>
+                    <div className="text-xs text-orange-400 font-black uppercase tracking-wider mb-1">Daglig Leder</div>
                     <div className="text-xl font-black mb-1">Jacob</div>
                     <div className="flex items-center gap-2 text-white/90">
                       <Phone size={16} />

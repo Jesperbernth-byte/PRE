@@ -15,8 +15,9 @@ export const PHONE_PREBEN = siteContent.contacts.preben.phone;
 export const PHONE_JACOB = siteContent.contacts.jacob.phone;
 export const EMAIL_PREBEN = siteContent.contacts.preben.email;
 export const EMAIL_JACOB = siteContent.contacts.jacob.email;
+export const EMAIL_INFO = siteContent.contacts.info.email;
 export const EMAIL_FAKTURA = siteContent.contacts.faktura.email;
-export const EMAIL = siteContent.contacts.jacob.email;
+export const EMAIL = siteContent.contacts.info.email;
 
 export const LOGO_PATH = siteContent.header.logoPath;
 export const LOGO_ALT = siteContent.header.logoAlt;
@@ -675,16 +676,16 @@ export const TEAM = [
     role: "Direktør",
     phone: "22 96 66 61",
     email: "pr@prentreprenoer.dk",
-    description: "Virksomhedens grundlægger med årtiers erfaring inden for entreprenørarbejde og maskinstationsopgaver. Ansvarlig for overordnet strategi og sikrer høj kvalitet i alle projekter.",
-    image: "/team/preben1.jpg"
+    description: "",
+    image: "/team/preben-close.png"
   },
   {
     name: "Jacob",
-    role: "Daglig Leder & Autoriseret Kloakmester",
+    role: "Daglig Leder",
     phone: "24 94 66 61",
     email: "jeh@prentreprenoer.dk",
-    description: "Fagligt ansvarlig for både kloak- og asbestarbejde. Står for daglig drift, tekniske vurderinger og er din primære kontakt ved alle kloakrelaterede spørgsmål.",
-    image: "/team/jacob1.jpg"
+    description: "Autoriseret kloakmester. Fagligt ansvarlig for daglig drift, tekniske vurderinger og din primære kontakt ved kloakrelaterede spørgsmål.",
+    image: "/team/jacob-close.png"
   }
 ];
 

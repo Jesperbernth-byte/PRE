@@ -116,7 +116,7 @@ const Memberships: React.FC = () => {
                   />
                 </div>
                 <div className="p-5 border-t border-slate-100">
-                  <h3 className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1">{cert.name}</h3>
+                  <h3 className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1 break-words hyphens-auto" lang="da">{cert.name}</h3>
                   <p className="text-xs text-slate-500 mb-3">{cert.issuer}</p>
                   {(cert as any).verificationLink && (
                     <a

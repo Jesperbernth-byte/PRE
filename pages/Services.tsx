@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
-import { SERVICES, PHONE_PREBEN } from '../constants';
+import { SERVICES, PHONE_PREBEN, getOrderedServices } from '../constants';
 import { usePageMeta } from '../lib/usePageMeta';
 
 const Services: React.FC = () => {
@@ -29,7 +29,7 @@ const Services: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service) => (
+            {getOrderedServices(SERVICES).map((service) => (
               <Link
                 key={service.id}
                 to={`/ydelser/${service.slug}`}

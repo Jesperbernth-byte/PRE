@@ -7,14 +7,13 @@ import CallButton from './CallButton';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
+  const navLinks: { name: string; href: string; className?: string }[] = [
     { name: 'Forside', href: '/' },
     { name: 'Ydelser', href: '/ydelser' },
     { name: 'Om os', href: '/om-os' },
     { name: 'Medlemskaber', href: '/medlemskaber' },
     { name: 'Karriere', href: '/karriere' },
     { name: 'Kontakt', href: '/kontakt' },
-    { name: 'Admin', href: '/admin', className: 'text-xs text-slate-400' },
   ];
 
   return (

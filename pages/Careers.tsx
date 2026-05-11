@@ -136,6 +136,64 @@ const Careers: React.FC = () => {
             Aktuelle Stillinger
           </h2>
 
+          {/* Aktiv stilling – Elev/lærling efter sommerferien 2026 */}
+          <div className="bg-white rounded-3xl p-8 border-2 border-orange-600 mb-6 shadow-xl shadow-orange-600/10">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="inline-flex items-center gap-2 bg-orange-600 text-white px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest">
+                <Briefcase size={14} /> Aktiv stilling
+              </span>
+              <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-900 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest">
+                Start efter sommerferien 2026
+              </span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-blue-900 mb-3">
+              Kloakmesterelev / -lærling
+            </h3>
+            <p className="text-lg text-slate-700 leading-relaxed mb-4">
+              Vil du lære kloakfaget hos en lokal autoriseret kloakmester på Fyn? Vi søger en elev eller lærling med start efter sommerferien 2026, der har lyst til at uddanne sig hos os og være med fra starten af en virksomhed i vækst.
+            </p>
+            <p className="text-slate-700 leading-relaxed mb-6">
+              Hos os får du varieret hverdag med opgaver som omfangsdræn, kloakseparering, TV-inspektion, rottespærrer, højvandslukkere og entreprenørarbejde i hele Faaborg-Midtfyn, Assens og Odense. Du arbejder side om side med erfarne folk og bliver oplært i alt fra praktisk håndværk til kundedialog og dokumentation.
+            </p>
+            <div className="bg-slate-50 rounded-2xl p-6 mb-6">
+              <h4 className="font-black text-blue-900 mb-3 text-sm uppercase tracking-wide">Vi forventer at du:</h4>
+              <ul className="space-y-2">
+                {[
+                  'Er fysisk frisk og kan lide at arbejde udendørs',
+                  'Har kørekort (eller er i gang) — så du kan komme på pladser',
+                  'Tager initiativ, er nysgerrig og lærer hurtigt',
+                  'Møder til tiden, gør tingene færdige og siger til når noget undrer dig',
+                  'Har lyst til at uddanne dig som kloakmester på sigt'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle className="text-green-600 shrink-0 mt-0.5" size={18} />
+                    <span className="text-slate-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-orange-50 border-l-4 border-orange-600 p-5 rounded-r-xl mb-6">
+              <p className="font-bold text-blue-900 mb-2">Sådan søger du</p>
+              <p className="text-slate-700 leading-relaxed">
+                Send et kort CV og en kort beskrivelse af hvorfor du gerne vil lære faget hos os til Jacob på <a href={`mailto:${EMAIL_JACOB}?subject=Ansøgning – Elev/lærling 2026`} className="text-orange-600 font-bold hover:text-orange-700">{EMAIL_JACOB}</a>, eller ring direkte for en uformel snak. Vi læser ansøgninger løbende.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`mailto:${EMAIL_JACOB}?subject=Ansøgning – Elev/lærling 2026`}
+                className="flex-1 bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-xl font-black flex items-center justify-center gap-2 transition-all shadow-lg"
+              >
+                <Mail size={18} /> Send ansøgning
+              </a>
+              <a
+                href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+                className="flex-1 bg-blue-900 hover:bg-blue-800 text-white px-6 py-4 rounded-xl font-black flex items-center justify-center gap-2 transition-all"
+              >
+                <Phone size={18} /> Ring til Jacob
+              </a>
+            </div>
+          </div>
+
           <div className="bg-white rounded-3xl p-8 border-2 border-slate-100 mb-6 hover:border-orange-600 transition-all">
             <div className="flex items-center gap-3 mb-4">
               <Briefcase className="text-orange-600" size={32} />

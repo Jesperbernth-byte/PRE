@@ -27,6 +27,10 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
     folder: 'Tv-inspektion',
     images: ['20260126_101025.jpg', '20260126_101038.jpg', '20260126_101055.jpg', '20260126_101101.jpg']
   },
+  'spuling': {
+    folder: 'Tv-inspektion',
+    images: ['20260126_101038.jpg', '20260126_101107.jpg', '20260126_101120.jpg', '20260126_101142.jpg']
+  },
   'lar-anlaeg': {
     folder: 'Separering',
     images: ['20220520_085810.jpg', '20220520_091921.jpg', '20220906_113455.jpg', '20220907_134530.jpg']
@@ -295,7 +299,7 @@ const ServiceDetail: React.FC = () => {
                 <div className="mt-6 pt-6 border-t border-white/10">
                   <div className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-3">Kontakt direkte</div>
                   <div className="space-y-2 text-sm text-slate-300">
-                    <div>Jacob (kloakmester): <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-orange-400 font-bold hover:text-orange-300">{PHONE_JACOB}</a></div>
+                    <div>Jacob (daglig leder & kloakmester): <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="text-orange-400 font-bold hover:text-orange-300">{PHONE_JACOB}</a></div>
                     <div>Preben (direktør): <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="text-orange-400 font-bold hover:text-orange-300">{PHONE_PREBEN}</a></div>
                   </div>
                 </div>

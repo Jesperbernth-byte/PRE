@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, Camera, Zap, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SERVICES, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_IMAGE } from '../constants';
+import { SERVICES, CERTIFICATIONS, FAQ_GENERAL, HERO_TITLE, HERO_SUBTITLE, HERO_IMAGE, getOrderedServices } from '../constants';
 import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
 import CallButton from '../components/CallButton';
@@ -101,22 +101,39 @@ const HomeUpdated: React.FC = () => {
             </a>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            {CERTIFICATIONS.map((cert, i) => (
-              <div key={i} className="bg-white rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[180px] max-w-[220px] overflow-hidden">
-                <div className="bg-slate-50 p-6 flex items-center justify-center h-40 group-hover:bg-orange-50 transition-colors">
-                  <img
-                    src={cert.badge}
-                    alt={cert.name}
-                    className="max-h-28 max-w-full object-contain"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
-                </div>
-                <div className="p-4 border-t border-slate-100">
-                  <div className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1">{cert.name}</div>
-                  <div className="text-xs text-slate-500">{cert.issuer}</div>
-                </div>
-              </div>
-            ))}
+            {CERTIFICATIONS.map((cert, i) => {
+              const inner = (
+                <>
+                  <div className="bg-slate-50 p-6 flex items-center justify-center h-40 group-hover:bg-orange-50 transition-colors">
+                    <img
+                      src={cert.badge}
+                      alt={cert.name}
+                      className="max-h-28 max-w-full object-contain"
+                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                    />
+                  </div>
+                  <div className="p-4 border-t border-slate-100">
+                    <div className="font-black text-blue-900 text-sm uppercase tracking-wide mb-1 break-words hyphens-auto" lang="da">{cert.name}</div>
+                    <div className="text-xs text-slate-500">{cert.issuer}</div>
+                  </div>
+                </>
+              );
+              const wrapperClass = "bg-white rounded-2xl shadow-sm border-2 border-slate-100 hover:border-orange-600 transition-all group flex-1 min-w-[180px] max-w-[220px] overflow-hidden";
+              return cert.verificationLink ? (
+                <a
+                  key={i}
+                  href={cert.verificationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${wrapperClass} block`}
+                  aria-label={`Verificér ${cert.name} hos ${cert.issuer}`}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div key={i} className={wrapperClass}>{inner}</div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -161,7 +178,7 @@ const HomeUpdated: React.FC = () => {
             <p className="text-slate-600 font-medium text-lg">Professionelt og autoriseret håndværk</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service) => (
+            {getOrderedServices(SERVICES).map((service) => (
               <Link
                 key={service.id}
                 to={`/ydelser/${service.slug}`}

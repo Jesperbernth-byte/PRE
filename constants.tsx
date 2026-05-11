@@ -29,6 +29,33 @@ export const HERO_IMAGE = siteContent.hero.imagePath;
 export const FOOTER_TAGLINE = siteContent.footer.tagline;
 export const SERVICE_AREA = siteContent.footer.serviceArea;
 
+// Display order — tv-inspektion og spuling fremhæves som primære ydelser
+export const SERVICE_DISPLAY_ORDER: string[] = [
+  'tv-inspektion',
+  'spuling',
+  'omfangsdraen',
+  'kloakarbejde',
+  'rottespaerre',
+  'hoejvandslukker',
+  'lar-anlaeg',
+  'miniransanlaeg',
+  'broend-renovering',
+  'olietanke',
+  'entreprenoer-arbejde',
+  'naturpleje',
+  'fundament',
+  'vandledning'
+];
+
+export function getOrderedServices(services: Service[]): Service[] {
+  const orderMap = new Map(SERVICE_DISPLAY_ORDER.map((slug, i) => [slug, i]));
+  return [...services].sort((a, b) => {
+    const ai = orderMap.get(a.slug) ?? 999;
+    const bi = orderMap.get(b.slug) ?? 999;
+    return ai - bi;
+  });
+}
+
 export const SERVICES: Service[] = [
   {
     id: '1',
@@ -640,6 +667,62 @@ Ved akutte vandledningsbrud rykker vi typisk ud inden for få timer – også af
       { question: 'Hvilket rørmateriale anvender I?', answer: 'Vi bruger godkendte PE-rør (polyethylen) i drikkevandskvalitet, lagt i frostfri dybde med korrekt forankring og samling. Materialet er holdbart, fleksibelt og lever op til alle krav fra vandværk og kommune.' },
       { question: 'Hvor langt holder en ny vandledning?', answer: 'En korrekt udført vandledning i moderne PE-rør holder typisk 50+ år uden vedligeholdelse. Det er en investering der varer ud over én generation.' }
     ]
+  },
+  {
+    id: '15',
+    slug: 'spuling',
+    image: '/pictures/Tv-inspektion/20260126_101038.jpg',
+    title: 'Spuling af Kloak & Afløb',
+    description: 'Højtryksspuling af kloak, afløb, tagrender og brønde. Vi fjerner blokeringer, fedt, rødder og aflejringer hurtigt og effektivt – før vi behøver at grave.',
+    longDescription: `Spuling er den hurtigste, billigste og mest skånsomme måde at få en blokeret kloak eller et tilstoppet afløb til at fungere igen. Med højtryksspuling kan vi fjerne de fleste blokeringer på under en time uden at grave – og uden at ødelægge rørene. Hos PR Entreprenøren har vi spuleudstyr klar i bilen, så vi rykker hurtigt ud ved akutte tilstopninger i hele Faaborg-Midtfyn, Assens og Odense.
+
+Hvornår skal du spule kloakken?
+
+Der er typiske tegn på at din kloak trænger til en spuling: vandet løber langsomt fra toilet, vask eller gulvafløb. Det bobler i afløbene når du skyller toilettet eller tømmer vasken. Du lugter kloak inde eller ude. Der står vand i en samlebrønd eller indkørsel efter regn. Tagrender og nedløbsrør er stoppet af blade, mos og pile-frø. Eller der er kommet en akut tilstopning hvor intet vand kan løbe væk.
+
+I de fleste tilfælde er årsagen aflejringer af fedt, sæberester, hår, blade, sand eller indvoksede rødder. Højtryksspuling fjerner alt det på én gang og giver dig fri afledning igen.
+
+Sådan foregår en spuling
+
+Vi medbringer professionelt spuleudstyr — typisk en mobil højtryksenhed med slange, dyser i forskellige typer (lige, vinklet, rod-fræsende) og adgang til rør fra Ø50 mm og opefter. Selve arbejdet foregår sådan:
+
+Lokalisering af problemet: Vi finder den eksisterende inspektionsbrønd eller renselem og vurderer hvor blokeringen sandsynligvis sidder.
+
+Spuling med tilpasset dyse: Vi vælger den rigtige dyse til opgaven. Almindelige aflejringer fjernes med en standarddyse. Hårdere blokeringer som fedt eller sand kræver en kraftigere dyse. Rødder fjernes med en rod-fræsende dyse der skærer rødderne af inde i røret.
+
+Kontrol med kamera: Hvis blokeringen er hårdnakket eller hvis vi mistænker en skade i røret, kombinerer vi spulingen med en TV-inspektion. Så ser vi præcis hvad der var galt og om der er behov for yderligere indgreb (fx en reparation eller punktforing).
+
+Dokumentation: Du får en kort rapport på hvad vi har fundet og udført, så du har papir på det hvis det skal bruges over for forsikring eller en kommende køber.
+
+Spuling vs. opgravning – hvad er forskellen?
+
+Spuling løser blokeringer der ikke skyldes strukturelle skader. Hvis røret er knust, sammensunket eller har et stort brud, fjerner spuling kun symptomet midlertidigt — så vil problemet komme igen. Derfor anbefaler vi ofte en TV-inspektion efter spuling hvis problemet er tilbagevendende. Hvis røret reelt er beskadiget, planlægger vi opgravning eller no-dig-renovering. Hvis røret er sundt, er en spuling typisk nok i mange år frem.
+
+Rod-fræsning af gennemvoksede rør
+
+Rødder fra træer og buske er en af de mest almindelige årsager til gentagne tilstopninger i ældre kloakker. Rødderne vokser ind gennem samlinger og spreder sig som måtter inde i røret. Vi har specialdyser der mekanisk skærer rødderne af inde i røret, og kombineret med spuling renses røret helt igennem. Vi vurderer altid om rødderne kan vokse tilbage hurtigt (utætte samlinger) — i så fald anbefaler vi en TV-inspektion og evt. punktreparation.
+
+Tagrender, nedløbsrør og regnvandsbrønde
+
+Vi spuler ikke kun spildevandskloak. Tagrender, nedløbsrør, regnvandsbrønde, sandfangsbrønde og faskine-tilløb kan også blive blokeret af blade, mos og sand. Vi renser dem som del af løbende vedligehold eller akutte sager — så regnvandet kan løbe væk som det skal.
+
+Akut spuling på Fyn – under 2 timer
+
+Ved akutte tilstopninger rykker vi typisk ud inden for få timer i dagtimerne, og vi tager også aften og weekend ved alvorlige sager (toilettet kan ikke skylles, vand løber op i kælderen, mm.). Vi giver fast pris efter en kort telefonsamtale, så du ved hvad det koster inden vi kører.
+
+Forebyggende serviceaftale
+
+For erhvervskunder, ejendomsforeninger og private med tilbagevendende kloakproblemer tilbyder vi forebyggende spuling 1-2 gange årligt. Det forhindrer akutte tilstopninger og forlænger kloakkens levetid markant.`,
+    icon: 'Droplets',
+    faqs: [
+      { question: 'Hvad koster en spuling?', answer: 'Prisen afhænger af blokeringens type, kloakkens længde og om der skal kombineres med TV-inspektion. Vi giver fast pris efter en kort telefonsamtale eller besigtigelse – ingen timeafregning og ingen overraskelser.' },
+      { question: 'Hvor hurtigt kan I komme ved akut stop?', answer: 'I de fleste tilfælde inden for 2 timer i dagtimerne – også aften og weekend ved alvorlige sager. Vi har spuleudstyr klar i bilen, så vi kan rykke ud med det samme.' },
+      { question: 'Kan spuling ødelægge mine rør?', answer: 'Nej, ikke når den udføres korrekt. Vi vælger altid trykket og dysen efter rørtypens alder og materiale. Ved meget gamle eller skrøbelige rør sænker vi trykket, og hvis vi mistænker en skade, foretager vi TV-inspektion først.' },
+      { question: 'Kan I fjerne rødder uden at grave?', answer: 'Ja. Vi bruger rod-fræsende dyser der mekanisk skærer rødderne af inde i røret. Det giver fri afledning igen. Vokser rødderne hurtigt tilbage, anbefaler vi typisk en TV-inspektion for at finde og udbedre den utætte samling.' },
+      { question: 'Skal jeg kombinere spuling med TV-inspektion?', answer: 'Ofte ja, hvis problemet er tilbagevendende eller hvis du mistænker en skade. Spulingen renser røret, og kameraet viser om der er behov for yderligere indgreb. Vi kombinerer ofte de to i samme besøg.' },
+      { question: 'Tilbyder I forebyggende spuling?', answer: 'Ja. For erhvervskunder, ejendomsforeninger og private med tilbagevendende kloakproblemer tilbyder vi forebyggende spuling 1-2 gange årligt på serviceaftale, så akutte tilstopninger undgås.' },
+      { question: 'Spuler I også tagrender og nedløb?', answer: 'Ja. Vi spuler tagrender, nedløbsrør, regnvandsbrønde, sandfangsbrønde og faskine-tilløb. Vigtigt vedligehold ofte glemt — særligt op til efteråret hvor blade falder.' }
+    ]
   }
 ];
 
@@ -676,15 +759,15 @@ export const TEAM = [
     role: "Direktør",
     phone: "22 96 66 61",
     email: "pr@prentreprenoer.dk",
-    description: "",
+    description: "Økonomi",
     image: "/team/preben-close.png"
   },
   {
     name: "Jacob",
-    role: "Daglig Leder",
+    role: "Daglig Leder & Kloakmester",
     phone: "24 94 66 61",
     email: "jeh@prentreprenoer.dk",
-    description: "Autoriseret kloakmester. Fagligt ansvarlig for daglig drift, tekniske vurderinger og din primære kontakt ved kloakrelaterede spørgsmål.",
+    description: "Besigtigelser, tilbud, dialog med kunder og leverandører, planlægning, kundeservice.",
     image: "/team/jacob-close.png"
   }
 ];

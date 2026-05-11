@@ -11,13 +11,13 @@
       "phone": "22 96 66 61",
       "email": "pr@prentreprenoer.dk",
       "title": "Direktør",
-      "bio": ""
+      "bio": "Økonomi"
     },
     "jacob": {
       "phone": "24 94 66 61",
       "email": "jeh@prentreprenoer.dk",
-      "title": "Daglig Leder",
-      "bio": "Autoriseret kloakmester"
+      "title": "Daglig Leder & Kloakmester",
+      "bio": "Besigtigelser, tilbud, dialog med kunder og leverandører, planlægning, kundeservice"
     },
     "info": {
       "email": "info@prentreprenoer.dk"
@@ -54,7 +54,7 @@
     "tagline": "Autoriseret kloakmester og entreprenør på Fyn og i Trekantsområdet. Vi bygger løsninger der holder for fremtiden.",
     "serviceArea": "Vi dækker hele fyn samt trekantsområdet",
     "prebenTitle": "Direktør",
-    "jacobTitle": "Daglig Leder"
+    "jacobTitle": "Daglig Leder & Kloakmester"
   },
   "faq": [
     {
@@ -108,13 +108,13 @@
     },
     {
       "name": "Asbest Autorisation",
-      "issuer": "Må nedrive og håndtere asbest",
+      "issuer": "Sikkerhedsstyrelsen",
       "badge": "/autorisationer/asbest.png",
-      "customerBenefit": "Vi er autoriserede til asbesthåndtering",
+      "customerBenefit": "Vi har autorisation til asbesthåndtering — bruges kun hvis gulvbelægning skal brydes op i forbindelse med kloakarbejde. Vi udfører ikke selvstændige asbestopgaver.",
       "verificationLink": null
     },
     {
-      "name": "Kvalitetsledelsessystem",
+      "name": "Kvalitetsledelse",
       "issuer": "Kloakmestrenes Kontrolinstans",
       "badge": "/autorisationer/kloakmestrenes-kontrolinstans.png",
       "customerBenefit": "Vores godkendte kvalitetsledelsessystem sikrer uvildig kontrol, fuld sporbarhed og korrekt dokumentation over for myndighederne",

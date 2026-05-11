@@ -3,6 +3,7 @@ import type {
   SiteEditorResponse,
   AnalysisResult
 } from '../types/siteEditor';
+import { authFetch } from '../lib/clientAuth';
 
 const API_BASE = '/api/site-editor';
 
@@ -16,7 +17,7 @@ export class SiteEditorService {
     username: string = 'admin'
   ): Promise<SiteEditorResponse> {
     try {
-      const response = await fetch(`${API_BASE}/analyze`, {
+      const response = await authFetch(`${API_BASE}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ export class SiteEditorService {
    */
   static async getHistory(limit: number = 50): Promise<any> {
     try {
-      const response = await fetch(`${API_BASE}/history?siteName=PRE&limit=${limit}`);
+      const response = await authFetch(`${API_BASE}/history?siteName=PRE&limit=${limit}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -71,7 +72,7 @@ export class SiteEditorService {
     uploadedImageData?: string
   ): Promise<any> {
     try {
-      const response = await fetch(`${API_BASE}/preview`, {
+      const response = await authFetch(`${API_BASE}/preview`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +103,7 @@ export class SiteEditorService {
    */
   static async approveChanges(versionId: string, username: string = 'admin'): Promise<any> {
     try {
-      const response = await fetch(`${API_BASE}/deploy`, {
+      const response = await authFetch(`${API_BASE}/deploy`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +132,7 @@ export class SiteEditorService {
    */
   static async rollback(versionId: string, username: string = 'admin'): Promise<any> {
     try {
-      const response = await fetch(`${API_BASE}/rollback`, {
+      const response = await authFetch(`${API_BASE}/rollback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -4,6 +4,7 @@ import { LogOut, Sparkles, Edit } from 'lucide-react';
 import AdminLogin from './AdminLogin';
 import SiteEditorChat from '../components/SiteEditorChat';
 import ContentEditor from '../components/ContentEditor';
+import { isTokenLive, clearAuth } from '../lib/clientAuth';
 
 const AdminDashboardProtected: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,15 +12,22 @@ const AdminDashboardProtected: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const authToken = sessionStorage.getItem('admin_authenticated');
-    if (authToken === 'true') {
+    if (isTokenLive()) {
       setIsAuthenticated(true);
+    } else {
+      clearAuth();
     }
-  }, []);
+
+    const onExpired = () => {
+      setIsAuthenticated(false);
+      navigate('/admin');
+    };
+    window.addEventListener('admin-auth-expired', onExpired);
+    return () => window.removeEventListener('admin-auth-expired', onExpired);
+  }, [navigate]);
 
   const handleLogout = () => {
-    sessionStorage.removeItem('admin_authenticated');
-    sessionStorage.removeItem('admin_token');
+    clearAuth();
     setIsAuthenticated(false);
     navigate('/admin');
   };

@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { GoogleGenAI } from '@google/genai';
+import { requireAuth } from '../../lib/serverAuth.js';
 
 /**
  * Upload user's uploaded image to GitHub
@@ -70,6 +71,8 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
+
+  if (!requireAuth(req, res)) return;
 
   // Check environment variables
   if (!process.env.VITE_SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {

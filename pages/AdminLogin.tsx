@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, User, LogIn, AlertCircle } from 'lucide-react';
+import { setToken } from '../lib/clientAuth';
 
 interface AdminLoginProps {
   onLogin: (isAuthenticated: boolean) => void;
@@ -28,9 +29,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        // Store session token
-        sessionStorage.setItem('admin_authenticated', 'true');
-        sessionStorage.setItem('admin_token', data.token);
+        setToken(data.token);
         onLogin(true);
       } else {
         setError(data.message || 'Forkert brugernavn eller adgangskode');

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Save, Phone, Globe, Image as ImageIcon, HelpCircle, Award, Loader2, RefreshCw, CheckCircle, AlertCircle } from 'lucide-react';
+import { authFetch } from '../lib/clientAuth';
 
 type Section = 'contact' | 'hero' | 'footer' | 'faq' | 'certifications' | 'images';
 
@@ -16,7 +17,7 @@ const ContentEditor: React.FC = () => {
     setLoading(true);
     setSaveMsg(null);
     try {
-      const res = await fetch('/api/content/read');
+      const res = await authFetch('/api/content/read');
       const data = await res.json();
       if (data.success) {
         setContent(data.content);
@@ -38,7 +39,7 @@ const ContentEditor: React.FC = () => {
     setSaving(true);
     setSaveMsg(null);
     try {
-      const res = await fetch('/api/content/save', {
+      const res = await authFetch('/api/content/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: editedContent, sha: fileSha, changeDescription: description })

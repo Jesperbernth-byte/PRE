@@ -1,4 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
+import { requireAuth } from '../../lib/serverAuth.js';
 
 // Current site content snapshot for analysis
 const SITE_CONTENT = {
@@ -55,6 +56,8 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
+
+  if (!requireAuth(req, res)) return;
 
   const { prompt, imageData, siteName = 'PRE', username = 'admin' } = req.body;
 

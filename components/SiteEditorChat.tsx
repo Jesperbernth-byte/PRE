@@ -3,6 +3,7 @@ import { Send, Loader2, AlertCircle, CheckCircle, AlertTriangle, Sparkles, Histo
 import { SiteEditorService } from '../services/siteEditorService';
 import VersionHistory from './VersionHistory';
 import type { ChatMessage, AnalysisResult } from '../types/siteEditor';
+import { authFetch } from '../lib/clientAuth';
 
 // Site Editor Chat Component - Phase 3 & 4 Complete
 
@@ -119,7 +120,7 @@ const SiteEditorChat: React.FC = () => {
   const handleApplyChange = async (analysis: AnalysisResult) => {
     setIsApplying(true);
     try {
-      const res = await fetch('/api/site-editor/apply', {
+      const res = await authFetch('/api/site-editor/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

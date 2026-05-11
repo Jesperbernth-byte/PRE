@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { requireAuth } from '../../lib/serverAuth.js';
 
 // Initialize Supabase
 const supabase = createClient(
@@ -11,6 +12,8 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
+
+  if (!requireAuth(req, res)) return;
 
   const { siteName = 'PRE', limit = 50 } = req.query;
 

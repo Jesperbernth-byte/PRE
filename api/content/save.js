@@ -1,9 +1,13 @@
+import { requireAuth } from '../../lib/serverAuth.js';
+
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
+
+  if (!requireAuth(req, res)) return;
 
   if (!process.env.GITHUB_TOKEN) {
     return res.status(500).json({ success: false, message: 'GITHUB_TOKEN mangler i Vercel env vars' });

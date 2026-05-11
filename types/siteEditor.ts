@@ -61,12 +61,32 @@ export interface EditableContent {
   created_at: string;
 }
 
+export interface ChatChangeDetail {
+  file: string;
+  action: string;
+  summary: string;
+  oldContent?: string;
+  newContent?: string;
+}
+
+export interface MessagePreview {
+  versionId: string;
+  versionNumber?: number;
+  changeDetails: ChatChangeDetail[];
+  deployed?: boolean;
+  cancelled?: boolean;
+  deployError?: string;
+  deploymentUrl?: string;
+  commitSha?: string;
+}
+
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: string;
   analysis?: AnalysisResult;
   imageData?: string;
+  preview?: MessagePreview;
 }
 
 export interface SiteEditorRequest {

@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Loader2, AlertCircle, CheckCircle, AlertTriangle, Sparkles, History as HistoryIcon, Image as ImageIcon, X } from 'lucide-react';
+import { Send, Loader2, AlertCircle, CheckCircle, AlertTriangle, Sparkles, History as HistoryIcon, Image as ImageIcon, X, Eye, Rocket, ExternalLink } from 'lucide-react';
 import { SiteEditorService } from '../services/siteEditorService';
 import VersionHistory from './VersionHistory';
 import type { ChatMessage, AnalysisResult } from '../types/siteEditor';
-import { authFetch } from '../lib/clientAuth';
 
 // Site Editor Chat Component - Phase 3 & 4 Complete
 
@@ -17,7 +16,8 @@ const SiteEditorChat: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isApplying, setIsApplying] = useState(false);
+  const [previewLoadingIdx, setPreviewLoadingIdx] = useState<number | null>(null);
+  const [deployLoadingIdx, setDeployLoadingIdx] = useState<number | null>(null);
   const [currentPrompt, setCurrentPrompt] = useState<string>('');
   const [showHistory, setShowHistory] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -117,36 +117,75 @@ const SiteEditorChat: React.FC = () => {
     }
   };
 
-  const handleApplyChange = async (analysis: AnalysisResult) => {
-    setIsApplying(true);
+  const handleGeneratePreview = async (analysis: AnalysisResult, messageIdx: number) => {
+    setPreviewLoadingIdx(messageIdx);
     try {
-      const res = await authFetch('/api/site-editor/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          analysis,
-          originalPrompt: currentPrompt,
-          uploadedImageData: lastUploadedImage
-        })
-      });
-      const data = await res.json();
-      const msg: ChatMessage = {
-        role: 'assistant',
-        content: data.success
-          ? `✅ ${data.message}\n\nOpdaterede filer: ${data.updatedFiles?.join(', ') || '-'}\n\nSitet er live om 1-2 minutter: https://prentreprenoer.dk`
-          : `❌ Fejl: ${data.message}`,
-        timestamp: new Date().toISOString()
-      };
-      setMessages(prev => [...prev, msg]);
+      const data = await SiteEditorService.createPreview(
+        analysis,
+        currentPrompt,
+        'admin',
+        lastUploadedImage || undefined
+      );
+
+      if (!data.success) {
+        throw new Error(data.message || 'Preview kunne ikke genereres');
+      }
+
+      setMessages(prev => prev.map((m, i) => i === messageIdx ? {
+        ...m,
+        preview: {
+          versionId: data.version.id,
+          versionNumber: data.version.version_number,
+          changeDetails: data.changeDetails || []
+        }
+      } : m));
     } catch (error: any) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `❌ Netværksfejl: ${error.message}`,
+        content: `❌ Kunne ikke generere preview: ${error.message}`,
         timestamp: new Date().toISOString()
       }]);
     } finally {
-      setIsApplying(false);
+      setPreviewLoadingIdx(null);
     }
+  };
+
+  const handleDeployVersion = async (versionId: string, messageIdx: number) => {
+    setDeployLoadingIdx(messageIdx);
+    try {
+      const data = await SiteEditorService.approveChanges(versionId, 'admin');
+
+      if (!data.success) {
+        throw new Error(data.message || 'Deployment fejlede');
+      }
+
+      setMessages(prev => prev.map((m, i) => i === messageIdx ? {
+        ...m,
+        preview: m.preview ? {
+          ...m.preview,
+          deployed: true,
+          deploymentUrl: data.deploymentUrl,
+          commitSha: data.commitSha
+        } : m.preview
+      } : m));
+    } catch (error: any) {
+      setMessages(prev => prev.map((m, i) => i === messageIdx ? {
+        ...m,
+        preview: m.preview ? {
+          ...m.preview,
+          deployError: error.message
+        } : m.preview
+      } : m));
+    } finally {
+      setDeployLoadingIdx(null);
+    }
+  };
+
+  const handleCancelPreview = (messageIdx: number) => {
+    setMessages(prev => prev.map((m, i) => i === messageIdx ? {
+      ...m,
+      preview: m.preview ? { ...m.preview, cancelled: true } : m.preview
+    } : m));
   };
 
   const getSafetyIcon = (level: string) => {
@@ -328,23 +367,116 @@ const SiteEditorChat: React.FC = () => {
                         </div>
                       )}
 
-                      {/* Action Buttons - only show for actual changes, not questions */}
+                      {/* Action area — preview flow */}
                       {message.analysis.safetyLevel !== 'DANGEROUS' && (
-                        <div className="mt-4 pt-3 border-t border-slate-200 flex gap-2">
-                          <button
-                            onClick={() => handleApplyChange(message.analysis!)}
-                            disabled={isApplying}
-                            className="flex-1 bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-orange-700 transition-all disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                          >
-                            {isApplying ? (
-                              <>
-                                <Loader2 className="animate-spin" size={14} />
-                                Anvender ændring...
-                              </>
-                            ) : (
-                              '⚡ Anvend Ændring Nu'
-                            )}
-                          </button>
+                        <div className="mt-4 pt-3 border-t border-slate-200">
+                          {!message.preview ? (
+                            <button
+                              onClick={() => handleGeneratePreview(message.analysis!, index)}
+                              disabled={previewLoadingIdx !== null}
+                              className="w-full bg-blue-900 text-white px-4 py-2.5 rounded-lg text-xs font-bold uppercase hover:bg-blue-800 transition-all disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            >
+                              {previewLoadingIdx === index ? (
+                                <>
+                                  <Loader2 className="animate-spin" size={14} />
+                                  Genererer preview...
+                                </>
+                              ) : (
+                                <>
+                                  <Eye size={14} />
+                                  Generér preview
+                                </>
+                              )}
+                            </button>
+                          ) : message.preview.cancelled ? (
+                            <div className="text-xs text-slate-500 italic p-2 text-center">
+                              Preview annulleret. Du kan generere en ny ved at sende beskeden igen.
+                            </div>
+                          ) : message.preview.deployed ? (
+                            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-3 text-xs">
+                              <div className="flex items-center gap-2 text-green-700 font-bold mb-2">
+                                <CheckCircle size={14} /> Deployet
+                              </div>
+                              <p className="text-slate-700 mb-2">Vercel bygger sitet — det er live om 1-2 min.</p>
+                              {message.preview.deploymentUrl && (
+                                <a
+                                  href={message.preview.deploymentUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-blue-900 font-bold hover:text-orange-600"
+                                >
+                                  Tjek live site <ExternalLink size={11} />
+                                </a>
+                              )}
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="text-xs font-bold text-blue-900 mb-2 flex items-center gap-2">
+                                <Eye size={14} /> Preview klar
+                                {message.preview.versionNumber && (
+                                  <span className="text-slate-400 font-normal">(version #{message.preview.versionNumber})</span>
+                                )}
+                              </div>
+                              {message.preview.changeDetails.length > 0 && (
+                                <div className="space-y-2 mb-3">
+                                  {message.preview.changeDetails.map((d, di) => (
+                                    <details key={di} className="bg-white border border-slate-200 rounded-lg overflow-hidden">
+                                      <summary className="px-3 py-2 cursor-pointer text-xs font-bold text-slate-800 hover:bg-slate-50">
+                                        <span className="font-mono text-slate-600">{d.file}</span>
+                                        <span className="block text-slate-500 font-normal mt-0.5">{d.summary}</span>
+                                      </summary>
+                                      <div className="border-t border-slate-200 p-3 bg-slate-50">
+                                        {d.oldContent && d.newContent ? (
+                                          <div className="space-y-2">
+                                            <div>
+                                              <div className="text-[10px] font-bold text-red-700 uppercase mb-1">Før</div>
+                                              <pre className="text-[10px] bg-red-50 text-red-900 p-2 rounded max-h-32 overflow-auto whitespace-pre-wrap break-all">{d.oldContent.length > 800 ? d.oldContent.substring(0, 800) + '\n…' : d.oldContent}</pre>
+                                            </div>
+                                            <div>
+                                              <div className="text-[10px] font-bold text-green-700 uppercase mb-1">Efter</div>
+                                              <pre className="text-[10px] bg-green-50 text-green-900 p-2 rounded max-h-32 overflow-auto whitespace-pre-wrap break-all">{d.newContent.length > 800 ? d.newContent.substring(0, 800) + '\n…' : d.newContent}</pre>
+                                            </div>
+                                          </div>
+                                        ) : (
+                                          <p className="text-xs text-slate-500 italic">Ingen diff tilgængelig</p>
+                                        )}
+                                      </div>
+                                    </details>
+                                  ))}
+                                </div>
+                              )}
+                              {message.preview.deployError && (
+                                <div className="bg-red-50 border-2 border-red-200 text-red-800 rounded-lg p-2 text-xs mb-2">
+                                  ❌ {message.preview.deployError}
+                                </div>
+                              )}
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={() => handleDeployVersion(message.preview!.versionId, index)}
+                                  disabled={deployLoadingIdx !== null}
+                                  className="flex-1 bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-orange-700 transition-all disabled:bg-slate-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                >
+                                  {deployLoadingIdx === index ? (
+                                    <>
+                                      <Loader2 className="animate-spin" size={14} />
+                                      Deployer...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Rocket size={14} /> Deploy
+                                    </>
+                                  )}
+                                </button>
+                                <button
+                                  onClick={() => handleCancelPreview(index)}
+                                  disabled={deployLoadingIdx !== null}
+                                  className="bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-slate-300 transition-all disabled:opacity-50"
+                                >
+                                  Annullér
+                                </button>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
                     </>

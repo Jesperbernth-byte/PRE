@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Phone, Send, CheckCircle, Loader2, AlertTriangle } from 'lucide-react';
 import { PHONE_PREBEN } from '../constants';
 import { trackFormSubmit } from '../lib/tracking';
@@ -9,11 +9,13 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
     phone: '',
     zipCode: '',
     email: '',
-    message: ''
+    message: '',
+    website: '' // honeypot — skal forblive tom
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const formLoadedAt = useRef<number>(Date.now());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +32,9 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
           zipCode: formData.zipCode,
           email: formData.email || null,
           problem: formData.message,
-          source
+          source,
+          website: formData.website,
+          formLoadedAt: formLoadedAt.current
         })
       });
 
@@ -48,7 +52,8 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
 
       setTimeout(() => {
         setSubmitted(false);
-        setFormData({ name: '', phone: '', zipCode: '', email: '', message: '' });
+        setFormData({ name: '', phone: '', zipCode: '', email: '', message: '', website: '' });
+        formLoadedAt.current = Date.now();
       }, 4000);
     } catch (err) {
       console.error('Form submit failed:', err);
@@ -96,7 +101,21 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
                 <p className="text-slate-600">Vi vender tilbage hurtigst muligt</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" autoComplete="on">
+                {/* Honeypot — bots udfylder typisk alle felter; menneskelige brugere ser ikke dette */}
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
                 {errorMessage && (
                   <div className="flex gap-3 items-start bg-red-50 border-2 border-red-200 text-red-800 rounded-xl p-4">
                     <AlertTriangle size={20} className="shrink-0 mt-0.5 text-red-600" />

@@ -1,7 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
+import { checkAndLogIp, getClientIp } from '../lib/rateLimit.js';
 
 const TO_EMAIL = 'jeh@prentreprenoer.dk';
 const FROM_EMAIL = process.env.LEAD_NOTIFY_FROM || 'PR Entreprenøren <noreply@prentreprenoer.dk>';
+
+const MIN_FORM_FILL_MS = 3000;        // skal udfyldes på mindst 3s
+const MAX_FORM_AGE_MS = 24 * 3600 * 1000; // og senest 24t efter load
+const MAX_PROBLEM_LENGTH = 5000;
+const MAX_NAME_LENGTH = 200;
+
+// Fjerner script-tags og potentielt farlige HTML-fragmenter.
+// Vi tillader unicode, mellemrum, dansk tegnsætning — kun aktive
+// markup-fragmenter fjernes.
+function sanitizeText(input) {
+  if (input == null) return '';
+  let s = String(input);
+  s = s.replace(/<\s*script[^>]*>[\s\S]*?<\s*\/\s*script\s*>/gi, '');
+  s = s.replace(/<\s*\/?\s*(iframe|object|embed|link|meta|style)[^>]*>/gi, '');
+  s = s.replace(/javascript\s*:/gi, '');
+  s = s.replace(/on\w+\s*=/gi, '');
+  return s.trim();
+}
 
 async function notifyByEmail({ name, phone, email, zipCode, problem, priority, source, conversation }) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -79,17 +98,69 @@ export default async function handler(req, res) {
     priority,
     insuranceClaim,
     source,
-    conversation
+    conversation,
+    website,        // honeypot
+    formLoadedAt    // timestamp fra klient
   } = req.body || {};
 
-  if (!name || String(name).trim().length < 2) {
-    return res.status(400).json({ success: false, message: 'Navn er påkrævet (min. 2 tegn)' });
+  // Honeypot — bots udfylder typisk alle felter
+  if (website && String(website).trim().length > 0) {
+    // Silent reject: bots ved ikke at vi opdagede dem
+    return res.status(200).json({ success: true, message: 'Tak!' });
   }
-  if (!phone || String(phone).replace(/\s/g, '').length < 8) {
+
+  // Min. udfyldnings-tid (kun for form-source — chat har egen flow)
+  if (source !== 'chat' && typeof formLoadedAt === 'number') {
+    const age = Date.now() - formLoadedAt;
+    if (age < MIN_FORM_FILL_MS) {
+      return res.status(400).json({ success: false, message: 'Formularen blev sendt for hurtigt. Prøv igen.' });
+    }
+    if (age > MAX_FORM_AGE_MS) {
+      return res.status(400).json({ success: false, message: 'Formularen er udløbet. Genindlæs siden og prøv igen.' });
+    }
+  }
+
+  // Rate limit: maks 5 submits / IP pr. time
+  const clientIp = getClientIp(req);
+  const rate = await checkAndLogIp({
+    ip: clientIp,
+    endpoint: '/api/submit-lead',
+    windowSeconds: 3600,
+    maxRequests: 5
+  });
+  if (!rate.allowed) {
+    res.setHeader('Retry-After', String(rate.retryAfterSeconds || 3600));
+    return res.status(429).json({
+      success: false,
+      message: 'Du har sendt for mange beskeder på kort tid. Prøv igen om en time, eller ring direkte.'
+    });
+  }
+
+  // Sanitering + validering af felter
+  const cleanName = sanitizeText(name);
+  const cleanPhone = sanitizeText(phone).replace(/\s+/g, ' ').trim();
+  const cleanProblem = sanitizeText(problem);
+  const cleanZip = zipCode ? sanitizeText(zipCode) : null;
+  const cleanEmail = email ? sanitizeText(email) : null;
+
+  if (!cleanName || cleanName.length < 2 || cleanName.length > MAX_NAME_LENGTH) {
+    return res.status(400).json({ success: false, message: 'Navn er påkrævet (2-200 tegn)' });
+  }
+  const phoneDigits = cleanPhone.replace(/[^+\d]/g, '');
+  if (!/^\+?\d{8,12}$/.test(phoneDigits)) {
     return res.status(400).json({ success: false, message: 'Ugyldigt telefonnummer' });
   }
-  if (!problem || String(problem).trim().length < 5) {
+  if (!cleanProblem || cleanProblem.length < 5) {
     return res.status(400).json({ success: false, message: 'Beskriv venligst problemet' });
+  }
+  if (cleanProblem.length > MAX_PROBLEM_LENGTH) {
+    return res.status(400).json({ success: false, message: 'Beskrivelsen er for lang (maks 5000 tegn)' });
+  }
+  if (cleanZip && !/^\d{4}$/.test(cleanZip)) {
+    return res.status(400).json({ success: false, message: 'Postnummer skal være 4 cifre' });
+  }
+  if (cleanEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+    return res.status(400).json({ success: false, message: 'Ugyldig email-adresse' });
   }
 
   const supabase = createClient(
@@ -105,18 +176,18 @@ export default async function handler(req, res) {
   // the canonical schema; run the ALTER TABLE in database/migration-add-form-fields.sql
   // if you want email + form-source tracking persisted.
   const insertRow = {
-    name: String(name).trim(),
-    phone: String(phone).trim(),
-    problem: String(problem).trim(),
-    zip_code: zipCode ? String(zipCode).trim() : null,
+    name: cleanName,
+    phone: cleanPhone,
+    problem: cleanProblem,
+    zip_code: cleanZip,
     priority: priority || 'PLANLAGT',
     insurance_claim: !!insuranceClaim,
     status: 'NY',
     source: leadSource,
     created_at: new Date().toISOString()
   };
-  if (email) insertRow.email = String(email).trim();
-  if (conversation) insertRow.conversation_log = String(conversation);
+  if (cleanEmail) insertRow.email = cleanEmail;
+  if (conversation) insertRow.conversation_log = String(conversation).slice(0, 50000);
 
   const { error } = await supabase.from('leads').insert([insertRow]);
 
@@ -126,7 +197,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    await notifyByEmail({ name, phone, email, zipCode, problem, priority, source: leadSource, conversation });
+    await notifyByEmail({
+      name: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail,
+      zipCode: cleanZip,
+      problem: cleanProblem,
+      priority,
+      source: leadSource,
+      conversation
+    });
   } catch (e) {
     console.error('Email notification failed (lead still saved):', e);
   }

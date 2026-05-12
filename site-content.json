@@ -26,6 +26,9 @@
       "email": "faktura@prentreprenoer.dk"
     }
   },
+  "social": {
+    "facebookUrl": "https://www.facebook.com/profile.php?id=61584627767177"
+  },
   "header": {
     "logoPath": "/headerimagenobackground.png",
     "logoAlt": "PR Entreprenøren ApS"

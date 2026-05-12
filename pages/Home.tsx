@@ -6,6 +6,7 @@ import ProblemGuide from '../components/ProblemGuide';
 import ImageAnalyzer from '../components/ImageAnalyzer';
 import CallButton from '../components/CallButton';
 import ServiceCard from '../components/ServiceCard';
+import FacebookFeed from '../components/FacebookFeed';
 import { usePageMeta } from '../lib/usePageMeta';
 
 const HomeUpdated: React.FC = () => {
@@ -186,6 +187,8 @@ const HomeUpdated: React.FC = () => {
         </div>
       </section>
 
+      {/* Facebook Feed */}
+      <FacebookFeed />
 
       {/* FAQ Section */}
       <section className="py-24 bg-white">

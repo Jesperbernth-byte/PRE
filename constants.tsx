@@ -19,6 +19,8 @@ export const EMAIL_INFO = siteContent.contacts.info.email;
 export const EMAIL_FAKTURA = siteContent.contacts.faktura.email;
 export const EMAIL = siteContent.contacts.info.email;
 
+export const FACEBOOK_PAGE_URL = (siteContent as any).social?.facebookUrl as string | undefined;
+
 export const LOGO_PATH = siteContent.header.logoPath;
 export const LOGO_ALT = siteContent.header.logoAlt;
 

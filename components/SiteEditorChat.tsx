@@ -150,6 +150,35 @@ const SiteEditorChat: React.FC = () => {
     }
   };
 
+  const pollDeployStatus = (commitSha: string, messageIdx: number) => {
+    let attempts = 0;
+    const maxAttempts = 36; // ~3 min at 5s interval
+    const tick = async () => {
+      attempts++;
+      try {
+        const data = await SiteEditorService.getDeployStatus(commitSha);
+        const status = data.status;
+        setMessages(prev => prev.map((m, i) => i === messageIdx ? {
+          ...m,
+          preview: m.preview ? {
+            ...m.preview,
+            buildStatus: status,
+            buildUrl: data.deploymentUrl || m.preview.buildUrl
+          } : m.preview
+        } : m));
+        if (status === 'READY' || status === 'ERROR' || status === 'CANCELED') {
+          return; // stop polling
+        }
+      } catch (err) {
+        // Ignore single failures; keep polling unless we've timed out
+      }
+      if (attempts < maxAttempts) {
+        setTimeout(tick, 5000);
+      }
+    };
+    tick();
+  };
+
   const handleDeployVersion = async (versionId: string, messageIdx: number) => {
     setDeployLoadingIdx(messageIdx);
     try {
@@ -165,9 +194,14 @@ const SiteEditorChat: React.FC = () => {
           ...m.preview,
           deployed: true,
           deploymentUrl: data.deploymentUrl,
-          commitSha: data.commitSha
+          commitSha: data.commitSha,
+          buildStatus: 'pending'
         } : m.preview
       } : m));
+
+      if (data.commitSha) {
+        pollDeployStatus(data.commitSha, messageIdx);
+      }
     } catch (error: any) {
       setMessages(prev => prev.map((m, i) => i === messageIdx ? {
         ...m,
@@ -393,22 +427,44 @@ const SiteEditorChat: React.FC = () => {
                               Preview annulleret. Du kan generere en ny ved at sende beskeden igen.
                             </div>
                           ) : message.preview.deployed ? (
-                            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-3 text-xs">
-                              <div className="flex items-center gap-2 text-green-700 font-bold mb-2">
-                                <CheckCircle size={14} /> Deployet
-                              </div>
-                              <p className="text-slate-700 mb-2">Vercel bygger sitet — det er live om 1-2 min.</p>
-                              {message.preview.deploymentUrl && (
-                                <a
-                                  href={message.preview.deploymentUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-blue-900 font-bold hover:text-orange-600"
-                                >
-                                  Tjek live site <ExternalLink size={11} />
-                                </a>
-                              )}
-                            </div>
+                            (() => {
+                              const bs = message.preview.buildStatus;
+                              const isReady = bs === 'READY';
+                              const isError = bs === 'ERROR' || bs === 'CANCELED';
+                              const wrapperClass = isError
+                                ? 'bg-red-50 border-2 border-red-200'
+                                : isReady
+                                ? 'bg-green-50 border-2 border-green-200'
+                                : 'bg-blue-50 border-2 border-blue-200';
+                              const iconColor = isError ? 'text-red-700' : isReady ? 'text-green-700' : 'text-blue-700';
+                              const icon = isError ? <AlertCircle size={14} /> : isReady ? <CheckCircle size={14} /> : <Loader2 className="animate-spin" size={14} />;
+                              const label = isError
+                                ? bs === 'CANCELED' ? 'Build annulleret' : 'Build fejlede'
+                                : isReady ? 'Live på sitet' : 'Vercel bygger…';
+                              const detail = isError
+                                ? 'Tjek Vercel-dashboardet for build-log. Kør evt. rollback hvis sitet er brudt.'
+                                : isReady
+                                ? 'Ændringen er nu synlig for besøgende.'
+                                : 'Holder øje med Vercel — typisk 1-2 min.';
+                              return (
+                                <div className={`${wrapperClass} rounded-lg p-3 text-xs`}>
+                                  <div className={`flex items-center gap-2 ${iconColor} font-bold mb-2`}>
+                                    {icon} {label}
+                                  </div>
+                                  <p className="text-slate-700 mb-2">{detail}</p>
+                                  {(message.preview.deploymentUrl || message.preview.buildUrl) && (
+                                    <a
+                                      href={message.preview.deploymentUrl || message.preview.buildUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1 text-blue-900 font-bold hover:text-orange-600"
+                                    >
+                                      {isReady ? 'Tjek live site' : 'Tjek build'} <ExternalLink size={11} />
+                                    </a>
+                                  )}
+                                </div>
+                              );
+                            })()
                           ) : (
                             <div>
                               <div className="text-xs font-bold text-blue-900 mb-2 flex items-center gap-2">

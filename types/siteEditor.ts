@@ -69,6 +69,8 @@ export interface ChatChangeDetail {
   newContent?: string;
 }
 
+export type BuildStatus = 'pending' | 'BUILDING' | 'READY' | 'ERROR' | 'CANCELED' | 'QUEUED';
+
 export interface MessagePreview {
   versionId: string;
   versionNumber?: number;
@@ -78,6 +80,8 @@ export interface MessagePreview {
   deployError?: string;
   deploymentUrl?: string;
   commitSha?: string;
+  buildStatus?: BuildStatus;
+  buildUrl?: string;
 }
 
 export interface ChatMessage {

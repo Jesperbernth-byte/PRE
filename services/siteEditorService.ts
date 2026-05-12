@@ -128,6 +128,23 @@ export class SiteEditorService {
   }
 
   /**
+   * Get Vercel deploy status for a given commit SHA
+   */
+  static async getDeployStatus(commitSha: string): Promise<any> {
+    try {
+      const response = await authFetch(`${API_BASE}/deploy-status?commitSha=${encodeURIComponent(commitSha)}`);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Kunne ikke hente deploy-status');
+      }
+      return data;
+    } catch (error) {
+      console.error('SiteEditorService.getDeployStatus error:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Rollback to previous version
    */
   static async rollback(versionId: string, username: string = 'admin'): Promise<any> {

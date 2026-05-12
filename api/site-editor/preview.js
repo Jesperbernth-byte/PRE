@@ -130,27 +130,32 @@ export default async function handler(req, res) {
       ? versions[0].version_number + 1
       : 1;
 
-    // Upload user's image if provided
+    // Upload user's image if provided.
+    // For billede-ændringer er en virkende upload obligatorisk — vi kan ikke
+    // generere kode der referer til en sti, hvis selve billedet ikke ligger
+    // i repoet. Abort med klar fejl i stedet for at producere bruden kode.
     let uploadedImagePath = null;
-    let imageUploadWarning = null;
 
-    // Check if user uploaded an image AND if the analysis is about changing an image
-    if (uploadedImageData && analysis.changeType === 'image') {
+    if (analysis.changeType === 'image') {
+      if (!uploadedImageData) {
+        return res.status(400).json({
+          success: false,
+          message: 'Du bad om en billede-ændring, men der er ikke uploadet noget billede. Upload et billede i chatten først.'
+        });
+      }
       try {
         console.log('User uploaded image - uploading to GitHub...');
-        console.log('Image location:', analysis.imageLocation || 'logo');
-
         const imageLocation = analysis.imageLocation || 'logo';
+        console.log('Image location:', imageLocation);
         uploadedImagePath = await uploadUserImageToGitHub(uploadedImageData, imageLocation);
-
         console.log('Image uploaded successfully:', uploadedImagePath);
       } catch (imageError) {
         console.error('Image upload failed:', imageError);
-        imageUploadWarning = `⚠️ Billede upload fejlede: ${imageError.message}`;
-        // Don't throw - let preview continue without image
+        return res.status(500).json({
+          success: false,
+          message: `Billede-upload fejlede: ${imageError.message}. Ingen kode-ændringer er gemt.`
+        });
       }
-    } else if (analysis.changeType === 'image' && !uploadedImageData) {
-      imageUploadWarning = '⚠️ Intet billede uploadet. Upload et billede i chatten først.';
     }
 
     // Generate actual code changes using Gemini AI
@@ -283,11 +288,10 @@ START OUTPUT:`;
 
     return res.status(200).json({
       success: true,
-      message: imageUploadWarning || 'Preview genereret',
+      message: 'Preview genereret',
       version: versionData,
       fileChanges,
       changeDetails,
-      warning: imageUploadWarning,
       uploadedImagePath
     });
 

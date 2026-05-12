@@ -50,7 +50,10 @@ const ContentEditor: React.FC = () => {
         setFileSha(data.newSha || fileSha);
         setContent(JSON.parse(JSON.stringify(editedContent)));
       } else {
-        setSaveMsg({ type: 'err', text: '❌ Fejl: ' + data.message });
+        const details = Array.isArray(data.validationErrors) && data.validationErrors.length > 0
+          ? '\n• ' + data.validationErrors.join('\n• ')
+          : '';
+        setSaveMsg({ type: 'err', text: '❌ Fejl: ' + data.message + details });
       }
     } catch (e: any) {
       setSaveMsg({ type: 'err', text: '❌ Netværksfejl: ' + e.message });
@@ -141,11 +144,13 @@ const ContentEditor: React.FC = () => {
       {/* Content */}
       <div className="flex-1 overflow-auto p-8">
         {saveMsg && (
-          <div className={`mb-6 p-4 rounded-xl font-bold flex items-center gap-3 ${
+          <div className={`mb-6 p-4 rounded-xl font-bold flex items-start gap-3 ${
             saveMsg.type === 'ok' ? 'bg-green-50 border border-green-200 text-green-800' : 'bg-red-50 border border-red-200 text-red-800'
           }`}>
-            {saveMsg.type === 'ok' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
-            {saveMsg.text}
+            <span className="shrink-0 mt-0.5">
+              {saveMsg.type === 'ok' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
+            </span>
+            <span className="whitespace-pre-line">{saveMsg.text}</span>
           </div>
         )}
 

@@ -5,23 +5,59 @@ import { requireAuth } from '../../lib/serverAuth.js';
 /**
  * Upload user's uploaded image to GitHub
  */
+// Maks 5 MB billede — Vercel serverless body limit er ~4.5 MB anyway,
+// men vi tjekker eksplicit så fejlbeskeden bliver pænere.
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
+// Tilladte mime-types — vi accepterer ikke fx exotic formater eller SVG
+// (SVG kan indeholde XSS via embedded scripts).
+const ALLOWED_MIME = ['image/jpeg', 'image/png', 'image/webp'];
+
+function detectMimeFromMagicBytes(buf) {
+  if (buf.length < 12) return null;
+  // JPEG: FF D8 FF
+  if (buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return 'image/jpeg';
+  // PNG: 89 50 4E 47 0D 0A 1A 0A
+  if (buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47) return 'image/png';
+  // WebP: 52 49 46 46 .. .. .. .. 57 45 42 50
+  if (buf[0] === 0x52 && buf[1] === 0x49 && buf[2] === 0x46 && buf[3] === 0x46
+      && buf[8] === 0x57 && buf[9] === 0x45 && buf[10] === 0x42 && buf[11] === 0x50) return 'image/webp';
+  return null;
+}
+
 async function uploadUserImageToGitHub(imageBase64Data, imageLocation) {
   try {
     console.log('Uploading user image to GitHub:', imageLocation);
 
+    // Verificér declared mime-type
+    const declaredMatch = imageBase64Data.match(/^data:(image\/[\w+]+);base64,/);
+    const declaredMime = declaredMatch ? declaredMatch[1] : null;
+    if (declaredMime && !ALLOWED_MIME.includes(declaredMime)) {
+      throw new Error(`Filformat ${declaredMime} er ikke tilladt. Brug JPG, PNG eller WebP.`);
+    }
+
     // Remove data:image/xxx;base64, prefix if present
-    const base64Data = imageBase64Data.replace(/^data:image\/\w+;base64,/, '');
+    const base64Data = imageBase64Data.replace(/^data:image\/[\w+]+;base64,/, '');
     const imageBuffer = Buffer.from(base64Data, 'base64');
 
-    // Detect file extension from base64 header
-    let extension = 'jpg';
-    if (imageBase64Data.startsWith('data:image/png')) {
-      extension = 'png';
-    } else if (imageBase64Data.startsWith('data:image/webp')) {
-      extension = 'webp';
-    } else if (imageBase64Data.startsWith('data:image/svg')) {
-      extension = 'svg';
+    // Size check
+    if (imageBuffer.length > MAX_IMAGE_BYTES) {
+      throw new Error(`Billedet er for stort (${Math.round(imageBuffer.length / 1024)} KB). Maks 5 MB.`);
     }
+    if (imageBuffer.length < 64) {
+      throw new Error('Billedet er ugyldigt eller tomt.');
+    }
+
+    // Magic-bytes check — fanger bots/angreb der forfalsker mime-type
+    const detectedMime = detectMimeFromMagicBytes(imageBuffer);
+    if (!detectedMime || !ALLOWED_MIME.includes(detectedMime)) {
+      throw new Error('Filen er ikke et gyldigt billede (JPG, PNG eller WebP).');
+    }
+
+    // Use detected mime for extension (mere pålideligt end declared)
+    let extension = 'jpg';
+    if (detectedMime === 'image/png') extension = 'png';
+    else if (detectedMime === 'image/webp') extension = 'webp';
 
     // Generate unique filename
     const timestamp = Date.now();
@@ -75,10 +111,11 @@ export default async function handler(req, res) {
   if (!requireAuth(req, res)) return;
 
   // Check environment variables
-  if (!process.env.VITE_SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  if (!supabaseUrl || !process.env.SUPABASE_SERVICE_KEY) {
     return res.status(500).json({
       success: false,
-      message: 'Supabase credentials mangler (VITE_SUPABASE_URL + SUPABASE_SERVICE_KEY skal sættes i Vercel env vars)'
+      message: 'Supabase credentials mangler (SUPABASE_URL + SUPABASE_SERVICE_KEY skal sættes i Vercel env vars)'
     });
   }
 
@@ -90,7 +127,7 @@ export default async function handler(req, res) {
   }
 
   // Initialize clients inside handler to avoid module-level crashes on missing env vars
-  const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
+  const supabase = createClient(supabaseUrl, process.env.SUPABASE_SERVICE_KEY);
   const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   const { analysis, username = 'admin', uploadedImageData } = req.body;

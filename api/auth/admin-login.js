@@ -1,8 +1,26 @@
 import { signToken } from '../../lib/serverAuth.js';
+import { checkAndLogIp, getClientIp } from '../../lib/rateLimit.js';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
+  }
+
+  // Rate limit: maks 5 forsøg pr. IP pr. 15 min (mod brute force).
+  // Vi logger ALLE forsøg, ikke kun fejlede — så simpel og effektiv.
+  const clientIp = getClientIp(req);
+  const rate = await checkAndLogIp({
+    ip: clientIp,
+    endpoint: '/api/auth/admin-login',
+    windowSeconds: 900,
+    maxRequests: 5
+  });
+  if (!rate.allowed) {
+    res.setHeader('Retry-After', String(rate.retryAfterSeconds || 900));
+    return res.status(429).json({
+      success: false,
+      message: 'For mange login-forsøg. Prøv igen om 15 minutter.'
+    });
   }
 
   const { username, password } = req.body || {};

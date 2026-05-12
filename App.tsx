@@ -18,7 +18,11 @@ import Careers from './pages/Careers';
 import Memberships from './pages/Memberships';
 import ServiceDetail from './pages/ServiceDetail';
 import CityLanding from './pages/CityLanding';
+import Privacy from './pages/Privacy';
+import CookiePolicy from './pages/CookiePolicy';
 import AdminDashboard from './pages/AdminDashboard';
+import CookieBanner from './components/CookieBanner';
+import { openConsentBanner } from './lib/consent';
 import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY } from './constants';
 import { Target, CheckCircle2 } from 'lucide-react';
 
@@ -125,8 +129,22 @@ const Footer: React.FC = () => (
       </div>
     </div>
 
+    {/* Compliance links */}
+    <div className="max-w-7xl mx-auto px-4 mt-6 pt-6 border-t border-white/10">
+      <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
+        <Link to="/privatlivspolitik" className="hover:text-orange-400 transition-colors">Privatlivspolitik</Link>
+        <Link to="/cookiepolitik" className="hover:text-orange-400 transition-colors">Cookiepolitik</Link>
+        <button
+          onClick={() => openConsentBanner()}
+          className="hover:text-orange-400 transition-colors text-left"
+        >
+          Cookie-indstillinger
+        </button>
+      </div>
+    </div>
+
     {/* Serviceområde */}
-    <div className="max-w-7xl mx-auto px-4 mt-6 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="max-w-7xl mx-auto px-4 mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="text-slate-500 text-sm">{SERVICE_AREA}</p>
       <p className="text-slate-500 text-xs text-center">
         &copy; {new Date().getFullYear()} PR Entreprenøren ApS. Alle rettigheder forbeholdes. CVR: {CVR}.
@@ -157,6 +175,10 @@ const App: React.FC = () => {
             <Route path="/kloakmester-faaborg-midtfyn" element={<CityLanding />} />
             <Route path="/kloakmester-assens" element={<CityLanding />} />
 
+            {/* Compliance */}
+            <Route path="/privatlivspolitik" element={<Privacy />} />
+            <Route path="/cookiepolitik" element={<CookiePolicy />} />
+
             <Route path="/admin/*" element={<AdminDashboard />} />
 
             {/* Redirects from old English URLs to Danish */}
@@ -170,6 +192,7 @@ const App: React.FC = () => {
         <Footer />
         <LeadChat />
         <MobileCTABar />
+        <CookieBanner />
         <Analytics />
       </div>
     </Router>

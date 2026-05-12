@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { SERVICES, PHONE_PREBEN, getOrderedServices } from '../constants';
 import { usePageMeta } from '../lib/usePageMeta';
+import ServiceCard from '../components/ServiceCard';
 
 const Services: React.FC = () => {
   usePageMeta({
@@ -30,32 +31,7 @@ const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {getOrderedServices(SERVICES).map((service) => (
-              <Link
-                key={service.id}
-                to={`/ydelser/${service.slug}`}
-                className="group bg-white border-2 border-slate-100 rounded-3xl overflow-hidden hover:border-orange-600 transition-all hover:shadow-2xl"
-              >
-                {service.image && (
-                  <div className="h-52 overflow-hidden bg-slate-100">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                )}
-                <div className="p-8">
-                  <h3 className="text-xl font-black mb-3 uppercase tracking-tight italic text-blue-900 group-hover:text-orange-600 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed mb-5 font-medium text-sm">
-                    {service.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-sm font-black text-orange-600 group-hover:gap-3 transition-all uppercase tracking-widest">
-                    Læs mere <ArrowRight size={18} />
-                  </div>
-                </div>
-              </Link>
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>

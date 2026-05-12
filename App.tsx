@@ -1,6 +1,6 @@
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 // Redirect component for /services/:slug → /ydelser/:slug
@@ -55,6 +55,13 @@ const MissionValues: React.FC = () => (
     </div>
   </section>
 );
+
+// MissionValues vises ikke på Om Os — den side har samme indhold inline.
+const MissionValuesGlobal: React.FC = () => {
+  const location = useLocation();
+  if (location.pathname === '/om-os') return null;
+  return <MissionValues />;
+};
 
 const Footer: React.FC = () => (
   <footer className="bg-slate-900 text-white py-16">
@@ -159,7 +166,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Navigate to="/kontakt" replace />} />
           </Routes>
         </main>
-        <MissionValues />
+        <MissionValuesGlobal />
         <Footer />
         <LeadChat />
         <MobileCTABar />

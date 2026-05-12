@@ -57,6 +57,12 @@ const LeadChat: React.FC = () => {
 
           if (result.success) {
             console.log('✅ Lead submitted successfully:', result.leadId);
+            try {
+              const { trackFormSubmit } = await import('../lib/tracking');
+              trackFormSubmit({ source: 'chat' });
+            } catch {
+              // ignore tracking errors
+            }
           } else {
             console.error('❌ Lead submission failed:', result.message);
           }

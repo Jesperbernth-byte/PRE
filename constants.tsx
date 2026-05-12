@@ -21,6 +21,8 @@ export const EMAIL = siteContent.contacts.info.email;
 
 export const FACEBOOK_PAGE_URL = (siteContent as any).social?.facebookUrl as string | undefined;
 
+export const GSC_VERIFICATION_TOKEN = (siteContent as any).seo?.googleSearchConsoleToken as string | undefined;
+
 export const LOGO_PATH = siteContent.header.logoPath;
 export const LOGO_ALT = siteContent.header.logoAlt;
 

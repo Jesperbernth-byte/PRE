@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Facebook, ExternalLink } from 'lucide-react';
 import { FACEBOOK_PAGE_URL } from '../constants';
+import { trackFBFeedView } from '../lib/tracking';
 
 // Facebook Page Plugin embed.
 // Bemærk: Page Plugin'et virker kun for Facebook Pages (ikke personlige
@@ -9,6 +10,24 @@ import { FACEBOOK_PAGE_URL } from '../constants';
 // betyder det at URL'en er en profil og skal konverteres til en Page.
 
 const FacebookFeed: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const trackedRef = useRef(false);
+
+  useEffect(() => {
+    if (!sectionRef.current || trackedRef.current) return;
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting && !trackedRef.current) {
+          trackedRef.current = true;
+          trackFBFeedView();
+          obs.disconnect();
+        }
+      }
+    }, { threshold: 0.3 });
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   if (!FACEBOOK_PAGE_URL) return null;
 
   const pluginSrc = `https://www.facebook.com/plugins/page.php?${new URLSearchParams({
@@ -23,7 +42,7 @@ const FacebookFeed: React.FC = () => {
   }).toString()}`;
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section ref={sectionRef} className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">

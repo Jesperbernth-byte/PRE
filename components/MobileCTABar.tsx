@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail } from 'lucide-react';
 import { PHONE_PREBEN } from '../constants';
+import { trackPhoneClick } from '../lib/tracking';
 
 const MobileCTABar: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const MobileCTABar: React.FC = () => {
       <div className="grid grid-cols-2 gap-2 p-2">
         <a
           href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+          onClick={() => trackPhoneClick('mobile-cta')}
           className="flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-black py-4 rounded-xl shadow-lg active:scale-95 transition-all"
           aria-label={`Ring til PR Entreprenøren – ${PHONE_PREBEN}`}
         >

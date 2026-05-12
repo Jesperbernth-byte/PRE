@@ -29,6 +29,9 @@
   "social": {
     "facebookUrl": "https://www.facebook.com/profile.php?id=61584627767177"
   },
+  "seo": {
+    "googleSearchConsoleToken": ""
+  },
   "header": {
     "logoPath": "/headerimagenobackground.png",
     "logoAlt": "PR Entreprenøren ApS"

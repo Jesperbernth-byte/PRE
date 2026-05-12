@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Send, CheckCircle, Loader2, AlertTriangle } from 'lucide-react';
 import { PHONE_PREBEN } from '../constants';
+import { trackFormSubmit } from '../lib/tracking';
 
 const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
   const [formData, setFormData] = useState({
@@ -43,6 +44,7 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
 
       setIsSubmitting(false);
       setSubmitted(true);
+      trackFormSubmit({ source: 'form' });
 
       setTimeout(() => {
         setSubmitted(false);

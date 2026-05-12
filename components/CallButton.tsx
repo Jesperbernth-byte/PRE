@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, X } from 'lucide-react';
 import { PHONE_JACOB, PHONE_PREBEN } from '../constants';
+import { trackPhoneClick } from '../lib/tracking';
 
 interface CallButtonProps {
   className?: string;
@@ -43,7 +44,7 @@ const CallButton: React.FC<CallButtonProps> = ({ className = '', variant = 'prim
               <a
                 href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
                 className="block bg-blue-900 hover:bg-blue-800 text-white p-6 rounded-2xl transition-all group"
-                onClick={() => setShowModal(false)}
+                onClick={() => { trackPhoneClick('jacob'); setShowModal(false); }}
               >
                 <div className="flex items-start gap-4">
                   <img
@@ -67,7 +68,7 @@ const CallButton: React.FC<CallButtonProps> = ({ className = '', variant = 'prim
               <a
                 href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
                 className="block bg-slate-100 hover:bg-slate-200 text-slate-900 p-6 rounded-2xl transition-all group"
-                onClick={() => setShowModal(false)}
+                onClick={() => { trackPhoneClick('preben'); setShowModal(false); }}
               >
                 <div className="flex items-start gap-4">
                   <img

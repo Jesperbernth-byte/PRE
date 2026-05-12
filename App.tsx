@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useParams, Link, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -23,7 +23,8 @@ import CookiePolicy from './pages/CookiePolicy';
 import AdminDashboard from './pages/AdminDashboard';
 import CookieBanner from './components/CookieBanner';
 import { openConsentBanner } from './lib/consent';
-import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY } from './constants';
+import { initTracking } from './lib/tracking';
+import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY, GSC_VERIFICATION_TOKEN } from './constants';
 import { Target, CheckCircle2 } from 'lucide-react';
 
 const MissionValues: React.FC = () => (
@@ -154,6 +155,26 @@ const Footer: React.FC = () => (
 );
 
 const App: React.FC = () => {
+  useEffect(() => {
+    initTracking();
+    const onConsentChanged = () => initTracking();
+    window.addEventListener('cookie-consent-changed', onConsentChanged);
+
+    // Inject Google Search Console verification meta-tag if token is set.
+    if (GSC_VERIFICATION_TOKEN && GSC_VERIFICATION_TOKEN.trim()) {
+      const id = 'gsc-verification';
+      if (!document.getElementById(id)) {
+        const meta = document.createElement('meta');
+        meta.id = id;
+        meta.setAttribute('name', 'google-site-verification');
+        meta.setAttribute('content', GSC_VERIFICATION_TOKEN.trim());
+        document.head.appendChild(meta);
+      }
+    }
+
+    return () => window.removeEventListener('cookie-consent-changed', onConsentChanged);
+  }, []);
+
   return (
     <Router basename="/">
       <div className="flex flex-col min-h-screen pb-[88px] lg:pb-0">

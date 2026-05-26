@@ -36,4 +36,12 @@ export interface Service {
   faqs: { question: string; answer: string }[];
   icon: string;
   image?: string;
+  // Per-service override af in-content CTA-bjælken. Bruges fx på
+  // TV-inspektion hvor vi ikke kan love "gratis" eller "fast pris"
+  // fordi det er timelønsarbejde.
+  inContentCta?: {
+    label: string;     // fx "Spørgsmål til TV-inspektion?"
+    description: string; // fx "Ring til Jacob og få en pris-vurdering ud fra dit setup."
+    phone: 'preben' | 'jacob';
+  };
 }

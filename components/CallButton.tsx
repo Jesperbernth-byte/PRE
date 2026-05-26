@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, X } from 'lucide-react';
-import { PHONE_JACOB, PHONE_PREBEN } from '../constants';
+import { PERSON_JACOB, PERSON_PREBEN } from '../constants';
 import { trackPhoneClick } from '../lib/tracking';
 
 interface CallButtonProps {
@@ -42,22 +42,22 @@ const CallButton: React.FC<CallButtonProps> = ({ className = '', variant = 'prim
             <div className="space-y-4">
               {/* Jacob */}
               <a
-                href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`}
+                href={`tel:${PERSON_JACOB.phone.replace(/\s/g, '')}`}
                 className="block bg-blue-900 hover:bg-blue-800 text-white p-6 rounded-2xl transition-all group"
                 onClick={() => { trackPhoneClick('jacob'); setShowModal(false); }}
               >
                 <div className="flex items-start gap-4">
                   <img
-                    src="/team/jacob-cropped.png"
-                    alt="Jacob"
-                    className="w-16 h-16 rounded-xl object-cover border-2 border-white/20"
+                    src={PERSON_JACOB.image}
+                    alt={PERSON_JACOB.name}
+                    className="w-16 h-16 rounded-xl object-cover object-top border-2 border-white/20"
                   />
                   <div className="flex-1">
-                    <div className="text-xs text-orange-400 font-black uppercase tracking-wider mb-1">Daglig Leder & Kloakmester</div>
-                    <div className="text-xl font-black mb-1">Jacob</div>
+                    <div className="text-xs text-orange-400 font-black uppercase tracking-wider mb-1">{PERSON_JACOB.title}</div>
+                    <div className="text-xl font-black mb-1">{PERSON_JACOB.name}</div>
                     <div className="flex items-center gap-2 text-white/90">
                       <Phone size={16} />
-                      <span className="font-bold">{PHONE_JACOB}</span>
+                      <span className="font-bold">{PERSON_JACOB.phone}</span>
                     </div>
                     <div className="text-xs text-white/70 mt-2">Tekniske spørgsmål & akutte problemer</div>
                   </div>
@@ -66,24 +66,24 @@ const CallButton: React.FC<CallButtonProps> = ({ className = '', variant = 'prim
 
               {/* Preben */}
               <a
-                href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+                href={`tel:${PERSON_PREBEN.phone.replace(/\s/g, '')}`}
                 className="block bg-slate-100 hover:bg-slate-200 text-slate-900 p-6 rounded-2xl transition-all group"
                 onClick={() => { trackPhoneClick('preben'); setShowModal(false); }}
               >
                 <div className="flex items-start gap-4">
                   <img
-                    src="/team/preben-cropped.png"
-                    alt="Preben"
-                    className="w-16 h-16 rounded-xl object-cover border-2 border-slate-300"
+                    src={PERSON_PREBEN.image}
+                    alt={PERSON_PREBEN.name}
+                    className="w-16 h-16 rounded-xl object-cover object-top border-2 border-slate-300"
                   />
                   <div className="flex-1">
-                    <div className="text-xs text-orange-600 font-black uppercase tracking-wider mb-1">Direktør</div>
-                    <div className="text-xl font-black mb-1">Preben</div>
+                    <div className="text-xs text-orange-600 font-black uppercase tracking-wider mb-1">{PERSON_PREBEN.title}</div>
+                    <div className="text-xl font-black mb-1">{PERSON_PREBEN.name}</div>
                     <div className="flex items-center gap-2 text-slate-700">
                       <Phone size={16} />
-                      <span className="font-bold">{PHONE_PREBEN}</span>
+                      <span className="font-bold">{PERSON_PREBEN.phone}</span>
                     </div>
-                    <div className="text-xs text-slate-600 mt-2">Økonomi & planlægning af projekter</div>
+                    <div className="text-xs text-slate-600 mt-2">Økonomi</div>
                   </div>
                 </div>
               </a>

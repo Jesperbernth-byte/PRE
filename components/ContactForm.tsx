@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Phone, Send, CheckCircle, Loader2, AlertTriangle } from 'lucide-react';
-import { PHONE_PREBEN } from '../constants';
+import { PHONE_PREBEN, PHONE_JACOB } from '../constants';
 import { trackFormSubmit } from '../lib/tracking';
 
 const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
@@ -83,10 +83,10 @@ const ContactForm: React.FC<{ source?: string }> = ({ source = 'form' }) => {
             </p>
             <div className="bg-white rounded-2xl p-6 border-2 border-slate-100">
               <p className="text-sm font-bold text-blue-900 mb-2">Akut sag?</p>
-              <p className="text-sm text-slate-600 mb-3">Ved vand i kælder, oversvømmelse eller andet der ikke kan vente, så ring hellere direkte.</p>
-              <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 text-orange-600 font-black hover:text-orange-700 transition-colors">
+              <p className="text-sm text-slate-600 mb-3">Ved vand i kælder, oversvømmelse eller andet der ikke kan vente, så ring hellere direkte til Jacob.</p>
+              <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 text-orange-600 font-black hover:text-orange-700 transition-colors">
                 <Phone size={18} />
-                Ring {PHONE_PREBEN}
+                Ring {PHONE_JACOB}
               </a>
             </div>
           </div>

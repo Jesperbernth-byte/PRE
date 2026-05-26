@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, CheckCircle, Clock, Shield, Building2 } from 'lucide-react';
-import { PHONE_JACOB, PHONE_PREBEN, EMAIL_JACOB, EMAIL_PREBEN, EMAIL_INFO, ADDRESS, GLN_NUMBER, CVR, COMPANY_NAME } from '../constants';
+import { PHONE_JACOB, PHONE_PREBEN, EMAIL_JACOB, EMAIL_PREBEN, EMAIL_INFO, ADDRESS, CVR, COMPANY_NAME, PERSON_PREBEN, PERSON_JACOB } from '../constants';
 import { usePageMeta } from '../lib/usePageMeta';
 import ContactForm from '../components/ContactForm';
 
@@ -75,15 +75,15 @@ const Contact: React.FC = () => {
             <div className="bg-slate-50 rounded-3xl overflow-hidden border-2 border-slate-100 hover:border-orange-600 transition-all hover:shadow-xl">
               <div className="aspect-[4/5] bg-slate-100 overflow-hidden">
                 <img
-                  src="/team/preben-close.png"
-                  alt="Preben – Direktør i PR Entreprenøren ApS"
+                  src={PERSON_PREBEN.image}
+                  alt={`${PERSON_PREBEN.name} – ${PERSON_PREBEN.title} i PR Entreprenøren ApS`}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-black text-blue-900 mb-1">Preben</h3>
-                <p className="text-base font-bold text-orange-600 uppercase tracking-wider mb-2">Direktør</p>
-                <p className="text-sm text-slate-600 mb-6">Økonomi.</p>
+                <h3 className="text-2xl font-black text-blue-900 mb-1">{PERSON_PREBEN.name}</h3>
+                <p className="text-base font-bold text-orange-600 uppercase tracking-wider mb-2">{PERSON_PREBEN.title}</p>
+                <p className="text-sm text-slate-600 mb-6">{PERSON_PREBEN.bio}.</p>
                 <div className="space-y-3 border-t border-slate-200 pt-5">
                   <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="flex items-center gap-3 text-slate-700 hover:text-orange-600 transition-colors group">
                     <Phone size={18} className="text-blue-900 group-hover:text-orange-600 shrink-0" />
@@ -101,15 +101,15 @@ const Contact: React.FC = () => {
             <div className="bg-slate-50 rounded-3xl overflow-hidden border-2 border-slate-100 hover:border-orange-600 transition-all hover:shadow-xl">
               <div className="aspect-[4/5] bg-slate-100 overflow-hidden">
                 <img
-                  src="/team/jacob-close.png"
-                  alt="Jacob – Daglig Leder & Kloakmester hos PR Entreprenøren ApS"
+                  src={PERSON_JACOB.image}
+                  alt={`${PERSON_JACOB.name} – ${PERSON_JACOB.title} hos PR Entreprenøren ApS`}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-black text-blue-900 mb-1">Jacob</h3>
-                <p className="text-base font-bold text-orange-600 uppercase tracking-wider mb-2">Daglig Leder & Kloakmester</p>
-                <p className="text-sm text-slate-600 mb-6">Besigtigelser, tilbud, dialog med kunder og leverandører, planlægning, kundeservice.</p>
+                <h3 className="text-2xl font-black text-blue-900 mb-1">{PERSON_JACOB.name}</h3>
+                <p className="text-base font-bold text-orange-600 uppercase tracking-wider mb-2">{PERSON_JACOB.title}</p>
+                <p className="text-sm text-slate-600 mb-6">{PERSON_JACOB.bio}.</p>
                 <div className="space-y-3 border-t border-slate-200 pt-5">
                   <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="flex items-center gap-3 text-slate-700 hover:text-orange-600 transition-colors group">
                     <Phone size={18} className="text-blue-900 group-hover:text-orange-600 shrink-0" />
@@ -170,14 +170,11 @@ const Contact: React.FC = () => {
                 <p className="text-base text-slate-200 leading-relaxed">
                   CVR: <span className="font-bold text-white">{CVR}</span>
                 </p>
-                <p className="text-base text-slate-200 leading-relaxed">
-                  GLN/EAN: <span className="font-bold text-white">{GLN_NUMBER}</span>
-                </p>
               </div>
             </div>
 
             <div className="border-t border-white/10 pt-6 text-sm text-slate-400">
-              Faktura sendes via e-faktura/EAN, eller på e-mail til <a href="mailto:faktura@prentreprenoer.dk" className="text-orange-400 hover:text-orange-300 font-bold">faktura@prentreprenoer.dk</a>.
+              Faktura sendes på e-mail til <a href="mailto:faktura@prentreprenoer.dk" className="text-orange-400 hover:text-orange-300 font-bold">faktura@prentreprenoer.dk</a>.
             </div>
           </div>
         </div>

@@ -19,6 +19,25 @@ export const EMAIL_INFO = siteContent.contacts.info.email;
 export const EMAIL_FAKTURA = siteContent.contacts.faktura.email;
 export const EMAIL = siteContent.contacts.info.email;
 
+// Centrale person-felter — ændres ét sted (site-content.json) og bruges
+// alle steder (footer, kontaktside, CallButton-modal).
+export const PERSON_PREBEN = {
+  name: 'Preben',
+  title: siteContent.contacts.preben.title,
+  bio: siteContent.contacts.preben.bio,
+  phone: siteContent.contacts.preben.phone,
+  email: siteContent.contacts.preben.email,
+  image: (siteContent.contacts.preben as any).image || '/team/preben-close.png'
+};
+export const PERSON_JACOB = {
+  name: 'Jacob',
+  title: siteContent.contacts.jacob.title,
+  bio: siteContent.contacts.jacob.bio,
+  phone: siteContent.contacts.jacob.phone,
+  email: siteContent.contacts.jacob.email,
+  image: (siteContent.contacts.jacob as any).image || '/team/jacob-close.png'
+};
+
 export const FACEBOOK_PAGE_URL = (siteContent as any).social?.facebookUrl as string | undefined;
 
 export const GSC_VERIFICATION_TOKEN = (siteContent as any).seo?.googleSearchConsoleToken as string | undefined;
@@ -38,10 +57,10 @@ export const SERVICE_DISPLAY_ORDER: string[] = [
   'tv-inspektion',
   'spuling',
   'omfangsdraen',
-  'kloakarbejde',
+  'kloakseparering',
+  'kloakrenovering',
   'rottespaerre',
   'hoejvandslukker',
-  'lar-anlaeg',
   'miniransanlaeg',
   'broend-renovering',
   'olietanke',
@@ -105,46 +124,117 @@ Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for arbejde
   },
   {
     id: '2',
-    slug: 'kloakarbejde',
-    image: '/pictures/Kloak arbejde/20220202_092520.jpg',
-    title: 'Kloakseparering & Renovering',
-    description: 'Lovpligtig opdeling af regn- og spildevand. Som autoriseret kloakmester klarer vi hele processen – fra myndighedsansøgning til færdigmelding.',
-    longDescription: `Kloakseparering er en af de største kloakopgaver en boligejer kan stå over for – men også en af de vigtigste. Når regn- og spildevand løber i samme rør, bliver kommunens kloaksystem hurtigt overbelastet ved kraftig regn, og resultatet er overløb af urenset spildevand til vandløb, søer og kystområder. Med separering ledes regnvand ud i naturen eller via regnvandskloak, mens spildevandet føres videre til renseanlæg. Det giver renere vandmiljø, færre oversvømmelser og en kloak der er rustet til fremtidens klima.
+    slug: 'kloakseparering',
+    image: '/pictures/Separering/20220520_085810.jpg',
+    title: 'Kloakseparering & LAR-anlæg',
+    description: 'Lovpligtig opdeling af regn- og spildevand kombineret med lokal afledning af regnvand. Vi tager hele processen — fra myndighedsansøgning til færdigmelding.',
+    longDescription: `Kloakseparering og LAR (Lokal Afledning af Regnvand) er to sider af samme sag: hvordan håndterer vi regnvand i et klima hvor det regner kraftigere og oftere end før, uden at overbelaste kommunens kloak? Når regn- og spildevand løber i samme rør, bliver fælleskloakken hurtigt overbelastet, og resultatet er overløb af urenset spildevand til vandløb, søer og kystområder. Separering opdeler ledningerne, og LAR håndterer regnvandet lokalt på din egen grund i stedet for at sende det videre til kommunen. Sammen giver de et stabilt system, et renere vandmiljø og en boligejer der ikke længere skal frygte næste skybrud.
 
 Hvorfor skal vi separere kloak?
 
 Det danske kloaksystem blev mange steder etableret som ét fælles rør (fællessystem) i 1950'erne, 60'erne og 70'erne. Dengang var regnmængderne mindre, og overløb ved skybrud blev accepteret som en nødløsning. I dag er klimaet markant ændret: skybrud er hyppigere, regnen er kraftigere, og kommunens fælleskloak kan ikke længere følge med. Når kloakken løber over, sker tre ting på én gang. For det første sker der miljøforurening: urenset toiletvand og spildevand fra køkkener løber direkte ud i åer og fjorde. For det andet får boligejere oversvømmelser i kælder og have, fordi vandet stiger op gennem afløbene. For det tredje belastes kommunens renseanlæg unødigt med fortyndet spildevand der koster ekstra energi at rense.
 
-Ved at separere ledningerne ledes regnvand fra tag og indkørsel direkte til regnvandskloak, faskine eller LAR-løsning – mens spildevand fra toilet, bad og køkken føres uændret til renseanlæg. Resultatet er et stabilt kloaksystem, et renere vandmiljø og en boligejer der ikke længere skal frygte næste skybrud.
+Ved at separere ledningerne ledes regnvand fra tag og indkørsel ud i regnvandskloak — eller endnu bedre, lokalt via et LAR-anlæg — mens spildevand fra toilet, bad og køkken føres uændret til renseanlæg.
 
 Lovkrav og kommunale påbud på Fyn
 
-Mange fynske kommuner – herunder Faaborg-Midtfyn, Assens, Odense, Svendborg, Nyborg og Middelfart – udsender løbende påbud om separering til specifikke områder, hvor det fælles kloaksystem skal opdeles. Når du modtager et påbud, har du typisk en frist på 1-2 år til at få separeret på egen grund. Sker det ikke, kan kommunen pålægge dagbøder. Derudover kan du blive nægtet byggetilladelse til tilbygninger eller fremtidige renoveringer, indtil separeringen er udført. Ved hussalg vil et manglende påbud også kunne påvirke prisen og tilliden til ejendommen.
+Mange fynske kommuner — herunder Faaborg-Midtfyn, Assens, Odense, Svendborg, Nyborg og Middelfart — udsender løbende påbud om separering til specifikke områder. Når du modtager et påbud, har du typisk en frist på 1-2 år til at få separeret på egen grund. Sker det ikke, kan kommunen pålægge dagbøder. Derudover kan du blive nægtet byggetilladelse til tilbygninger eller fremtidige renoveringer, indtil separeringen er udført. Ved hussalg vil et manglende påbud også kunne påvirke prisen og tilliden til ejendommen.
 
 Vi kender de lokale kommuners specifikke krav, ansøgningsskemaer og dokumentationskrav, og vi sørger for at hele processen lever op til både teknisk standard og kommunal sagsbehandling.
 
-Sådan foregår en kloakseparering trin for trin
+Hvad er LAR — og hvorfor giver det mening at lave samtidig med separering?
 
-En typisk kloakseparering på et parcelhus tager 3-7 arbejdsdage. Vi starter altid med en gratis besigtigelse, hvor vi gennemgår eksisterende kloakplaner, kontrollerer fald og dimensionering, og lokaliserer alle tagnedløb, brønde og afløb. Derefter udarbejder vi en samlet projektløsning og ansøger på dine vegne hos kommunen.
+LAR står for Lokal Afledning af Regnvand og dækker over alle de tekniske løsninger, hvor regnvand fra tag og befæstede arealer håndteres lokalt på grunden i stedet for at blive sendt videre til kommunens kloak. Når du alligevel skal separere, giver det rigtig god mening at tænke LAR ind: i stedet for at koble regnvandet til den nye regnvandskloak kan vi lede det ned i en faskine, et regnbed eller en permeabel belægning på din egen grund. Det aflaster kommunen yderligere, kan give dig reduceret kloakafgift, og mange fynske forsyningsselskaber tilbyder tilskud hvis du frakobler regnvand fra kloakken.
 
-Selve arbejdet foregår i disse trin: opgravning langs eksisterende kloak med minigraver eller gravemaskine. Sløjfning af gamle fællesledninger og installation af nye separate ledninger til regnvand og spildevand. Etablering af nødvendige inspektionsbrønde og rensebrønde i godkendte materialer. Tilslutning af tagnedløb til regnvandsledning eller faskine. Korrekt fald (minimum 20 ‰ for spildevand, 5 ‰ for regnvand) og rette dimensionering af alle rør. TV-inspektion af det færdige system som dokumentation. Færdigmelding og indberetning til kommunens BBR-register.
+Forskellige LAR-løsninger
 
-Renovering af gamle, utætte kloakker
+Vi etablerer flere typer LAR-anlæg afhængigt af grundens jordbund, plads og terrænforhold:
 
-Mange ældre fynske ejendomme har kloakker der er utætte, gennemgroede med rødder eller har sammensunkne ledninger. Vi renoverer både små og store strækninger – med opgravning eller, hvor det er muligt, med strømpeforing (no-dig). En tæt kloak forhindrer rotteindtrængning, beskytter grundvandet mod forurening og sikrer at spildevandet rent faktisk kommer frem til renseanlægget. Vi anbefaler altid TV-inspektion før renovering, så vi kan målrette indsatsen og undgå unødvendig opgravning.
+Faskine: En underjordisk grav fyldt med drænende materiale eller præfabrikerede plastkassetter, hvor regnvand opmagasineres og langsomt nedsiver til den omgivende jord. Egnet til lerede og sandede jorder med passende nedsivningsevne. Tager kun lidt plads i overfladen, så græsplænen og haven kan bruges normalt.
+
+Regnbed og nedsivningsbed: En lavtliggende beplantet zone, hvor regnvand opsamles, forsinkes og nedsiver. Kan integreres som en smuk del af haven og giver biodiversitet og levesteder for insekter og fugle.
+
+Permeable belægninger: Belægningssten, grus eller græsarmering der lader regnvand sive direkte ned i underlaget i stedet for at lede det til kloak. Egnet til indkørsler, terrasser og parkeringsarealer.
+
+Åbne grøfter og vandrender: Synlige forsinkende elementer der både fungerer praktisk og som æstetisk indslag i haven.
+
+Sådan foregår en kombineret separerings- og LAR-opgave
+
+En typisk kloakseparering på et parcelhus tager 3-7 arbejdsdage. Hvis vi også laver LAR, lægger vi typisk 1-2 dage oveni afhængigt af løsningens omfang. Vi starter altid med en gratis besigtigelse, hvor vi gennemgår eksisterende kloakplaner, vurderer grundens jordbund og nedsivningsevne, lokaliserer alle tagnedløb og afløb, og finder den rette LAR-løsning til netop dine forhold. Derefter udarbejder vi en samlet projektløsning og ansøger på dine vegne hos kommunen.
+
+Selve arbejdet foregår i disse trin: opgravning langs eksisterende kloak med minigraver eller gravemaskine. Sløjfning af gamle fællesledninger og installation af nye separate ledninger til regnvand og spildevand. Etablering af LAR-anlæg (fx faskine eller regnbed) hvor regnvandet håndteres lokalt. Etablering af nødvendige inspektionsbrønde og sandfangsbrønde i godkendte materialer. Tilslutning af tagnedløb til den valgte løsning. Korrekt fald (minimum 20 ‰ for spildevand, 5 ‰ for regnvand) og rette dimensionering af alle rør. TV-inspektion af det færdige system som dokumentation. Færdigmelding og indberetning til kommunens BBR-register.
+
+Tilskud og økonomi
+
+Mange fynske kommuner og forsyningsselskaber tilbyder tilskud, hvis du frakobler regnvand fra kloakken og håndterer det lokalt via LAR. Tilskuddet kan dække en betydelig del af etableringsomkostningerne, og samtidig sparer du fremtidig kloakafgift på regnvand. På sigt giver et velplaceret LAR-anlæg ofte både en miljøgevinst og en økonomisk gevinst — og en pænere have med flere muligheder for beplantning og biodiversitet. Vi kender de lokale ordninger og hjælper med ansøgningen.
 
 Dokumentation, garanti og forsikring
 
-Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for alt udført arbejde – inkl. KS-rapport, TV-inspektion og færdigmelding. Vi giver 5 års garanti på vores arbejde og benytter DM&E Kloakmestergarantien. Korrekt udført separering holder typisk 50+ år uden vedligeholdelse, og du har papir på det hele hvis kommunen, forsikringen eller en kommende køber spørger.`,
+Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for alt udført arbejde — inkl. KS-rapport, TV-inspektion og færdigmelding. Vi giver 5 års garanti på vores arbejde og benytter DM&E Kloakmestergarantien. Korrekt udført separering med LAR holder typisk 50+ år uden vedligeholdelse, og du har papir på det hele hvis kommunen, forsikringen eller en kommende køber spørger.`,
     icon: 'Hammer',
     faqs: [
       { question: 'Er jeg forpligtet til at separere kloak?', answer: 'Det afhænger af din kommune og om der er udstedt påbud for dit område. Mange fynske kommuner separerer i etaper, og når du modtager et påbud, har du typisk 1-2 år til at få det udført. Vi tjekker gerne din adresse og fortæller hvad der gælder for dig.' },
-      { question: 'Hvorfor er det vigtigt at separere?', answer: 'Når regn- og spildevand løber i samme rør, bliver kloakken overbelastet ved kraftig regn, og urenset spildevand løber over til søer, åer og kystområder. Separering forhindrer miljøforurening, reducerer oversvømmelser og aflaster kommunens renseanlæg.' },
-      { question: 'Hvad sker der hvis jeg ikke separerer?', answer: 'Du risikerer dagbøder fra kommunen og kan blive nægtet byggetilladelse til fremtidige projekter. Derudover stiger risikoen for oversvømmelse ved kraftig regn, og manglende separering kan påvirke ejendomsværdien ved salg.' },
+      { question: 'Hvorfor skal jeg overveje LAR samtidig med separering?', answer: 'Når du alligevel graver op for at separere, er det den nemmeste og billigste anledning til også at etablere LAR — fx en faskine eller et regnbed. Det aflaster kommunens kloak yderligere, kan give dig reduceret kloakafgift, og mange forsyningsselskaber giver tilskud til frakobling af regnvand.' },
+      { question: 'Hvor meget plads kræver et LAR-anlæg?', answer: 'Det afhænger af tagets areal og grundens jordbund. En typisk faskine til et parcelhus kræver 5-15 m² underjordisk plads — overfladen kan bruges som græs eller bed. Regnbede kræver 15-30 m² synlig plads, men kan integreres smukt i haven.' },
+      { question: 'Kan alle grundejere få LAR-anlæg?', answer: 'Nej. Det kræver tilstrækkelig nedsivningskapacitet i jorden, plads og at terrænet er egnet. Vi laver en gratis vurdering med simpel nedsivningsprøve og fortæller om det er muligt — og hvilken løsning der passer bedst.' },
+      { question: 'Giver kommunen tilskud?', answer: 'Mange fynske kommuner og forsyningsselskaber har tilskudsordninger til LAR og frakobling af regnvand fra kloak. Beløb og betingelser varierer — vi kender de lokale ordninger og hjælper med ansøgningen.' },
       { question: 'Skal jeg selv søge tilladelse?', answer: 'Nej, vi håndterer alle ansøgninger og al kommunikation med kommunen. Du modtager kopi af ansøgning og godkendelse, og vi sørger også for færdigmelding og BBR-indberetning.' },
-      { question: 'Hvor lang tid tager en separering?', answer: 'Typisk 3-7 arbejdsdage for et parcelhus, afhængig af grundens størrelse, placering af eksisterende ledninger og adgangsforhold. Vi oplyser altid forventet tidsplan i tilbuddet.' },
-      { question: 'Kan I renovere uden at grave hele haven op?', answer: 'I mange tilfælde kan vi anvende strømpeforing (no-dig), hvor vi renoverer eksisterende rør indefra uden større opgravning. Vi vurderer det altid konkret efter TV-inspektion.' },
+      { question: 'Hvor lang tid tager det?', answer: 'En kombineret separerings- og LAR-opgave tager typisk 4-9 arbejdsdage afhængig af grundens størrelse, jordbund og hvilken LAR-løsning vi vælger. Vi oplyser altid forventet tidsplan i tilbuddet.' },
       { question: 'Får jeg dokumentation jeg kan vise til forsikring og kommune?', answer: 'Ja, du får KS-rapport, TV-inspektion af det færdige arbejde, færdigmelding til kommunen og BBR-indberetning. Alt sammen som autoriseret kloakmestervirksomhed under DM&E Kloakmestergarantien.' }
+    ]
+  },
+  {
+    id: '16',
+    slug: 'kloakrenovering',
+    image: '/pictures/Tv-inspektion/20260126_101025.jpg',
+    title: 'Kloakrenovering',
+    description: 'Punktreparation, strømpeforing og opgravning af utætte og sammensunkne kloakledninger. Vi diagnosticerer med TV-inspektion og vælger den mest skånsomme metode.',
+    longDescription: `Mange ældre fynske ejendomme har kloakker der er udtjent længe før de fejler synligt: utætheder hvor jord og vand siver ind, samlinger der er gået i stykker, rødder der er vokset ind i rørene, eller hele strækninger der er sammensunkne. Konsekvenserne er reelle: rotter får fri adgang til kloaksystemet, spildevand siver ud i jorden og forurener grundvandet, og du oplever gentagne tilstopninger der ikke bliver bedre af spuling alene. Med en målrettet kloakrenovering kan vi udbedre præcis det stykke der fejler — uden at grave hele haven op.
+
+Hvornår er kloakrenovering relevant?
+
+De tydeligste tegn på at din kloak trænger til renovering er: tilbagevendende tilstopninger der kommer igen efter spuling, lugt af kloak inde eller ude, rotter i området der ikke kan forklares andet sted fra, vådt eller sunkent terræn over rør-tracéet, eller et hus over en vis alder hvor TV-inspektion afslører revner, sammenfald eller indvoksede rødder. Mange opdager også behovet i forbindelse med hussalg, hvor en TV-inspektion er en del af købers undersøgelser.
+
+TV-inspektion som forundersøgelse
+
+Vi starter altid med en TV-inspektion. Det er den hurtigste og billigste måde at finde ud af præcis hvor problemet er, hvor langt det strækker sig, og hvilken metode der bedst løser det. Du får en rapport med video og afstandsmåling, så du selv kan se hvad der er galt. På baggrund af inspektionen kan vi anbefale den rette renoveringsmetode — fra en lille punktreparation til en større udskiftning.
+
+Renoveringsmetoder: opgravning vs. no-dig
+
+Vi vælger metode ud fra skadens type, omfang og placering. De fire mest brugte er:
+
+Punktreparation (no-dig): Ved en enkelt revne eller utæt samling kan vi reparere indefra med en lokal liner — et lille stykke harpiks-imprægneret materiale der hærdes på plads. Hurtigt, billigt og uden synligt arbejde i haven. Egnet til mindre, isolerede skader.
+
+Strømpeforing (no-dig): Hele rørstrækningen renoveres indefra med en harpiks-imprægneret strømpe der hærder og bliver til et nyt rør inden i det gamle. Egnet til længere strækninger med flere skader hvor opgravning ville være urimeligt omfattende.
+
+Opgravning og udskiftning: Ved sammenstyrtede rør, store deformationer eller når det gamle rør har forkert fald, er det mest holdbare valg at grave op og lægge nye PE- eller PVC-rør i godkendt kvalitet. Det er mere indgribende, men giver et helt nyt system med fuld levetid.
+
+Rod-fræsning kombineret med renovering: Hvis problemet er indvoksede rødder, fræser vi først rødderne ud, så liner eller strømpe kan trækkes ind på en fri strækning. Vi anbefaler altid renovering af samlingerne efter rod-fjernelse, ellers vokser rødderne typisk tilbage inden for få år.
+
+Brønde og samlinger
+
+Mange kloakproblemer skyldes ikke selve rørene, men brønde og samlinger der er gået i stykker. Vi renoverer både gamle inspektionsbrønde med ny karm og indvendig opbygning, og vi udskifter samlinger hvor det er nødvendigt. Hvis du vil læse mere om brøndarbejde isoleret, har vi en separat side om brøndrenovering og brøndbygning.
+
+Materialer og kvalitet
+
+Vi bruger udelukkende godkendte materialer fra anerkendte producenter — PE- og PVC-rør i drikkevands- og spildevandskvalitet, harpikser der lever op til EN-standarder, og brønde der er certificerede til den belastningsklasse de skal stå i. Hver opgave dokumenteres med før- og efterbilleder samt en afsluttende TV-inspektion, så du har papir på resultatet.
+
+Akut udrykning ved kollaps
+
+Ved akutte kloakproblemer — fx et sammenstyrtet rør med spildevand i haven, eller en kloak der er stoppet helt — rykker vi typisk ud inden for 2 timer i dagtimerne. Vi har spuleudstyr, kamera og minigraver i bilen, så vi kan diagnosticere og handle på stedet.
+
+Dokumentation, garanti og forsikring
+
+Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for alt udført arbejde — inkl. TV-inspektion før og efter, KS-rapport og færdigmelding til kommunen hvor det kræves. Vi giver 5 års garanti på vores arbejde og benytter DM&E Kloakmestergarantien. Et korrekt renoveret kloaksystem holder typisk 40-50 år, og du har papir på det hele hvis kommunen, forsikringen eller en kommende køber spørger. Mange forsikringsselskaber kræver i øvrigt TV-dokumentation før de dækker en kloakrenovering — det leverer vi som standard.`,
+    icon: 'Hammer',
+    faqs: [
+      { question: 'Hvordan finder I ud af hvad der er galt?', answer: 'Vi starter altid med en TV-inspektion. Det giver os præcis billede af skadens type, placering og omfang — og er grundlaget for vores anbefaling af metode. Du får selv rapporten med video og afstandsmåling.' },
+      { question: 'Kan I renovere uden at grave op?', answer: 'I mange tilfælde ja. Ved isolerede skader bruger vi punktreparation, og ved længere strækninger bruger vi strømpeforing. Begge dele foregår indefra uden større opgravning. Ved sammenstyrtede rør eller forkert fald er opgravning og udskiftning dog mest holdbart.' },
+      { question: 'Hvad koster en kloakrenovering?', answer: 'Det afhænger fuldstændig af skadens omfang og hvilken metode der passer bedst. En punktreparation er væsentligt billigere end opgravning af en hel ledning. Vi giver fast pris efter TV-inspektion, så du ved præcis hvad det koster inden vi går i gang.' },
+      { question: 'Hvor lang tid tager det?', answer: 'En punktreparation tager typisk 2-4 timer. Strømpeforing af en ledning 1-2 dage. Større opgravnings-projekter 3-7 dage. Vi oplyser altid forventet tidsplan i tilbuddet.' },
+      { question: 'Er der akutte tilfælde hvor I rykker hurtigt ud?', answer: 'Ja. Ved sammenstyrtede rør, kollapset kloak eller spildevand i haven rykker vi ud inden for 2 timer i dagtimerne — også aften og weekend ved alvorlige sager. Vi har spuleudstyr, kamera og minigraver i bilen, så vi kan diagnosticere og handle på stedet.' },
+      { question: 'Får jeg dokumentation jeg kan vise til forsikring?', answer: 'Ja. TV-inspektion før og efter, KS-rapport og 5 års garanti på arbejdet. Mange forsikringsselskaber kræver TV-dokumentation før de dækker en kloakrenovering — det leverer vi som standard.' },
+      { question: 'Hvor længe holder en renoveret kloak?', answer: 'En korrekt udført renovering holder typisk 40-50 år. Ved no-dig metoder forventes en levetid på 30-50 år afhængigt af belastning. Ved opgravning og udskiftning til moderne PE/PVC-rør er forventet levetid 50+ år.' }
     ]
   },
   {
@@ -258,64 +348,22 @@ TV-inspektion ved hussalg
 
 Står du over for et hussalg eller boligkøb på Fyn? En forudgående TV-inspektion kan både give dig et stærkere salgsargument (du dokumenterer at kloakken er i orden) og beskytte mod ubehagelige overraskelser efter overtagelsen. Vi tilbyder hurtig udrykning – ofte inden for få dage – og leverer en rapport der er klar til at indgå i salgsmaterialet.
 
-Tilbud, dokumentation og forsikring
+Pris og dokumentation
 
-Vi giver fast pris på TV-inspektion efter besigtigelse, og du betaler kun for det udførte arbejde. Hvis vi opdager skader, kan vi give dig et samlet tilbud på udbedring – men der er ingen forpligtelse, og du kan altid bruge rapporten til at indhente andre tilbud. Som autoriseret kloakmestervirksomhed under DM&E Kloakmestergarantien står vi inde for både inspektion og udførelse.`,
+TV-inspektion afregnes som timelønsarbejde, fordi tidsforbruget afhænger af kloakkens omfang, om der skal spules først, og om der opstår uforudsete forhindringer undervejs. Vi giver gerne et estimat baseret på dit setup når du ringer — så ved du hvad du går ind til. Hvis vi opdager skader, kan vi give et særskilt tilbud på udbedring, men der er ingen forpligtelse, og du kan altid bruge rapporten til at indhente andre tilbud. Som autoriseret kloakmestervirksomhed under DM&E Kloakmestergarantien står vi inde for både inspektion og en eventuel efterfølgende udførelse.`,
     icon: 'Camera',
+    inContentCta: {
+      label: 'Spørgsmål til TV-inspektion?',
+      description: 'Ring til Jacob — han kender setup\'et og kan give dig en vurdering af tidsforbrug og pris ud fra din kloak.',
+      phone: 'jacob'
+    },
     faqs: [
       { question: 'Hvornår skal jeg have lavet TV-inspektion?', answer: 'Ved gentagne stop i kloakken, mistanke om brud eller rodindtrængning, ved køb eller salg af hus (særligt hvis ejendommen er over 30 år), eller hvis du planlægger større renoveringer eller tilbygninger. Forsikringen kræver ofte TV-inspektion som dokumentation ved skadesager.' },
       { question: 'Hvor langt kan kameraet køre?', answer: 'Vores udstyr kan inspicere op til 100 meter ledning i ét stræk. Ved længere systemer kombinerer vi med inspektion fra flere brønde, så hele kloaksystemet bliver dækket.' },
       { question: 'Får jeg dokumentation?', answer: 'Ja, du modtager en komplet rapport med video, billeder og præcis afstandsmåling af eventuelle skader. Rapporten lever op til de krav som forsikringsselskaber, kommune og ejendomsmæglere typisk stiller ved sagsbehandling.' },
-      { question: 'Skal kloakken være ren før inspektion?', answer: 'Ikke nødvendigvis. Hvis kloakken er tilstoppet eller fuld af sand og fedt, spuler vi den fri inden inspektionen, så vi får et klart billede. Det kan vi tage med i samme besøg.' },
+      { question: 'Skal kloakken være ren før inspektion?', answer: 'Ikke nødvendigvis. Hvis kloakken er tilstoppet eller fuld af sand og fedt, spuler vi den fri inden inspektionen, så vi får et klart billede. Det indgår i samme besøg og afregnes som en del af timeforbruget.' },
       { question: 'Kan I se forskel på en gammel revne og en ny skade?', answer: 'Ja. Vi vurderer både skadens type, alder og udvikling – fx om der er aktiv jordindtrængning, friske rødder eller stabiliserede aflejringer. Det er vigtigt for både forsikringsbehandling og prioritering af udbedring.' },
-      { question: 'Hvad koster en TV-inspektion?', answer: 'Prisen afhænger af kloakkens længde, antal brønde og om der skal spules først. Vi giver altid fast pris efter en kort indledende vurdering – ingen timeafregning og ingen skjulte gebyrer.' }
-    ]
-  },
-  {
-    id: '6',
-    slug: 'lar-anlaeg',
-    image: '/pictures/Separering/20220520_085810.jpg',
-    title: 'LAR-Anlæg (Lokal Afledning af Regnvand)',
-    description: 'Miljøvenlig håndtering af regnvand på egen grund med faskiner, regnbede og nedsivning. Reducerer kloakbelastning og kan give kommunalt tilskud.',
-    longDescription: `LAR står for Lokal Afledning af Regnvand og dækker over alle de tekniske løsninger, hvor regnvand fra tag og befæstede arealer håndteres lokalt på grunden i stedet for at blive ledt til kloakken. Det kan være faskiner, regnbede, nedsivningsanlæg, regnvandsbede, permeable belægninger eller åbne grøfter. LAR er en miljøvenlig og fremtidssikker måde at håndtere regnvand på – og bliver i stigende grad et lovkrav ved nybyggeri og større renoveringer på Fyn.
-
-Hvorfor er LAR-anlæg vigtige?
-
-Klimaet ændrer sig, og skybruddene bliver hyppigere og kraftigere. De gamle kloaksystemer er ikke dimensioneret til de regnmængder vi ser i dag, og resultatet er overløb af kloakvand til vandmiljøet og oversvømmelser i lavtliggende byområder. Når regnvand håndteres lokalt på grunden, opnår man flere fordele på én gang: kommunens kloak aflastes, grundvandet får tilført rent regnvand, lokale vandløb og søer beskyttes mod overløb af kloakvand, og boligejeren kan få reduceret tilslutningsbidrag og kloakafgift hos forsyningsselskabet.
-
-LAR er tæt forbundet med kloakseparering – ofte er separering det første skridt, og LAR-løsningen er det andet skridt, hvor regnvandet håndteres på grunden i stedet for at blive ledt videre til regnvandskloak. Vi vurderer altid om en samlet løsning, hvor separering og LAR udføres sammen, er den rigtige strategi for din ejendom.
-
-Forskellige LAR-løsninger
-
-Vi etablerer flere typer LAR-anlæg afhængigt af grundens jordbund, plads og terrænforhold:
-
-Faskine: En underjordisk grav fyldt med drænende materiale eller præfabrikerede plastkassetter, hvor regnvand opmagasineres og langsomt nedsiver til den omgivende jord. Egnet til lerede og sandede jorder med passende nedsivningsevne. Tager kun lidt plads i overfladen, så græsplænen og haven kan bruges normalt.
-
-Regnbed og nedsivningsbed: En lavtliggende beplantet zone, hvor regnvand opsamles, forsinkes og nedsiver. Kan integreres som en smuk del af haven og giver biodiversitet og levesteder for insekter og fugle.
-
-Permeable belægninger: Belægningssten, grus eller græsarmering der lader regnvand sive direkte ned i underlaget i stedet for at lede det til kloak. Egnet til indkørsler, terrasser og parkeringsarealer.
-
-Åbne grøfter og vandrender: Synlige forsinkende elementer der både fungerer praktisk og som æstetisk indslag i haven.
-
-Udvendigt LAR-system: Større anlæg med kombination af bassin, faskine og overløb til vandløb eller kloak. Egnet til større ejendomme, virksomheder eller fællesarealer.
-
-Sådan starter vi en LAR-opgave
-
-Vi starter med en gratis besigtigelse, hvor vi vurderer din grunds jordbundsforhold (især nedsivningsevne), tagets areal, eksisterende afløb og terrænforhold. På baggrund af dette giver vi en faglig anbefaling om hvilken løsning der passer bedst, og vi laver en simpel beregning af nødvendig kapacitet ud fra danske dimensioneringskrav. Hvis du modtager LAR-tilskud fra kommunen, hjælper vi med ansøgning og dokumentation.
-
-Selve etableringen tager typisk 2-5 dage afhængigt af løsningens omfang. Vi sløjfer eksisterende tilslutninger til regnvandskloak, etablerer det nye anlæg, tilslutter tagnedløb og lægger overløbsledning til kloak eller vandløb som backup. Alt arbejdet udføres som autoriseret kloakmester med fuld dokumentation.
-
-Tilskud og økonomisk gevinst
-
-Mange fynske kommuner og forsyningsselskaber tilbyder tilskud, hvis du frakobler regnvand fra kloakken og håndterer det lokalt. Tilskuddet kan dække en betydelig del af etableringsomkostningerne, og samtidig sparer du tilslutningsbidrag og fremtidig kloakafgift på regnvand. På sigt giver et velplaceret LAR-anlæg ofte både en miljøgevinst og en økonomisk gevinst – og en pænere have med flere muligheder for beplantning og biodiversitet.`,
-    icon: 'Droplets',
-    faqs: [
-      { question: 'Hvad er fordelene ved LAR-anlæg?', answer: 'Aflastning af kommunens kloak, reduceret kloakafgift, mulighed for kommunalt tilskud, mindre risiko for oversvømmelse, og en grøn og biodiversitetsfremmende have. LAR er ofte et lovkrav ved nybyggeri eller større renoveringer.' },
-      { question: 'Hvor meget plads kræver et LAR-anlæg?', answer: 'Det afhænger af tagets areal og grundens jordbund. En typisk faskine til et parcelhus kræver 5-15 m² i underjordisk plads – overfladen kan bruges som græs eller bed. Regnbede kræver 15-30 m² synlig plads, men kan integreres smukt i haven.' },
-      { question: 'Kan alle grundejere få LAR-anlæg?', answer: 'Nej. Det kræver tilstrækkelig nedsivningskapacitet i jorden, plads og at terrænet er egnet. Vi laver en gratis vurdering med simpel nedsivningsprøve og fortæller om det er muligt – og hvilken løsning der passer bedst.' },
-      { question: 'Giver kommunen tilskud?', answer: 'Mange fynske kommuner og forsyningsselskaber har tilskudsordninger til LAR og frakobling af regnvand fra kloak. Beløb og betingelser varierer – vi kender de lokale ordninger og hjælper med ansøgningen.' },
-      { question: 'Skal jeg lave både separering og LAR?', answer: 'Ofte ja. Separering deler dine ledninger i regnvand og spildevand, og LAR håndterer regnvandet lokalt i stedet for at lede det til regnvandskloak. Vi anbefaler altid en samlet plan, så du kun skal grave op én gang.' },
-      { question: 'Hvor lang tid holder en faskine?', answer: 'En korrekt dimensioneret og udført faskine holder 25-50 år. Regelmæssig rengøring af tagrender og sandfangsbrønd forhindrer at faskinen tilstopper med blade og sand.' }
+      { question: 'Hvad koster en TV-inspektion?', answer: 'TV-inspektion afregnes som timelønsarbejde, fordi tidsforbruget afhænger af kloakkens omfang og om der skal spules først. Ring til Jacob, så får du et estimat baseret på dit konkrete setup.' }
     ]
   },
   {

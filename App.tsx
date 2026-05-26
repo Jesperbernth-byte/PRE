@@ -24,7 +24,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import CookieBanner from './components/CookieBanner';
 import { openConsentBanner } from './lib/consent';
 import { initTracking } from './lib/tracking';
-import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY, GSC_VERIFICATION_TOKEN } from './constants';
+import { PHONE_PREBEN, PHONE_JACOB, EMAIL_JACOB, EMAIL_PREBEN, ADDRESS, CVR, FOOTER_TAGLINE, SERVICE_AREA, COMPANY_HISTORY, GSC_VERIFICATION_TOKEN, PERSON_PREBEN, PERSON_JACOB } from './constants';
 import { Target, CheckCircle2 } from 'lucide-react';
 
 const MissionValues: React.FC = () => (
@@ -84,12 +84,12 @@ const Footer: React.FC = () => (
       {/* Kontaktkort Preben */}
       <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
         <img
-          src="/team/preben-close.png"
-          alt="Preben - Direktør"
+          src={PERSON_PREBEN.image}
+          alt={`${PERSON_PREBEN.name} - ${PERSON_PREBEN.title}`}
           className="w-16 h-16 rounded-xl object-cover object-top mb-4 border-2 border-white/20"
         />
-        <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">Direktør</div>
-        <h4 className="text-xl font-black text-white mb-4">Preben</h4>
+        <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">{PERSON_PREBEN.title}</div>
+        <h4 className="text-xl font-black text-white mb-4">{PERSON_PREBEN.name}</h4>
         <a href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`} className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors mb-2 text-sm font-bold">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
           {PHONE_PREBEN}
@@ -103,12 +103,12 @@ const Footer: React.FC = () => (
       {/* Kontaktkort Jacob */}
       <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
         <img
-          src="/team/jacob-close.png"
-          alt="Jacob - Daglig Leder & Kloakmester"
+          src={PERSON_JACOB.image}
+          alt={`${PERSON_JACOB.name} - ${PERSON_JACOB.title}`}
           className="w-16 h-16 rounded-xl object-cover object-top mb-4 border-2 border-blue-500/50"
         />
-        <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">Daglig Leder & Kloakmester</div>
-        <h4 className="text-xl font-black text-white mb-4">Jacob</h4>
+        <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-3">{PERSON_JACOB.title}</div>
+        <h4 className="text-xl font-black text-white mb-4">{PERSON_JACOB.name}</h4>
         <a href={`tel:${PHONE_JACOB.replace(/\s/g, '')}`} className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors mb-2 text-sm font-bold">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
           {PHONE_JACOB}
@@ -207,6 +207,10 @@ const App: React.FC = () => {
             <Route path="/services" element={<Navigate to="/ydelser" replace />} />
             <Route path="/services/:slug" element={<RedirectToYdelser />} />
             <Route path="/contact" element={<Navigate to="/kontakt" replace />} />
+
+            {/* Redirects fra omstrukturerede service-URL'er */}
+            <Route path="/ydelser/kloakarbejde" element={<Navigate to="/ydelser/kloakseparering" replace />} />
+            <Route path="/ydelser/lar-anlaeg" element={<Navigate to="/ydelser/kloakseparering" replace />} />
           </Routes>
         </main>
         <MissionValuesGlobal />

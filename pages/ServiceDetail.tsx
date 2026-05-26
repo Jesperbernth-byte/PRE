@@ -11,7 +11,11 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
     folder: 'omfangsdræn',
     images: ['omfangs-forside.jpg', '20210628_065610.jpg', '20210628_065624.jpg', '20210628_100202.jpg', '20210629_124507.jpg']
   },
-  'kloakarbejde': {
+  'kloakseparering': {
+    folder: 'Separering',
+    images: ['20220520_085810.jpg', '20220520_091921.jpg', '20220906_113455.jpg', '20220907_134530.jpg']
+  },
+  'kloakrenovering': {
     folder: 'Kloak arbejde',
     images: ['20220202_092520.jpg', '20220202_093331.jpg', '20220202_093421.jpg', '20220906_085834.jpg']
   },
@@ -30,10 +34,6 @@ const SERVICE_IMAGES: Record<string, { folder: string; images: string[] }> = {
   'spuling': {
     folder: 'Tv-inspektion',
     images: ['20260126_101038.jpg', '20260126_101107.jpg', '20260126_101120.jpg', '20260126_101142.jpg']
-  },
-  'lar-anlaeg': {
-    folder: 'Separering',
-    images: ['20220520_085810.jpg', '20220520_091921.jpg', '20220906_113455.jpg', '20220907_134530.jpg']
   },
   'entreprenoer-arbejde': {
     folder: 'Anlægsarbejde',
@@ -71,7 +71,11 @@ const ServiceDetail: React.FC = () => {
 
   usePageMeta({
     title: service ? `${service.title} på Fyn | PR Entreprenøren ApS` : 'Ydelse | PR Entreprenøren ApS',
-    description: service ? `${service.description} Autoriseret kloakmester på Fyn og Trekantsområdet. Ring ${PHONE_PREBEN} for gratis besigtigelse.` : '',
+    description: service
+      ? service.slug === 'tv-inspektion'
+        ? `${service.description} Autoriseret kloakmester på Fyn og Trekantsområdet. Ring Jacob på ${PHONE_JACOB} for en vurdering.`
+        : `${service.description} Autoriseret kloakmester på Fyn og Trekantsområdet. Ring ${PHONE_PREBEN} for gratis besigtigelse.`
+      : '',
     canonicalPath: service ? `/ydelser/${service.slug}` : undefined
   });
 
@@ -184,7 +188,7 @@ const ServiceDetail: React.FC = () => {
                   to="/kontakt"
                   className="bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
                 >
-                  Gratis besigtigelse <ArrowRight size={20} />
+                  {service.slug === 'tv-inspektion' ? 'Få et tilbud' : 'Gratis besigtigelse'} <ArrowRight size={20} />
                 </Link>
               )}
             </div>
@@ -236,21 +240,24 @@ const ServiceDetail: React.FC = () => {
                     );
 
                     if (i === ctaIndex && paragraphs.length > 4) {
+                      const ctaLabel = service.inContentCta?.label || `Spørgsmål til ${service.title.toLowerCase()}?`;
+                      const ctaDesc = service.inContentCta?.description || 'Få en gratis besigtigelse og fast pris uden forpligtelser.';
+                      const ctaPhone = service.inContentCta?.phone === 'jacob' ? PHONE_JACOB : PHONE_PREBEN;
                       return (
                         <React.Fragment key={`frag-${i}`}>
                           {node}
                           <div className="bg-gradient-to-r from-orange-50 to-orange-100/50 border-l-8 border-orange-600 rounded-r-2xl p-6 my-8 not-prose">
                             <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
                               <div>
-                                <p className="text-sm font-black text-orange-600 uppercase tracking-widest mb-1">Spørgsmål til {service.title.toLowerCase()}?</p>
-                                <p className="text-base font-bold text-blue-900">Få en gratis besigtigelse og fast pris uden forpligtelser.</p>
+                                <p className="text-sm font-black text-orange-600 uppercase tracking-widest mb-1">{ctaLabel}</p>
+                                <p className="text-base font-bold text-blue-900">{ctaDesc}</p>
                               </div>
                               <div className="flex gap-3 shrink-0">
                                 <a
-                                  href={`tel:${PHONE_PREBEN.replace(/\s/g, '')}`}
+                                  href={`tel:${ctaPhone.replace(/\s/g, '')}`}
                                   className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-black px-5 py-3 rounded-xl whitespace-nowrap transition-colors"
                                 >
-                                  <Shield size={18} className="hidden sm:inline" /> Ring {PHONE_PREBEN}
+                                  <Shield size={18} className="hidden sm:inline" /> Ring {ctaPhone}
                                 </a>
                               </div>
                             </div>
@@ -285,9 +292,11 @@ const ServiceDetail: React.FC = () => {
             <div className="space-y-6">
               {/* CTA Card */}
               <div className="bg-blue-900 rounded-3xl p-8 text-white sticky top-28">
-                <h3 className="text-2xl font-black mb-4 uppercase italic">Få et tilbud</h3>
+                <h3 className="text-2xl font-black mb-4 uppercase italic">{service.slug === 'tv-inspektion' ? 'Ring og få en vurdering' : 'Få et tilbud'}</h3>
                 <p className="text-slate-300 mb-6 leading-relaxed">
-                  Gratis og uforpligtende besigtigelse. Vi vurderer dit behov og giver et fast tilbud.
+                  {service.slug === 'tv-inspektion'
+                    ? 'TV-inspektion afregnes som timelønsarbejde. Ring Jacob og fortæl om dit kloaksetup, så får du et estimat.'
+                    : 'Gratis og uforpligtende besigtigelse. Vi vurderer dit behov og giver et fast tilbud.'}
                 </p>
                 <CallButton className="w-full py-4 mb-3" />
                 <Link
@@ -428,7 +437,9 @@ const ServiceDetail: React.FC = () => {
             Klar til at komme i gang?
           </h2>
           <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-            Vi tilbyder gratis besigtigelse og fast pris. Ring nu eller send en besked.
+            {service.slug === 'tv-inspektion'
+              ? 'Ring til Jacob og få en vurdering ud fra dit kloaksetup, eller send en besked.'
+              : 'Vi tilbyder gratis besigtigelse og fast pris. Ring nu eller send en besked.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <CallButton className="px-12 py-6 text-xl shadow-2xl" />

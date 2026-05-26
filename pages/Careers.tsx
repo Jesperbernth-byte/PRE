@@ -49,14 +49,6 @@ const Careers: React.FC = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="text-green-600 shrink-0 mt-1" size={20} />
-                  <span className="text-slate-700"><strong>Kloakmestre eller under uddannelse:</strong> Du har erfaring med kloakarbejde og ønsker at arbejde i et team hvor faglighed er i centrum.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-green-600 shrink-0 mt-1" size={20} />
-                  <span className="text-slate-700"><strong>Maskinførere:</strong> Du har kørekort til gravemaskine og/eller rendegraver og nyder at arbejde præcist og effektivt.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-green-600 shrink-0 mt-1" size={20} />
                   <span className="text-slate-700"><strong>Lærlinge:</strong> Du vil lære faget fra grunden hos erfarne fagfolk i en virksomhed der investerer i din udvikling.</span>
                 </li>
                 <li className="flex items-start gap-3">

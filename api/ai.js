@@ -11,9 +11,15 @@
 //
 // Kræver GEMINI_API_KEY i Vercel env vars (server-side, aldrig VITE_).
 
+import { createRequire } from 'module';
 import { GoogleGenAI, Type } from '@google/genai';
 import { checkAndLogIp, getClientIp } from '../lib/rateLimit.js';
-import siteContent from '../site-content.json';
+
+// JSON kan ikke importeres direkte i ESM ("type": "module") uden
+// import-attributter — createRequire er det mønster Vercels
+// file-tracing forstår, så site-content.json bundles med functionen.
+const require = createRequire(import.meta.url);
+const siteContent = require('../site-content.json');
 
 const MODEL = 'gemini-3-flash-preview';
 const MAX_MESSAGE_LENGTH = 2000;

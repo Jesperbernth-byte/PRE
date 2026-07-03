@@ -1,7 +1,12 @@
+import { createRequire } from 'module';
 import { GoogleGenAI } from '@google/genai';
 import { requireAuth } from '../../lib/serverAuth.js';
 import { ALLOWED_FILES, isFileAllowed } from '../../lib/editorFiles.js';
-import siteContent from '../../site-content.json';
+
+// JSON kan ikke importeres direkte i ESM uden import-attributter —
+// createRequire traces korrekt af Vercel, så filen bundles med.
+const require = createRequire(import.meta.url);
+const siteContent = require('../../site-content.json');
 
 // Holdes i sync med SERVICES i constants.tsx (slug → titel).
 const SERVICES_OVERVIEW = `1. tv-inspektion — TV-Inspektion & Fejlsøgning

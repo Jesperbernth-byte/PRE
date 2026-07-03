@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Facebook, ExternalLink } from 'lucide-react';
+import { Facebook, ExternalLink, Cookie } from 'lucide-react';
 import { FACEBOOK_PAGE_URL } from '../constants';
 import { trackFBFeedView } from '../lib/tracking';
+import { useConsent, openConsentBanner } from '../lib/consent';
 
 // Facebook Page Plugin embed.
 // Bemærk: Page Plugin'et virker kun for Facebook Pages (ikke personlige
@@ -12,6 +13,9 @@ import { trackFBFeedView } from '../lib/tracking';
 const FacebookFeed: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackedRef = useRef(false);
+  // Meta sætter cookies (fr, datr, sb) så snart iframen indlæses —
+  // derfor kræver feedet marketing-samtykke, som lovet i cookiepolitikken.
+  const { marketing } = useConsent();
 
   useEffect(() => {
     if (!sectionRef.current || trackedRef.current) return;
@@ -57,19 +61,37 @@ const FacebookFeed: React.FC = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10 items-center justify-center">
-          {/* Facebook iframe — auto-tilpasser bredde inden for max 500px */}
+          {/* Facebook iframe — kræver marketing-samtykke */}
           <div className="bg-white rounded-3xl shadow-xl border-2 border-slate-100 overflow-hidden w-full max-w-[500px]">
-            <iframe
-              src={pluginSrc}
-              title="PR Entreprenørens Facebook-side"
-              width="500"
-              height="600"
-              style={{ border: 'none', overflow: 'hidden', width: '100%', display: 'block' }}
-              scrolling="no"
-              frameBorder={0}
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            />
+            {marketing ? (
+              <iframe
+                src={pluginSrc}
+                title="PR Entreprenørens Facebook-side"
+                width="500"
+                height="600"
+                style={{ border: 'none', overflow: 'hidden', width: '100%', display: 'block' }}
+                scrolling="no"
+                frameBorder={0}
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
+            ) : (
+              <div className="h-[600px] flex flex-col items-center justify-center text-center p-8 bg-slate-50">
+                <Cookie size={40} className="text-blue-900 mb-4" />
+                <p className="text-slate-700 font-bold mb-2">
+                  Facebook-feedet kræver marketing-cookies
+                </p>
+                <p className="text-sm text-slate-500 mb-6">
+                  Acceptér marketing-cookies for at se vores seneste opslag direkte her på siden — eller besøg Facebook-siden via knappen.
+                </p>
+                <button
+                  onClick={openConsentBanner}
+                  className="bg-blue-900 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-xl transition-all text-sm"
+                >
+                  Administrér cookie-samtykke
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Fallback / sekundær CTA — altid synlig */}

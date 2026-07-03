@@ -9,6 +9,24 @@ import ServiceCard from '../components/ServiceCard';
 import FacebookFeed from '../components/FacebookFeed';
 import { usePageMeta } from '../lib/usePageMeta';
 
+// Hero-titlen redigeres i site-content.json (hero.title). Det længste ord
+// fremhæves i orange, så designet holder uanset hvad Jacob skriver.
+const renderHeroTitle = (title: string) => {
+  const words = title.split(' ');
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a), '');
+  let highlighted = false;
+  return words.map((word, i) => {
+    const isHighlight = !highlighted && word === longest;
+    if (isHighlight) highlighted = true;
+    return (
+      <React.Fragment key={i}>
+        {isHighlight ? <span className="text-orange-500">{word}</span> : word}
+        {i < words.length - 1 ? ' ' : ''}
+      </React.Fragment>
+    );
+  });
+};
+
 const HomeUpdated: React.FC = () => {
   usePageMeta({
     title: 'Autoriseret Kloakmester på Fyn | PR Entreprenøren ApS',
@@ -29,20 +47,19 @@ const HomeUpdated: React.FC = () => {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl sm:text-7xl font-black mb-8 leading-[1]">
-              AUTORISERET <br/>
-              <span className="text-orange-500">KLOAKMESTER</span> PÅ FYN
+            <h1 className="text-5xl sm:text-7xl font-black mb-8 leading-[1] uppercase">
+              {renderHeroTitle(HERO_TITLE)}
             </h1>
             <p className="text-xl sm:text-2xl text-slate-300 mb-12 leading-relaxed font-medium">
               {HERO_SUBTITLE}
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
-              <a
-                href="/contact"
+              <Link
+                to="/kontakt"
                 className="bg-orange-600 text-white px-10 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl shadow-orange-600/40 active:scale-95"
               >
                 Bestil besigtigelse <ArrowRight size={24} />
-              </a>
+              </Link>
               <CallButton variant="hero" />
             </div>
           </div>
@@ -221,12 +238,12 @@ const HomeUpdated: React.FC = () => {
             Få et gratis og uforpligtende tilbud i dag. Vi kommer gerne forbi for en snak om dit projekt.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/kontakt"
               className="bg-orange-600 text-white px-12 py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-orange-700 transition-all shadow-2xl shadow-orange-600/40"
             >
               Bestil besigtigelse <ArrowRight size={24} />
-            </a>
+            </Link>
             <CallButton variant="secondary" className="px-12 py-6" />
           </div>
         </div>

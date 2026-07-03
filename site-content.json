@@ -60,7 +60,7 @@
   },
   "footer": {
     "tagline": "Autoriseret kloakmester og entreprenør på Fyn og i Trekantsområdet. Vi bygger løsninger der holder for fremtiden.",
-    "serviceArea": "Vi dækker hele fyn samt trekantsområdet",
+    "serviceArea": "Vi dækker hele Fyn samt Trekantsområdet",
     "prebenTitle": "Direktør",
     "jacobTitle": "Daglig Leder & Kloakmester"
   },
@@ -71,7 +71,7 @@
     },
     {
       "question": "Hvad koster det at få et tilbud?",
-      "answer": "Besigtigelse og tilbud og 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
+      "answer": "Besigtigelse og tilbud er 100% gratis og uforpligtende. Vi kommer gerne forbi for en snak om dit projekt."
     },
     {
       "question": "Dækker I hele Fyn?",
@@ -106,6 +106,7 @@
       "answer": "Et korrekt udført omfangsdræn holder 50+ år hvis det vedligeholdes. Vi bruger kun kvalitetsmaterialer fra anerkendte leverandører som GTI."
     }
   ],
+  "customPages": [],
   "certifications": [
     {
       "name": "Autoriseret Kloakmester",

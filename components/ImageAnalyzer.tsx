@@ -1,5 +1,6 @@
 
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Camera, Upload, Loader2, Search, CheckCircle2, AlertTriangle, ArrowRight, Send, MessageCircle } from 'lucide-react';
 import { analyzeProblemImage, askFollowUpQuestion } from '../services/geminiService';
 
@@ -193,7 +194,7 @@ const ImageAnalyzer: React.FC = () => {
           {!result && !isAnalyzing && (
             <div className="flex-1 flex flex-col justify-center">
               <p className="text-slate-600 mb-8 leading-relaxed">
-                Når du har uploadet et billede af dit problem (f.eks. en brønd, fugt i kælderen eller mistænkelig asbest), kan vi bruge kunstig intelligens til at give en foreløbig vurdering.
+                Når du har uploadet et billede af dit problem (f.eks. en brønd, fugt i kælderen eller en tilstoppet kloak), kan vi bruge kunstig intelligens til at give en foreløbig vurdering.
               </p>
               <button 
                 onClick={performAnalysis}
@@ -286,12 +287,12 @@ const ImageAnalyzer: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="mt-auto space-y-3">
-                <a
-                  href="#/contact"
+                <Link
+                  to="/kontakt"
                   className="w-full bg-orange-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-orange-700 transition-all uppercase text-xs tracking-widest shadow-lg shadow-orange-600/20"
                 >
                   BESTIL BESIGTIGELSE <ArrowRight size={14} />
-                </a>
+                </Link>
                 <button
                   onClick={reset}
                   className="w-full bg-white text-slate-500 font-bold py-3 rounded-xl hover:text-slate-800 transition-colors uppercase text-[10px] tracking-widest"

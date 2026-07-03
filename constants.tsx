@@ -94,7 +94,7 @@ Et omfangsdræn er et drænsystem der graves ned langs husets fundament og leder
 
 Hvornår har du brug for omfangsdræn?
 
-Mange fynske boliger fra 1950'erne, 60'erne og 70'erne er aldrig blevet forsynet med korrekt dræning – og det kan mærkes med årene. Tegn på at du bør overveje omfangsdræn: Fugtpletter eller hvidt kalkudslag (udblomstring) på kælderens indvendige vægge. Mosgroede eller fugtige sokkelsten. Synlige revner i fundamentet. Muglugt eller muskelduft i kælder eller krybekælder. Kondensproblemer på gulve og vægge i den kolde årstid. Vandpyller i haven nær huset der ikke forsvinder hurtigt efter regn. Uisolerede kælderrum der er kolde og fugtige hele året.
+Mange fynske boliger fra 1950'erne, 60'erne og 70'erne er aldrig blevet forsynet med korrekt dræning – og det kan mærkes med årene. Tegn på at du bør overveje omfangsdræn: Fugtpletter eller hvidt kalkudslag (udblomstring) på kælderens indvendige vægge. Mosgroede eller fugtige sokkelsten. Synlige revner i fundamentet. Muglugt eller muggen duft i kælder eller krybekælder. Kondensproblemer på gulve og vægge i den kolde årstid. Vandpytter i haven nær huset der ikke forsvinder hurtigt efter regn. Uisolerede kælderrum der er kolde og fugtige hele året.
 
 Processen – hvad sker der trin for trin
 
@@ -114,7 +114,7 @@ Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for arbejde
     icon: 'Droplets',
     faqs: [
       { question: 'Hvad er forskellen på omfangsdræn og indvendigt dræn?', answer: 'Et omfangsdræn graves ned udvendigt langs fundamentet og leder vandet væk fra huset, inden det trænger ind. Det er den foretrukne og mest effektive løsning. Indvendigt dræn (f.eks. i kælderen) opsamler derimod vand der allerede er kommet ind – det løser ikke den underliggende årsag. Vi anbefaler altid udvendigt omfangsdræn som første valg.' },
-      { question: 'Hvordan ved jeg om jeg har brug for omfangsdræn?', answer: 'De tydeligste tegn er fugtpletter eller kalkudslag på kælderens vægge, muglugt i kælder eller krybekælder, mosgroede sokkelsten, revner i fundamentet, eller vandpyller ved huset efter regn. Vi kommer gerne ud til gratis besigtigelse og giver en faglig vurdering af dit behov.' },
+      { question: 'Hvordan ved jeg om jeg har brug for omfangsdræn?', answer: 'De tydeligste tegn er fugtpletter eller kalkudslag på kælderens vægge, muglugt i kælder eller krybekælder, mosgroede sokkelsten, revner i fundamentet, eller vandpytter ved huset efter regn. Vi kommer gerne ud til gratis besigtigelse og giver en faglig vurdering af dit behov.' },
       { question: 'Hvor meget af huset skal have omfangsdræn?', answer: 'Det afhænger af problemets omfang og terrænets hældning. Ofte er det nok at dræne på de sider af huset der vender mod terrænet eller er mest udsat for vand. I andre tilfælde anbefaler vi at dræne alle fire sider. Vi vurderer det konkret ved besigtigelse og anbefaler kun det der er nødvendigt.' },
       { question: 'Skal jeg have tilladelse fra kommunen?', answer: 'Normalt kræves ingen tilladelse til omfangsdræn på egen grund. Hvis drænvandet ledes til kommunal kloak eller ud over skel, kan der kræves en tilladelse. Vi undersøger reglerne for din adresse og håndterer alle nødvendige anmeldelser.' },
       { question: 'Hvor lang tid tager installationen?', answer: 'Et typisk omfangsdræn på et parcelhus tager 2-4 dage inkl. retablering. Større projekter eller komplekse jordbundsforhold kan tage længere tid. Vi oplyser altid den forventede tid i tilbuddet.' },
@@ -186,7 +186,7 @@ Som autoriseret kloakmestervirksomhed udsteder vi fuld dokumentation for alt udf
   {
     id: '16',
     slug: 'kloakrenovering',
-    image: '/pictures/Tv-inspektion/20260126_101025.jpg',
+    image: '/pictures/Kloak arbejde/20220202_092520.jpg',
     title: 'Kloakrenovering',
     description: 'Punktreparation, strømpeforing og opgravning af utætte og sammensunkne kloakledninger. Vi diagnosticerer med TV-inspektion og vælger den mest skånsomme metode.',
     longDescription: `Mange ældre fynske ejendomme har kloakker der er udtjent længe før de fejler synligt: utætheder hvor jord og vand siver ind, samlinger der er gået i stykker, rødder der er vokset ind i rørene, eller hele strækninger der er sammensunkne. Konsekvenserne er reelle: rotter får fri adgang til kloaksystemet, spildevand siver ud i jorden og forurener grundvandet, og du oplever gentagne tilstopninger der ikke bliver bedre af spuling alene. Med en målrettet kloakrenovering kan vi udbedre præcis det stykke der fejler — uden at grave hele haven op.
@@ -336,7 +336,7 @@ Der er mange situationer hvor en TV-inspektion er det rette første skridt. Ved 
 
 Vores udstyr og rapportformat
 
-Vi bruger professionelt kloakkamera-udstyr med selvkørende kameravogn, der kan tage sig op gennem rør fra Ø100 mm og opefter. Kameraet har integreret afstandsmåler, så vi præcist kan angive hvor i ledningen en skade befinder sig. Når vi finder en skade, registrerer vi: skadens type (brud, revne, deformation, rodindtrængning, fedtaflejring, sammenfald), skadens nøjagtige placering målt fra inspektionsbrønden, billeder og videoklip af skaden, samt en faglig vurdering af om det skal udbedres akut, planlagt eller blot overvåges.
+Vi bruger professionelt kloakkamera-udstyr med selvkørende kameravogn, der kan arbejde sig op gennem rør fra Ø100 mm og opefter. Kameraet har integreret afstandsmåler, så vi præcist kan angive hvor i ledningen en skade befinder sig. Når vi finder en skade, registrerer vi: skadens type (brud, revne, deformation, rodindtrængning, fedtaflejring, sammenfald), skadens nøjagtige placering målt fra inspektionsbrønden, billeder og videoklip af skaden, samt en faglig vurdering af om det skal udbedres akut, planlagt eller blot overvåges.
 
 Du modtager rapporten elektronisk – med video og billeder – og du kan dele den direkte med forsikring, kommune eller køber. Rapporten lever op til de krav som forsikringsselskaber typisk stiller ved sagsbehandling, og er et solidt grundlag for både tilbud og udbedring.
 
@@ -413,7 +413,7 @@ Ved akutte opgaver – fx vandskade, sammensunken indkørsel eller pludselig blo
       { question: 'Skal jordflytning anmeldes til kommunen?', answer: 'Det afhænger af området. I byzoner og i områder kortlagt som muligt forurenede, skal jordflytning anmeldes og prøvetagning udføres. Vi kender reglerne og håndterer hele anmeldeprocessen for dig.' },
       { question: 'Hvor hurtigt kan I rykke ud?', answer: 'Akutte opgaver løser vi ofte samme eller næste dag. Planlagte projekter koordineres efter din tidsplan og evt. andre håndværkere på sagen.' },
       { question: 'Samarbejder I med andre håndværkere?', answer: 'Ja, vi samarbejder ofte med murere, tømrere, betonsjak, asfaltfirmaer, landmålere og elinstallatører om samlede totalløsninger – så du kun har én kontakt på projektet.' },
-      { question: 'Køber I overskudsjord, eller skal jeg selv betale for bortskaffelse?', answer: 'Overskudsjord skal typisk bortskaffes på godkendt modtageanlæg, og prisen afhænger af jordens kvalitet og forureningsgrad. Vi inkluderer altid bortskaffelse i tilbuddet, så du kender prisen op front.' },
+      { question: 'Køber I overskudsjord, eller skal jeg selv betale for bortskaffelse?', answer: 'Overskudsjord skal typisk bortskaffes på godkendt modtageanlæg, og prisen afhænger af jordens kvalitet og forureningsgrad. Vi inkluderer altid bortskaffelse i tilbuddet, så du kender prisen på forhånd.' },
       { question: 'Kan I levere fyldjord eller muldjord?', answer: 'Ja, vi leverer både muldjord, fyldjord og stabilgrus til både private og erhverv. Kontakt os for et tilbud på levering af den rigtige type til dit projekt.' }
     ]
   },
@@ -492,7 +492,7 @@ Sådan er et minirensningsanlæg opbygget
 
 Et typisk minirensningsanlæg består af tre faser i ét nedgravet beton- eller plastanlæg:
 
-1. Bundfældning (forrensning): Fast affald og fedt bundfældes i den første kammer. Slammet samles og tømmes af slamsuger med jævne mellemrum.
+1. Bundfældning (forrensning): Fast affald og fedt bundfældes i det første kammer. Slammet samles og tømmes af slamsuger med jævne mellemrum.
 
 2. Biologisk rensning: I næste trin ledes spildevandet til en biozone, hvor mikroorganismer nedbryder de organiske stoffer. Dette er hjertet i anlægget – det er her hovedparten af rensningen sker.
 
@@ -591,7 +591,7 @@ En korrekt udført brønd har en levetid på 50-100 år afhængigt af materiale 
     image: '/pictures/Olie tanke/20220905_090641.jpg',
     title: 'Olietanke – Opgravning og bortskaffelse',
     description: 'Lovlig opgravning, fjernelse og bortskaffelse af nedgravede olietanke. Inkl. jordprøver, kommuneindberetning og miljødokumentation.',
-    longDescription: `Mange ejendomme på Fyn har stadig en gammel nedgravet olietank liggende i jorden – også selvom oliefyret blev udskiftet med fjernvarme eller varmepumpe for år tilbage. En sløjfet tank kan være tom, eller den kan stadig indeholde rester af olie, slam og rust. Uanset hvad er en gammel olietank en risiko: rust kan give utætheder, og lækker tanken først, kan forureningen sprede sig til grundvand, naboer og dyrt-bortskaffeligt jord. Korrekt opgravning og bortskaffelse er den eneste rigtige og lovlige løsning.
+    longDescription: `Mange ejendomme på Fyn har stadig en gammel nedgravet olietank liggende i jorden – også selvom oliefyret blev udskiftet med fjernvarme eller varmepumpe for år tilbage. En sløjfet tank kan være tom, eller den kan stadig indeholde rester af olie, slam og rust. Uanset hvad er en gammel olietank en risiko: rust kan give utætheder, og lækker tanken først, kan forureningen sprede sig til grundvandet og nabogrunde – og gøre jorden dyr at bortskaffe. Korrekt opgravning og bortskaffelse er den eneste rigtige og lovlige løsning.
 
 Lovkrav om sløjfning og fjernelse
 
@@ -697,7 +697,7 @@ Tegn på at din vandledning kan være ved at være slidt op: pludselige eller gr
 
 Akut brud på vandledning – hvad gør vi?
 
-Ved akutte vandledningsbrud rykker vi hurtigt ud, så vi kan minimere vandskader, finde bruddet og udskifte den defekte del. Vi har minigraver og hurtigt udstyr klar til at lokalisere og udbedre, og vi kan ofte have vandet tilbage på i løbet af samme dag. Hvis du oplever et brud, så luk hovedhanen, ring til os, og dokumentér gerne med billeder – det letter sagen over for forsikringen.
+Ved akutte vandledningsbrud rykker vi hurtigt ud, så vi kan minimere vandskader, finde bruddet og udskifte den defekte del. Vi har minigraver og hurtigt udstyr klar til at lokalisere og udbedre, og vi kan ofte have vandet tilbage samme dag. Hvis du oplever et brud, så luk hovedhanen, ring til os, og dokumentér gerne med billeder – det letter sagen over for forsikringen.
 
 Sådan foregår fornyelse af stikledning
 
@@ -709,7 +709,7 @@ Mange vandledninger ligger under fliser, indkørsler eller plæner, og vi gør o
 
 Akut udrykning, fast pris og dokumentation
 
-Ved akutte vandledningsbrud rykker vi typisk ud inden for få timer – også aften og weekend. Ved planlagte fornyelser giver vi fast pris efter besigtigelse, så du kender økonomien op front. Du modtager dokumentation for arbejdet, og vi indberetter til vandværk og kommune, hvor det er relevant.`,
+Ved akutte vandledningsbrud rykker vi typisk ud inden for få timer – også aften og weekend. Ved planlagte fornyelser giver vi fast pris efter besigtigelse, så du kender økonomien på forhånd. Du modtager dokumentation for arbejdet, og vi indberetter til vandværk og kommune, hvor det er relevant.`,
     icon: 'Droplets',
     faqs: [
       { question: 'Hvad koster det at skifte en vandledning?', answer: 'Prisen afhænger af længde, dybde, jordtype og adgangsforhold. Vi giver altid fast pris efter besigtigelse, så du kender økonomien fra start. Akut udrykning ved brud afregnes særskilt.' },
@@ -758,9 +758,9 @@ Tagrender, nedløbsrør og regnvandsbrønde
 
 Vi spuler ikke kun spildevandskloak. Tagrender, nedløbsrør, regnvandsbrønde, sandfangsbrønde og faskine-tilløb kan også blive blokeret af blade, mos og sand. Vi renser dem som del af løbende vedligehold eller akutte sager — så regnvandet kan løbe væk som det skal.
 
-Akut spuling på Fyn – under 2 timer
+Akut spuling på Fyn – hurtig udrykning
 
-Ved akutte tilstopninger rykker vi typisk ud inden for få timer i dagtimerne, og vi tager også aften og weekend ved alvorlige sager (toilettet kan ikke skylles, vand løber op i kælderen, mm.). Vi giver fast pris efter en kort telefonsamtale, så du ved hvad det koster inden vi kører.
+Ved akutte tilstopninger rykker vi typisk ud inden for 2 timer i dagtimerne, og vi tager også aften og weekend ved alvorlige sager (toilettet kan ikke skylles, vand løber op i kælderen, mm.). Vi giver fast pris efter en kort telefonsamtale, så du ved hvad det koster inden vi kører.
 
 Forebyggende serviceaftale
 
@@ -773,7 +773,7 @@ For erhvervskunder, ejendomsforeninger og private med tilbagevendende kloakprobl
       { question: 'Kan I fjerne rødder uden at grave?', answer: 'Ja. Vi bruger rod-fræsende dyser der mekanisk skærer rødderne af inde i røret. Det giver fri afledning igen. Vokser rødderne hurtigt tilbage, anbefaler vi typisk en TV-inspektion for at finde og udbedre den utætte samling.' },
       { question: 'Skal jeg kombinere spuling med TV-inspektion?', answer: 'Ofte ja, hvis problemet er tilbagevendende eller hvis du mistænker en skade. Spulingen renser røret, og kameraet viser om der er behov for yderligere indgreb. Vi kombinerer ofte de to i samme besøg.' },
       { question: 'Tilbyder I forebyggende spuling?', answer: 'Ja. For erhvervskunder, ejendomsforeninger og private med tilbagevendende kloakproblemer tilbyder vi forebyggende spuling 1-2 gange årligt på serviceaftale, så akutte tilstopninger undgås.' },
-      { question: 'Spuler I også tagrender og nedløb?', answer: 'Ja. Vi spuler tagrender, nedløbsrør, regnvandsbrønde, sandfangsbrønde og faskine-tilløb. Vigtigt vedligehold ofte glemt — særligt op til efteråret hvor blade falder.' }
+      { question: 'Spuler I også tagrender og nedløb?', answer: 'Ja. Vi spuler tagrender, nedløbsrør, regnvandsbrønde, sandfangsbrønde og faskine-tilløb. Det er vigtigt vedligehold der ofte bliver glemt — særligt op til efteråret hvor bladene falder.' }
     ]
   }
 ];
@@ -802,95 +802,6 @@ export const USPs = [
   {
     title: "5 Års Garanti",
     desc: "Vi står ved vores arbejde. Alle opgaver er dækket af 5 års garanti fordi vi bruger kvalitetsmaterialer og udfører arbejdet ordentligt."
-  }
-];
-
-export const TEAM = [
-  {
-    name: "Preben",
-    role: "Direktør",
-    phone: "22 96 66 61",
-    email: "pr@prentreprenoer.dk",
-    description: "Økonomi",
-    image: "/team/preben-close.png"
-  },
-  {
-    name: "Jacob",
-    role: "Daglig Leder & Kloakmester",
-    phone: "24 94 66 61",
-    email: "jeh@prentreprenoer.dk",
-    description: "Besigtigelser, tilbud, dialog med kunder og leverandører, planlægning, kundeservice.",
-    image: "/team/jacob-close.png"
-  }
-];
-
-export const CASES = [
-  {
-    id: 1,
-    title: "Omfangsdræn i Odense",
-    problem: "Fugtig kælder og synlige revner i fundament",
-    solution: "Komplet omfangsdræn 3 sider, 42 løbende meter med membran og drænrør",
-    result: "100% tør kælder - ingen problemer siden 2022",
-    duration: "2 uger",
-    image: "/pictures/Dræn/20210628_065610.jpg"
-  },
-  {
-    id: 2,
-    title: "Kloakseparering i Svendborg",
-    problem: "Kommunens krav om separering af regn- og spildevand",
-    solution: "Ny regnvandsbrønd, opdeling af ledninger, tilslutning til offentlig kloak",
-    result: "Godkendt af kommune første gang - ingen efterarbejde",
-    duration: "1 uge",
-    image: "/pictures/Separering/20220829_153238.jpg"
-  },
-  {
-    id: 3,
-    title: "TV-inspektion med brud lokaliseret",
-    problem: "Tilbagevendende stop i kloak og mistanke om brud",
-    solution: "Professionel TV-inspektion af 45 meter ledning, præcis lokalisering af rodindtrængning",
-    result: "Målrettet reparation - ingen unødvendig opgravning",
-    duration: "2 timer",
-    image: "/pictures/Tv-inspektion/20211206_114913.jpg"
-  },
-  {
-    id: 4,
-    title: "Minirensningsanlæg installation på Sydfyn",
-    problem: "Ingen mulighed for tilslutning til offentlig kloak",
-    solution: "Komplet installation af 5 PE miniransanlæg inkl. ansøgning og godkendelse",
-    result: "Godkendt første gang - fuldt funktionelt renseanlæg",
-    duration: "1 uge",
-    image: "/pictures/Miniransanlæg/20210616_080635.jpg"
-  }
-];
-
-export const REVIEWS = [
-  {
-    name: "Lars H.",
-    location: "Odense",
-    rating: 5,
-    date: "December 2025",
-    text: "Super professionelt arbejde. Jacob kom med det samme, da vi havde vand i kælderen. Alt blev ordnet på 2 dage, og prisen var som aftalt. Kan varmt anbefales!"
-  },
-  {
-    name: "Anne M.",
-    location: "Svendborg",
-    rating: 5,
-    date: "November 2025",
-    text: "Vi skulle have kloakseparering. Fik 3 tilbud, og PR Entreprenøren var både billigst og mest professionel. De kom til tiden hver dag og ryddede pænt op."
-  },
-  {
-    name: "Thomas K.",
-    location: "Middelfart",
-    rating: 5,
-    date: "Oktober 2025",
-    text: "Akut problem med rotter. Jacob kom samme aften kl. 22 og fik løst problemet. Det er en service, man sjældent oplever. 10/10!"
-  },
-  {
-    name: "Susanne P.",
-    location: "Nyborg",
-    rating: 5,
-    date: "September 2025",
-    text: "Omfangsdræn omkring hele huset. Stor opgave, men de holdt den aftalte pris og tidsplan. Vi er meget tilfredse."
   }
 ];
 
@@ -946,7 +857,7 @@ Vi udfører hele paletten af kloakarbejde i Odense: omfangsdræn der stopper fug
     localAngle: `Odense Kommune og VandCenter Syd er i fuld gang med at separere fælleskloak i mange bydele. Når et område kommer på listen, har boligejere typisk 1-2 år til at få separeret regn- og spildevand på egen grund. Vi kender ansøgningsproceduren hos Odense Kommune og hjælper med både projektmateriale, anmeldelse, udførelse og færdigmelding. Lavtliggende kvarterer som dele af Hjallese, Bolbro og områder omkring Odense Å er særligt udsatte for opstuvning – her anbefaler vi næsten altid en højvandslukker som ekstra sikring.
 
 Mange Odense-boligejere oplever også fugtige kældre i parcelhuse fra 60'erne og 70'erne, hvor det oprindelige fundamentdræn enten aldrig blev etableret eller for længst er gået i stykker. Et nyt omfangsdræn løser problemet permanent og er en investering der typisk holder 50+ år. Vi kommer gerne ud til en gratis besigtigelse og giver fast pris uden timeafregning.`,
-    topServices: ['omfangsdraen', 'kloakarbejde', 'tv-inspektion', 'hoejvandslukker', 'rottespaerre'],
+    topServices: ['omfangsdraen', 'kloakseparering', 'tv-inspektion', 'hoejvandslukker', 'rottespaerre'],
     coverage: ['Odense C', 'Hjallese', 'Bolbro', 'Bellinge', 'Tornbjerg', 'Korup', 'Sanderum', 'Tarup', 'Dalum', 'Næsby', 'Stige'],
     travelTime: '20-30 minutter fra vores base i Broby',
     localFAQ: [
@@ -980,7 +891,7 @@ Faaborg-Midtfyn er en kommune med stor geografisk spredning og en blanding af by
     localAngle: `I Faaborg-Midtfyn er forbedret spildevandsrensning et af de største områder. Mange ejendomme i det åbne land har modtaget påbud om at etablere minirensningsanlæg, fordi de gamle bundfældningstanke og sivebrønde ikke lever op til kommunens renseklasse-krav (O, OP, SO, SOP). Vi har installeret og servicerer typegodkendte minirensningsanlæg over hele kommunen og kender kommunens sagsbehandling og renseklasser i detaljer.
 
 Samtidig er der mange ældre parcelhuse og landejendomme med fugtige kældre, sammensunkne brønde, gamle olietanke og slidte vandledninger. Det er hverdagsopgaver for os, og vi løser dem med egen maskinpark og kort responstid. Vi laver også vandløbspleje, oprensning af søer og grødeskæring for både kommunen, lodsejere og naturplejeforeninger – ofte i samme område hvor vi løser kloakopgaver, så du kun har én entreprenør på sagen.`,
-    topServices: ['miniransanlaeg', 'omfangsdraen', 'kloakarbejde', 'broend-renovering', 'olietanke', 'naturpleje'],
+    topServices: ['miniransanlaeg', 'omfangsdraen', 'kloakseparering', 'broend-renovering', 'olietanke', 'naturpleje'],
     coverage: ['Broby', 'Brobyværk', 'Faaborg', 'Ringe', 'Espe', 'Krarup', 'Korinth', 'Årslev', 'Vester Aaby', 'Horne', 'Allested-Vejle'],
     travelTime: '0-25 minutter fra vores base i Broby',
     localFAQ: [
@@ -1014,7 +925,7 @@ Kommunen har en blandet bebyggelsesstruktur med både byområder under separatio
     localAngle: `På Vestfyn ser vi en stigende efterspørgsel på flere niche-ydelser: rottespærre i nybyggeri og ved kloakrenoveringer, højvandslukker i lavtliggende kælderboliger, TV-inspektion ved hussalg af ældre ejendomme, og olietanksopgravning når oliefyret er udskiftet til varmepumpe eller fjernvarme. Vi tager hele opgaven – inkl. anmeldelse til kommunen, jordprøver og bortskaffelse på godkendt modtageanlæg.
 
 For boligejere i Assens Kommune giver det god mening at vælge en lokal kloakmester der kan rykke hurtigt ud. Vi er sjældent mere end 30 minutter væk fra alle dele af kommunen, og vi har egen maskinpark, så vi ikke skal vente på underleverandører. Vi giver fast pris efter en gratis besigtigelse og dokumenterer hver opgave med før- og efterbilleder, KS-rapport og færdigmelding.`,
-    topServices: ['kloakarbejde', 'omfangsdraen', 'miniransanlaeg', 'rottespaerre', 'tv-inspektion', 'olietanke'],
+    topServices: ['kloakseparering', 'omfangsdraen', 'miniransanlaeg', 'rottespaerre', 'tv-inspektion', 'olietanke'],
     coverage: ['Assens', 'Glamsbjerg', 'Aarup', 'Tommerup', 'Tommerup Stationsby', 'Vissenbjerg', 'Haarby', 'Ebberup', 'Brylle', 'Verninge'],
     travelTime: '15-35 minutter fra vores base i Broby',
     localFAQ: [
@@ -1043,21 +954,21 @@ export const MEMBERSHIPS = [
   {
     name: "Danske Maskinstationer og Entreprenører (DM&E)",
     type: "Brancheorganisation",
-    logo: "/partners/dme-logo.png",
+    logo: "/autorisationer/DME.png",
     description: "Medlem af DM&E – din garanti for professionel håndværksvirksomhed",
     link: "https://medlem.dmoge.dk/unions/dme-fyn/"
   },
   {
     name: "Faaborg-Midtfyns Erhvervsråd",
     type: "Lokal forankring",
-    logo: "/partners/erhvervsraad.png",
+    logo: null,
     description: "Aktiv i det lokale erhvervsliv og støtter udviklingen af området",
     link: null
   },
   {
     name: "Kloakmestrenes Kontrolinstans",
     type: "Kvalitetssikring",
-    logo: "/partners/kontrolinstans.png",
+    logo: "/autorisationer/kloakmestrenes-kontrolinstans.png",
     description: "Godkendt kvalitetsledelsessystem sikrer korrekt sagsbehandling",
     link: "https://kloakmestreneskontrolinstans.dk/"
   }
@@ -1067,19 +978,19 @@ export const MEMBERSHIPS = [
 export const PARTNERS = [
   {
     name: "Nordisk Innovation (Rottespærrer)",
-    logo: "/partners/rottestop.png",
+    logo: null,
     description: "Certificeret partner – alle monterede rottespærrer er kvalitets-testede",
     link: "https://rottestop.dk/#find"
   },
   {
     name: "Kessel (Højvandslukkere)",
-    logo: "/partners/kessel.png",
+    logo: null,
     description: "Godkendt servicepartner for Kessel højvandslukkere",
     link: "https://www.lhi.dk/service/find-kessel-servicetekniker/"
   },
   {
     name: "UWS (Højvandslukkere)",
-    logo: "/partners/uws.png",
+    logo: null,
     description: "Autoriseret installatør og service af UWS højvandslukkere",
     link: "https://uws.dk/kloakmestre/"
   }

@@ -1,34 +1,40 @@
 import { createClient } from '@supabase/supabase-js';
 import { requireAuth } from '../../lib/serverAuth.js';
+import {
+  isFileAllowed,
+  validateGeneratedContent,
+  githubHeaders,
+  githubContentsUrl,
+  GITHUB_OWNER,
+  GITHUB_REPO,
+  GITHUB_BRANCH
+} from '../../lib/editorFiles.js';
 
-// Initialize Supabase
 const supabase = createClient(
   process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
 
 export default async function handler(req, res) {
-  // Set JSON response header
   res.setHeader('Content-Type', 'application/json');
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
   if (!requireAuth(req, res)) return;
 
-  const { versionId, username = 'admin' } = req.body;
+  if (!process.env.GITHUB_TOKEN) {
+    return res.status(500).json({ success: false, message: 'GITHUB_TOKEN mangler i Vercel env vars' });
+  }
+
+  const { versionId, username = req.user?.sub || 'admin' } = req.body || {};
 
   if (!versionId) {
-    return res.status(400).json({
-      success: false,
-      message: 'versionId er påkrævet'
-    });
+    return res.status(400).json({ success: false, message: 'versionId er påkrævet' });
   }
 
   try {
-    // Get version from database
     const { data: version, error: fetchError } = await supabase
       .from('site_edit_versions')
       .select('*')
@@ -36,103 +42,103 @@ export default async function handler(req, res) {
       .single();
 
     if (fetchError || !version) {
-      throw new Error('Version ikke fundet');
+      return res.status(404).json({ success: false, message: 'Version ikke fundet' });
     }
 
-    // Check if already deployed
     if (version.status === 'deployed') {
-      return res.status(400).json({
-        success: false,
-        message: 'Denne version er allerede deployet'
-      });
+      return res.status(400).json({ success: false, message: 'Denne version er allerede deployet' });
     }
-
-    // Check if status is preview
     if (version.status !== 'preview') {
-      return res.status(400).json({
-        success: false,
-        message: 'Kun preview versioner kan godkendes'
-      });
+      return res.status(400).json({ success: false, message: 'Kun preview versioner kan godkendes' });
     }
 
-    // Get file changes from version
     const fileChanges = version.files_changed;
-
     if (!fileChanges || Object.keys(fileChanges).length === 0) {
       throw new Error('Ingen fil ændringer at deploye');
     }
 
-    // Update files via GitHub API
+    // Whitelist håndhæves også her — versioner i databasen kan i princippet
+    // være manipuleret, og deploy er sidste chance for at stoppe dem.
+    const files = Object.keys(fileChanges);
+    const unauthorized = files.filter(f => !isFileAllowed(f));
+    if (unauthorized.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: `Følgende filer må ikke deployes: ${unauthorized.join(', ')}`
+      });
+    }
+
+    // change_details indeholder oldContent fra preview-tidspunktet — bruges
+    // både til konflikt-tjek og som kilde ved en senere rollback.
+    const detailsByFile = {};
+    for (const d of (version.change_details || [])) {
+      if (d && d.file) detailsByFile[d.file] = d;
+    }
+
     const updatedFiles = [];
 
     for (const [filePath, newContent] of Object.entries(fileChanges)) {
-      try {
-        // Get current file SHA from GitHub
-        const getFileResponse = await fetch(
-          `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${filePath}`,
-          {
-            headers: {
-              'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-              'Accept': 'application/vnd.github.v3+json'
-            }
-          }
-        );
-
-        if (!getFileResponse.ok) {
-          throw new Error(`Kunne ikke hente fil fra GitHub: ${filePath}`);
-        }
-
-        const fileData = await getFileResponse.json();
-        const fileSha = fileData.sha;
-
-        // Update file via GitHub API
-        const updateFileResponse = await fetch(
-          `https://api.github.com/repos/Jesperbernth-byte/PRE/contents/${filePath}`,
-          {
-            method: 'PUT',
-            headers: {
-              'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-              'Accept': 'application/vnd.github.v3+json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              message: `PRE: ${version.change_description}\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>`,
-              content: Buffer.from(newContent).toString('base64'),
-              sha: fileSha,
-              branch: 'main'
-            })
-          }
-        );
-
-        if (!updateFileResponse.ok) {
-          const errorData = await updateFileResponse.json();
-          throw new Error(`GitHub API error: ${errorData.message}`);
-        }
-
-        const updateData = await updateFileResponse.json();
-        updatedFiles.push(filePath);
-
-      } catch (error) {
-        console.error(`Error updating file ${filePath}:`, error);
-        throw new Error(`Kunne ikke opdatere ${filePath}: ${error.message}`);
+      // Genvalidér inden push — samme tjek som ved preview.
+      const oldContent = detailsByFile[filePath]?.oldContent;
+      const validationErrors = validateGeneratedContent(filePath, newContent, oldContent);
+      if (validationErrors.length > 0) {
+        return res.status(422).json({
+          success: false,
+          message: `Versionen bestod ikke sikkerhedstjekket og er IKKE deployet:\n- ${validationErrors.join('\n- ')}`
+        });
       }
+
+      // Hent nuværende fil (sha + indhold)
+      const getFileResponse = await fetch(githubContentsUrl(filePath, true), {
+        headers: githubHeaders()
+      });
+
+      if (!getFileResponse.ok) {
+        throw new Error(`Kunne ikke hente fil fra GitHub: ${filePath}`);
+      }
+
+      const fileData = await getFileResponse.json();
+
+      // Konflikt-tjek: er filen ændret siden preview blev genereret (fx af
+      // udvikleren), ville et deploy overskrive de ændringer — afvis og bed
+      // om et nyt preview i stedet.
+      if (oldContent !== undefined) {
+        const currentContent = Buffer.from(fileData.content, 'base64').toString('utf-8');
+        if (currentContent !== oldContent) {
+          return res.status(409).json({
+            success: false,
+            message: `Filen ${filePath} er blevet ændret siden dit preview blev lavet. Generér et nyt preview af din ændring og deploy igen — så mister vi ikke andres arbejde.`
+          });
+        }
+      }
+
+      const updateFileResponse = await fetch(githubContentsUrl(filePath), {
+        method: 'PUT',
+        headers: githubHeaders(),
+        body: JSON.stringify({
+          message: `Admin: ${version.change_description}\n\nÆndret via AI Site-Editor af ${username} (version ${version.version_number})`,
+          content: Buffer.from(newContent).toString('base64'),
+          sha: fileData.sha,
+          branch: GITHUB_BRANCH
+        })
+      });
+
+      if (!updateFileResponse.ok) {
+        const errorData = await updateFileResponse.json().catch(() => ({ message: updateFileResponse.statusText }));
+        throw new Error(`Kunne ikke opdatere ${filePath}: ${errorData.message}`);
+      }
+
+      updatedFiles.push(filePath);
     }
 
-    // Get latest commit SHA
+    // Seneste commit SHA (til deploy-status polling)
     const branchResponse = await fetch(
-      'https://api.github.com/repos/Jesperbernth-byte/PRE/branches/main',
-      {
-        headers: {
-          'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-          'Accept': 'application/vnd.github.v3+json'
-        }
-      }
+      `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/branches/${GITHUB_BRANCH}`,
+      { headers: githubHeaders() }
     );
-
     const branchData = await branchResponse.json();
-    const commitSha = branchData.commit.sha;
+    const commitSha = branchData.commit?.sha;
 
-    // Update database with deployment info
     const { error: updateError } = await supabase
       .from('site_edit_versions')
       .update({

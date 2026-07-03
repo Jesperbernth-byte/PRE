@@ -20,6 +20,7 @@ import ServiceDetail from './pages/ServiceDetail';
 import CityLanding from './pages/CityLanding';
 import Privacy from './pages/Privacy';
 import CookiePolicy from './pages/CookiePolicy';
+import CustomPage from './pages/CustomPage';
 import AdminDashboard from './pages/AdminDashboard';
 import CookieBanner from './components/CookieBanner';
 import { openConsentBanner } from './lib/consent';
@@ -195,6 +196,9 @@ const App: React.FC = () => {
             <Route path="/kloakmester-odense" element={<CityLanding />} />
             <Route path="/kloakmester-faaborg-midtfyn" element={<CityLanding />} />
             <Route path="/kloakmester-assens" element={<CityLanding />} />
+
+            {/* Ekstra sider oprettet via admin-editoren (site-content.json) */}
+            <Route path="/info/:slug" element={<CustomPage />} />
 
             {/* Compliance */}
             <Route path="/privatlivspolitik" element={<Privacy />} />

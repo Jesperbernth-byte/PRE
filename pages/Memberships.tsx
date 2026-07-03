@@ -97,7 +97,7 @@ const Memberships: React.FC = () => {
               Autorisationer & Godkendelser
             </h2>
             <p className="text-slate-600 font-medium text-lg">
-              Vi opfylder alle lovkrav og industrisstandarder
+              Vi opfylder alle lovkrav og branchestandarder
             </p>
           </div>
 

@@ -12,6 +12,9 @@ const LeadChat: React.FC = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Sikrer at samme samtale kun indsender ét lead — ellers submitter vi
+  // ved hver eneste besked efter besked nr. 6.
+  const leadSubmittedRef = useRef(false);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -34,7 +37,7 @@ const LeadChat: React.FC = () => {
     setMessages(prev => [...prev, { role: 'model', text: aiResponse }]);
 
     // Check if we have enough info to qualify the lead (conversation longer than 6 messages)
-    if (messages.length > 6) {
+    if (messages.length > 6 && !leadSubmittedRef.current) {
       const fullConversation = messages.map(m => `${m.role}: ${m.text}`).join('\n') + `\nuser: ${userMessage}\nmodel: ${aiResponse}`;
 
       // Qualify lead with AI and submit
@@ -56,6 +59,7 @@ const LeadChat: React.FC = () => {
           const result = await submitResponse.json();
 
           if (result.success) {
+            leadSubmittedRef.current = true;
             console.log('✅ Lead submitted successfully:', result.leadId);
             try {
               const { trackFormSubmit } = await import('../lib/tracking');

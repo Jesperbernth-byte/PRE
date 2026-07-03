@@ -1,99 +1,7 @@
 import { requireAuth } from '../../lib/serverAuth.js';
-
-// Strukturel validering af site-content.json. Vi tjekker at de felter
-// koden importerer fra constants.tsx faktisk findes — så Jacob ikke
-// kan gemme et tomt eller halvt-slettet JSON-objekt der crasher sitet.
-function validateSiteContent(content) {
-  const errors = [];
-
-  const requireObject = (path, value) => {
-    if (!value || typeof value !== 'object' || Array.isArray(value)) {
-      errors.push(`${path} skal være et objekt`);
-      return false;
-    }
-    return true;
-  };
-
-  const requireString = (path, value) => {
-    if (typeof value !== 'string' || value.trim().length === 0) {
-      errors.push(`${path} skal være en ikke-tom tekst`);
-    }
-  };
-
-  const requireArray = (path, value) => {
-    if (!Array.isArray(value)) {
-      errors.push(`${path} skal være en liste`);
-    }
-  };
-
-  if (!requireObject('content', content)) return errors;
-
-  if (requireObject('company', content.company)) {
-    requireString('company.name', content.company.name);
-    requireString('company.tagline', content.company.tagline);
-    requireString('company.cvr', content.company.cvr);
-    requireString('company.address', content.company.address);
-  }
-
-  if (requireObject('contacts', content.contacts)) {
-    for (const person of ['preben', 'jacob']) {
-      if (requireObject(`contacts.${person}`, content.contacts[person])) {
-        requireString(`contacts.${person}.phone`, content.contacts[person].phone);
-        requireString(`contacts.${person}.email`, content.contacts[person].email);
-        requireString(`contacts.${person}.title`, content.contacts[person].title);
-      }
-    }
-    if (requireObject('contacts.info', content.contacts.info)) {
-      requireString('contacts.info.email', content.contacts.info.email);
-    }
-    if (requireObject('contacts.faktura', content.contacts.faktura)) {
-      requireString('contacts.faktura.email', content.contacts.faktura.email);
-    }
-  }
-
-  if (requireObject('header', content.header)) {
-    requireString('header.logoPath', content.header.logoPath);
-    requireString('header.logoAlt', content.header.logoAlt);
-  }
-
-  if (requireObject('hero', content.hero)) {
-    requireString('hero.title', content.hero.title);
-    requireString('hero.subtitle', content.hero.subtitle);
-    requireString('hero.imagePath', content.hero.imagePath);
-  }
-
-  if (requireObject('footer', content.footer)) {
-    requireString('footer.tagline', content.footer.tagline);
-    requireString('footer.serviceArea', content.footer.serviceArea);
-  }
-
-  requireArray('faq', content.faq);
-  if (Array.isArray(content.faq)) {
-    content.faq.forEach((item, i) => {
-      if (!item || typeof item !== 'object') {
-        errors.push(`faq[${i}] skal være et objekt`);
-        return;
-      }
-      requireString(`faq[${i}].question`, item.question);
-      requireString(`faq[${i}].answer`, item.answer);
-    });
-  }
-
-  requireArray('certifications', content.certifications);
-  if (Array.isArray(content.certifications)) {
-    content.certifications.forEach((item, i) => {
-      if (!item || typeof item !== 'object') {
-        errors.push(`certifications[${i}] skal være et objekt`);
-        return;
-      }
-      requireString(`certifications[${i}].name`, item.name);
-      requireString(`certifications[${i}].issuer`, item.issuer);
-      requireString(`certifications[${i}].badge`, item.badge);
-    });
-  }
-
-  return errors;
-}
+// Delt validering med AI-editoren (lib/editorFiles.js) — sikrer at Jacob
+// ikke kan gemme et tomt eller halvt-slettet JSON-objekt der crasher sitet.
+import { validateSiteContent } from '../../lib/editorFiles.js';
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -142,7 +50,7 @@ export default async function handler(req, res) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: `${changeDescription}\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>`,
+          message: `${changeDescription}\n\nÆndret via admin-panelet (Rediger Indhold)`,
           content: Buffer.from(newContentString).toString('base64'),
           sha
         })

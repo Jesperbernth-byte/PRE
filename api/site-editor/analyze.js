@@ -1,71 +1,39 @@
 import { GoogleGenAI } from '@google/genai';
 import { requireAuth } from '../../lib/serverAuth.js';
+import { ALLOWED_FILES, isFileAllowed } from '../../lib/editorFiles.js';
+import siteContent from '../../site-content.json';
 
-// Current site content snapshot for analysis
-const SITE_CONTENT = {
-  COMPANY_NAME: "PR Entreprenøren ApS",
-  CVR: "46075536",
-  PHONE_JACOB: "24 94 66 61",
-  PHONE_PREBEN: "22 96 66 61",
-  EMAIL_JACOB: "jeh@prentreprenoer.dk",
-  EMAIL_PREBEN: "pr@prentreprenoer.dk",
-  EMAIL_FAKTURA: "faktura@prentreprenoer.dk",
-  ADDRESS: "Nørregårdsvej 17, 5672 Broby",
-  GLN_NUMBER: "5790002657955",
-  PRIMARY_COLOR: "#1e3a8a", // blue-900
-  SECONDARY_COLOR: "#ea580c", // orange-600
-  SERVICES_COUNT: 14,
-  TEAM_COUNT: 3,
-  CERTIFICATIONS_COUNT: 5
-};
-
-// File whitelist - only these files can be edited
-const ALLOWED_FILES = [
-  'PRE/site-content.json',
-  'PRE/constants.tsx',
-  'PRE/index.css',
-  'PRE/pages/Home.tsx',
-  'PRE/pages/About.tsx',
-  'PRE/pages/Services.tsx',
-  'PRE/pages/Contact.tsx',
-  'PRE/pages/Careers.tsx',
-  'PRE/pages/Memberships.tsx',
-  'PRE/components/Navbar.tsx',
-  'PRE/components/Footer.tsx',
-  'PRE/public/**/*'
-];
-
-// Pattern blacklist - these patterns are never allowed
-const FORBIDDEN_PATTERNS = [
-  'import ',
-  'Router',
-  'Route',
-  'useState',
-  'useEffect',
-  'fetch(',
-  'axios',
-  'vercel.json',
-  'package.json'
-];
+// Holdes i sync med SERVICES i constants.tsx (slug → titel).
+const SERVICES_OVERVIEW = `1. tv-inspektion — TV-Inspektion & Fejlsøgning
+2. spuling — Spuling af Kloak & Afløb
+3. omfangsdraen — Omfangsdræn
+4. kloakseparering — Kloakseparering & LAR-anlæg
+5. kloakrenovering — Kloakrenovering
+6. rottespaerre — Rottespærre
+7. hoejvandslukker — Højvandslukker
+8. miniransanlaeg — Minirensningsanlæg & Renseanlæg
+9. broend-renovering — Brøndrenovering & Brøndbygning
+10. olietanke — Olietanke – Opgravning og bortskaffelse
+11. entreprenoer-arbejde — Entreprenørarbejde & Jordflytning
+12. naturpleje — Naturpleje & Genopretning
+13. fundament — Fundamentarbejde & Støbning
+14. vandledning — Vandledninger – Reparation & Fornyelse`;
 
 export default async function handler(req, res) {
-  // Set JSON response header
   res.setHeader('Content-Type', 'application/json');
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
   if (!requireAuth(req, res)) return;
 
-  const { prompt, imageData, siteName = 'PRE', username = 'admin' } = req.body;
+  const { prompt, imageData } = req.body;
 
   if (!prompt || typeof prompt !== 'string') {
     return res.status(400).json({ success: false, message: 'Prompt is required' });
   }
 
-  // Check if Gemini API key exists
   if (!process.env.GEMINI_API_KEY) {
     return res.status(500).json({
       success: false,
@@ -73,236 +41,142 @@ export default async function handler(req, res) {
     });
   }
 
-  // Initialize inside handler to avoid module-level crash on missing env var
   const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   try {
-    // Create analysis prompt
     const analysisPrompt = `
 # DU ER SITE EDITOR AI FOR PR ENTREPRENØREN ApS
 
 ## DIN ROLLE
-Du er en KLOG assistent der:
+Du hjælper Jacob (daglig leder, IKKE teknisk) med at vedligeholde virksomhedens website. Du:
 1. **Analyserer ændringsønsker** og planlægger implementeringen
-2. **Svarer på spørgsmål** om hvad sitet indeholder lige nu (SEO-fokus, services, kontaktinfo, osv.)
-3. **Giver råd** om ideer er gode eller dårlige - og hvorfor
-4. **Forklarer begrænsninger** når noget ikke kan gøres og foreslår alternativer
-5. **Guider brugeren** til bedre løsninger hvis deres ønske ikke er optimalt
+2. **Svarer på spørgsmål** om hvad sitet indeholder lige nu
+3. **Giver råd** om ideer er gode eller dårlige — og hvorfor
+4. **Forklarer begrænsninger** i simpelt, ikke-teknisk dansk og foreslår alternativer
 
-## OM VIRKSOMHEDEN
-PR Entreprenøren ApS er en kloakmester-virksomhed på Fyn drevet af Jacob & Preben (far og søn).
+Tal ALTID i et sprog en ikke-teknisk person forstår. Sig "forsiden" i stedet for "Home.tsx" i dine forklaringer.
 
-**Ydelser:**
-- Kloakering & renovering
-- Omfangsdræn (vand i kælder)
-- Rottespærre (lovkrav fra 2024)
-- TV-inspektion
-- Asbest (KUN i begrænset omfang!)
+## OM VIRKSOMHEDEN (live data fra sitet)
+- Firmanavn: ${siteContent.company.name} (CVR ${siteContent.company.cvr})
+- Adresse: ${siteContent.company.address}
+- Preben (${siteContent.contacts.preben.title}): ${siteContent.contacts.preben.phone}, ${siteContent.contacts.preben.email}
+- Jacob (${siteContent.contacts.jacob.title}): ${siteContent.contacts.jacob.phone}, ${siteContent.contacts.jacob.email}
+- Info-email: ${siteContent.contacts.info.email} · Faktura: ${siteContent.contacts.faktura.email}
+- Hero-titel: "${siteContent.hero.title}"
+- Hero-undertitel: "${siteContent.hero.subtitle}"
+- Footer-tagline: "${siteContent.footer.tagline}"
+- Antal FAQ på forsiden: ${Array.isArray(siteContent.faq) ? siteContent.faq.length : 0}
+- Certificeringer: ${Array.isArray(siteContent.certifications) ? siteContent.certifications.map(c => c.name).join(', ') : ''}
+- Ekstra sider (customPages): ${Array.isArray(siteContent.customPages) && siteContent.customPages.length > 0 ? siteContent.customPages.map(p => `/info/${p.slug}`).join(', ') : 'ingen endnu'}
 
-**Værdier:**
-- Jordnær, ærlig kommunikation
-- Professionelt håndværk
-- Hurtig respons ved akutte situationer
-- Personlig service (lille virksomhed)
+## SITETS 14 YDELSER (slug — titel)
+${SERVICES_OVERVIEW}
 
-**VIGTIGT:** Vi laver IKKE komplet asbestsanering! Kun i forbindelse med kloak/dræn arbejde.
+## FASTE INDHOLDSREGLER (må ALDRIG brydes — afvis ønsker der strider mod dem og forklar hvorfor)
+- INGEN priser eller beløb nogen steder på sitet
+- INGEN opdigtede anmeldelser eller referencer
+- Asbest må KUN omtales som autorisation — ALDRIG som en ydelse man kan bestille
+- Hovedtelefonnummeret er Prebens (${siteContent.contacts.preben.phone})
 
 ## BRUGERENS ØNSKE
 "${prompt}"
-${imageData ? `\n🖼️ **VIGTIGT: Brugeren har uploadet et billede** (se billedet ovenfor i denne besked)\n- Dette billede skal bruges som det nye logo/hero/baggrund brugeren refererer til\n- Du skal angive changeType: "image" og imageLocation: "logo" (eller "hero" etc.)\n- Billedet bliver automatisk uploadet til GitHub - du skal bare angive hvad det skal erstatte\n` : ''}
-## NUVÆRENDE SITE INDHOLD
-**Firmainformation:**
-- Firmanavn: ${SITE_CONTENT.COMPANY_NAME}
-- CVR: ${SITE_CONTENT.CVR}
-- Jacob telefon: ${SITE_CONTENT.PHONE_JACOB}
-- Preben telefon: ${SITE_CONTENT.PHONE_PREBEN}
-- Jacob email: ${SITE_CONTENT.EMAIL_JACOB}
-- Preben email: ${SITE_CONTENT.EMAIL_PREBEN}
-- Faktura email: ${SITE_CONTENT.EMAIL_FAKTURA}
-- Adresse: ${SITE_CONTENT.ADDRESS}
-- GLN nummer: ${SITE_CONTENT.GLN_NUMBER}
+${imageData ? `\n🖼️ **Brugeren har uploadet et billede** (vedhæftet). Billedet uploades automatisk til sitet når preview genereres — angiv changeType: "image" og et beskrivende imageLocation (fx "logo", "hero", "service-rottespaerre").\n` : ''}
+## HVAD ER HVOR (vigtig viden når du planlægger ændringer)
+- ⭐ site-content.json — ALT det redigerbare basisindhold: kontaktinfo, hero-tekst, footer, FAQ, certificeringer, logo-sti, firmainfo OG customPages (nye sider)
+- constants.tsx — SERVICES-arrayet (titler, beskrivelser, FAQ pr. ydelse, billedstier), by-sider (CITIES), medlemskaber, partnere
+- pages/*.tsx — layout og fast tekst på de enkelte sider (forside, om os, kontakt, karriere, medlemskaber)
+- index.html — SEO: side-titel, meta description, søgeord og struktureret data for hele sitet
+- index.css — farver og styling
+- public/ — billeder (uploades automatisk ved billed-ændringer)
 
-**Design & Branding:**
-- Primær farve (blå): ${SITE_CONTENT.PRIMARY_COLOR}
-- Sekundær farve (orange): ${SITE_CONTENT.SECONDARY_COLOR}
-- Tone: Jordnær, ærlig, professionel men ikke "fancy"
-- Design: Bold typography, moderne UI, high-contrast
+## SÅDAN OPRETTES EN NY SIDE (uden risiko for at bryde sitet)
+Nye sider laves som "customPages" i site-content.json — IKKE som nye .tsx-filer. Tilføj et objekt til customPages-arrayet:
+{
+  "slug": "sommertilbud" (kun små bogstaver/tal/bindestreger — siden får adressen /info/sommertilbud),
+  "title": "Sidens overskrift",
+  "metaDescription": "SEO-beskrivelse til Google (valgfri)",
+  "sections": [
+    { "heading": "Afsnitsoverskrift (valgfri)", "text": "Brødtekst...", "imagePath": "/sti-til-billede.jpg (valgfri)" }
+  ]
+}
+Nye AFSNIT på en eksisterende side: enten som ny section på en customPage, ny FAQ i site-content.json, eller en tekstændring i den relevante pages/*.tsx.
 
-**Indhold:**
-- Antal services: ${SITE_CONTENT.SERVICES_COUNT}
-- Antal team medlemmer: ${SITE_CONTENT.TEAM_COUNT} (Preben, Jacob, Jesper)
-- Antal certificeringer: ${SITE_CONTENT.CERTIFICATIONS_COUNT}
-- Medlemskaber: DM&E, Faaborg-Midtfyns Erhvervsråd, Kloakmestrenes Kontrolinstans
-- Produktpartnere: Nordisk Innovation (rottespærrer), Kessel (højvandslukkere), UWS (højvandslukkere)
+## SEO-ÆNDRINGER
+- Sitets titel/beskrivelse/søgeord: index.html (title, meta description)
+- En ydelses SEO-tekst: description-feltet i SERVICES i constants.tsx
+- Ny sides SEO: metaDescription på customPage
 
-**SEO & Søgeord Fokus:**
-Sitet er optimeret til følgende søgeord og målgrupper:
-- "kloakmester Fyn", "kloakmester Odense", "omfangsdræn Fyn"
-- "rottespærre", "fugtig kælder", "kloakseparering"
-- "asbestsanering kloak" (begrænset)
-- Geografisk: Faaborg-Midtfyn, Assens, Odense, Svendborg
-- Målgruppe: Boligejere med akutte eller planlagte kloakproblemer
-- USP: Akut respons under 2 timer, fast pris, 5 års garanti, autoriseret
+## BILLEDER
+- Billeder ERSTATTES ved at brugeren uploader et billede i chatten. Der genereres IKKE billeder automatisk.
+- Hvis ønsket kræver et nyt billede og der IKKE er uploadet et: returnér isQuestion: true med et venligt svar der beder brugeren uploade billedet med 📷-knappen først.
+- CSS-justering af eksisterende billeder (beskæring, position) er OK uden upload.
+- Skift af SERVICE-billede: upload billedet, changeType "image", imageLocation "service-<slug>", og en specificChange der opdaterer image-feltet i SERVICES i constants.tsx.
+- Skift af LOGO: upload billedet, imageLocation "logo", og en specificChange der opdaterer header.logoPath i site-content.json.
 
-## CONTEXT OM SERVICES
-Sitet har disse 14 services:
-1. Omfangsdræn & Fugtsikring
-2. Kloakseparering & Renovering
-3. Rottespærre - Effektiv Sikring
-4. Højvandslukker & Backflow Sikring
-5. TV-Inspektion & Fejlsøgning
-6. LAR-Anlæg (Lokal Afledning af Regnvand)
-7. Asbestsanering (Kloak-relateret) - BEGRÆNSET, kun ved kloak/dræn arbejde!
-8. Entreprenørarbejde & Jordflytning
-9. Naturpleje & Genopretning
-10. Miniransanlæg & Renseanlæg
-11. Brøndrenovering & Brøndbygning
-12. Olietanke - Nedtagning & Sanering
-13. Fundamentarbejde & Støbning
-14. Vandledninger - Reparation & Fornyelse
+## TILLADTE FILER (whitelist — alle stier er relative til repo-roden, INTET "PRE/"-prefix)
+${ALLOWED_FILES.map(f => `- ${f}`).join('\n')}
+- public/** (billeder)
 
-**VIGTIGT:** Hvis bruger vil fjerne "asbest" eller "asbestsanering":
-- Det er OK! Vi laver det kun i begrænset omfang alligevel
-- Fjern det fra services listen
-- Fjern tekst om asbest fra hele sitet
+## FORBUDTE ÆNDRINGER (foreslå ALDRIG disse — forklar i stedet at det kræver udvikleren)
+- App.tsx, routing, nye .tsx-filer, nye imports/dependencies
+- api/**, lib/**, vercel.json, package.json
+- Ændringer af admin-systemet selv
 
-TILLADTE FILER (kun disse må redigeres):
-- PRE/site-content.json ⭐ VIGTIGT: Alle redigerbare data ligger HER (certificeringer, kontakter, hero-tekst, footer-tekst, FAQ, firma-info, logo-stier)
-- PRE/constants.tsx (services array, medlemskaber, partnere - alt andet importeres fra site-content.json)
-- PRE/index.css (farver og styling)
-- PRE/pages/Home.tsx (hero sektion CSS classes og styling)
-- PRE/pages/About.tsx (om os tekst og historie)
-- PRE/pages/Services.tsx (services side layout og tekst)
-- PRE/pages/Contact.tsx (kontakt side layout)
-- PRE/pages/Careers.tsx (karriere side)
-- PRE/pages/Memberships.tsx (medlemskaber side)
-- PRE/components/Navbar.tsx (navigation links)
-- PRE/public/* (billeder og assets)
+## OPGAVE
+Vurder først om brugeren stiller et SPØRGSMÅL eller ønsker en ÆNDRING.
 
-VIGTIGT - HVAD ER HVOR:
-- ✅ Certificeringer (navn, issuer, badge, customerBenefit): PRE/site-content.json → "certifications" array
-- ✅ Kontaktinfo (telefon, email): PRE/site-content.json → "contacts"
-- ✅ Hero-tekst (titel, undertitel, billede): PRE/site-content.json → "hero"
-- ✅ Footer-tekst (tagline, serviceArea): PRE/site-content.json → "footer"
-- ✅ FAQ: PRE/site-content.json → "faq" array
-- ✅ Firma-info (navn, CVR, adresse): PRE/site-content.json → "company"
-- ✅ Logo-sti: PRE/site-content.json → "header.logoPath"
-- ❌ Services (IKKE i site-content.json): PRE/constants.tsx → SERVICES array
-- ❌ Medlemskaber: PRE/constants.tsx → MEMBERSHIPS array
-- ❌ Partnere: PRE/constants.tsx → PARTNERS array
-
-VIGTIGT OM BILLEDER:
-- CSS styling af EKSISTERENDE billeder er OK (object-position, object-fit, filter, etc.)
-- ERSTATNING af billeder: AI genererer NYE billeder automatisk med Gemini Imagen
-- Hvis brugeren vil skifte til et nyt billede: Angiv hvad der skal genereres i "imagePrompt" feltet
-- Billedet vil automatisk blive genereret og uploadet til PRE/public/
-- Eksempel: "Skift baggrund til gravemaskine" → imagePrompt: "Professional excavator machine working on construction site, modern equipment, high quality"
-- Brug ALTID professionelle, detaljerede prompts på engelsk for bedste resultat
-
-FORBUDTE ÆNDRINGER (må ALDRIG foreslås):
-- Nye imports eller dependencies
-- Routing ændringer
-- Ny React funktionalitet
-- API calls (undtagen billede-generering som sker automatisk)
-- Config filer (vercel.json, package.json)
-
-NOTE: Billeder uploades AUTOMATISK via Gemini Imagen - systemet håndterer det selv.
-
-EKSEMPLER PÅ BILLEDE-HÅNDTERING:
-
-Eksempel 1 - Generér nyt billede:
-Bruger: "Skift baggrundsbillede til en gravemaskine"
-→ changeType: "image"
-→ safetyLevel: "SAFE"
-→ imagePrompt: "Modern yellow excavator machine working on construction site, professional construction equipment, blue sky, professional photography, high quality, wide angle, 8K"
-→ imageLocation: "hero-background"
-→ danishExplanation: "Genererer et professionelt billede af en gravemaskine og sætter det som baggrund i hero sektionen."
-
-Eksempel 2 - Generér service billede:
-Bruger: "Lav et billede til kloakservice"
-→ changeType: "image"
-→ imagePrompt: "Underground sewer pipe system, professional plumbing work, modern drainage system, clean professional photography, high quality"
-→ imageLocation: "service-kloakservice"
-→ danishExplanation: "Genererer et billede til kloakservice sektionen."
-
-VIGTIG REGEL FOR IMAGE PROMPTS:
-- Brug ALTID detaljerede engelske prompts
-- Inkluder: "professional photography, high quality, 8K"
-- Beskriv stil, farver, stemning præcist
-- For hero baggrunde: "wide angle, landscape, professional"
-- For ikoner/logos: "simple, minimalist, clean design, white background"
-
-OPGAVE:
-Vurder først om brugeren stiller et **SPØRGSMÅL** eller vil lave en **ÆNDRING**.
-
-### HVIS DET ER ET SPØRGSMÅL (fx "hvad er sitet optimeret efter?", "hvad er jeres kontaktinfo?"):
-Returner JSON i dette format:
+### SPØRGSMÅL → returnér:
 {
   "isQuestion": true,
   "changeType": "question",
-  "answer": "Detaljeret dansk svar på spørgsmålet baseret på NUVÆRENDE SITE INDHOLD",
-  "danishExplanation": "Dit svar på deres spørgsmål",
+  "answer": "Detaljeret dansk svar baseret på live-dataene ovenfor",
+  "danishExplanation": "Samme svar",
   "safetyLevel": "SAFE"
 }
 
-### HVIS DET ER EN ÆNDRINGSANMODNING:
-Vurder FØRST om det er en god idé:
-- Er ændringen i tråd med virksomhedens værdier?
-- Vil det forbedre brugeroplevelsen?
-- Er der risici eller bedre alternativer?
-
-Derefter returner JSON i dette format:
+### ÆNDRING → vurder om det er en god idé, og returnér:
 {
   "isQuestion": false,
-  "changeType": "color" | "text" | "service" | "image" | "team",
-  "filesAffected": ["PRE/constants.tsx"],
+  "changeType": "color" | "text" | "service" | "image" | "page" | "seo",
+  "filesAffected": ["site-content.json"],
   "specificChanges": [
     {
-      "file": "PRE/index.css",
-      "action": "replace_class",
-      "selector": ".bg-blue-900",
-      "oldValue": "#1e3a8a",
-      "newValue": "#166534",
-      "description": "Ændrer primær farve fra blå til grøn"
+      "file": "site-content.json",
+      "action": "update_value",
+      "description": "Præcis beskrivelse af hvad der ændres, med de konkrete nye værdier/tekster"
     }
   ],
   "safetyLevel": "SAFE" | "CAUTION" | "DANGEROUS",
-  "danishExplanation": "Kort forklaring på hvad der ændres OG din vurdering (god/dårlig idé)",
+  "danishExplanation": "Ikke-teknisk forklaring af hvad der sker OG din vurdering",
   "estimatedTime": "1-2 minutter",
   "warnings": ["Eventuelle advarsler"],
-  "advice": "Din rådgivning: Er det en god idé? Hvad skal de være opmærksomme på? Alternativer?",
-  "imagePrompt": "Hvis changeType er 'image': Detaljeret engelsk prompt til Gemini Imagen",
-  "imageLocation": "Hvis changeType er 'image': Hvor billedet skal bruges"
+  "advice": "Din rådgivning: god idé? opmærksomhedspunkter? alternativer?",
+  "imageLocation": "kun ved changeType image: fx logo, hero, service-rottespaerre"
 }
 
-SAFETY LEVEL REGLER:
-- SAFE: Simple tekst/farve ændringer i tilladte filer, samt billede-generering
-- CAUTION: Tilføj/fjern services, team medlemmer, større ændringer
-- DANGEROUS: Ændringer der berører forbudte områder eller kan bryde sitet
+VIGTIGT om specificChanges.description: Skriv den SÅ præcist at en anden AI kan udføre ændringen alene ud fra beskrivelsen — inkludér de nøjagtige nye tekster/værdier og hvor i filen de hører til.
 
-Returner KUN valid JSON, ingen ekstra tekst.
+SAFETY LEVELS:
+- SAFE: tekst/farve/billede-ændringer, FAQ, customPages
+- CAUTION: tilføj/fjern ydelser, større omstruktureringer — bed brugeren gennemgå preview ekstra grundigt
+- DANGEROUS: alt der rører forbudte filer eller bryder indholdsreglerne — udføres ikke
+
+Returnér KUN valid JSON, ingen ekstra tekst.
 `;
 
-    // Get AI analysis (with optional image support)
     let geminiContents;
     if (imageData) {
-      // Multimodal: text + image
-      // Extract base64 data and mime type from data URL
       const base64Match = imageData.match(/^data:([^;]+);base64,(.+)$/);
       if (!base64Match) {
         throw new Error('Ugyldigt billede format');
       }
-      const mimeType = base64Match[1];
-      const base64Data = base64Match[2];
-
       geminiContents = {
         parts: [
           { text: analysisPrompt },
-          { inlineData: { mimeType, data: base64Data } }
+          { inlineData: { mimeType: base64Match[1], data: base64Match[2] } }
         ]
       };
     } else {
-      // Text only
       geminiContents = analysisPrompt;
     }
 
@@ -312,10 +186,8 @@ Returner KUN valid JSON, ingen ekstra tekst.
     });
     const text = result.text;
 
-    // Parse JSON response
     let analysis;
     try {
-      // Remove markdown code blocks if present
       const jsonText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       analysis = JSON.parse(jsonText);
     } catch (parseError) {
@@ -323,7 +195,6 @@ Returner KUN valid JSON, ingen ekstra tekst.
       throw new Error('AI returnerede ugyldig JSON format');
     }
 
-    // Validate safety level
     if (analysis.safetyLevel === 'DANGEROUS') {
       return res.status(400).json({
         success: false,
@@ -332,25 +203,6 @@ Returner KUN valid JSON, ingen ekstra tekst.
       });
     }
 
-    // For non-question responses, validate that specificChanges exists and is non-empty
-    if (!analysis.isQuestion) {
-      if (!analysis.specificChanges || analysis.specificChanges.length === 0) {
-        return res.status(400).json({
-          success: false,
-          message: 'AI\'en kunne ikke finde ud af præcis hvad der skal ændres. Prøv at beskriv ændringen mere specifikt – fx "Skift Prebens telefonnummer til 12 34 56 78" eller "Ændre hero-titlen til X".',
-          analysis
-        });
-      }
-      if (!analysis.filesAffected || analysis.filesAffected.length === 0) {
-        return res.status(400).json({
-          success: false,
-          message: 'AI\'en angav ingen filer at redigere. Prøv at beskriv ændringen mere specifikt.',
-          analysis
-        });
-      }
-    }
-
-    // For question responses, return directly
     if (analysis.isQuestion) {
       return res.status(200).json({
         success: true,
@@ -359,16 +211,27 @@ Returner KUN valid JSON, ingen ekstra tekst.
       });
     }
 
-    // Check if files are allowed
-    const unauthorizedFiles = analysis.filesAffected.filter(
-      file => !ALLOWED_FILES.some(allowed => {
-        if (allowed.includes('**')) {
-          const pattern = allowed.replace('**/*', '');
-          return file.startsWith(pattern);
-        }
-        return file === allowed;
-      })
-    );
+    if (!analysis.specificChanges || analysis.specificChanges.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'AI\'en kunne ikke finde ud af præcis hvad der skal ændres. Prøv at beskriv ændringen mere specifikt – fx "Skift Prebens telefonnummer til 12 34 56 78" eller "Ændre hero-titlen til X".',
+        analysis
+      });
+    }
+    if (!analysis.filesAffected || analysis.filesAffected.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'AI\'en angav ingen filer at redigere. Prøv at beskriv ændringen mere specifikt.',
+        analysis
+      });
+    }
+
+    // Whitelist-tjek på både filesAffected og specificChanges
+    const allFiles = [
+      ...analysis.filesAffected,
+      ...analysis.specificChanges.map(c => c.file)
+    ];
+    const unauthorizedFiles = [...new Set(allFiles.filter(file => !isFileAllowed(file)))];
 
     if (unauthorizedFiles.length > 0) {
       return res.status(400).json({
@@ -378,7 +241,6 @@ Returner KUN valid JSON, ingen ekstra tekst.
       });
     }
 
-    // Return successful analysis
     return res.status(200).json({
       success: true,
       analysis,
@@ -387,13 +249,10 @@ Returner KUN valid JSON, ingen ekstra tekst.
 
   } catch (error) {
     console.error('Site Editor Analysis Error:', error);
-
-    // Ensure we always return JSON
     return res.status(500).json({
       success: false,
       message: 'Der opstod en fejl ved analyse af din anmodning',
-      error: error.message || 'Ukendt fejl',
-      details: error.stack ? error.stack.substring(0, 200) : 'Ingen detaljer'
+      error: error.message || 'Ukendt fejl'
     });
   }
 }

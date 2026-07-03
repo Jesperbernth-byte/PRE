@@ -1,7 +1,7 @@
 // TypeScript types for AI-powered Site Editor
 
 export type SafetyLevel = 'SAFE' | 'CAUTION' | 'DANGEROUS';
-export type ChangeType = 'color' | 'text' | 'service' | 'image' | 'team' | 'question';
+export type ChangeType = 'color' | 'text' | 'service' | 'image' | 'team' | 'page' | 'seo' | 'question';
 export type VersionStatus = 'preview' | 'approved' | 'deployed' | 'rolled_back';
 
 export interface FileChange {

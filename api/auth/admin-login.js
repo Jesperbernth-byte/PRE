@@ -1,5 +1,18 @@
+import crypto from 'crypto';
 import { signToken } from '../../lib/serverAuth.js';
 import { checkAndLogIp, getClientIp } from '../../lib/rateLimit.js';
+
+// Konstant-tid sammenligning så login ikke lækker information via timing.
+function safeEqual(a, b) {
+  const bufA = Buffer.from(String(a ?? ''));
+  const bufB = Buffer.from(String(b ?? ''));
+  if (bufA.length !== bufB.length) {
+    // Sammenlign alligevel mod os selv så tidsforbruget er ens.
+    crypto.timingSafeEqual(bufA, bufA);
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,12 +21,15 @@ export default async function handler(req, res) {
 
   // Rate limit: maks 5 forsøg pr. IP pr. 15 min (mod brute force).
   // Vi logger ALLE forsøg, ikke kun fejlede — så simpel og effektiv.
+  // failClosed: på login-endpointet afviser vi hvis rate-limit-tjekket
+  // fejler — ellers kan brute-force omgås ved at presse Supabase i knæ.
   const clientIp = getClientIp(req);
   const rate = await checkAndLogIp({
     ip: clientIp,
     endpoint: '/api/auth/admin-login',
     windowSeconds: 900,
-    maxRequests: 5
+    maxRequests: 5,
+    failClosed: true
   });
   if (!rate.allowed) {
     res.setHeader('Retry-After', String(rate.retryAfterSeconds || 900));
@@ -36,7 +52,9 @@ export default async function handler(req, res) {
     });
   }
 
-  if (username !== adminUsername || password !== adminPassword) {
+  const usernameOk = safeEqual(username, adminUsername);
+  const passwordOk = safeEqual(password, adminPassword);
+  if (!usernameOk || !passwordOk) {
     return res.status(401).json({
       success: false,
       message: 'Forkert brugernavn eller adgangskode'

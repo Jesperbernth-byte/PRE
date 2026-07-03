@@ -1,24 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
 import { requireAuth } from '../../lib/serverAuth.js';
+import {
+  isFileAllowed,
+  githubHeaders,
+  githubContentsUrl,
+  GITHUB_BRANCH
+} from '../../lib/editorFiles.js';
 
 const supabase = createClient(
   process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const GITHUB_OWNER = 'Jesperbernth-byte';
-const GITHUB_REPO = 'PRE';
-const GITHUB_BRANCH = 'main';
-
-const githubHeaders = () => ({
-  'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-  'Accept': 'application/vnd.github.v3+json',
-  'Content-Type': 'application/json'
-});
-
 async function getFileSha(filePath) {
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}?ref=${GITHUB_BRANCH}`;
-  const response = await fetch(url, { headers: githubHeaders() });
+  const response = await fetch(githubContentsUrl(filePath, true), { headers: githubHeaders() });
   if (response.status === 404) return null;
   if (!response.ok) {
     const err = await response.json().catch(() => ({ message: response.statusText }));
@@ -30,7 +25,6 @@ async function getFileSha(filePath) {
 
 async function writeFileToGitHub(filePath, content, commitMessage) {
   const sha = await getFileSha(filePath);
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(filePath)}`;
   const body = {
     message: commitMessage,
     content: Buffer.from(content, 'utf-8').toString('base64'),
@@ -38,7 +32,7 @@ async function writeFileToGitHub(filePath, content, commitMessage) {
   };
   if (sha) body.sha = sha;
 
-  const response = await fetch(url, {
+  const response = await fetch(githubContentsUrl(filePath), {
     method: 'PUT',
     headers: githubHeaders(),
     body: JSON.stringify(body)
@@ -90,23 +84,43 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'Denne version er allerede rullet tilbage' });
     }
 
-    const filesToRestore = targetVersion.files_changed;
-    if (!filesToRestore || Object.keys(filesToRestore).length === 0) {
-      return res.status(400).json({ success: false, message: 'Ingen filer at rulle tilbage' });
+    // Rollback = FORTRYD versionen: gendan filerne som de så ud FØR
+    // ændringen. Før-indholdet ligger i change_details[].oldContent —
+    // files_changed indeholder det NYE indhold og kan ikke bruges.
+    const details = Array.isArray(targetVersion.change_details) ? targetVersion.change_details : [];
+    const restoreMap = {};
+    for (const d of details) {
+      if (d && d.file && typeof d.oldContent === 'string') {
+        restoreMap[d.file] = d.oldContent;
+      }
     }
 
-    const commitMessage = `PRE: Rollback til version ${targetVersion.version_number}\n\nRollet tilbage af: ${username}\nOriginal ændring: ${targetVersion.change_description}\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`;
+    if (Object.keys(restoreMap).length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Denne version indeholder ikke det oprindelige filindhold og kan ikke rulles tilbage automatisk. Kontakt udvikleren.'
+      });
+    }
+
+    const unauthorized = Object.keys(restoreMap).filter(f => !isFileAllowed(f));
+    if (unauthorized.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: `Følgende filer må ikke skrives: ${unauthorized.join(', ')}`
+      });
+    }
+
+    const commitMessage = `Admin: Fortryd version ${targetVersion.version_number}\n\nRullet tilbage af: ${username}\nOriginal ændring: ${targetVersion.change_description}`;
 
     const restoredFiles = [];
     let lastCommitSha = null;
 
-    for (const [filePath, oldContent] of Object.entries(filesToRestore)) {
+    for (const [filePath, oldContent] of Object.entries(restoreMap)) {
       const result = await writeFileToGitHub(filePath, oldContent, commitMessage);
       restoredFiles.push(filePath);
       lastCommitSha = result?.commit?.sha || lastCommitSha;
     }
 
-    // Mark this version as rolled back
     await supabase
       .from('site_edit_versions')
       .update({
@@ -115,7 +129,6 @@ export default async function handler(req, res) {
       })
       .eq('id', versionId);
 
-    // Create a new version entry for the rollback
     const { data: newVersions } = await supabase
       .from('site_edit_versions')
       .select('version_number')
@@ -132,13 +145,13 @@ export default async function handler(req, res) {
       .insert({
         version_number: nextVersion,
         site_name: 'PRE',
-        change_description: `Rollback til version ${targetVersion.version_number}`,
+        change_description: `Fortrudt version ${targetVersion.version_number}`,
         change_prompt: `Rollback: ${targetVersion.change_description}`,
         changed_by: username,
-        files_changed: filesToRestore,
+        files_changed: restoreMap,
         change_details: [{
           action: 'rollback',
-          summary: `Gendannede filer fra version ${targetVersion.version_number}`,
+          summary: `Gendannede filerne som de så ud før version ${targetVersion.version_number}`,
           files: restoredFiles
         }],
         status: 'deployed',
@@ -149,7 +162,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      message: `Rollback til version ${targetVersion.version_number} fuldført. Vercel rebuilder om 1-2 min.`,
+      message: `Version ${targetVersion.version_number} er fortrudt — sitet gendannes som før ændringen. Vercel rebuilder om 1-2 min.`,
       commitSha: lastCommitSha,
       restoredFiles,
       deploymentUrl: process.env.PRE_SITE_URL || 'https://prentreprenoer.dk'

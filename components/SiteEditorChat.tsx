@@ -10,7 +10,7 @@ const SiteEditorChat: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: 'Hej! Jeg er din smarte AI assistent. Du kan:\n\n✨ Spørge mig om sitet: "Hvad er sitet optimeret efter?" eller "Hvilke services har vi?"\n\n🎨 Bede om ændringer: "Skift alle knapper til grøn" eller "Ændre Jacobs telefonnummer"\n\nJeg giver dig råd om dine ideer er gode, forklarer hvad der kan lade sig gøre, og hjælper dig til den bedste løsning!',
+      content: 'Hej Jacob! Jeg er din AI-assistent til sitet. Du kan fx:\n\n✏️ Ændre tekster: "Ret hero-teksten til..." eller "Tilføj et FAQ-spørgsmål om..."\n🖼️ Skifte billeder: upload et billede med 📷-knappen og skriv fx "brug det her som billede på rottespærre-siden" eller "skift logoet til dette"\n📄 Oprette en ny side: "Lav en side om vinterklargøring af kloak"\n🔍 SEO: "Opdatér sidens beskrivelse i Google til..."\n❓ Spørge om sitet: "Hvilke ydelser viser vi?" eller "Hvad står der i footeren?"\n\nSådan foregår det: Jeg foreslår ændringen → du trykker "Generér preview" og ser før/efter → du trykker "Deploy" → ændringen er live på sitet 1-2 minutter efter. Fortryder du, kan alt rulles tilbage under Historik.',
       timestamp: new Date().toISOString()
     }
   ]);
@@ -356,6 +356,8 @@ const SiteEditorChat: React.FC = () => {
                         {message.analysis.changeType === 'service' && 'Service ændring'}
                         {message.analysis.changeType === 'image' && 'Billede ændring'}
                         {message.analysis.changeType === 'team' && 'Team ændring'}
+                        {message.analysis.changeType === 'page' && 'Ny/ændret side'}
+                        {message.analysis.changeType === 'seo' && 'SEO ændring'}
                       </div>
 
                       {/* Files Affected */}
